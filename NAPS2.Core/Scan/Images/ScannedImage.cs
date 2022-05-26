@@ -27,6 +27,8 @@ namespace NAPS2.Scan.Images
         private Bitmap thumbnail;
         private int thumbnailState;
         private int transformState;
+        public string infoResolution;
+        public string infoFormat;
 
         private bool disposed;
         private int snapshotCount;
@@ -72,6 +74,8 @@ namespace NAPS2.Scan.Images
         }
 
         public PatchCode PatchCode { get; set; }
+
+        public string BarCodeData { get; set; }
 
         public ImageFormat FileFormat => recoveryImage.FileFormat;
 
