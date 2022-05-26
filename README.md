@@ -17,3 +17,5 @@ Have a look at the [Developer Onboarding](https://www.naps2.com/doc-dev-onboardi
 NOTE: (Christian Clavet, not the original developper of this excellent application) 
 I plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner.
 Currently, Only added the ability to have more information when scanning|importing image, and full barcode reading (not just PATCHCODE)
+
+![Alt text](./Naps2_Barcode.JPG?raw=true "Title")
