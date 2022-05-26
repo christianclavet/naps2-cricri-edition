@@ -579,6 +579,56 @@ namespace NAPS2.WinForms
 
         private IEnumerable<ScannedImage> SelectedImages => imageList.Images.ElementsAt(SelectedIndices);
 
+
+        // Check for barcode Data CC
+        // Also check for getting more information about the images, not just the barcode
+        private async Task CheckForBarCode(ScannedImage img)
+        {
+            if (img != null)
+            {
+                var bitmap = await scannedImageRenderer.Render(img);
+                if (bitmap != null)
+                {
+                    img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);              
+
+                    Size size = bitmap.Size;
+                    img.infoResolution = size.Width + " px X " + size.Height + " px ";
+
+                    string format = "Format: ";
+                    switch (bitmap.PixelFormat)
+                    {
+                        case PixelFormat.Format24bppRgb:
+                            format = format + "Couleur 24bit";
+                            break;
+                        case PixelFormat.Format32bppArgb:
+                            format = format + "Couleur 32bit";
+                            break;
+                        case PixelFormat.Format8bppIndexed:
+                            format = format + "Couleur 8bit";
+                            break;
+                        case PixelFormat.Format1bppIndexed:
+                            format = format + "Bitonal";
+                            break;
+                        default:
+                            format = "";
+                            break;
+                    }
+                    img.infoFormat = format;
+
+
+                }
+                else
+                {
+                    img.BarCodeData = "";
+                    img.infoResolution = "";
+                    img.infoFormat = "";
+                }
+
+
+
+            }
+
+        }
         /// <summary>
         /// Constructs a receiver for scanned images.
         /// This keeps images from the same source together, even if multiple sources are providing images at the same time.
@@ -604,6 +654,9 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
+
+                        CheckForBarCode(scannedImage); //CC Retrieve picture information including barcode data
+                        
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
@@ -621,12 +674,14 @@ namespace NAPS2.WinForms
         private void AddThumbnails()
         {
             thumbnailList1.AddedImages(imageList.Images);
+
             UpdateToolbar();
         }
 
         private void DeleteThumbnails()
         {
             thumbnailList1.DeletedImages(imageList.Images);
+           
             UpdateToolbar();
         }
 
@@ -634,6 +689,7 @@ namespace NAPS2.WinForms
         {
             thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null);
             SelectedIndices = selection;
+
             UpdateToolbar();
 
             if (scrollToSelection)
@@ -690,6 +746,12 @@ namespace NAPS2.WinForms
 
         private void UpdateToolbar()
         {
+            // Update Images description -- CC -- BARCODE
+            for (int i = 0; i < thumbnailList1.Items.Count; i++)
+            {
+                thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
+            }
+
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
@@ -1163,8 +1225,17 @@ namespace NAPS2.WinForms
             PreviewImage();
         }
 
+        // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
         private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        { 
+            String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
+            String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
+            String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
+            String text4 = "";
+            if (text3 != "")
+                text4 = "Barcode: " + text3;
+            String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
+            statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
             if (!disableSelectedIndexChangedEvent)
             {
                 UpdateToolbar();
