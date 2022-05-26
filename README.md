@@ -1,4 +1,4 @@
-# NAPS2 (Not Another PDF Scanner 2)
+# NAPS2 (Not Another PDF Scanner 2) (CriCri Edition - Fork of NAPS2)
 
 NAPS2 is a document scanning application with a focus on simplicity and ease of use. Scan your documents from WIA- and TWAIN-compatible scanners, organize the pages as you like, and save them as PDF, TIFF, JPEG, PNG, and other file formats. Requires .NET Framework 4.0 or higher.
 
@@ -14,8 +14,9 @@ Other links:
 ## For developers
 Have a look at the [Developer Onboarding](https://www.naps2.com/doc-dev-onboarding.html) page.
 
-NOTE: (Christian Clavet, not the original developper of this excellent application) 
-I plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner.
+NOTE: 
+I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner.
+
 Currently, Only added the ability to have more information when scanning|importing image, and full barcode reading (not just PATCHCODE)
 
 ![Alt text](./Naps2_Barcode.JPG?raw=true "Title")
