@@ -65,9 +65,14 @@ namespace NAPS2.ImportExport.Images
                             {
                                 image.SetThumbnail(thumbnailRenderer.RenderThumbnail(toImport));
                             }
-                            if (importParams.DetectPatchCodes)
+                            
+                            
+                            //if (importParams.DetectPatchCodes) 
+                            // CC
                             {
                                 image.PatchCode = PatchCodeDetector.Detect(toImport);
+                                if (image.PatchCode == PatchCode.Unknown)
+                                    image.BarCodeData = PatchCodeDetector.DataBarcode;
                             }
 
                             source.Put(image);
