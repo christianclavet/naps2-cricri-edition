@@ -16,6 +16,7 @@ namespace NAPS2.Scan
         Patch3,
         Patch4,
         Patch6,
-        PatchT
+        PatchT,
+        Unknown
     }
 }

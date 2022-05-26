@@ -12,12 +12,30 @@ namespace NAPS2.Scan
     /// </summary>
     public class PatchCodeDetector
     {
+        public static string DataBarcode { get; set; }
+
+        public static string DetectBarcode(Bitmap bitmap)
+        {
+            IBarcodeReader reader = new BarcodeReader();
+            var barcodeResult = reader.Decode(bitmap);
+            if (barcodeResult != null) //Something is detected
+            {
+                DataBarcode = barcodeResult.Text;
+            }
+            else
+                DataBarcode = "";
+
+            return DataBarcode;
+        }
+
+
         public static PatchCode Detect(Bitmap bitmap)
         {
             IBarcodeReader reader = new BarcodeReader();
             var barcodeResult = reader.Decode(bitmap);
-            if (barcodeResult != null)
+            if (barcodeResult != null) //Something is detected
             {
+                DataBarcode = barcodeResult.Text;
                 switch (barcodeResult.Text)
                 {
                     case "PATCH1":
@@ -32,8 +50,14 @@ namespace NAPS2.Scan
                         return PatchCode.Patch6;
                     case "PATCHT":
                         return PatchCode.PatchT;
+                    default:
+                        return PatchCode.Unknown;
                 }
+
             }
+            else
+                DataBarcode = "";
+
             return PatchCode.None;
         }
     }
