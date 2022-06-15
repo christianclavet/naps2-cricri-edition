@@ -49,6 +49,13 @@ namespace NAPS2.WinForms
         private readonly ScannedImageRenderer scannedImageRenderer;
         private readonly KeyboardShortcutManager ksm;
         private readonly IUserConfigManager userConfigManager;
+        private ToolStrip toolStrip2;
+        private ToolStripButton nouveauToolStripButton;
+        private ToolStripButton toolStripButton1;
+        private ToolStripButton toolStripButton2;
+        private ToolStripButton toolStripButton3;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
         private readonly IOperationProgress operationProgress;
 
         public FViewer(ChangeTracker changeTracker, IOperationFactory operationFactory, WinFormsExportHelper exportHelper, AppConfigManager appConfigManager, ScannedImageRenderer scannedImageRenderer, KeyboardShortcutManager ksm, IUserConfigManager userConfigManager, IOperationProgress operationProgress)
@@ -159,14 +166,28 @@ namespace NAPS2.WinForms
             this.tsSaveImage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.nouveauToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
             // 
+            // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
             // 
             // toolStripContainer1.ContentPanel
             // 
@@ -178,12 +199,14 @@ namespace NAPS2.WinForms
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             // 
             // tiffViewer1
             // 
             resources.ApplyResources(this.tiffViewer1, "tiffViewer1");
             this.tiffViewer1.Image = null;
             this.tiffViewer1.Name = "tiffViewer1";
+            this.tiffViewer1.Load += new System.EventHandler(this.tiffViewer1_Load);
             this.tiffViewer1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tiffViewer1_KeyDown);
             // 
             // toolStrip1
@@ -352,12 +375,61 @@ namespace NAPS2.WinForms
             this.tsDelete.Name = "tsDelete";
             this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
+            // toolStrip2
+            // 
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nouveauToolStripButton,
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3});
+            this.toolStrip2.Name = "toolStrip2";
+            // 
+            // nouveauToolStripButton
+            // 
+            resources.ApplyResources(this.nouveauToolStripButton, "nouveauToolStripButton");
+            this.nouveauToolStripButton.Image = global::NAPS2.Icons.control_play_blue;
+            this.nouveauToolStripButton.Name = "nouveauToolStripButton";
+            // 
+            // toolStripButton1
+            // 
+            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
+            this.toolStripButton1.Image = global::NAPS2.Icons.arrow_repeat;
+            this.toolStripButton1.Name = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            resources.ApplyResources(this.toolStripButton2, "toolStripButton2");
+            this.toolStripButton2.Image = global::NAPS2.Icons.add1;
+            this.toolStripButton2.Name = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            resources.ApplyResources(this.toolStripButton3, "toolStripButton3");
+            this.toolStripButton3.Image = global::NAPS2.Icons.arrow_undo;
+            this.toolStripButton3.Name = "toolStripButton3";
+            // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            // 
             // FViewer
             // 
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "FViewer";
             this.ShowInTaskbar = false;
+            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
@@ -365,6 +437,10 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -597,6 +673,11 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.RotateRight, tsRotateRight);
             ksm.Assign(ks.SaveImages, tsSaveImage);
             ksm.Assign(ks.SavePDF, tsSavePDF);
+        }
+
+        private void tiffViewer1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
