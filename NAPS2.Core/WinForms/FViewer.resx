@@ -175,7 +175,7 @@
     <value>0, 0</value>
   </data>
   <data name="tiffViewer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 531</value>
+    <value>906, 560</value>
   </data>
   <data name="tiffViewer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -184,7 +184,7 @@
     <value>tiffViewer1</value>
   </data>
   <data name="&gt;&gt;tiffViewer1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.1.2.16604, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.1.2.22367, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewer1.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -193,7 +193,7 @@
     <value>0</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 531</value>
+    <value>906, 560</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -462,19 +462,16 @@
   <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="nouveauToolStripButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="nouveauToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="Scan.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="nouveauToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Scan.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 51</value>
   </data>
-  <data name="nouveauToolStripButton.Text" xml:space="preserve">
+  <data name="Scan.Text" xml:space="preserve">
     <value>Sca&amp;n</value>
   </data>
-  <data name="nouveauToolStripButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+  <data name="Scan.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageAboveText</value>
   </data>
   <data name="toolStripButton1.Enabled" type="System.Boolean, mscorlib">
@@ -529,13 +526,16 @@
     <value>3, 54</value>
   </data>
   <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 54</value>
+    <value>240, 54</value>
   </data>
   <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="toolStrip2.Text" xml:space="preserve">
     <value>toolStrip2</value>
+  </data>
+  <data name="toolStrip2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
     <value>toolStrip2</value>
@@ -614,6 +614,12 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Preview</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbPageCurrent.Name" xml:space="preserve">
     <value>tbPageCurrent</value>
@@ -741,10 +747,10 @@
   <data name="&gt;&gt;tsDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nouveauToolStripButton.Name" xml:space="preserve">
-    <value>nouveauToolStripButton</value>
+  <data name="&gt;&gt;Scan.Name" xml:space="preserve">
+    <value>Scan</value>
   </data>
-  <data name="&gt;&gt;nouveauToolStripButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;Scan.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButton1.Name" xml:space="preserve">
@@ -765,16 +771,10 @@
   <data name="&gt;&gt;toolStripButton3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FViewer</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.1.2.16604, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.1.2.22367, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

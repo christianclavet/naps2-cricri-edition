@@ -13,6 +13,13 @@ using NAPS2.Platform;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
 
+using NAPS2.Recovery;
+using NAPS2.Scan;
+using NAPS2.Scan.Exceptions;
+
+using NAPS2.Scan.Wia;
+using NAPS2.Scan.Wia.Native;
+
 namespace NAPS2.WinForms
 {
     public class FViewer : FormBase
@@ -50,13 +57,17 @@ namespace NAPS2.WinForms
         private readonly KeyboardShortcutManager ksm;
         private readonly IUserConfigManager userConfigManager;
         private ToolStrip toolStrip2;
-        private ToolStripButton nouveauToolStripButton;
+        private ToolStripButton Scan;
         private ToolStripButton toolStripButton1;
         private ToolStripButton toolStripButton2;
         private ToolStripButton toolStripButton3;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private readonly IOperationProgress operationProgress;
+
+        private readonly IProfileManager profileManager;
+        private readonly IScanPerformer scanPerformer;
+        //this.notify = notify;
 
         public FViewer(ChangeTracker changeTracker, IOperationFactory operationFactory, WinFormsExportHelper exportHelper, AppConfigManager appConfigManager, ScannedImageRenderer scannedImageRenderer, KeyboardShortcutManager ksm, IUserConfigManager userConfigManager, IOperationProgress operationProgress)
         {
@@ -143,6 +154,8 @@ namespace NAPS2.WinForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FViewer));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tiffViewer1 = new NAPS2.WinForms.TiffViewerCtl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tbPageCurrent = new System.Windows.Forms.ToolStripTextBox();
@@ -167,19 +180,17 @@ namespace NAPS2.WinForms
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.nouveauToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.Scan = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -200,6 +211,18 @@ namespace NAPS2.WinForms
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
+            // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // tiffViewer1
             // 
@@ -380,17 +403,18 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nouveauToolStripButton,
+            this.Scan,
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3});
             this.toolStrip2.Name = "toolStrip2";
             // 
-            // nouveauToolStripButton
+            // Scan
             // 
-            resources.ApplyResources(this.nouveauToolStripButton, "nouveauToolStripButton");
-            this.nouveauToolStripButton.Image = global::NAPS2.Icons.control_play_blue;
-            this.nouveauToolStripButton.Name = "nouveauToolStripButton";
+            this.Scan.Image = global::NAPS2.Icons.control_play_blue;
+            resources.ApplyResources(this.Scan, "Scan");
+            this.Scan.Name = "Scan";
+            this.Scan.Click += new System.EventHandler(this.tsScan_ButtonClick);
             // 
             // toolStripButton1
             // 
@@ -410,18 +434,6 @@ namespace NAPS2.WinForms
             this.toolStripButton3.Image = global::NAPS2.Icons.arrow_undo;
             this.toolStripButton3.Name = "toolStripButton3";
             // 
-            // statusStrip1
-            // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Name = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
-            // 
             // FViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -435,12 +447,12 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -679,5 +691,11 @@ namespace NAPS2.WinForms
         {
 
         }
+
+        private async void tsScan_ButtonClick(object sender, EventArgs e)
+        {
+            //await ScanDefault();
+        }
+
     }
 }
