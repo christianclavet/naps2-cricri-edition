@@ -123,6 +123,17 @@ namespace NAPS2.WinForms
         {
             tbPageCurrent.Text = (ImageIndex + 1).ToString(CultureInfo.CurrentCulture);
             lblPageTotal.Text = string.Format(MiscResources.OfN, ImageList.Images.Count);
+            
+
+            String text2 = ImageList.Images[ImageIndex].infoResolution;
+            String text3 = ImageList.Images[ImageIndex].BarCodeData;
+            String text4 = "";
+            if (text3 != "")
+                text4 = "Barcode: " + text3;
+            String format = ImageList.Images[ImageIndex].infoFormat;
+            // statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
+            toolStripStatusLabel1.Text = "Size: " + text2 + " - " + text4 + " - " + format;
+
             if (!PlatformCompat.Runtime.IsToolbarTextboxSupported)
             {
                 lblPageTotal.Text = tbPageCurrent.Text + ' ' + lblPageTotal.Text;
@@ -698,6 +709,8 @@ namespace NAPS2.WinForms
 
         private async void tsScan_ButtonClick(object sender, EventArgs e)
         {
+            // The feature of the button work as it call the function. But the function cannot work in the context.
+            // Need rework to work in this context.
             await fDesktop.ScanDefault();
         }
 
