@@ -963,6 +963,7 @@ namespace NAPS2.WinForms
             {
                 using (var viewer = FormFactory.Create<FViewer>())
                 {
+                    viewer.Fdesktop = this;
                     viewer.ImageList = imageList;
                     viewer.ImageIndex = SelectedIndices.First();
                     viewer.DeleteCallback = DeleteThumbnails;

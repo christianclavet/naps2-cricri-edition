@@ -184,7 +184,7 @@
     <value>tiffViewer1</value>
   </data>
   <data name="&gt;&gt;tiffViewer1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.1.2.25837, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.1.2.16331, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewer1.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -248,189 +248,6 @@
   </metadata>
   <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
-  </data>
-  <data name="tbPageCurrent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="tbPageCurrent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 54</value>
-  </data>
-  <data name="lblPageTotal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 51</value>
-  </data>
-  <data name="lblPageTotal.Text" xml:space="preserve">
-    <value>of {0}</value>
-  </data>
-  <data name="tsPrev.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsPrev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 51</value>
-  </data>
-  <data name="tsPrev.Text" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="tsPrev.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsNext.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 51</value>
-  </data>
-  <data name="tsNext.Text" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="tsNext.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 54</value>
-  </data>
-  <data name="tsRotateLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="tsRotateLeft.Text" xml:space="preserve">
-    <value>Rotate Left</value>
-  </data>
-  <data name="tsRotateRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="tsRotateRight.Text" xml:space="preserve">
-    <value>Rotate Right</value>
-  </data>
-  <data name="tsFlip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="tsFlip.Text" xml:space="preserve">
-    <value>Flip</value>
-  </data>
-  <data name="tsDeskew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="tsDeskew.Text" xml:space="preserve">
-    <value>Deskew</value>
-  </data>
-  <data name="tsCustomRotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="tsCustomRotation.Text" xml:space="preserve">
-    <value>Custom Rotation</value>
-  </data>
-  <data name="tsdRotate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsdRotate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 51</value>
-  </data>
-  <data name="tsdRotate.Text" xml:space="preserve">
-    <value>Rotate</value>
-  </data>
-  <data name="tsdRotate.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsCrop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsCrop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 51</value>
-  </data>
-  <data name="tsCrop.Text" xml:space="preserve">
-    <value>Crop</value>
-  </data>
-  <data name="tsCrop.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsBrightnessContrast.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsBrightnessContrast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 51</value>
-  </data>
-  <data name="tsBrightnessContrast.Text" xml:space="preserve">
-    <value>Brightness / Contrast</value>
-  </data>
-  <data name="tsBrightnessContrast.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsHueSaturation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsHueSaturation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 51</value>
-  </data>
-  <data name="tsHueSaturation.Text" xml:space="preserve">
-    <value>Hue / Saturation</value>
-  </data>
-  <data name="tsHueSaturation.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsBlackWhite.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsBlackWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 51</value>
-  </data>
-  <data name="tsBlackWhite.Text" xml:space="preserve">
-    <value>Black and White</value>
-  </data>
-  <data name="tsBlackWhite.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsSharpen.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsSharpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 51</value>
-  </data>
-  <data name="tsSharpen.Text" xml:space="preserve">
-    <value>Sharpen</value>
-  </data>
-  <data name="tsSharpen.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 54</value>
-  </data>
-  <data name="tsSavePDF.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsSavePDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 51</value>
-  </data>
-  <data name="tsSavePDF.Text" xml:space="preserve">
-    <value>Save PDF</value>
-  </data>
-  <data name="tsSavePDF.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="tsSaveImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsSaveImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 51</value>
-  </data>
-  <data name="tsSaveImage.Text" xml:space="preserve">
-    <value>Save Image</value>
-  </data>
-  <data name="tsSaveImage.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 54</value>
-  </data>
-  <data name="tsDelete.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 51</value>
-  </data>
-  <data name="tsDelete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="tsDelete.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -572,6 +389,189 @@
   </data>
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tbPageCurrent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="tbPageCurrent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 54</value>
+  </data>
+  <data name="lblPageTotal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 51</value>
+  </data>
+  <data name="lblPageTotal.Text" xml:space="preserve">
+    <value>of {0}</value>
+  </data>
+  <data name="tsPrev.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsPrev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 51</value>
+  </data>
+  <data name="tsPrev.Text" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="tsPrev.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsNext.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 51</value>
+  </data>
+  <data name="tsNext.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="tsNext.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 54</value>
+  </data>
+  <data name="tsdRotate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsdRotate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 51</value>
+  </data>
+  <data name="tsdRotate.Text" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="tsdRotate.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsRotateLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="tsRotateLeft.Text" xml:space="preserve">
+    <value>Rotate Left</value>
+  </data>
+  <data name="tsRotateRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="tsRotateRight.Text" xml:space="preserve">
+    <value>Rotate Right</value>
+  </data>
+  <data name="tsFlip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="tsFlip.Text" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="tsDeskew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="tsDeskew.Text" xml:space="preserve">
+    <value>Deskew</value>
+  </data>
+  <data name="tsCustomRotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="tsCustomRotation.Text" xml:space="preserve">
+    <value>Custom Rotation</value>
+  </data>
+  <data name="tsCrop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsCrop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 51</value>
+  </data>
+  <data name="tsCrop.Text" xml:space="preserve">
+    <value>Crop</value>
+  </data>
+  <data name="tsCrop.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsBrightnessContrast.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsBrightnessContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 51</value>
+  </data>
+  <data name="tsBrightnessContrast.Text" xml:space="preserve">
+    <value>Brightness / Contrast</value>
+  </data>
+  <data name="tsBrightnessContrast.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsHueSaturation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsHueSaturation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 51</value>
+  </data>
+  <data name="tsHueSaturation.Text" xml:space="preserve">
+    <value>Hue / Saturation</value>
+  </data>
+  <data name="tsHueSaturation.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsBlackWhite.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsBlackWhite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 51</value>
+  </data>
+  <data name="tsBlackWhite.Text" xml:space="preserve">
+    <value>Black and White</value>
+  </data>
+  <data name="tsBlackWhite.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsSharpen.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsSharpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 51</value>
+  </data>
+  <data name="tsSharpen.Text" xml:space="preserve">
+    <value>Sharpen</value>
+  </data>
+  <data name="tsSharpen.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 54</value>
+  </data>
+  <data name="tsSavePDF.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsSavePDF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 51</value>
+  </data>
+  <data name="tsSavePDF.Text" xml:space="preserve">
+    <value>Save PDF</value>
+  </data>
+  <data name="tsSavePDF.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="tsSaveImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsSaveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 51</value>
+  </data>
+  <data name="tsSaveImage.Text" xml:space="preserve">
+    <value>Save Image</value>
+  </data>
+  <data name="tsSaveImage.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 54</value>
+  </data>
+  <data name="tsDelete.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 51</value>
+  </data>
+  <data name="tsDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="tsDelete.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageAboveText</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -775,6 +775,6 @@
     <value>FViewer</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.1.2.25837, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.1.2.16331, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

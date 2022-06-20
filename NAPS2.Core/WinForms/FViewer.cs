@@ -87,6 +87,8 @@ namespace NAPS2.WinForms
         public int ImageIndex { get; set; }
         public Action DeleteCallback { get; set; }
         public Action<int> SelectCallback { get; set; }
+        public FDesktop Fdesktop { get; set; }
+
 
         protected override async void OnLoad(object sender, EventArgs e)
         {
