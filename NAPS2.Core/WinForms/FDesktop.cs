@@ -521,7 +521,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async Task ScanDefault()
+        public async Task ScanDefault()
         {
             if (profileManager.DefaultProfile != null)
             {
@@ -582,7 +582,7 @@ namespace NAPS2.WinForms
 
         // Check for barcode Data CC
         // Also check for getting more information about the images, not just the barcode
-        private async Task CheckForBarCode(ScannedImage img)
+        private async void CheckForBarCode(ScannedImage img)
         {
             if (img != null)
             {

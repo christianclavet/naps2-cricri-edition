@@ -6155,6 +6155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\wireless16.png" />
+    <None Include="Resources\transform_shear.png" />
     <None Include="Resources\arrow_undo.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\arrow_repeat.png" />

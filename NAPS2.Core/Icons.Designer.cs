@@ -853,6 +853,16 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap transform_shear {
+            get {
+                object obj = ResourceManager.GetObject("transform_shear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap weather_sun {
             get {
                 object obj = ResourceManager.GetObject("weather_sun", resourceCulture);

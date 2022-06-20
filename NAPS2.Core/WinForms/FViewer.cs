@@ -65,11 +65,11 @@ namespace NAPS2.WinForms
         private ToolStripStatusLabel toolStripStatusLabel1;
         private readonly IOperationProgress operationProgress;
 
-        private readonly IProfileManager profileManager;
-        private readonly IScanPerformer scanPerformer;
-        //this.notify = notify;
+        //CC Use features from the main interfaces (Scanning)
+        private FDesktop fDesktop;
+        
 
-        public FViewer(ChangeTracker changeTracker, IOperationFactory operationFactory, WinFormsExportHelper exportHelper, AppConfigManager appConfigManager, ScannedImageRenderer scannedImageRenderer, KeyboardShortcutManager ksm, IUserConfigManager userConfigManager, IOperationProgress operationProgress)
+        public FViewer(FDesktop fDesktop, ChangeTracker changeTracker, IOperationFactory operationFactory, WinFormsExportHelper exportHelper, AppConfigManager appConfigManager, ScannedImageRenderer scannedImageRenderer, KeyboardShortcutManager ksm, IUserConfigManager userConfigManager, IOperationProgress operationProgress)
         {
             this.changeTracker = changeTracker;
             this.operationFactory = operationFactory;
@@ -79,6 +79,7 @@ namespace NAPS2.WinForms
             this.ksm = ksm;
             this.userConfigManager = userConfigManager;
             this.operationProgress = operationProgress;
+            this.fDesktop = fDesktop;
             InitializeComponent();
         }
 
@@ -322,6 +323,7 @@ namespace NAPS2.WinForms
             // 
             // tsDeskew
             // 
+            this.tsDeskew.Image = global::NAPS2.Icons.transform_shear;
             this.tsDeskew.Name = "tsDeskew";
             resources.ApplyResources(this.tsDeskew, "tsDeskew");
             this.tsDeskew.Click += new System.EventHandler(this.tsDeskew_Click);
@@ -694,7 +696,7 @@ namespace NAPS2.WinForms
 
         private async void tsScan_ButtonClick(object sender, EventArgs e)
         {
-            //await ScanDefault();
+            await fDesktop.ScanDefault();
         }
 
     }
