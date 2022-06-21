@@ -677,7 +677,7 @@ namespace NAPS2.WinForms
         {
             thumbnailList1.AddedImages(imageList.Images);
             // put the image inside the preview
-            var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()]);
+            var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()-1]);
             if (bitmap != null)
                 tiffViewerCtl1.Image = bitmap;
 

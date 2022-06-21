@@ -38,6 +38,9 @@ namespace NAPS2.WinForms
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnZoomIn = new System.Windows.Forms.Button();
+            this.btnZoomOut = new System.Windows.Forms.Button();
+            this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
             this.thumbnailList1 = new NAPS2.WinForms.ThumbnailList();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxView = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,9 +50,6 @@ namespace NAPS2.WinForms
             this.ctxPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnZoomIn = new System.Windows.Forms.Button();
-            this.btnZoomOut = new System.Windows.Forms.Button();
-            this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
             this.tiffViewerCtl1 = new NAPS2.WinForms.TiffViewerCtl();
             this.tStrip = new System.Windows.Forms.ToolStrip();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
@@ -180,6 +180,31 @@ namespace NAPS2.WinForms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tiffViewerCtl1);
             // 
+            // btnZoomIn
+            // 
+            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
+            this.btnZoomIn.BackColor = System.Drawing.Color.White;
+            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.UseVisualStyleBackColor = false;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+            // 
+            // btnZoomOut
+            // 
+            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
+            this.btnZoomOut.BackColor = System.Drawing.Color.White;
+            this.btnZoomOut.Image = global::NAPS2.Icons.zoom_out;
+            this.btnZoomOut.Name = "btnZoomOut";
+            this.btnZoomOut.UseVisualStyleBackColor = false;
+            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // btnZoomMouseCatcher
+            // 
+            this.btnZoomMouseCatcher.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnZoomMouseCatcher, "btnZoomMouseCatcher");
+            this.btnZoomMouseCatcher.Name = "btnZoomMouseCatcher";
+            this.btnZoomMouseCatcher.UseVisualStyleBackColor = false;
+            // 
             // thumbnailList1
             // 
             this.thumbnailList1.AllowDrop = true;
@@ -255,31 +280,6 @@ namespace NAPS2.WinForms
             this.ctxDelete.Name = "ctxDelete";
             resources.ApplyResources(this.ctxDelete, "ctxDelete");
             this.ctxDelete.Click += new System.EventHandler(this.ctxDelete_Click);
-            // 
-            // btnZoomIn
-            // 
-            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
-            this.btnZoomIn.BackColor = System.Drawing.Color.White;
-            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
-            // 
-            // btnZoomOut
-            // 
-            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
-            this.btnZoomOut.BackColor = System.Drawing.Color.White;
-            this.btnZoomOut.Image = global::NAPS2.Icons.zoom_out;
-            this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.UseVisualStyleBackColor = false;
-            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
-            // 
-            // btnZoomMouseCatcher
-            // 
-            this.btnZoomMouseCatcher.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.btnZoomMouseCatcher, "btnZoomMouseCatcher");
-            this.btnZoomMouseCatcher.Name = "btnZoomMouseCatcher";
-            this.btnZoomMouseCatcher.UseVisualStyleBackColor = false;
             // 
             // tiffViewerCtl1
             // 
