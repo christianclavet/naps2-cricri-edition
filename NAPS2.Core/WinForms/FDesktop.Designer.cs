@@ -37,9 +37,7 @@ namespace NAPS2.WinForms
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnZoomIn = new System.Windows.Forms.Button();
-            this.btnZoomOut = new System.Windows.Forms.Button();
-            this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.thumbnailList1 = new NAPS2.WinForms.ThumbnailList();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxView = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +47,10 @@ namespace NAPS2.WinForms
             this.ctxPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnZoomIn = new System.Windows.Forms.Button();
+            this.btnZoomOut = new System.Windows.Forms.Button();
+            this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
+            this.tiffViewerCtl1 = new NAPS2.WinForms.TiffViewerCtl();
             this.tStrip = new System.Windows.Forms.ToolStrip();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
             this.tsNewProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,11 +110,20 @@ namespace NAPS2.WinForms
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsAbout = new System.Windows.Forms.ToolStripButton();
+            this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.tStrip.SuspendLayout();
             this.SuspendLayout();
@@ -122,15 +133,15 @@ namespace NAPS2.WinForms
             // 
             // toolStripContainer1.BottomToolStripPanel
             // 
+            this.toolStripContainer1.BottomToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnZoomIn);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnZoomOut);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnZoomMouseCatcher);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.thumbnailList1);
+            this.toolStripContainer1.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
+            this.toolStripContainer1.ContentPanel.Load += new System.EventHandler(this.toolStripContainer1_ContentPanel_Load);
             resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
@@ -150,36 +161,31 @@ namespace NAPS2.WinForms
             this.StatusText.Name = "StatusText";
             resources.ApplyResources(this.StatusText, "StatusText");
             // 
-            // btnZoomIn
+            // splitContainer1
             // 
-            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
-            this.btnZoomIn.BackColor = System.Drawing.Color.White;
-            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // btnZoomOut
+            // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
-            this.btnZoomOut.BackColor = System.Drawing.Color.White;
-            this.btnZoomOut.Image = global::NAPS2.Icons.zoom_out;
-            this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.UseVisualStyleBackColor = false;
-            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
+            this.splitContainer1.Panel1.Controls.Add(this.btnZoomOut);
+            this.splitContainer1.Panel1.Controls.Add(this.btnZoomMouseCatcher);
+            this.splitContainer1.Panel1.Controls.Add(this.thumbnailList1);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
-            // btnZoomMouseCatcher
+            // splitContainer1.Panel2
             // 
-            this.btnZoomMouseCatcher.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.btnZoomMouseCatcher, "btnZoomMouseCatcher");
-            this.btnZoomMouseCatcher.Name = "btnZoomMouseCatcher";
-            this.btnZoomMouseCatcher.UseVisualStyleBackColor = false;
+            this.splitContainer1.Panel2.Controls.Add(this.tiffViewerCtl1);
             // 
             // thumbnailList1
             // 
             this.thumbnailList1.AllowDrop = true;
             this.thumbnailList1.ContextMenuStrip = this.contextMenuStrip;
             resources.ApplyResources(this.thumbnailList1, "thumbnailList1");
+            this.thumbnailList1.GridLines = true;
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.ThumbnailRenderer = null;
@@ -249,6 +255,38 @@ namespace NAPS2.WinForms
             this.ctxDelete.Name = "ctxDelete";
             resources.ApplyResources(this.ctxDelete, "ctxDelete");
             this.ctxDelete.Click += new System.EventHandler(this.ctxDelete_Click);
+            // 
+            // btnZoomIn
+            // 
+            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
+            this.btnZoomIn.BackColor = System.Drawing.Color.White;
+            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.UseVisualStyleBackColor = false;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+            // 
+            // btnZoomOut
+            // 
+            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
+            this.btnZoomOut.BackColor = System.Drawing.Color.White;
+            this.btnZoomOut.Image = global::NAPS2.Icons.zoom_out;
+            this.btnZoomOut.Name = "btnZoomOut";
+            this.btnZoomOut.UseVisualStyleBackColor = false;
+            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // btnZoomMouseCatcher
+            // 
+            this.btnZoomMouseCatcher.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnZoomMouseCatcher, "btnZoomMouseCatcher");
+            this.btnZoomMouseCatcher.Name = "btnZoomMouseCatcher";
+            this.btnZoomMouseCatcher.UseVisualStyleBackColor = false;
+            // 
+            // tiffViewerCtl1
+            // 
+            resources.ApplyResources(this.tiffViewerCtl1, "tiffViewerCtl1");
+            this.tiffViewerCtl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tiffViewerCtl1.Image = null;
+            this.tiffViewerCtl1.Name = "tiffViewerCtl1";
             // 
             // tStrip
             // 
@@ -707,6 +745,38 @@ namespace NAPS2.WinForms
             this.tsAbout.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tsAbout.Click += new System.EventHandler(this.tsAbout_Click);
             // 
+            // BottomToolStripPanel
+            // 
+            resources.ApplyResources(this.BottomToolStripPanel, "BottomToolStripPanel");
+            this.BottomToolStripPanel.Name = "BottomToolStripPanel";
+            this.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            // 
+            // TopToolStripPanel
+            // 
+            resources.ApplyResources(this.TopToolStripPanel, "TopToolStripPanel");
+            this.TopToolStripPanel.Name = "TopToolStripPanel";
+            this.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            // 
+            // RightToolStripPanel
+            // 
+            resources.ApplyResources(this.RightToolStripPanel, "RightToolStripPanel");
+            this.RightToolStripPanel.Name = "RightToolStripPanel";
+            this.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            // 
+            // LeftToolStripPanel
+            // 
+            resources.ApplyResources(this.LeftToolStripPanel, "LeftToolStripPanel");
+            this.LeftToolStripPanel.Name = "LeftToolStripPanel";
+            this.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            // 
+            // ContentPanel
+            // 
+            resources.ApplyResources(this.ContentPanel, "ContentPanel");
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -723,6 +793,11 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.contextMenuStrip.ResumeLayout(false);
             this.tStrip.ResumeLayout(false);
             this.tStrip.PerformLayout();
@@ -731,81 +806,87 @@ namespace NAPS2.WinForms
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip tStrip;
-        private System.Windows.Forms.ToolStripSplitButton tsScan;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private ThumbnailList thumbnailList1;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private ToolStripDoubleButton tsMove;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsClear;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tsProfiles;
-        private System.Windows.Forms.ToolStripButton tsAbout;
-        private System.Windows.Forms.ToolStripButton tsDelete;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripButton tsImport;
-        private System.Windows.Forms.ToolStripSplitButton tsdSavePDF;
-        private System.Windows.Forms.ToolStripMenuItem tsSavePDFAll;
-        private System.Windows.Forms.ToolStripMenuItem tsSavePDFSelected;
-        private System.Windows.Forms.ToolStripDropDownButton tsdRotate;
-        private System.Windows.Forms.ToolStripMenuItem tsRotateLeft;
-        private System.Windows.Forms.ToolStripMenuItem tsRotateRight;
-        private System.Windows.Forms.ToolStripMenuItem tsFlip;
-        private System.Windows.Forms.ToolStripDropDownButton tsdReorder;
-        private System.Windows.Forms.ToolStripMenuItem tsInterleave;
-        private System.Windows.Forms.ToolStripMenuItem tsDeinterleave;
-        private System.Windows.Forms.ToolStripSplitButton tsdSaveImages;
-        private System.Windows.Forms.ToolStripMenuItem tsSaveImagesAll;
-        private System.Windows.Forms.ToolStripMenuItem tsSaveImagesSelected;
-        private System.Windows.Forms.ToolStripSplitButton tsdEmailPDF;
-        private System.Windows.Forms.ToolStripMenuItem tsEmailPDFAll;
-        private System.Windows.Forms.ToolStripMenuItem tsEmailPDFSelected;
-        private System.Windows.Forms.ToolStripButton tsOcr;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxView;
         private System.Windows.Forms.ToolStripMenuItem ctxSelectAll;
         private System.Windows.Forms.ToolStripMenuItem ctxCopy;
+        private System.Windows.Forms.ToolStripSeparator ctxSeparator1;
+        private System.Windows.Forms.ToolStripSeparator ctxSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem ctxDelete;
+        private System.Windows.Forms.ToolStripMenuItem ctxPaste;
+        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel StatusText;
+        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
+        private System.Windows.Forms.ToolStrip tStrip;
+        private System.Windows.Forms.ToolStripSplitButton tsScan;
+        private System.Windows.Forms.ToolStripMenuItem tsNewProfile;
+        private System.Windows.Forms.ToolStripMenuItem tsBatchScan;
+        private System.Windows.Forms.ToolStripButton tsProfiles;
+        private System.Windows.Forms.ToolStripButton tsOcr;
+        private System.Windows.Forms.ToolStripButton tsImport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSplitButton tsdSavePDF;
+        private System.Windows.Forms.ToolStripMenuItem tsSavePDFAll;
+        private System.Windows.Forms.ToolStripMenuItem tsSavePDFSelected;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem tsPDFSettings;
+        private System.Windows.Forms.ToolStripSplitButton tsdSaveImages;
+        private System.Windows.Forms.ToolStripMenuItem tsSaveImagesAll;
+        private System.Windows.Forms.ToolStripMenuItem tsSaveImagesSelected;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem tsImageSettings;
+        private System.Windows.Forms.ToolStripSplitButton tsdEmailPDF;
+        private System.Windows.Forms.ToolStripMenuItem tsEmailPDFAll;
+        private System.Windows.Forms.ToolStripMenuItem tsEmailPDFSelected;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem tsEmailSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsPdfSettings2;
+        private System.Windows.Forms.ToolStripButton tsPrint;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripDropDownButton tsdImage;
+        private System.Windows.Forms.ToolStripMenuItem tsView;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem tsCrop;
+        private System.Windows.Forms.ToolStripMenuItem tsBrightnessContrast;
+        private System.Windows.Forms.ToolStripMenuItem tsHueSaturation;
+        private System.Windows.Forms.ToolStripMenuItem tsBlackWhite;
+        private System.Windows.Forms.ToolStripMenuItem tsSharpen;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem tsReset;
+        private System.Windows.Forms.ToolStripDropDownButton tsdRotate;
+        private System.Windows.Forms.ToolStripMenuItem tsRotateLeft;
+        private System.Windows.Forms.ToolStripMenuItem tsRotateRight;
+        private System.Windows.Forms.ToolStripMenuItem tsFlip;
+        private System.Windows.Forms.ToolStripMenuItem tsDeskew;
+        private System.Windows.Forms.ToolStripMenuItem tsCustomRotation;
+        private ToolStripDoubleButton tsMove;
+        private System.Windows.Forms.ToolStripDropDownButton tsdReorder;
+        private System.Windows.Forms.ToolStripMenuItem tsInterleave;
+        private System.Windows.Forms.ToolStripMenuItem tsDeinterleave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem tsAltInterleave;
+        private System.Windows.Forms.ToolStripMenuItem tsAltDeinterleave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsReverse;
         private System.Windows.Forms.ToolStripMenuItem tsReverseAll;
         private System.Windows.Forms.ToolStripMenuItem tsReverseSelected;
-        private System.Windows.Forms.ToolStripMenuItem tsNewProfile;
-        private System.Windows.Forms.ToolStripDropDownButton tsdImage;
-        private System.Windows.Forms.ToolStripMenuItem tsView;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem tsBrightnessContrast;
-        private System.Windows.Forms.ToolStripMenuItem tsCrop;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem tsReset;
-        private System.Windows.Forms.ToolStripMenuItem tsCustomRotation;
-        private System.Windows.Forms.ToolStripSeparator ctxSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsPDFSettings;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem tsEmailSettings;
-        private System.Windows.Forms.ToolStripMenuItem tsPdfSettings2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.Button btnZoomIn;
-        private System.Windows.Forms.Button btnZoomOut;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripMenuItem tsImageSettings;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem tsAltInterleave;
-        private System.Windows.Forms.ToolStripMenuItem tsAltDeinterleave;
-        private System.Windows.Forms.ToolStripMenuItem tsBatchScan;
-        private System.Windows.Forms.ToolStripSeparator ctxSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem ctxDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsDelete;
+        private System.Windows.Forms.ToolStripButton tsClear;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripButton tsAbout;
+        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
+        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
+        private ThumbnailList thumbnailList1;
         private System.Windows.Forms.Button btnZoomMouseCatcher;
-        private System.Windows.Forms.ToolStripMenuItem ctxPaste;
-        private System.Windows.Forms.ToolStripButton tsPrint;
-        private System.Windows.Forms.ToolStripMenuItem tsDeskew;
-        private System.Windows.Forms.ToolStripMenuItem tsSharpen;
-        private System.Windows.Forms.ToolStripMenuItem tsHueSaturation;
-        private System.Windows.Forms.ToolStripMenuItem tsBlackWhite;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel StatusText;
+        private System.Windows.Forms.Button btnZoomOut;
+        private System.Windows.Forms.Button btnZoomIn;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private TiffViewerCtl tiffViewerCtl1;
     }
 }
 

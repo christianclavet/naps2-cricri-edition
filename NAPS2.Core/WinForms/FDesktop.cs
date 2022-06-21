@@ -163,10 +163,10 @@ namespace NAPS2.WinForms
             btnZoomOut.Location = new Point(btnZoomOut.Location.X, thumbnailList1.Height - 33);
             btnZoomMouseCatcher.Location = new Point(btnZoomMouseCatcher.Location.X, thumbnailList1.Height - 33);
             layoutManager = new LayoutManager(this)
-                   .Bind(btnZoomIn, btnZoomOut, btnZoomMouseCatcher)
+                  .Bind(btnZoomIn, btnZoomOut, btnZoomMouseCatcher)
                        .BottomTo(() => thumbnailList1.Height)
                    .Activate();
-
+           
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
         }
@@ -589,7 +589,9 @@ namespace NAPS2.WinForms
                 var bitmap = await scannedImageRenderer.Render(img);
                 if (bitmap != null)
                 {
-                    img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);              
+                    img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
+                    // put the image inside the preview
+                    //tiffViewerCtl1.Image = bitmap;
 
                     Size size = bitmap.Size;
                     img.infoResolution = size.Width + " px X " + size.Height + " px ";
@@ -671,9 +673,13 @@ namespace NAPS2.WinForms
             };
         }
 
-        private void AddThumbnails()
+        private async void AddThumbnails()
         {
             thumbnailList1.AddedImages(imageList.Images);
+            // put the image inside the preview
+            var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()]);
+            if (bitmap != null)
+                tiffViewerCtl1.Image = bitmap;
 
             UpdateToolbar();
         }
@@ -744,13 +750,18 @@ namespace NAPS2.WinForms
 
         #region Toolbar
 
-        private void UpdateToolbar()
+        private async void UpdateToolbar()
         {
             // Update Images description -- CC -- BARCODE
             for (int i = 0; i < thumbnailList1.Items.Count; i++)
             {
                 thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
             }
+
+            // put the image inside the preview
+            var bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
+            if (bitmap != null)
+                tiffViewerCtl1.Image = bitmap;
 
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
@@ -2152,5 +2163,15 @@ namespace NAPS2.WinForms
         }
 
         #endregion
+
+        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
