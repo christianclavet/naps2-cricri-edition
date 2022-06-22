@@ -149,7 +149,7 @@ namespace NAPS2.WinForms
             }
             if (appConfigManager.Config.HidePrintButton)
             {
-                tStrip.Items.Remove(tsPrint);
+                tStrip.Items.Remove(printToolStripMenuItem);
             }
 
             LoadToolStripLocation();
@@ -777,7 +777,7 @@ namespace NAPS2.WinForms
 
             // Top-level toolbar actions
             tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
-            tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = tsPrint.Enabled = tsClear.Enabled = imageList.Images.Any();
+            tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = tsClear.Enabled = imageList.Images.Any();
 
             // Context-menu actions
             ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
@@ -1108,7 +1108,7 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+B", tsBatchScan);
             ksm.Assign("Ctrl+O", tsImport);
             ksm.Assign("Ctrl+S", tsdSavePDF);
-            ksm.Assign("Ctrl+P", tsPrint);
+            ksm.Assign("Ctrl+P", printToolStripMenuItem);
             ksm.Assign("Ctrl+Up", MoveUp);
             ksm.Assign("Ctrl+Left", MoveUp);
             ksm.Assign("Ctrl+Down", MoveDown);
@@ -1147,7 +1147,7 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.MoveUp, MoveUp); // TODO
             ksm.Assign(ks.NewProfile, tsNewProfile);
             //ksm.Assign(ks.Ocr, tsOcr);
-            ksm.Assign(ks.Print, tsPrint);
+            ksm.Assign(ks.Print, printToolStripMenuItem);
             ksm.Assign(ks.Profiles, ShowProfilesForm);
 
             ksm.Assign(ks.ReorderAltDeinterleave, tsAltDeinterleave);
@@ -2227,6 +2227,25 @@ namespace NAPS2.WinForms
         private void tsAbout_Click_1(object sender, EventArgs e)
         {
             FormFactory.Create<FAbout>().ShowDialog();
+        }
+
+        private void profilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowProfilesForm();
+        }
+
+        private async void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (appConfigManager.Config.HidePrintButton)
+            {
+                return;
+            }
+
+            var changeToken = changeTracker.State;
+            if (await scannedImagePrinter.PromptToPrint(imageList.Images, SelectedImages.ToList()))
+            {
+                changeTracker.Saved(changeToken);
+            }
         }
     }
 }
