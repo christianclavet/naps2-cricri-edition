@@ -129,7 +129,7 @@ namespace NAPS2.WinForms
 
             if (appConfigManager.Config.HideOcrButton)
             {
-                tStrip.Items.Remove(tsOcr);
+                //tStrip.Items.Remove(tsOcr);
             }
             if (appConfigManager.Config.HideImportButton)
             {
@@ -1114,7 +1114,7 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+Down", MoveDown);
             ksm.Assign("Ctrl+Right", MoveDown);
             ksm.Assign("Ctrl+Shift+Del", tsClear);
-            ksm.Assign("F1", tsAbout);
+            //ksm.Assign("F1", tsAbout);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
             ksm.Assign("Del", ctxDelete);
@@ -1126,7 +1126,7 @@ namespace NAPS2.WinForms
 
             var ks = userConfigManager.Config.KeyboardShortcuts ?? appConfigManager.Config.KeyboardShortcuts ?? new KeyboardShortcuts();
 
-            ksm.Assign(ks.About, tsAbout);
+            //ksm.Assign(ks.About, tsAbout);
             ksm.Assign(ks.BatchScan, tsBatchScan);
             ksm.Assign(ks.Clear, tsClear);
             ksm.Assign(ks.Delete, tsDelete);
@@ -1146,7 +1146,7 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.MoveDown, MoveDown); // TODO
             ksm.Assign(ks.MoveUp, MoveUp); // TODO
             ksm.Assign(ks.NewProfile, tsNewProfile);
-            ksm.Assign(ks.Ocr, tsOcr);
+            //ksm.Assign(ks.Ocr, tsOcr);
             ksm.Assign(ks.Print, tsPrint);
             ksm.Assign(ks.Profiles, ShowProfilesForm);
 
@@ -2172,6 +2172,61 @@ namespace NAPS2.WinForms
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tiffViewerCtl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsShowHideView_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+        }
+
+        private void tsOCR_Click_1(object sender, EventArgs e)
+        {
+            if (appConfigManager.Config.HideOcrButton)
+            {
+                return;
+            }
+
+            if (ocrManager.MustUpgrade && !appConfigManager.Config.NoUpdatePrompt)
+            {
+                // Re-download a fixed version on Windows XP if needed
+                MessageBox.Show(MiscResources.OcrUpdateAvailable, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var progressForm = FormFactory.Create<FDownloadProgress>();
+                progressForm.QueueFile(ocrManager.EngineToInstall.Component);
+                progressForm.ShowDialog();
+            }
+
+            if (ocrManager.MustInstallPackage)
+            {
+                const string packages = "\ntesseract-ocr";
+                MessageBox.Show(MiscResources.TesseractNotAvailable + packages, MiscResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (ocrManager.IsReady)
+            {
+                if (ocrManager.CanUpgrade && !appConfigManager.Config.NoUpdatePrompt)
+                {
+                    MessageBox.Show(MiscResources.OcrUpdateAvailable, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FormFactory.Create<FOcrLanguageDownload>().ShowDialog();
+                }
+                FormFactory.Create<FOcrSetup>().ShowDialog();
+            }
+            else
+            {
+                FormFactory.Create<FOcrLanguageDownload>().ShowDialog();
+                if (ocrManager.IsReady)
+                {
+                    FormFactory.Create<FOcrSetup>().ShowDialog();
+                }
+            }
+        }
+
+        private void tsAbout_Click_1(object sender, EventArgs e)
+        {
+            FormFactory.Create<FAbout>().ShowDialog();
         }
     }
 }

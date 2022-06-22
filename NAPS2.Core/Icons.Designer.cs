@@ -823,6 +823,16 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap toolbox {
+            get {
+                object obj = ResourceManager.GetObject("toolbox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transform_crop {
             get {
                 object obj = ResourceManager.GetObject("transform_crop", resourceCulture);
@@ -856,6 +866,16 @@ namespace NAPS2 {
         internal static System.Drawing.Bitmap transform_shear {
             get {
                 object obj = ResourceManager.GetObject("transform_shear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_fullscreen_view {
+            get {
+                object obj = ResourceManager.GetObject("view_fullscreen_view", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
