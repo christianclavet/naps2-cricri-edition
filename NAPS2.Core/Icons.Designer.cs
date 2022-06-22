@@ -583,6 +583,16 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_edit1 {
+            get {
+                object obj = ResourceManager.GetObject("image_edit1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info_rhombus {
             get {
                 object obj = ResourceManager.GetObject("info_rhombus", resourceCulture);
@@ -606,6 +616,16 @@ namespace NAPS2 {
         internal static System.Drawing.Bitmap mail_yellow {
             get {
                 object obj = ResourceManager.GetObject("mail_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap numeric_stepper {
+            get {
+                object obj = ResourceManager.GetObject("numeric_stepper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -706,6 +726,16 @@ namespace NAPS2 {
         internal static System.Drawing.Bitmap printer {
             get {
                 object obj = ResourceManager.GetObject("printer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_windows_position {
+            get {
+                object obj = ResourceManager.GetObject("reset_windows_position", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -873,9 +903,29 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap undo {
+            get {
+                object obj = ResourceManager.GetObject("undo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap view_fullscreen_view {
             get {
                 object obj = ResourceManager.GetObject("view_fullscreen_view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_fullscreen_view1 {
+            get {
+                object obj = ResourceManager.GetObject("view_fullscreen_view1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -6155,6 +6155,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\wireless16.png" />
+    <None Include="Resources\numeric_stepper.png" />
+    <None Include="Resources\image_edit.png" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\reset_windows_position.png" />
+    <None Include="Resources\view_fullscreen_view1.png" />
     <None Include="Resources\toolbox.png" />
     <None Include="Resources\view_fullscreen_view.png" />
     <None Include="Resources\transform_shear.png" />
