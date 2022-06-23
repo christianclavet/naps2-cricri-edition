@@ -44,6 +44,10 @@ namespace NAPS2.WinForms
             this.cbCheckForUpdates = new System.Windows.Forms.CheckBox();
             this.lblUpdateStatus = new System.Windows.Forms.Label();
             this.linkInstall = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonate)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +90,7 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // linkLabel2
             // 
@@ -121,10 +126,39 @@ namespace NAPS2.WinForms
             this.linkInstall.Name = "linkInstall";
             this.linkInstall.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkInstall_LinkClicked);
             // 
+            // linkLabel3
+            // 
+            resources.ApplyResources(this.linkLabel3, "linkLabel3");
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // FAbout
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkInstall);
             this.Controls.Add(this.lblUpdateStatus);
             this.Controls.Add(this.cbCheckForUpdates);
@@ -162,5 +196,9 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.CheckBox cbCheckForUpdates;
         private System.Windows.Forms.Label lblUpdateStatus;
         private System.Windows.Forms.LinkLabel linkInstall;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
