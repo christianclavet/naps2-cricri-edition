@@ -157,6 +157,8 @@ namespace NAPS2.WinForms
             InitLanguageDropdown();
             AssignKeyboardShortcuts();
             UpdateScanButton();
+            updateProfileButton();
+            
 
             layoutManager?.Deactivate();
             btnZoomIn.Location = new Point(btnZoomIn.Location.X, thumbnailList1.Height - 33);
@@ -512,6 +514,7 @@ namespace NAPS2.WinForms
                 profileManager.Save();
 
                 UpdateScanButton();
+                updateProfileButton();
             }
             if (profile != null)
             {
@@ -552,6 +555,7 @@ namespace NAPS2.WinForms
             profileManager.Save();
 
             UpdateScanButton();
+            updateProfileButton();
 
             await scanPerformer.PerformScan(editSettingsForm.ScanProfile, new ScanParams(), this, notify, ReceiveScannedImage());
             Activate();
@@ -752,6 +756,7 @@ namespace NAPS2.WinForms
 
         private async void UpdateToolbar()
         {
+
             // Update Images description -- CC -- BARCODE
             for (int i = 0; i < thumbnailList1.Items.Count; i++)
             {
@@ -856,6 +861,7 @@ namespace NAPS2.WinForms
                 }
             }
             tStrip.Parent.TabStop = true;
+          
         }
 
         #endregion
@@ -997,6 +1003,7 @@ namespace NAPS2.WinForms
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
             UpdateScanButton();
+            updateProfileButton();
         }
 
         private void ResetImage()
@@ -1289,6 +1296,7 @@ namespace NAPS2.WinForms
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
             UpdateScanButton();
+            updateProfileButton();
         }
 
         private void tsProfiles_Click(object sender, EventArgs e)
@@ -2166,7 +2174,7 @@ namespace NAPS2.WinForms
 
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -2246,6 +2254,56 @@ namespace NAPS2.WinForms
             {
                 changeTracker.Saved(changeToken);
             }
+        }
+
+        private void updateProfileButton()
+        {
+            const int staticButtonCount = 0;
+
+            // Clean up the dropdown
+            while (tsCombo_Profiles.Items.Count > staticButtonCount)
+            {
+                tsCombo_Profiles.Items.RemoveAt(0);
+            }
+
+            // Populate the dropdown
+            var defaultProfile = profileManager.DefaultProfile;
+            int i = 0;
+                  
+            foreach (var profile in profileManager.Profiles)
+            {
+                var item = new ToolStripMenuItem 
+                {
+                    Text = profile.DisplayName.Replace("&", "&&")
+                    //Image = profile == defaultProfile ? Icons.accept_small : null,
+                    //ImageScaling = ToolStripItemImageScaling.None
+                };
+                AssignProfileShortcut(i, item);
+                item.Click += (sender, args) =>
+                {
+                    profileManager.DefaultProfile = profile;
+                    profileManager.Save();
+
+                    updateProfileButton();
+
+                    //await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
+                    //Activate();
+                };
+                tsCombo_Profiles.Items.Insert(tsCombo_Profiles.Items.Count - staticButtonCount, item);
+
+                i++;
+            }
+            
+
+            /* if (profileManager.Profiles.Any())
+             {
+                 tsCombo_Profiles.Items.Insert(tsCombo_Profiles.Items.Count - staticButtonCount, new ToolStripSeparator());
+             }*/
+        }
+
+        private void tsCombo_Profiles_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
