@@ -156,7 +156,6 @@ namespace NAPS2.WinForms
             RelayoutToolbar();
             InitLanguageDropdown();
             AssignKeyboardShortcuts();
-            UpdateScanButton();
             updateProfileButton();
             
 
@@ -512,8 +511,6 @@ namespace NAPS2.WinForms
                 profileManager.Profiles.Add(profile);
                 profileManager.DefaultProfile = profile;
                 profileManager.Save();
-
-                UpdateScanButton();
                 updateProfileButton();
             }
             if (profile != null)
@@ -553,8 +550,6 @@ namespace NAPS2.WinForms
             profileManager.Profiles.Add(editSettingsForm.ScanProfile);
             profileManager.DefaultProfile = editSettingsForm.ScanProfile;
             profileManager.Save();
-
-            UpdateScanButton();
             updateProfileButton();
 
             await scanPerformer.PerformScan(editSettingsForm.ScanProfile, new ScanParams(), this, notify, ReceiveScannedImage());
@@ -800,11 +795,6 @@ namespace NAPS2.WinForms
             }
         }
 
-        private void UpdateScanButton()
-        {
-          
-        }
-
         private void SaveToolStripLocation()
         {
             UserConfigManager.Config.DesktopToolStripDock = tStrip.Parent.Dock;
@@ -964,7 +954,6 @@ namespace NAPS2.WinForms
             var form = FormFactory.Create<FProfiles>();
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
-            UpdateScanButton();
             updateProfileButton();
         }
 
@@ -1257,13 +1246,10 @@ namespace NAPS2.WinForms
             var form = FormFactory.Create<FBatchScan>();
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
-            UpdateScanButton();
             updateProfileButton();
         }
 
-        
-
-        private void tsOcr_Click(object sender, EventArgs e)
+        private void tsOCR_Click_1(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideOcrButton)
             {
@@ -1300,6 +1286,46 @@ namespace NAPS2.WinForms
                 {
                     FormFactory.Create<FOcrSetup>().ShowDialog();
                 }
+            }
+
+        }
+        private void updateProfileButton()
+        {
+            const int staticButtonCount = 3;
+
+            // Clean up the dropdown
+            while (tsCombo_Profiles.DropDownItems.Count > staticButtonCount)
+            {
+                tsCombo_Profiles.DropDownItems.RemoveAt(0);
+            }
+
+            // Populate the dropdown
+            var defaultProfile = profileManager.DefaultProfile;
+            tsCombo_Profiles.Text = defaultProfile.DisplayName;
+            tsCombo_Profiles.Image = Icons.scanner_48;
+            int i = 0;
+            foreach (var profile in profileManager.Profiles)
+            {
+                var item = new ToolStripMenuItem
+                {
+                    Text = profile.DisplayName.Replace("&", "&&"),
+                    Image = profile == defaultProfile ? Icons.accept : null,
+                    ImageScaling = ToolStripItemImageScaling.None
+                };
+                AssignProfileShortcut(i, item);
+                item.Click += (sender, args) =>
+                {
+                    profileManager.DefaultProfile = profile;
+                    profileManager.Save();
+
+                    updateProfileButton();
+
+                    //await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
+                    //Activate();
+                };
+                tsCombo_Profiles.DropDownItems.Insert(tsCombo_Profiles.DropDownItems.Count - staticButtonCount, item);
+
+                i++;
             }
         }
         private void tsProfiles_Click(object sender, EventArgs e)
@@ -1389,7 +1415,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async void tsPrint_Click(object sender, EventArgs e)
+        private async void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HidePrintButton)
             {
@@ -1423,12 +1449,11 @@ namespace NAPS2.WinForms
             Clear();
         }
 
-        private void tsAbout_Click(object sender, EventArgs e)
+        private void tsAbout_Click_1(object sender, EventArgs e)
         {
             FormFactory.Create<FAbout>().ShowDialog();
         }
-
-        #endregion
+     #endregion
 
         #region Event Handlers - Save/Email Menus
 
@@ -2154,119 +2179,7 @@ namespace NAPS2.WinForms
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
         }
-
-        private void tsOCR_Click_1(object sender, EventArgs e)
-        {
-            if (appConfigManager.Config.HideOcrButton)
-            {
-                return;
-            }
-
-            if (ocrManager.MustUpgrade && !appConfigManager.Config.NoUpdatePrompt)
-            {
-                // Re-download a fixed version on Windows XP if needed
-                MessageBox.Show(MiscResources.OcrUpdateAvailable, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                var progressForm = FormFactory.Create<FDownloadProgress>();
-                progressForm.QueueFile(ocrManager.EngineToInstall.Component);
-                progressForm.ShowDialog();
-            }
-
-            if (ocrManager.MustInstallPackage)
-            {
-                const string packages = "\ntesseract-ocr";
-                MessageBox.Show(MiscResources.TesseractNotAvailable + packages, MiscResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (ocrManager.IsReady)
-            {
-                if (ocrManager.CanUpgrade && !appConfigManager.Config.NoUpdatePrompt)
-                {
-                    MessageBox.Show(MiscResources.OcrUpdateAvailable, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FormFactory.Create<FOcrLanguageDownload>().ShowDialog();
-                }
-                FormFactory.Create<FOcrSetup>().ShowDialog();
-            }
-            else
-            {
-                FormFactory.Create<FOcrLanguageDownload>().ShowDialog();
-                if (ocrManager.IsReady)
-                {
-                    FormFactory.Create<FOcrSetup>().ShowDialog();
-                }
-            }
-        }
-
-        private void tsAbout_Click_1(object sender, EventArgs e)
-        {
-            FormFactory.Create<FAbout>().ShowDialog();
-        }
-
-        private void profilesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowProfilesForm();
-        }
-
-        private async void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (appConfigManager.Config.HidePrintButton)
-            {
-                return;
-            }
-
-            var changeToken = changeTracker.State;
-            if (await scannedImagePrinter.PromptToPrint(imageList.Images, SelectedImages.ToList()))
-            {
-                changeTracker.Saved(changeToken);
-            }
-        }
-
-        private void updateProfileButton()
-        {
-            const int staticButtonCount = 3;
-
-
-            
-            // Clean up the dropdown
-            while (tsCombo_Profiles.DropDownItems.Count > staticButtonCount)
-            {
-                tsCombo_Profiles.DropDownItems.RemoveAt(0);
-            }
-
-            // Populate the dropdown
-            var defaultProfile = profileManager.DefaultProfile;
-            tsCombo_Profiles.Text = defaultProfile.DisplayName;
-            tsCombo_Profiles.Image = Icons.scanner_48;
-            int i = 0;
-            foreach (var profile in profileManager.Profiles)
-            {
-                var item = new ToolStripMenuItem 
-                {
-                    Text = profile.DisplayName.Replace("&", "&&"),
-                    Image = profile == defaultProfile ? Icons.accept_small : null,
-                    ImageScaling = ToolStripItemImageScaling.None
-                };
-                AssignProfileShortcut(i, item);
-                item.Click += (sender, args) =>
-                {
-                    profileManager.DefaultProfile = profile;
-                    profileManager.Save();
-
-                    updateProfileButton();
-
-                    //await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
-                    //Activate();
-                };
-                tsCombo_Profiles.DropDownItems.Insert(tsCombo_Profiles.DropDownItems.Count - staticButtonCount, item);
-
-                i++;
-            }
-            
-
-            /* if (profileManager.Profiles.Any())
-             {
-                 tsCombo_Profiles.Items.Insert(tsCombo_Profiles.Items.Count - staticButtonCount, new ToolStripSeparator());
-             }*/
-        }
-                
+                    
         private void tsCombo_Profiles_Click(object sender, EventArgs e)
         {
 
