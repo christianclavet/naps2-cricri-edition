@@ -802,45 +802,7 @@ namespace NAPS2.WinForms
 
         private void UpdateScanButton()
         {
-            const int staticButtonCount = 2;
-
-            // Clean up the dropdown
-            while (tsScan.DropDownItems.Count > staticButtonCount)
-            {
-                tsScan.DropDownItems.RemoveAt(0);
-            }
-
-            // Populate the dropdown
-            var defaultProfile = profileManager.DefaultProfile;
-            int i = 1;
-            foreach (var profile in profileManager.Profiles)
-            {
-                var item = new ToolStripMenuItem
-                {
-                    Text = profile.DisplayName.Replace("&", "&&"),
-                    Image = profile == defaultProfile ? Icons.accept_small : null,
-                    ImageScaling = ToolStripItemImageScaling.None
-                };
-                AssignProfileShortcut(i, item);
-                item.Click += async (sender, args) =>
-                {
-                    profileManager.DefaultProfile = profile;
-                    profileManager.Save();
-
-                    UpdateScanButton();
-
-                    await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
-                    Activate();
-                };
-                tsScan.DropDownItems.Insert(tsScan.DropDownItems.Count - staticButtonCount, item);
-
-                i++;
-            }
-
-            if (profileManager.Profiles.Any())
-            {
-                tsScan.DropDownItems.Insert(tsScan.DropDownItems.Count - staticButtonCount, new ToolStripSeparator());
-            }
+          
         }
 
         private void SaveToolStripLocation()
@@ -1285,7 +1247,7 @@ namespace NAPS2.WinForms
             await ScanDefault();
         }
 
-        private async void tsNewProfile_Click(object sender, EventArgs e)
+        private async void tsNewProfile_Click_1(object sender, EventArgs e)
         {
             await ScanWithNewProfile();
         }
@@ -1299,10 +1261,7 @@ namespace NAPS2.WinForms
             updateProfileButton();
         }
 
-        private void tsProfiles_Click(object sender, EventArgs e)
-        {
-            ShowProfilesForm();
-        }
+        
 
         private void tsOcr_Click(object sender, EventArgs e)
         {
@@ -1342,6 +1301,10 @@ namespace NAPS2.WinForms
                     FormFactory.Create<FOcrSetup>().ShowDialog();
                 }
             }
+        }
+        private void tsProfiles_Click(object sender, EventArgs e)
+        {
+            ShowProfilesForm();
         }
 
         private void tsImport_Click(object sender, EventArgs e)
@@ -2258,25 +2221,28 @@ namespace NAPS2.WinForms
 
         private void updateProfileButton()
         {
-            const int staticButtonCount = 0;
+            const int staticButtonCount = 3;
 
+
+            
             // Clean up the dropdown
-            while (tsCombo_Profiles.Items.Count > staticButtonCount)
+            while (tsCombo_Profiles.DropDownItems.Count > staticButtonCount)
             {
-                tsCombo_Profiles.Items.RemoveAt(0);
+                tsCombo_Profiles.DropDownItems.RemoveAt(0);
             }
 
             // Populate the dropdown
             var defaultProfile = profileManager.DefaultProfile;
+            tsCombo_Profiles.Text = defaultProfile.DisplayName;
+            tsCombo_Profiles.Image = Icons.scanner_48;
             int i = 0;
-                  
             foreach (var profile in profileManager.Profiles)
             {
                 var item = new ToolStripMenuItem 
                 {
-                    Text = profile.DisplayName.Replace("&", "&&")
-                    //Image = profile == defaultProfile ? Icons.accept_small : null,
-                    //ImageScaling = ToolStripItemImageScaling.None
+                    Text = profile.DisplayName.Replace("&", "&&"),
+                    Image = profile == defaultProfile ? Icons.accept_small : null,
+                    ImageScaling = ToolStripItemImageScaling.None
                 };
                 AssignProfileShortcut(i, item);
                 item.Click += (sender, args) =>
@@ -2289,7 +2255,7 @@ namespace NAPS2.WinForms
                     //await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
                     //Activate();
                 };
-                tsCombo_Profiles.Items.Insert(tsCombo_Profiles.Items.Count - staticButtonCount, item);
+                tsCombo_Profiles.DropDownItems.Insert(tsCombo_Profiles.DropDownItems.Count - staticButtonCount, item);
 
                 i++;
             }
@@ -2300,10 +2266,11 @@ namespace NAPS2.WinForms
                  tsCombo_Profiles.Items.Insert(tsCombo_Profiles.Items.Count - staticButtonCount, new ToolStripSeparator());
              }*/
         }
-
+                
         private void tsCombo_Profiles_Click(object sender, EventArgs e)
         {
 
         }
+
     }
 }

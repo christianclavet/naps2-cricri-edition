@@ -53,13 +53,12 @@ namespace NAPS2.WinForms
             this.tiffViewerCtl1 = new NAPS2.WinForms.TiffViewerCtl();
             this.tStrip = new System.Windows.Forms.ToolStrip();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
-            this.tsNewProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsCombo_Profiles = new System.Windows.Forms.ToolStripComboBox();
+            this.tsCombo_Profiles = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.tsImport = new System.Windows.Forms.ToolStripButton();
             this.tsTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
-            this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,6 +118,8 @@ namespace NAPS2.WinForms
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.tsNewProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsProfiles = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -327,7 +328,6 @@ namespace NAPS2.WinForms
             // tsScan
             // 
             this.tsScan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNewProfile,
             this.tsBatchScan});
             this.tsScan.Image = global::NAPS2.Icons.control_play_blue;
             resources.ApplyResources(this.tsScan, "tsScan");
@@ -335,13 +335,6 @@ namespace NAPS2.WinForms
             this.tsScan.Name = "tsScan";
             this.tsScan.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.tsScan.ButtonClick += new System.EventHandler(this.tsScan_ButtonClick);
-            // 
-            // tsNewProfile
-            // 
-            this.tsNewProfile.Image = global::NAPS2.Icons.add_small;
-            resources.ApplyResources(this.tsNewProfile, "tsNewProfile");
-            this.tsNewProfile.Name = "tsNewProfile";
-            this.tsNewProfile.Click += new System.EventHandler(this.tsNewProfile_Click);
             // 
             // tsBatchScan
             // 
@@ -352,13 +345,19 @@ namespace NAPS2.WinForms
             // 
             // tsCombo_Profiles
             // 
-            this.tsCombo_Profiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tsCombo_Profiles.Items.AddRange(new object[] {
-            resources.GetString("tsCombo_Profiles.Items")});
+            this.tsCombo_Profiles.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator13,
+            this.tsNewProfile,
+            this.tsProfiles});
+            this.tsCombo_Profiles.Image = global::NAPS2.Icons.accept;
             resources.ApplyResources(this.tsCombo_Profiles, "tsCombo_Profiles");
             this.tsCombo_Profiles.Name = "tsCombo_Profiles";
-            this.tsCombo_Profiles.Sorted = true;
             this.tsCombo_Profiles.Click += new System.EventHandler(this.tsCombo_Profiles_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            resources.ApplyResources(this.toolStripSeparator13, "toolStripSeparator13");
             // 
             // tsImport
             // 
@@ -372,7 +371,6 @@ namespace NAPS2.WinForms
             // 
             this.tsTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsOCR,
-            this.profilesToolStripMenuItem,
             this.printToolStripMenuItem,
             this.toolStripSeparator8,
             this.tsAbout});
@@ -386,13 +384,6 @@ namespace NAPS2.WinForms
             this.tsOCR.Name = "tsOCR";
             resources.ApplyResources(this.tsOCR, "tsOCR");
             this.tsOCR.Click += new System.EventHandler(this.tsOCR_Click_1);
-            // 
-            // profilesToolStripMenuItem
-            // 
-            this.profilesToolStripMenuItem.Image = global::NAPS2.Icons.scanner_48;
-            this.profilesToolStripMenuItem.Name = "profilesToolStripMenuItem";
-            resources.ApplyResources(this.profilesToolStripMenuItem, "profilesToolStripMenuItem");
-            this.profilesToolStripMenuItem.Click += new System.EventHandler(this.profilesToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
@@ -817,6 +808,20 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
+            // tsNewProfile
+            // 
+            this.tsNewProfile.Image = global::NAPS2.Icons.add;
+            this.tsNewProfile.Name = "tsNewProfile";
+            resources.ApplyResources(this.tsNewProfile, "tsNewProfile");
+            this.tsNewProfile.Click += new System.EventHandler(this.tsNewProfile_Click_1);
+            // 
+            // tsProfiles
+            // 
+            this.tsProfiles.Image = global::NAPS2.Icons.scanner_48;
+            this.tsProfiles.Name = "tsProfiles";
+            resources.ApplyResources(this.tsProfiles, "tsProfiles");
+            this.tsProfiles.Click += new System.EventHandler(this.tsProfiles_Click);
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -860,7 +865,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
         private System.Windows.Forms.ToolStrip tStrip;
         private System.Windows.Forms.ToolStripSplitButton tsScan;
-        private System.Windows.Forms.ToolStripMenuItem tsNewProfile;
         private System.Windows.Forms.ToolStripMenuItem tsBatchScan;
         private System.Windows.Forms.ToolStripButton tsImport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
@@ -927,10 +931,12 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripDropDownButton tsTools;
         private System.Windows.Forms.ToolStripMenuItem tsOCR;
         private System.Windows.Forms.ToolStripMenuItem tsAbout;
-        private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripComboBox tsCombo_Profiles;
+        private System.Windows.Forms.ToolStripDropDownButton tsCombo_Profiles;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripMenuItem tsNewProfile;
+        private System.Windows.Forms.ToolStripMenuItem tsProfiles;
     }
 }
 
