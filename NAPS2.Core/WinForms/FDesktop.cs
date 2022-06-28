@@ -129,7 +129,7 @@ namespace NAPS2.WinForms
 
             if (appConfigManager.Config.HideOcrButton)
             {
-                //tStrip.Items.Remove(tsOcr);
+                //tStrip.Items.Remove(tsOcr_1);
             }
             if (appConfigManager.Config.HideImportButton)
             {
@@ -595,23 +595,26 @@ namespace NAPS2.WinForms
                     Size size = bitmap.Size;
                     img.infoResolution = size.Width + " px X " + size.Height + " px ";
 
+                    //
+                    string dpi = bitmap.HorizontalResolution.ToString();
+                                       
                     string format = "Format: ";
                     switch (bitmap.PixelFormat)
                     {
                         case PixelFormat.Format24bppRgb:
-                            format = format + "Couleur 24bit";
+                            format = format + "Color 24bit, DPI: "+dpi;
                             break;
                         case PixelFormat.Format32bppArgb:
-                            format = format + "Couleur 32bit";
+                            format = format + "Color 32bit, DPI: "+dpi;
                             break;
                         case PixelFormat.Format8bppIndexed:
-                            format = format + "Couleur 8bit";
+                            format = format + "Indexed Color 8bit, DPI: "+dpi;
                             break;
                         case PixelFormat.Format1bppIndexed:
-                            format = format + "Bitonal";
+                            format = format + "Bitonal, DPI: "+dpi;
                             break;
                         default:
-                            format = "";
+                            format = "DPI: "+dpi;
                             break;
                     }
                     img.infoFormat = format;
