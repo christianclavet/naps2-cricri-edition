@@ -189,7 +189,7 @@ namespace NAPS2.WinForms
                 if (langCode == "en" || File.Exists(localizedResourcesPath))
                 {
                     var button = new ToolStripMenuItem(langName, null, (sender, args) => SetCulture(langCode));
-                    toolStripDropDownButton1.DropDownItems.Add(button);
+                    tsLanguage.DropDownItems.Add(button);
                 }
             }
         }
