@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CommandLine;
+using Moq;
 
 namespace NAPS2.Automation
 {
