@@ -396,7 +396,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = false;
+                    RecoveryImage.DisableRecoveryCleanup = true;
                 }
             }
             else if (changeTracker.HasUnsavedChanges)
@@ -417,7 +417,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = false;
+                    RecoveryImage.DisableRecoveryCleanup = true;
                 }
             }
 
@@ -767,9 +767,12 @@ namespace NAPS2.WinForms
             }
 
             // put the image inside the preview
-            var bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
-            if (bitmap != null)
-                tiffViewerCtl1.Image = bitmap;
+            if (thumbnailList1.SelectedItems.Count > 0)
+            {
+                var bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
+                if (bitmap != null)
+                    tiffViewerCtl1.Image = bitmap;
+            }
 
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
@@ -836,6 +839,7 @@ namespace NAPS2.WinForms
                 {
                     imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                     DeleteThumbnails();
+                    tiffViewerCtl1.Image = null;
                     changeTracker.Clear();
                 }
             }
@@ -849,6 +853,7 @@ namespace NAPS2.WinForms
                 {
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
+                    tiffViewerCtl1.Image = null;
                     if (imageList.Images.Any())
                     {
                         changeTracker.Made();
