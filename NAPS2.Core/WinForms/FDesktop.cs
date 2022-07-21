@@ -72,7 +72,6 @@ namespace NAPS2.WinForms
         private bool closed = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
-
         #endregion
 
         #region Initialization and Culture
@@ -170,6 +169,7 @@ namespace NAPS2.WinForms
            
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
+
         }
 
         private void InitLanguageDropdown()
@@ -396,7 +396,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = true;
+                    RecoveryImage.DisableRecoveryCleanup = false;
                 }
             }
             else if (changeTracker.HasUnsavedChanges)
@@ -404,19 +404,20 @@ namespace NAPS2.WinForms
                 if (e.CloseReason == CloseReason.UserClosing && !RecoveryImage.DisableRecoveryCleanup)
                 {
                     var result = MessageBox.Show(MiscResources.ExitWithUnsavedChanges, MiscResources.UnsavedChanges,
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
                         changeTracker.Clear();
                     }
                     else
+ 
                     {
                         e.Cancel = true;
                     }
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = true;
+                    RecoveryImage.DisableRecoveryCleanup = false;
                 }
             }
 
@@ -447,7 +448,11 @@ namespace NAPS2.WinForms
         {
             SaveToolStripLocation();
             Pipes.KillServer();
-            imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+
+            //For the moment, do not remove the images in the recovery folder.
+            //Want to use it as a "SAVE" feature CC
+
+            //imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
             closed = true;
             renderThumbnailsWaitHandle.Set();
         }
