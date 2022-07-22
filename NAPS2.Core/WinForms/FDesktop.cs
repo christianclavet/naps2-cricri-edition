@@ -72,6 +72,9 @@ namespace NAPS2.WinForms
         private bool closed = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
+
+        private Bitmap bitmap;
+
         #endregion
 
         #region Initialization and Culture
@@ -456,6 +459,7 @@ namespace NAPS2.WinForms
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
+            bitmap.Dispose();
         }
 
         #endregion
@@ -591,12 +595,12 @@ namespace NAPS2.WinForms
         {
             if (img != null)
             {
-                var bitmap = await scannedImageRenderer.Render(img);
+                bitmap = await scannedImageRenderer.Render(img);
                 if (bitmap != null)
                 {
                     img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
                     // put the image inside the preview
-                    //tiffViewerCtl1.Image = bitmap;
+                    tiffViewerCtl1.Image = bitmap;
 
                     Size size = bitmap.Size;
                     img.infoResolution = size.Width + " px X " + size.Height + " px ";
@@ -633,8 +637,6 @@ namespace NAPS2.WinForms
                     img.infoResolution = "";
                     img.infoFormat = "";
                 }
-
-                bitmap.Dispose();
 
             }
 
@@ -681,14 +683,14 @@ namespace NAPS2.WinForms
             };
         }
 
-        private async void AddThumbnails()
+        private void AddThumbnails()
         {
             thumbnailList1.AddedImages(imageList.Images);
             // put the image inside the preview
             //Temporary down until fixed correctly. Create an exeption
             /*if (imageList.Images.Count() > 0)
             {
-                var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()+1]);
+                var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()]);
                 if (bitmap != null)
                     tiffViewerCtl1.Image = bitmap;
 
@@ -778,18 +780,17 @@ namespace NAPS2.WinForms
 
 
             // put the image inside the preview
-            /*   Image file is locked by the process, need investigating.
-            Bitmap bitmap = null;
+            //   Image file is locked by the process, need investigating.
             if (thumbnailList1.SelectedItems.Count > 0)
                 if (thumbnailList1.SelectedItems[0].Index > 0)
                 {
                     bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
-                    scannedImageRenderer.
+                 
                     if (bitmap != null)
                         tiffViewerCtl1.Image = bitmap;
+          
 
                 }
-            */
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
@@ -820,6 +821,7 @@ namespace NAPS2.WinForms
                 thumbnailList1.Size = new Size(thumbnailList1.Width - 1, thumbnailList1.Height - 1);
                 thumbnailList1.Size = new Size(thumbnailList1.Width + 1, thumbnailList1.Height + 1);
             }
+
         }
 
         private void SaveToolStripLocation()
@@ -867,6 +869,7 @@ namespace NAPS2.WinForms
             {
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmDeleteItems, SelectedIndices.Count()), MiscResources.Delete, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    bitmap.Dispose();
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
                     tiffViewerCtl1.Image = null;
