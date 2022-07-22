@@ -597,6 +597,10 @@ namespace NAPS2.WinForms
         {
             if (img != null)
             {
+                // Free the file before checking another one
+                if (bitmap != null)
+                    bitmap.Dispose();
+
                 bitmap = await scannedImageRenderer.Render(img);
                 if (bitmap != null)
                 {
@@ -688,16 +692,6 @@ namespace NAPS2.WinForms
         private void AddThumbnails()
         {
             thumbnailList1.AddedImages(imageList.Images);
-            // put the image inside the preview
-            //Temporary down until fixed correctly. Create an exeption
-            /*if (imageList.Images.Count() > 0)
-            {
-                var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()]);
-                if (bitmap != null)
-                    tiffViewerCtl1.Image = bitmap;
-
-                bitmap.Dispose();
-            }*/
 
             UpdateToolbar();
         }
@@ -780,12 +774,14 @@ namespace NAPS2.WinForms
                 }
             }
 
-
             // put the image inside the preview
             //   Image file is locked by the process, need investigating.
             if (thumbnailList1.SelectedItems.Count > 0)
                 if (thumbnailList1.SelectedItems[0].Index > 0)
                 {
+                    if (bitmap != null)
+                        bitmap.Dispose();
+
                     bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
                  
                     if (bitmap != null)
@@ -857,9 +853,11 @@ namespace NAPS2.WinForms
             {
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmClearItems, imageList.Images.Count), MiscResources.Clear, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    tiffViewerCtl1.Image = null;
+                    bitmap.Dispose();
+
                     imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                     DeleteThumbnails();
-                    tiffViewerCtl1.Image = null;
                     changeTracker.Clear();
                 }
             }
