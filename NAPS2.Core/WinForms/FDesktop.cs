@@ -445,6 +445,9 @@ namespace NAPS2.WinForms
                     SafeInvoke(Close);
                 });
             }
+
+            if (bitmap != null)
+                bitmap.Dispose();
         }
 
         private void FDesktop_Closed(object sender, EventArgs e)
@@ -459,7 +462,6 @@ namespace NAPS2.WinForms
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
-            bitmap.Dispose();
         }
 
         #endregion
