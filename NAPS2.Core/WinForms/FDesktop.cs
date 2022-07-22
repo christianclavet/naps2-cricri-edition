@@ -455,6 +455,7 @@ namespace NAPS2.WinForms
             //imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
             closed = true;
             renderThumbnailsWaitHandle.Set();
+            tiffViewerCtl1.Dispose();
         }
 
         #endregion
@@ -633,7 +634,7 @@ namespace NAPS2.WinForms
                     img.infoFormat = "";
                 }
 
-
+                bitmap.Dispose();
 
             }
 
@@ -684,9 +685,15 @@ namespace NAPS2.WinForms
         {
             thumbnailList1.AddedImages(imageList.Images);
             // put the image inside the preview
-            var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()-1]);
-            if (bitmap != null)
-                tiffViewerCtl1.Image = bitmap;
+            //Temporary down until fixed correctly. Create an exeption
+            /*if (imageList.Images.Count() > 0)
+            {
+                var bitmap = await scannedImageRenderer.Render(imageList.Images[imageList.Images.Count()+1]);
+                if (bitmap != null)
+                    tiffViewerCtl1.Image = bitmap;
+
+                bitmap.Dispose();
+            }*/
 
             UpdateToolbar();
         }
@@ -761,19 +768,28 @@ namespace NAPS2.WinForms
         {
 
             // Update Images description -- CC -- BARCODE
-            for (int i = 0; i < thumbnailList1.Items.Count; i++)
-            {
-                thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
-            }
-
-            // put the image inside the preview
             if (thumbnailList1.SelectedItems.Count > 0)
             {
-                var bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
-                if (bitmap != null)
-                    tiffViewerCtl1.Image = bitmap;
+                for (int i = 0; i < thumbnailList1.Items.Count; i++)
+                {
+                    thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
+                }
             }
 
+
+            // put the image inside the preview
+            /*   Image file is locked by the process, need investigating.
+            Bitmap bitmap = null;
+            if (thumbnailList1.SelectedItems.Count > 0)
+                if (thumbnailList1.SelectedItems[0].Index > 0)
+                {
+                    bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
+                    scannedImageRenderer.
+                    if (bitmap != null)
+                        tiffViewerCtl1.Image = bitmap;
+
+                }
+            */
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
@@ -1211,14 +1227,20 @@ namespace NAPS2.WinForms
         // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
         private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
         { 
-            String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
-            String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
-            String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
-            String text4 = "";
-            if (text3 != "")
-                text4 = "Barcode: " + text3;
-            String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
-            statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
+            if (thumbnailList1.SelectedItems.Count > 0)
+            {
+                String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
+                String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
+                String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
+                String text4 = "";
+                if (text3 != "")
+                    text4 = "Barcode: " + text3;
+                String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
+                statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
+            } else
+            {
+                statusStrip1.Items[0].Text = "No item selected";
+            }
             if (!disableSelectedIndexChangedEvent)
             {
                 UpdateToolbar();
