@@ -79,7 +79,6 @@ namespace NAPS2.WinForms
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsCrop = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBrightnessContrast = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,6 +121,7 @@ namespace NAPS2.WinForms
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -512,7 +512,6 @@ namespace NAPS2.WinForms
             // 
             this.tsdImage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsView,
-            this.tsShowHideView,
             this.toolStripSeparator6,
             this.tsCrop,
             this.tsBrightnessContrast,
@@ -532,13 +531,6 @@ namespace NAPS2.WinForms
             this.tsView.Name = "tsView";
             resources.ApplyResources(this.tsView, "tsView");
             this.tsView.Click += new System.EventHandler(this.tsView_Click);
-            // 
-            // tsShowHideView
-            // 
-            this.tsShowHideView.Image = global::NAPS2.Icons.view_fullscreen_view1;
-            resources.ApplyResources(this.tsShowHideView, "tsShowHideView");
-            this.tsShowHideView.Name = "tsShowHideView";
-            this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click);
             // 
             // toolStripSeparator6
             // 
@@ -753,6 +745,7 @@ namespace NAPS2.WinForms
             this.tsTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsLanguage,
             this.toolStripSeparator8,
+            this.tsShowHideView,
             this.tsOCR,
             this.printToolStripMenuItem,
             this.toolStripSeparator14,
@@ -834,6 +827,13 @@ namespace NAPS2.WinForms
             // ContentPanel
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
+            // 
+            // tsShowHideView
+            // 
+            this.tsShowHideView.Image = global::NAPS2.Icons.view_fullscreen_view1;
+            resources.ApplyResources(this.tsShowHideView, "tsShowHideView");
+            this.tsShowHideView.Name = "tsShowHideView";
+            this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click_1);
             // 
             // FDesktop
             // 
@@ -939,7 +939,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private TiffViewerCtl tiffViewerCtl1;
-        private System.Windows.Forms.ToolStripMenuItem tsShowHideView;
         private System.Windows.Forms.ToolStripDropDownButton tsTools;
         private System.Windows.Forms.ToolStripMenuItem tsOCR;
         private System.Windows.Forms.ToolStripMenuItem tsAbout;
@@ -952,6 +951,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsLanguage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem tsShowHideView;
     }
 }
 

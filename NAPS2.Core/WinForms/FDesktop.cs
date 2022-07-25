@@ -410,6 +410,18 @@ namespace NAPS2.WinForms
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
+                        // User want to close and delete the current work
+                        changeTracker.Clear();
+                        
+                        if (bitmap != null)
+                            bitmap.Dispose();
+
+                        imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+
+                    }
+                    else if (result ==DialogResult.No)
+                    {
+                        // User want to close but want to keep the data
                         changeTracker.Clear();
                     }
                     else
@@ -2198,6 +2210,7 @@ namespace NAPS2.WinForms
 
         #endregion
 
+        #region new stuff
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
         {
             
@@ -2212,16 +2225,16 @@ namespace NAPS2.WinForms
         {
 
         }
-
-        private void tsShowHideView_Click(object sender, EventArgs e)
-        {
-            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
-        }
                     
         private void tsCombo_Profiles_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void tsShowHideView_Click_1(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+        }
+        #endregion
     }
 }
