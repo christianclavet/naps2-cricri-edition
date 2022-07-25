@@ -931,6 +931,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate270FlipNone);
             changeTracker.Made();
+            UpdateToolbar();
         }
 
         private async Task RotateRight()
@@ -942,6 +943,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate90FlipNone);
             changeTracker.Made();
+            UpdateToolbar();
         }
 
         private async Task Flip()
@@ -953,6 +955,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.RotateNoneFlipXY);
             changeTracker.Made();
+            UpdateToolbar();
         }
 
         private void Deskew()
@@ -967,6 +970,7 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
+                UpdateToolbar();
             }
         }
 
@@ -1009,6 +1013,7 @@ namespace NAPS2.WinForms
                 {
                     imageList.ResetTransforms(SelectedIndices);
                     changeTracker.Made();
+                    UpdateToolbar();
                 }
             }
         }
@@ -1604,6 +1609,7 @@ namespace NAPS2.WinForms
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
+                UpdateToolbar();
             }
         }
 
@@ -1615,6 +1621,7 @@ namespace NAPS2.WinForms
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
+                UpdateToolbar();
             }
         }
 
@@ -1626,6 +1633,7 @@ namespace NAPS2.WinForms
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
+                UpdateToolbar();
             }
         }
 
@@ -1637,6 +1645,7 @@ namespace NAPS2.WinForms
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
+                UpdateToolbar();
             }
         }
 
