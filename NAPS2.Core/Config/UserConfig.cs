@@ -52,6 +52,8 @@ namespace NAPS2.Config
 
         public int ThumbnailSize { get; set; } = ThumbnailRenderer.DEFAULT_SIZE;
 
+        public bool Quickview { get; set; } = false;
+
         public BatchSettings LastBatchSettings { get; set; }
 
         public DockStyle DesktopToolStripDock { get; set; }

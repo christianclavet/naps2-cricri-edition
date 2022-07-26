@@ -126,6 +126,9 @@ namespace NAPS2.WinForms
             imageList.ThumbnailRenderer = thumbnailRenderer;
             thumbnailList1.ThumbnailRenderer = thumbnailRenderer;
             int thumbnailSize = UserConfigManager.Config.ThumbnailSize;
+
+            splitContainer1.Panel2Collapsed = UserConfigManager.Config.Quickview;
+
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
 
@@ -2243,6 +2246,10 @@ namespace NAPS2.WinForms
         private void tsShowHideView_Click_1(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+
+            //save the new status of the window panel
+            UserConfigManager.Config.Quickview = splitContainer1.Panel2Collapsed;
+            UserConfigManager.Save();
         }
         #endregion
     }
