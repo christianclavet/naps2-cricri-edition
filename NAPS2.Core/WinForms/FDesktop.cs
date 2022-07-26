@@ -129,6 +129,8 @@ namespace NAPS2.WinForms
 
             splitContainer1.Panel2Collapsed = UserConfigManager.Config.Quickview;
 
+            splitContainer1.SplitterDistance = UserConfigManager.Config.Splitter1_distance;
+
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
 
@@ -2252,5 +2254,11 @@ namespace NAPS2.WinForms
             UserConfigManager.Save();
         }
         #endregion
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
+            UserConfigManager.Save();
+        }
     }
 }

@@ -111,6 +111,7 @@ namespace NAPS2.WinForms
             this.tsTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -121,7 +122,6 @@ namespace NAPS2.WinForms
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -186,7 +186,7 @@ namespace NAPS2.WinForms
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.splitContainer1.Panel2.Controls.Add(this.tiffViewerCtl1);
-            this.splitContainer1.Panel2Collapsed = true;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // btnZoomIn
             // 
@@ -765,6 +765,13 @@ namespace NAPS2.WinForms
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
             // 
+            // tsShowHideView
+            // 
+            this.tsShowHideView.Image = global::NAPS2.Icons.view_fullscreen_view1;
+            resources.ApplyResources(this.tsShowHideView, "tsShowHideView");
+            this.tsShowHideView.Name = "tsShowHideView";
+            this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click_1);
+            // 
             // tsOCR
             // 
             this.tsOCR.Image = global::NAPS2.Icons.text;
@@ -827,13 +834,6 @@ namespace NAPS2.WinForms
             // ContentPanel
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
-            // 
-            // tsShowHideView
-            // 
-            this.tsShowHideView.Image = global::NAPS2.Icons.view_fullscreen_view1;
-            resources.ApplyResources(this.tsShowHideView, "tsShowHideView");
-            this.tsShowHideView.Name = "tsShowHideView";
-            this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click_1);
             // 
             // FDesktop
             // 
