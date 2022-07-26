@@ -2225,9 +2225,33 @@ namespace NAPS2.WinForms
         #endregion
 
         #region new stuff
+                        
+        private void tsCombo_Profiles_Click(object sender, EventArgs e)
+        {
+
+        }
+    #endregion
+    #region QuickView
+        // Quickview use the panel 2, Thumbnails use panel 1
+        private void tsShowHideView_Click_1(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+
+            //save the new status of the window panel
+            UserConfigManager.Config.Quickview = splitContainer1.Panel2Collapsed;
+            UserConfigManager.Save();
+        }
+        
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
+            UserConfigManager.Save();
+        }
+
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -2239,26 +2263,6 @@ namespace NAPS2.WinForms
         {
 
         }
-                    
-        private void tsCombo_Profiles_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsShowHideView_Click_1(object sender, EventArgs e)
-        {
-            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
-
-            //save the new status of the window panel
-            UserConfigManager.Config.Quickview = splitContainer1.Panel2Collapsed;
-            UserConfigManager.Save();
-        }
-        #endregion
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
-            UserConfigManager.Save();
-        }
     }
+    #endregion
 }
