@@ -52,7 +52,7 @@ namespace NAPS2.Config
 
         public int ThumbnailSize { get; set; } = ThumbnailRenderer.DEFAULT_SIZE;
 
-        public bool Quickview { get; set; } = false;
+        public bool Quickview { get; set; } = true; //true will hide the Quickview per default
 
         public BatchSettings LastBatchSettings { get; set; }
 
