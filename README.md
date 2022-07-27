@@ -17,5 +17,7 @@ Have a look at the [Developer Onboarding](https://www.naps2.com/doc-dev-onboardi
 ## NOTE (About this fork): 
 I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner. I also want to experiment with improving the workflow of the application and add other small features.
 
+I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.5 because, I also updated the libraries used in the application and they now require .NET Framework 4.5+
+
 Here is a screenshot (july 2022)
 ![Alt text](./Naps2_Barcode.JPG?raw=true "Title")
