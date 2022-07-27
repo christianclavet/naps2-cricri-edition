@@ -74,6 +74,7 @@ namespace NAPS2.WinForms
         private bool disableSelectedIndexChangedEvent;
 
         private Bitmap bitmap;
+        private bool splitter1 = false;
 
         #endregion
 
@@ -2245,8 +2246,17 @@ namespace NAPS2.WinForms
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
-            UserConfigManager.Save();
+            if (splitter1)
+            {
+                UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
+                UserConfigManager.Save();
+                splitter1 = false;
+            }
+        }
+
+        private void splitContainer1_SplitterMoving(object sender, SplitterCancelEventArgs e)
+        {
+            splitter1 = true;
         }
 
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
