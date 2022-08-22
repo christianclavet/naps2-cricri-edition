@@ -74,6 +74,7 @@ namespace NAPS2.WinForms
         private bool disableSelectedIndexChangedEvent;
 
         private Bitmap bitmap;
+        private bool splitter1 = false;
 
         #endregion
 
@@ -126,6 +127,11 @@ namespace NAPS2.WinForms
             imageList.ThumbnailRenderer = thumbnailRenderer;
             thumbnailList1.ThumbnailRenderer = thumbnailRenderer;
             int thumbnailSize = UserConfigManager.Config.ThumbnailSize;
+
+            splitContainer1.Panel2Collapsed = UserConfigManager.Config.Quickview;
+
+            splitContainer1.SplitterDistance = UserConfigManager.Config.Splitter1_distance;
+
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
 
@@ -2220,9 +2226,42 @@ namespace NAPS2.WinForms
         #endregion
 
         #region new stuff
+                        
+        private void tsCombo_Profiles_Click(object sender, EventArgs e)
+        {
+
+        }
+    #endregion
+    #region QuickView
+        // Quickview use the panel 2, Thumbnails use panel 1
+        private void tsShowHideView_Click_1(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+
+            //save the new status of the window panel
+            UserConfigManager.Config.Quickview = splitContainer1.Panel2Collapsed;
+            UserConfigManager.Save();
+        }
+        
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            if (splitter1)
+            {
+                UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
+                UserConfigManager.Save();
+                splitter1 = false;
+            }
+        }
+
+        private void splitContainer1_SplitterMoving(object sender, SplitterCancelEventArgs e)
+        {
+            splitter1 = true;
+        }
+
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -2234,16 +2273,6 @@ namespace NAPS2.WinForms
         {
 
         }
-                    
-        private void tsCombo_Profiles_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsShowHideView_Click_1(object sender, EventArgs e)
-        {
-            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
-        }
-        #endregion
     }
+    #endregion
 }

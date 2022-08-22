@@ -15,9 +15,9 @@ Other links:
 Have a look at the [Developer Onboarding](https://www.naps2.com/doc-dev-onboarding.html) page.
 
 ## NOTE (About this fork): 
-I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner.
+I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner. I also want to experiment with improving the workflow of the application and add other small features.
 
-Currently, Only added the ability to have more information when scanning|importing image, and full barcode reading (not just PATCHCODE)
+I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.5 because, I also updated the libraries used in the application and they now require .NET Framework 4.5+
 
-Here is a screenshot (may 2022)
+Here is a screenshot (july 2022)
 ![Alt text](./Naps2_Barcode.JPG?raw=true "Title")

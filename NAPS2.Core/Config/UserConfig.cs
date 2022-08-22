@@ -52,6 +52,10 @@ namespace NAPS2.Config
 
         public int ThumbnailSize { get; set; } = ThumbnailRenderer.DEFAULT_SIZE;
 
+        public bool Quickview { get; set; } = true; //true will hide the Quickview per default
+
+        public int Splitter1_distance { get; set; } = 590; // Default value for the view splitter
+
         public BatchSettings LastBatchSettings { get; set; }
 
         public DockStyle DesktopToolStripDock { get; set; }
