@@ -626,8 +626,8 @@ namespace NAPS2.WinForms
 
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
-            //if (bitmap != null)
-              //  bitmap.Dispose();
+            if (bitmap != null)
+                bitmap.Dispose();
 
             bitmap = await scannedImageRenderer.Render(img);
             // put the image inside the preview
@@ -702,7 +702,7 @@ namespace NAPS2.WinForms
 
                         // Get the preview image while scanning
                         GetPreviewImage(scannedImage, true);
-                      
+
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
@@ -714,6 +714,7 @@ namespace NAPS2.WinForms
                 });
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
+                UpdateThumbnailList1Descriptions();
             };
         }
 
@@ -790,26 +791,29 @@ namespace NAPS2.WinForms
 
         #region Toolbar
 
+        private void UpdateThumbnailList1Descriptions()
+        {
+            for (int i = 0; i < thumbnailList1.Items.Count; i++)
+            {
+                if (thumbnailList1.Items[i] != null && imageList.Images[i] != null)
+                    thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
+            }
+        }
+
         private void UpdateToolbar()
         {
 
             // Update Images description -- CC -- BARCODE
-           // if (thumbnailList1.SelectedItems.Count > 0)
-            //{
-                for (int i = 0; i < thumbnailList1.Items.Count; i++)
-                {
-                    thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
-                }
-            //}
+            if (thumbnailList1.SelectedItems.Count > 0)
+            {
+                UpdateThumbnailList1Descriptions();    
+            }
 
             // put the image inside the preview
             //   Image file is locked by the process, need investigating.
-            if (thumbnailList1.SelectedItems.Count > 0)
-                if (thumbnailList1.SelectedItems[0].Index > -1)
+            if (thumbnailList1.SelectedItems.Count == 1 && thumbnailList1.SelectedItems[0].Index >= 0)
                 {
                     GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
-                    // Problem with barcode
-                    //GetBarCode(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
                 }
 
             // "All" dropdown items
@@ -892,10 +896,16 @@ namespace NAPS2.WinForms
             {
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmDeleteItems, SelectedIndices.Count()), MiscResources.Delete, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+
                     bitmap.Dispose();
+                    tiffViewerCtl1.Image = null;
+
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
-                    tiffViewerCtl1.Image = null;
+
+                    if (thumbnailList1.SelectedItems.Count > 0)
+                        GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
+
                     if (imageList.Images.Any())
                     {
                         changeTracker.Made();
@@ -904,6 +914,8 @@ namespace NAPS2.WinForms
                     {
                         changeTracker.Clear();
                     }
+
+                    
                 }
             }
         }
@@ -1097,6 +1109,7 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
             }
+            UpdateThumbnailList1Descriptions();
         }
 
         private List<string> OrderFiles(IEnumerable<string> files)
@@ -1261,7 +1274,7 @@ namespace NAPS2.WinForms
         // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
         private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
         { 
-            if (thumbnailList1.SelectedItems.Count > 0)
+            if (thumbnailList1.SelectedItems.Count == 1)
             {
                 String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
@@ -1275,7 +1288,11 @@ namespace NAPS2.WinForms
             {
                 statusStrip1.Items[0].Text = "No item selected";
             }
-            if (!disableSelectedIndexChangedEvent)
+            if (thumbnailList1.SelectedItems.Count > 1)
+            {
+                statusStrip1.Items[0].Text = "Selected items: " + thumbnailList1.SelectedItems.Count.ToString();
+            }
+                if (!disableSelectedIndexChangedEvent)
             {
                 UpdateToolbar();
             }
