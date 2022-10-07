@@ -10,7 +10,7 @@
   <HideImportButton>false</HideImportButton>
   <HideSavePdfButton>false</HideSavePdfButton>
   <HideSaveImagesButton>false</HideSaveImagesButton>
-  <HideEmailButton>false</HideEmailButton>
+  <HideEmailButton>true</HideEmailButton>
   <HidePrintButton>false</HidePrintButton>
   <HideDonateButton>false</HideDonateButton>
   <DisableAutoSave>false</DisableAutoSave>
@@ -64,7 +64,7 @@
       <Separator>FilePerPage</Separator>
     </AutoSaveSettings>
     -->
-    <MaxQuality>false</MaxQuality>
+    <MaxQuality>true</MaxQuality>
     <Quality>75</Quality>
     <ExcludeBlankPages>false</ExcludeBlankPages>
     <BlankPageWhiteThreshold>70</BlankPageWhiteThreshold>
@@ -76,7 +76,7 @@
     <TwainImpl>Default</TwainImpl>
   </DefaultProfileSettings>
   <KeyboardShortcuts>
-    <ScanDefault>Ctrl+Enter</ScanDefault>
+    <ScanDefault>Enter</ScanDefault>
     <ScanProfile1>F2</ScanProfile1>
     <ScanProfile2>F3</ScanProfile2>
     <ScanProfile3>F4</ScanProfile3>
@@ -104,7 +104,7 @@
     <EmailPDFAll></EmailPDFAll>
     <EmailPDFSelected></EmailPDFSelected>
     <Print>Ctrl+P</Print>
-    <ImageView></ImageView>
+    <ImageView>Space</ImageView>
     <ImageBlackWhite></ImageBlackWhite>
     <ImageBrightness></ImageBrightness>
     <ImageContrast></ImageContrast>
@@ -113,10 +113,10 @@
     <ImageSaturation></ImageSaturation>
     <ImageSharpen></ImageSharpen>
     <ImageReset></ImageReset>
-    <RotateLeft></RotateLeft>
-    <RotateRight></RotateRight>
-    <RotateFlip></RotateFlip>
-    <RotateCustom></RotateCustom>
+    <RotateLeft>Shift+Left</RotateLeft>
+    <RotateRight>Shift+Right</RotateRight>
+    <RotateFlip>Shift+Up</RotateFlip>
+    <RotateCustom>Shift+Down</RotateCustom>
     <MoveUp>Ctrl+Up</MoveUp>
     <MoveDown>Ctrl+Down</MoveDown>
     <ReorderInterleave></ReorderInterleave>

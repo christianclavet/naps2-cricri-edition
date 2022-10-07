@@ -608,60 +608,68 @@ namespace NAPS2.WinForms
 
         private IEnumerable<ScannedImage> SelectedImages => imageList.Images.ElementsAt(SelectedIndices);
 
-
         // Check for barcode Data CC
         // Also check for getting more information about the images, not just the barcode
-        private async void CheckForBarCode(ScannedImage img)
+        private void GetBarCode(ScannedImage img)
         {
-            if (img != null)
+            if (img != null) 
             {
-                // Free the file before checking another one
-                if (bitmap != null)
-                    bitmap.Dispose();
-
-                bitmap = await scannedImageRenderer.Render(img);
+                GetPreviewImage(img, false);
                 if (bitmap != null)
                 {
                     img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
-                    // put the image inside the preview
-                    tiffViewerCtl1.Image = bitmap;
-
-                    Size size = bitmap.Size;
-                    img.infoResolution = size.Width + " px X " + size.Height + " px ";
-
-                    //
-                    string dpi = bitmap.HorizontalResolution.ToString();
-                                       
-                    string format = "Format: ";
-                    switch (bitmap.PixelFormat)
-                    {
-                        case PixelFormat.Format24bppRgb:
-                            format = format + "Color 24bit, DPI: "+dpi;
-                            break;
-                        case PixelFormat.Format32bppArgb:
-                            format = format + "Color 32bit, DPI: "+dpi;
-                            break;
-                        case PixelFormat.Format8bppIndexed:
-                            format = format + "Indexed Color 8bit, DPI: "+dpi;
-                            break;
-                        case PixelFormat.Format1bppIndexed:
-                            format = format + "Bitonal, DPI: "+dpi;
-                            break;
-                        default:
-                            format = "DPI: "+dpi;
-                            break;
-                    }
-                    img.infoFormat = format;
-
-
                 }
-                else
+
+            }
+
+        }
+
+        private async void GetPreviewImage(ScannedImage img, bool updateGUI)
+        {
+            if (bitmap != null)
+                bitmap.Dispose();
+
+            bitmap = await scannedImageRenderer.Render(img);
+            // put the image inside the preview
+            if (bitmap != null & updateGUI == true)
+            {
+                tiffViewerCtl1.Image = bitmap;
+                
+            }
+
+            if (bitmap != null)
+            {
+                Size size = bitmap.Size;
+                img.infoResolution = size.Width + " px X " + size.Height + " px ";
+
+                //
+                string dpi = Math.Round(bitmap.HorizontalResolution).ToString();
+
+                string format = "Format: ";
+                switch (bitmap.PixelFormat)
                 {
-                    img.BarCodeData = "";
-                    img.infoResolution = "";
-                    img.infoFormat = "";
+                    case PixelFormat.Format24bppRgb:
+                        format = format + "Color 24bit, DPI: " + dpi;
+                        break;
+                    case PixelFormat.Format32bppArgb:
+                        format = format + "Color 32bit, DPI: " + dpi;
+                        break;
+                    case PixelFormat.Format8bppIndexed:
+                        format = format + "Indexed Color 8bit, DPI: " + dpi;
+                        break;
+                    case PixelFormat.Format1bppIndexed:
+                        format = format + "Bitonal, DPI: " + dpi;
+                        break;
+                    default:
+                        format = "DPI: " + dpi;
+                        break;
                 }
-
+                img.infoFormat = format;
+            }   else
+            {
+                img.BarCodeData = "";
+                img.infoResolution = "";
+                img.infoFormat = "";
             }
 
         }
@@ -690,8 +698,10 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-
-                        CheckForBarCode(scannedImage); //CC Retrieve picture information including barcode data
+                                            
+                        // Get the preview imagev while scanning
+                        GetPreviewImage(scannedImage, true);
+                        
                         
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
@@ -780,7 +790,7 @@ namespace NAPS2.WinForms
 
         #region Toolbar
 
-        private async void UpdateToolbar()
+        private void UpdateToolbar()
         {
 
             // Update Images description -- CC -- BARCODE
@@ -795,18 +805,13 @@ namespace NAPS2.WinForms
             // put the image inside the preview
             //   Image file is locked by the process, need investigating.
             if (thumbnailList1.SelectedItems.Count > 0)
-                if (thumbnailList1.SelectedItems[0].Index > 0)
+                if (thumbnailList1.SelectedItems[0].Index > -1)
                 {
-                    if (bitmap != null)
-                        bitmap.Dispose();
-
-                    bitmap = await scannedImageRenderer.Render(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
-                 
-                    if (bitmap != null)
-                        tiffViewerCtl1.Image = bitmap;
-          
-
+                    GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
+                    // Problem with barcode
+                    //GetBarCode(imageList.Images[thumbnailList1.SelectedItems[0].Index]);
                 }
+
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
@@ -1116,8 +1121,8 @@ namespace NAPS2.WinForms
         private void AssignKeyboardShortcuts()
         {
             // Defaults
-
-            ksm.Assign("Ctrl+Enter", tsScan);
+            
+            ksm.Assign("Enter", tsScan);
             ksm.Assign("Ctrl+B", tsBatchScan);
             ksm.Assign("Ctrl+O", tsImport);
             ksm.Assign("Ctrl+S", tsdSavePDF);
@@ -1134,9 +1139,10 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+A", ctxSelectAll);
             ksm.Assign("Ctrl+C", ctxCopy);
             ksm.Assign("Ctrl+V", ctxPaste);
-
+            ksm.Assign("Space", tsView);
+            
             // Configured
-
+          
             var ks = userConfigManager.Config.KeyboardShortcuts ?? appConfigManager.Config.KeyboardShortcuts ?? new KeyboardShortcuts();
 
             //ksm.Assign(ks.About, tsAbout);
