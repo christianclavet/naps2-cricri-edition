@@ -626,15 +626,15 @@ namespace NAPS2.WinForms
 
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
-            if (bitmap != null)
-                bitmap.Dispose();
+            //if (bitmap != null)
+              //  bitmap.Dispose();
 
             bitmap = await scannedImageRenderer.Render(img);
             // put the image inside the preview
             if (bitmap != null & updateGUI == true)
             {
-                tiffViewerCtl1.Image = bitmap;
-                
+               tiffViewerCtl1.Image = bitmap;
+               tiffViewerCtl1.Refresh();
             }
 
             if (bitmap != null)
@@ -685,6 +685,7 @@ namespace NAPS2.WinForms
             {
                 SafeInvoke(() =>
                 {
+                    SelectedIndices = Enumerable.Range(0,0);
                     lock (imageList)
                     {
                         // Default to the end of the list
@@ -698,11 +699,10 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-                                            
-                        // Get the preview imagev while scanning
+
+                        // Get the preview image while scanning
                         GetPreviewImage(scannedImage, true);
-                        
-                        
+                      
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
@@ -794,13 +794,13 @@ namespace NAPS2.WinForms
         {
 
             // Update Images description -- CC -- BARCODE
-            if (thumbnailList1.SelectedItems.Count > 0)
-            {
+           // if (thumbnailList1.SelectedItems.Count > 0)
+            //{
                 for (int i = 0; i < thumbnailList1.Items.Count; i++)
                 {
                     thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
                 }
-            }
+            //}
 
             // put the image inside the preview
             //   Image file is locked by the process, need investigating.
@@ -1090,6 +1090,8 @@ namespace NAPS2.WinForms
 
         private void ImportFiles(IEnumerable<string> files)
         {
+            //remove the selection while importing files
+            SelectedIndices = Enumerable.Range(0, 0);
             var op = operationFactory.Create<ImportOperation>();
             if (op.Start(OrderFiles(files), ReceiveScannedImage()))
             {
