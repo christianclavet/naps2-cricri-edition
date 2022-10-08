@@ -21,6 +21,7 @@ namespace NAPS2.Util
             { "del", Keys.Delete },
             { "ins", Keys.Insert },
             { "break", Keys.Pause },
+            { "shift", Keys.Shift },
         }; 
 
         public Keys Parse(string value)

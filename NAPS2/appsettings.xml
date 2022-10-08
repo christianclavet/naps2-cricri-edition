@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Documented at http://www.naps2.com/doc-org-use.html -->
 <AppConfig>
   <DefaultCulture></DefaultCulture>
@@ -113,9 +113,9 @@
     <ImageSaturation></ImageSaturation>
     <ImageSharpen></ImageSharpen>
     <ImageReset></ImageReset>
-    <RotateLeft>Shift+Left</RotateLeft>
-    <RotateRight>Shift+Right</RotateRight>
-    <RotateFlip>Shift+Up</RotateFlip>
+    <RotateLeft>q</RotateLeft>
+    <RotateRight>e</RotateRight>
+    <RotateFlip>w</RotateFlip>
     <RotateCustom>Shift+Down</RotateCustom>
     <MoveUp>Ctrl+Up</MoveUp>
     <MoveDown>Ctrl+Down</MoveDown>

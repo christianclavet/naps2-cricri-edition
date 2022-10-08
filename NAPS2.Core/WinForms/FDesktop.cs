@@ -626,8 +626,8 @@ namespace NAPS2.WinForms
 
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
-            if (bitmap != null)
-                bitmap.Dispose();
+            //if (bitmap != null)
+            //    bitmap.Dispose();
 
             bitmap = await scannedImageRenderer.Render(img);
             // put the image inside the preview
@@ -810,7 +810,6 @@ namespace NAPS2.WinForms
             }
 
             // put the image inside the preview
-            //   Image file is locked by the process, need investigating.
             if (thumbnailList1.SelectedItems.Count == 1 && thumbnailList1.SelectedItems[0].Index >= 0)
                 {
                     GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
