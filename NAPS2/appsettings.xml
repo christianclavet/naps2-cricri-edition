@@ -116,6 +116,7 @@
     <RotateLeft>q</RotateLeft>
     <RotateRight>e</RotateRight>
     <RotateFlip>w</RotateFlip>
+    <RotateDeskew>d</RotateDeskew>
     <RotateCustom>Shift+Down</RotateCustom>
     <MoveUp>Ctrl+Up</MoveUp>
     <MoveDown>Ctrl+Down</MoveDown>

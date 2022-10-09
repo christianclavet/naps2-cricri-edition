@@ -1193,6 +1193,7 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.RotateFlip, tsFlip);
             ksm.Assign(ks.RotateLeft, tsRotateLeft);
             ksm.Assign(ks.RotateRight, tsRotateRight);
+            ksm.Assign(ks.RotateDeskew, tsDeskew);
             ksm.Assign(ks.SaveImages, tsdSaveImages);
             ksm.Assign(ks.SaveImagesAll, tsSaveImagesAll);
             ksm.Assign(ks.SaveImagesSelected, tsSaveImagesSelected);

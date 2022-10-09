@@ -57,6 +57,8 @@ namespace NAPS2.Config
         public string RotateFlip { get; set; }
         public string RotateCustom { get; set; }
 
+        public string RotateDeskew { get; set; }
+
         public string MoveUp { get; set; }
         public string MoveDown { get; set; }
 
