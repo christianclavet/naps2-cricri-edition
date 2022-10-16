@@ -797,9 +797,12 @@ namespace NAPS2.WinForms
             {
                 for (int i = 0; i < thumbnailList1.Items.Count; i++)
                 {
-                    if (thumbnailList1.Items[i] != null && imageList.Images[i] != null)
-                      thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
-                 }
+                        thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString(); 
+
+                    if (i < imageList.Images.Count)
+                        thumbnailList1.Items[i].Text += ": " + imageList.Images[i].BarCodeData;
+
+                }
             }
         }
 
@@ -807,7 +810,7 @@ namespace NAPS2.WinForms
         {
 
             // Update Images description -- CC -- BARCODE
-            if (thumbnailList1.SelectedItems.Count > 0)
+            if (thumbnailList1.Items.Count > 0)
             {
                 UpdateThumbnailList1Descriptions();    
             }
