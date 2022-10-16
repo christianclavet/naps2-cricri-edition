@@ -793,10 +793,13 @@ namespace NAPS2.WinForms
 
         private void UpdateThumbnailList1Descriptions()
         {
-            for (int i = 0; i < thumbnailList1.Items.Count; i++)
+            if (thumbnailList1.Items.Count > 0)
             {
-                if (thumbnailList1.Items[i] != null && imageList.Images[i] != null)
-                    thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
+                for (int i = 0; i < thumbnailList1.Items.Count; i++)
+                {
+                    if (thumbnailList1.Items[i] != null && imageList.Images[i] != null)
+                      thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString() + ": " + imageList.Images[i].BarCodeData;
+                 }
             }
         }
 
@@ -895,9 +898,11 @@ namespace NAPS2.WinForms
             {
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmDeleteItems, SelectedIndices.Count()), MiscResources.Delete, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-
-                    bitmap.Dispose();
                     tiffViewerCtl1.Image = null;
+                    if (bitmap != null)
+                    {
+                        bitmap.Dispose();
+                    }
 
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
@@ -1146,7 +1151,7 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+Down", MoveDown);
             ksm.Assign("Ctrl+Right", MoveDown);
             ksm.Assign("Ctrl+Shift+Del", tsClear);
-            //ksm.Assign("F1", tsAbout);
+            ksm.Assign("F1", tsAbout);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
             ksm.Assign("Del", ctxDelete);
@@ -1284,9 +1289,15 @@ namespace NAPS2.WinForms
                     text4 = "Barcode: " + text3;
                 String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
                 statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
-            } else
+            }
+            else
             {
                 statusStrip1.Items[0].Text = "No item selected";
+                tiffViewerCtl1.Image = null;
+                if (bitmap != null)
+                {
+                    bitmap.Dispose();
+                }
             }
             if (thumbnailList1.SelectedItems.Count > 1)
             {
