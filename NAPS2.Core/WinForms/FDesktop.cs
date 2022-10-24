@@ -1282,7 +1282,7 @@ namespace NAPS2.WinForms
         { 
             if (thumbnailList1.SelectedItems.Count == 1)
             {
-                String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
+                String text = ((thumbnailList1.SelectedItems[0].Index)+1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
                 String text4 = "";
