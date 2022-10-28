@@ -629,7 +629,11 @@ namespace NAPS2.WinForms
             //if (bitmap != null)
             //    bitmap.Dispose();
 
-            bitmap = await scannedImageRenderer.Render(img);
+            // Try something to stop the file lock
+            Bitmap bit = await scannedImageRenderer.Render(img);
+            bitmap = new Bitmap(bit);
+            bit.Dispose();
+
             // put the image inside the preview
             if (bitmap != null & updateGUI == true)
             {
@@ -700,14 +704,13 @@ namespace NAPS2.WinForms
                             }
                         }
 
-                        // Get the preview image while scanning
-                        GetPreviewImage(scannedImage, true);
-
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
                         scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
                         AddThumbnails();
+                        // Get the preview image while scanning
+                        GetPreviewImage(scannedImage, true);
                         last = scannedImage;
                     }
                     changeTracker.Made();
@@ -886,7 +889,6 @@ namespace NAPS2.WinForms
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmClearItems, imageList.Images.Count), MiscResources.Clear, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     tiffViewerCtl1.Image = null;
-                    bitmap.Dispose();
 
                     imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                     DeleteThumbnails();
@@ -902,10 +904,6 @@ namespace NAPS2.WinForms
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmDeleteItems, SelectedIndices.Count()), MiscResources.Delete, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     tiffViewerCtl1.Image = null;
-                    if (bitmap != null)
-                    {
-                        bitmap.Dispose();
-                    }
 
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
@@ -1284,7 +1282,7 @@ namespace NAPS2.WinForms
         { 
             if (thumbnailList1.SelectedItems.Count == 1)
             {
-                String text = (thumbnailList1.SelectedItems[0].Index+1).ToString();
+                String text = ((thumbnailList1.SelectedItems[0].Index)+1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
                 String text4 = "";
@@ -1296,11 +1294,11 @@ namespace NAPS2.WinForms
             else
             {
                 statusStrip1.Items[0].Text = "No item selected";
-                tiffViewerCtl1.Image = null;
-                if (bitmap != null)
-                {
-                    bitmap.Dispose();
-                }
+                //tiffViewerCtl1.Image = null;
+                //if (bitmap != null)
+                //{
+                    //bitmap.Dispose();
+                //}
             }
             if (thumbnailList1.SelectedItems.Count > 1)
             {
