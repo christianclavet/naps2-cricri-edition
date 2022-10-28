@@ -632,6 +632,7 @@ namespace NAPS2.WinForms
             // Try something to stop the file lock
             Bitmap bit = await scannedImageRenderer.Render(img);
             bitmap = new Bitmap(bit);
+            bitmap.SetResolution(bit.HorizontalResolution, bit.VerticalResolution);
             bit.Dispose();
 
             // put the image inside the preview

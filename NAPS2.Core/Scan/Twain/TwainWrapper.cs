@@ -323,7 +323,7 @@ namespace NAPS2.Scan.Twain
             int bytesPerPixel = memoryData.Length / (imageInfo.ImageWidth * imageInfo.ImageLength);
             PixelFormat pixelFormat = bytesPerPixel == 0 ? PixelFormat.Format1bppIndexed : PixelFormat.Format24bppRgb;
             int imageWidth = imageInfo.ImageWidth;
-            int imageHeight = imageInfo.ImageLength;
+            int imageHeight = imageInfo.ImageLength; 
             var bitmap = new Bitmap(imageWidth, imageHeight, pixelFormat);
             var data = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
             try
