@@ -426,7 +426,7 @@ msgstr "Copie"
 
 #: FAbout.resx$labelCopyright.Text$Message
 msgid "Copyright 2009, 2012-2018 NAPS2 Contributors"
-msgstr "Copyright 2009, 2012-2018 Contributeurs NAPS2"
+msgstr "Copyright 2009, 2012-2022 Contributeurs NAPS2"
 
 #: FAdvancedScanSettings.resx$label3.Text$Message
 msgid "Coverage Threshold"
@@ -870,7 +870,7 @@ msgstr "Aucun"
 
 #: FDesktop.resx$$this.Text$Message
 msgid "Not Another PDF Scanner 2"
-msgstr "Not Another PDF Scanner 2"
+msgstr "Not Another PDF Scanner 2 - CriCri Edition"
 
 #: FRecover.resx$btnCancel.Text$Message
 msgid "Not Now"
