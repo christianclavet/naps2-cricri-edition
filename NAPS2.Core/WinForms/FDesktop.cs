@@ -690,7 +690,7 @@ namespace NAPS2.WinForms
             {
                 SafeInvoke(() =>
                 {
-                    SelectedIndices = Enumerable.Range(0,0);
+                    
                     lock (imageList)
                     {
                         // Default to the end of the list
@@ -719,6 +719,15 @@ namespace NAPS2.WinForms
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
                 UpdateThumbnailList1Descriptions();
+
+                if (SelectedIndices.Any())
+                {
+                    var count = new List<int> { imageList.Images.Count() };
+                    UpdateThumbnails(imageList.MoveTo(count, SelectedIndices.First()), true, true);
+                    Delete();
+                    SelectedIndices = Enumerable.Range(0, 0);
+                    changeTracker.Made();
+                }
             };
         }
 
@@ -2269,8 +2278,9 @@ namespace NAPS2.WinForms
         {
 
         }
-    #endregion
-    #region QuickView
+        #endregion
+
+        #region QuickView
         // Quickview use the panel 2, Thumbnails use panel 1
         private void tsShowHideView_Click_1(object sender, EventArgs e)
         {
@@ -2312,5 +2322,5 @@ namespace NAPS2.WinForms
 
         }
     }
-    #endregion
+        #endregion
 }
