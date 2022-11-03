@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NAPS2 (Not Another PDF Scanner 2) - Cricri Edition")]
+[assembly: AssemblyTitle("NAPS2 - Cricri Edition")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NAPS2 (Not Another PDF Scanner 2) - Cricri Edition")]
-[assembly: AssemblyCopyright("Copyright 2009, 2012-2022 NAPS2 Contributors; Icons from http://www.fatcow.com/free-icons")]
+[assembly: AssemblyProduct("NAPS2 - Cricri Edition")]
+[assembly: AssemblyCopyright("Copyright 2009, 2012-2022 NAPS2 Contributors;")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
