@@ -16,6 +16,7 @@ using NAPS2.WinForms;
 using NTwain;
 using NTwain.Data;
 using NAPS2.Util;
+using Castle.Components.DictionaryAdapter.Xml;
 
 namespace NAPS2.Scan.Twain
 {
@@ -137,6 +138,12 @@ namespace NAPS2.Scan.Twain
                 if (cancel)
                 {
                     eventArgs.CancelAll = true;
+                }
+
+                //Try to close the TWAIN UI when starting the scan since the input as been done. -CC
+                if (!scanParams.NoUI)
+                {
+                    Invoker.Current.Invoke(() => twainForm.Close());
                 }
             };
             session.DataTransferred += (sender, eventArgs) =>
@@ -391,6 +398,43 @@ namespace NAPS2.Scan.Twain
 
         private void ConfigureDS(DataSource ds, ScanProfile scanProfile, ScanParams scanParams)
         {
+
+            var Manu = ds.Manufacturer+" "+ds.ProductFamily;
+            // Test to force autosize the page scanned
+            if (ds.Capabilities.ICapAutoSize.IsSupported)
+                Log.Error("Capability: Device support autosize:," + Manu);
+            else
+                Log.Error("Capability: this device doesnt support autosize," + Manu);
+
+            // Test to see if the scanning device can auto-rotate images
+            if (ds.Capabilities.ICapAutomaticRotate.IsSupported)
+                Log.Error("Capability: Device support auto-rotate," + Manu);
+            else
+                Log.Error("Capability: this device doesnt support auto-rotate,"+Manu);
+
+            // Test to see if the scanning device can detect borders
+            if (ds.Capabilities.ICapAutomaticBorderDetection.IsSupported)
+                Log.Error("Capability: Device support border detection" + Manu);
+            else
+                Log.Error("Capability: this device doesnt support border dectection" + Manu);
+
+            // Test to see if the scanning device can do deskew
+            if (ds.Capabilities.ICapAutomaticDeskew.IsSupported)
+                Log.Error("Capability: Device support deskew" + Manu);
+            else
+                Log.Error("Capability: this device doesnt support deskew" + Manu);
+
+            // Test to see if the scanning device can support duplex scanning
+            if (ds.Capabilities.CapDuplexEnabled.IsSupported)
+                Log.Error("Capability: Device support duplex" + Manu);
+            else
+                Log.Error("Capability: this device doesnt support duplex" + Manu);
+
+
+
+
+
+            ds.Capabilities.ICapAutoSize.SetValue(AutoSize.Auto);
             if (scanProfile.UseNativeUI)
             {
                 return;
