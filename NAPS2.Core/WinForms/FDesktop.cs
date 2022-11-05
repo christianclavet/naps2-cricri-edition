@@ -651,24 +651,14 @@ namespace NAPS2.WinForms
                 string dpi = Math.Round(bitmap.HorizontalResolution).ToString();
 
                 string format = "Format: ";
-                switch (bitmap.PixelFormat)
+                format = bitmap.PixelFormat switch
                 {
-                    case PixelFormat.Format24bppRgb:
-                        format = format + "Color 24bit, DPI: " + dpi;
-                        break;
-                    case PixelFormat.Format32bppArgb:
-                        format = format + "Color 32bit, DPI: " + dpi;
-                        break;
-                    case PixelFormat.Format8bppIndexed:
-                        format = format + "Indexed Color 8bit, DPI: " + dpi;
-                        break;
-                    case PixelFormat.Format1bppIndexed:
-                        format = format + "Bitonal, DPI: " + dpi;
-                        break;
-                    default:
-                        format = "DPI: " + dpi;
-                        break;
-                }
+                    PixelFormat.Format24bppRgb => format + "Color 24bit, DPI: " + dpi,
+                    PixelFormat.Format32bppArgb => format + "Color 32bit, DPI: " + dpi,
+                    PixelFormat.Format8bppIndexed => format + "Indexed Color 8bit, DPI: " + dpi,
+                    PixelFormat.Format1bppIndexed => format + "Bitonal, DPI: " + dpi,
+                    _ => "DPI: " + dpi,
+                };
                 img.infoFormat = format;
             }   else
             {
