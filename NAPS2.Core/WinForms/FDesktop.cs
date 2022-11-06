@@ -699,6 +699,18 @@ namespace NAPS2.WinForms
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
                         scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
+
+                        if (!SelectedIndices.Any())
+                            Log.Error("No selection!");
+                        //{
+                        //    var count = new List<int> { imageList.Images.Count() };
+                        //    Log.Error("Trying to replace:" + count.First() + " to " + SelectedIndices.First());
+                            //UpdateThumbnails(imageList.MoveTo(count, SelectedIndices.First()), true, true);
+                            //Delete();
+                            //SelectedIndices = Enumerable.Range(0, 0);
+                            //changeTracker.Made();
+                        //} 
+
                         AddThumbnails();
                         // Get the preview image while scanning
                         GetPreviewImage(scannedImage, true);
@@ -709,21 +721,16 @@ namespace NAPS2.WinForms
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
                 UpdateThumbnailList1Descriptions();
-
-                if (SelectedIndices.Any())
-                {
-                    var count = new List<int> { imageList.Images.Count() };
-                    UpdateThumbnails(imageList.MoveTo(count, SelectedIndices.First()), true, true);
-                    Delete();
-                    SelectedIndices = Enumerable.Range(0, 0);
-                    changeTracker.Made();
-                }
             };
         }
 
         private void AddThumbnails()
         {
             thumbnailList1.AddedImages(imageList.Images);
+
+            //Scroll the list so that every new item that get added can be viewed. -CC
+            if (thumbnailList1.Items.Count>5)
+             thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
             UpdateToolbar();
         }
