@@ -694,23 +694,11 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-
+                        
                         imageList.Images.Insert(index, scannedImage);
                         scannedImage.MovedTo(index);
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
                         scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
-
-                        if (!SelectedIndices.Any())
-                            Log.Error("No selection!");
-                        //{
-                        //    var count = new List<int> { imageList.Images.Count() };
-                        //    Log.Error("Trying to replace:" + count.First() + " to " + SelectedIndices.First());
-                            //UpdateThumbnails(imageList.MoveTo(count, SelectedIndices.First()), true, true);
-                            //Delete();
-                            //SelectedIndices = Enumerable.Range(0, 0);
-                            //changeTracker.Made();
-                        //} 
-
                         AddThumbnails();
                         // Get the preview image while scanning
                         GetPreviewImage(scannedImage, true);
@@ -718,6 +706,21 @@ namespace NAPS2.WinForms
                     }
                     changeTracker.Made();
                 });
+
+                if (SelectedIndices.Any())
+                {
+                    Log.Error("An item was selected!");
+                    var count = new List<int> { imageList.Images.Count()-1 };
+                    Log.Error("Trying to move:" + count.First() + " to " + SelectedIndices.First());
+
+                    imageList.MoveTo(count,SelectedIndices.First());
+                    //UpdateThumbnails(imageList.MoveTo(Enumerable.Range(0, imageList.Images.Count), SelectedIndices.First()), true, true);
+                    UpdateThumbnails(SelectedIndices, true, false);
+                   // imageList.Delete(count-1);
+                   // DeleteThumbnails();
+                    SelectedIndices = Enumerable.Range(0, 0);
+                    changeTracker.Made();
+                } 
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
                 UpdateThumbnailList1Descriptions();
@@ -1115,7 +1118,7 @@ namespace NAPS2.WinForms
         private void ImportFiles(IEnumerable<string> files)
         {
             //remove the selection while importing files
-            SelectedIndices = Enumerable.Range(0, 0);
+            //SelectedIndices = Enumerable.Range(0, 0);
             var op = operationFactory.Create<ImportOperation>();
             if (op.Start(OrderFiles(files), ReceiveScannedImage()))
             {
