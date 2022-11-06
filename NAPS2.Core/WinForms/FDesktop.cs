@@ -706,18 +706,20 @@ namespace NAPS2.WinForms
                     }
                     changeTracker.Made();
                 });
-
+                
+                // Feature CC: If an image is selected it will be replace with the new scanned image (rescan), if there is more than one image in the source, the other images will be inserted
+                // with the replaced image. TODO: Add a "insert" feature, that will NOT remove the selected image.
+                // Note: The selection is dropped once the operation has been done.
+                // 
                 if (SelectedIndices.Any())
                 {
-                    Log.Error("An item was selected!");
                     var count = new List<int> { imageList.Images.Count()-1 };
-                    Log.Error("Trying to move:" + count.First() + " to " + SelectedIndices.First());
-
+                                       
                     imageList.MoveTo(count,SelectedIndices.First());
-                    //UpdateThumbnails(imageList.MoveTo(Enumerable.Range(0, imageList.Images.Count), SelectedIndices.First()), true, true);
+
+                    imageList.Delete(Enumerable.Range(SelectedIndices.First()+1, 1));
+
                     UpdateThumbnails(SelectedIndices, true, false);
-                   // imageList.Delete(count-1);
-                   // DeleteThumbnails();
                     SelectedIndices = Enumerable.Range(0, 0);
                     changeTracker.Made();
                 } 
@@ -732,7 +734,7 @@ namespace NAPS2.WinForms
             thumbnailList1.AddedImages(imageList.Images);
 
             //Scroll the list so that every new item that get added can be viewed. -CC
-            if (thumbnailList1.Items.Count>5)
+            if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any())
              thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
             UpdateToolbar();
@@ -917,9 +919,6 @@ namespace NAPS2.WinForms
 
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
-
-                    if (thumbnailList1.SelectedItems.Count > 0)
-                        GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
 
                     if (imageList.Images.Any())
                     {
