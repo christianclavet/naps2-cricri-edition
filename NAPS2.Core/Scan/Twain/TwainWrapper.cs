@@ -431,10 +431,6 @@ namespace NAPS2.Scan.Twain
                 Log.Error("Capability: this device doesnt support duplex" + Manu);
 
 
-
-
-
-            ds.Capabilities.ICapAutoSize.SetValue(AutoSize.Auto);
             if (scanProfile.UseNativeUI)
             {
                 return;
@@ -458,14 +454,21 @@ namespace NAPS2.Scan.Twain
                 case ScanSource.Glass:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.False);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.False);
+                    ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
                     break;
                 case ScanSource.Feeder:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.False);
+                    ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
+                    ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     break;
                 case ScanSource.Duplex:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.True);
+                    ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
+                    ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     break;
             }
 
