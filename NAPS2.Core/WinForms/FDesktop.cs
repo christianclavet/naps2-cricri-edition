@@ -553,7 +553,9 @@ namespace NAPS2.WinForms
 
         public async Task ScanDefault()
         {
-            if (profileManager.DefaultProfile != null)
+
+            if (SelectedIndices.Any() && (MessageBox.Show("Do you want to replace the first image", "Rescan first image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
+                if (profileManager.DefaultProfile != null)
             {
                 await scanPerformer.PerformScan(profileManager.DefaultProfile, new ScanParams(), this, notify, ReceiveScannedImage());
                 Activate();
