@@ -430,6 +430,11 @@ namespace NAPS2.Scan.Twain
             else
                 Log.Error("Capability: this device doesnt support duplex" + Manu);
 
+            if (ds.Capabilities.CapDoubleFeedDetection.IsSupported)
+                Log.Error("Capability: This device support Double Feed detection" + Manu);
+            else
+                Log.Error("Capability: This device does not support Double Feed detection" + Manu);
+
 
             if (scanProfile.UseNativeUI)
             {
@@ -462,6 +467,9 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
+                    ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
+                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                    ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
                     break;
                 case ScanSource.Duplex:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
@@ -469,6 +477,9 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
+                    ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
+                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                    ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
                     break;
             }
 
