@@ -470,6 +470,7 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
                     ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
                     ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     break;
                 case ScanSource.Duplex:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
@@ -480,6 +481,7 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
                     ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
                     ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     break;
             }
 
