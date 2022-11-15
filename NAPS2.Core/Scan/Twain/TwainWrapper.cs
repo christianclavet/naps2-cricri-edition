@@ -468,7 +468,7 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
-                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
                     ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
                     ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     break;
@@ -479,7 +479,7 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
                     ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
-                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                    ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
                     ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
                     ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     break;
