@@ -330,6 +330,7 @@ namespace NAPS2.WinForms
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.Controls.Add(this.btnNetwork);
             this.Controls.Add(this.btnAdvanced);
             this.Controls.Add(this.linkAutoSaveSettings);

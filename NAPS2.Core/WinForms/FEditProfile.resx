@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 305</value>
+    <value>24, 273</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -244,7 +244,7 @@
     <value>28</value>
   </data>
   <data name="cmbSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 329</value>
+    <value>22, 298</value>
   </data>
   <data name="cmbSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -267,11 +267,14 @@
   <data name="&gt;&gt;cmbSource.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
+  <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 622</value>
+    <value>397, 695</value>
   </data>
   <data name="btnOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -388,7 +391,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 305</value>
+    <value>348, 273</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -418,7 +421,7 @@
     <value>System</value>
   </data>
   <data name="cmbDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 329</value>
+    <value>352, 298</value>
   </data>
   <data name="cmbDepth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -448,7 +451,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 366</value>
+    <value>24, 331</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -478,7 +481,7 @@
     <value>System</value>
   </data>
   <data name="cmbPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 391</value>
+    <value>24, 356</value>
   </data>
   <data name="cmbPage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -505,7 +508,7 @@
     <value>System</value>
   </data>
   <data name="cmbResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 452</value>
+    <value>24, 414</value>
   </data>
   <data name="cmbResolution.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -535,7 +538,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 428</value>
+    <value>24, 389</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -681,11 +684,14 @@
   <data name="&gt;&gt;trContrast.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>518, 622</value>
+    <value>517, 695</value>
   </data>
   <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -859,7 +865,7 @@
     <value>System</value>
   </data>
   <data name="cmbAlign.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 391</value>
+    <value>352, 356</value>
   </data>
   <data name="cmbAlign.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -889,7 +895,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 366</value>
+    <value>348, 331</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -919,7 +925,7 @@
     <value>System</value>
   </data>
   <data name="cmbScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 452</value>
+    <value>352, 414</value>
   </data>
   <data name="cmbScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -949,7 +955,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 428</value>
+    <value>348, 389</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -1146,6 +1152,9 @@
   <metadata name="ilProfileIcons.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="cbAutoSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="cbAutoSave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1153,7 +1162,7 @@
     <value>NoControl</value>
   </data>
   <data name="cbAutoSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 574</value>
+    <value>22, 661</value>
   </data>
   <data name="cbAutoSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -1179,6 +1188,9 @@
   <data name="&gt;&gt;cbAutoSave.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="linkAutoSaveSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="linkAutoSaveSettings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1186,7 +1198,7 @@
     <value>False</value>
   </data>
   <data name="linkAutoSaveSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 575</value>
+    <value>193, 661</value>
   </data>
   <data name="linkAutoSaveSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -1212,6 +1224,9 @@
   <data name="&gt;&gt;linkAutoSaveSettings.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnAdvanced.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="btnAdvanced.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1219,7 +1234,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 622</value>
+    <value>22, 695</value>
   </data>
   <data name="btnAdvanced.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -1285,7 +1300,7 @@
     <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>648, 649</value>
+    <value>648, 744</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1315,10 +1330,10 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>14988, 705</value>
+    <value>680, 1200</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>661, 705</value>
+    <value>661, 600</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Profile Settings</value>
@@ -1327,12 +1342,12 @@
     <value>ilProfileIcons</value>
   </data>
   <data name="&gt;&gt;ilProfileIcons.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ILProfileIcons, NAPS2.Core, Version=7.0.0.36175, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ILProfileIcons, NAPS2.Core, Version=7.0.0.37358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FEditProfile</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.36175, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.37358, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
