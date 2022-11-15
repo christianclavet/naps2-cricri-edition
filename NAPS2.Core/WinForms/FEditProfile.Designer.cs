@@ -72,6 +72,14 @@ namespace NAPS2.WinForms
             this.linkAutoSaveSettings = new System.Windows.Forms.LinkLabel();
             this.btnAdvanced = new System.Windows.Forms.Button();
             this.btnNetwork = new System.Windows.Forms.Button();
+            this.InfoDisplayCaps = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbAutoRotation = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panelUI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trContrast)).BeginInit();
@@ -325,12 +333,80 @@ namespace NAPS2.WinForms
             this.btnNetwork.UseVisualStyleBackColor = true;
             this.btnNetwork.Click += new System.EventHandler(this.btnNetwork_Click);
             // 
+            // InfoDisplayCaps
+            // 
+            resources.ApplyResources(this.InfoDisplayCaps, "InfoDisplayCaps");
+            this.InfoDisplayCaps.Name = "InfoDisplayCaps";
+            this.InfoDisplayCaps.ReadOnly = true;
+            this.InfoDisplayCaps.TextChanged += new System.EventHandler(this.InfoDisplayCaps_TextChanged);
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // cmbAutoRotation
+            // 
+            this.cmbAutoRotation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbAutoRotation, "cmbAutoRotation");
+            this.cmbAutoRotation.FormattingEnabled = true;
+            this.cmbAutoRotation.Items.AddRange(new object[] {
+            resources.GetString("cmbAutoRotation.Items"),
+            resources.GetString("cmbAutoRotation.Items1")});
+            this.cmbAutoRotation.Name = "cmbAutoRotation";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1")});
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            resources.GetString("comboBox2.Items"),
+            resources.GetString("comboBox2.Items1")});
+            this.comboBox2.Name = "comboBox2";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
             // FEditProfile
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.cmbAutoRotation);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.InfoDisplayCaps);
             this.Controls.Add(this.btnNetwork);
             this.Controls.Add(this.btnAdvanced);
             this.Controls.Add(this.linkAutoSaveSettings);
@@ -416,5 +492,13 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.Button btnAdvanced;
         private System.Windows.Forms.RadioButton rdSANE;
         private System.Windows.Forms.Button btnNetwork;
+        private System.Windows.Forms.RichTextBox InfoDisplayCaps;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbAutoRotation;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label14;
     }
 }

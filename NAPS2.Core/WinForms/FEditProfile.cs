@@ -43,7 +43,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
             btnNetwork.Left = btnChooseDevice.Right + 6;
             // TODO: Remove this to reenable
-            btnNetwork.Visible = false;
+            btnNetwork.Visible = true;
 
             AddEnumItems<ScanHorizontalAlign>(cmbAlign);
             AddEnumItems<ScanBitDepth>(cmbDepth);
@@ -532,6 +532,33 @@ namespace NAPS2.WinForms
                 useProxy = form.UseProxy;
                 UpdateEnabledControls();
             }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InfoDisplayCaps_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
