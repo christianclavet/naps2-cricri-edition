@@ -88,6 +88,13 @@ namespace NAPS2.WinForms
 
             cbAutoSave.Checked = ScanProfile.EnableAutoSave;
 
+            // New capabilities CC -- Defaults
+            cmbAutoRotation.SelectedIndex = 0;
+            cmbAutoDeskew.SelectedIndex = 0;
+            cmbDoubleFeedDet.SelectedIndex = 2;
+            cmbDoubleFeedAct.SelectedIndex = 2;
+
+
             // The setter updates the driver selection checkboxes
             DeviceDriverName = useProxy ? ScanProfile.ProxyDriverName : ScanProfile.DriverName;
 
@@ -105,9 +112,9 @@ namespace NAPS2.WinForms
                     .WidthToForm()
                 .Bind(pctIcon, btnChooseDevice, btnNetwork, btnOK, btnCancel)
                     .RightToForm()
-                .Bind(cmbAlign, cmbDepth, cmbPage, cmbResolution, cmbScale, cmbSource, trBrightness, trContrast, rdbConfig, rdbNative)
+                .Bind(cmbAlign, cmbDepth, cmbPage, cmbResolution, cmbScale, cmbSource, trBrightness, trContrast, rdbConfig, rdbNative, cmbAutoRotation, cmbAutoDeskew, cmbDoubleFeedAct, cmbDoubleFeedDet, lab_autoDeskew, lab_DoubleFeedAct)
                     .WidthTo(() => Width / 2)
-                .Bind(rdTWAIN, rdbNative, label3, cmbDepth, label9, cmbAlign, label10, cmbScale, label7, trContrast)
+                .Bind(rdTWAIN, rdbNative, label3, cmbDepth, label9, cmbAlign, label10, cmbScale, label7, trContrast, lab_autoDeskew, lab_DoubleFeedAct, cmbAutoDeskew, cmbDoubleFeedAct)
                     .LeftTo(() => Width / 2)
                 .Bind(txtBrightness)
                     .LeftTo(() => trBrightness.Right)
@@ -386,9 +393,9 @@ namespace NAPS2.WinForms
 
                 btnAdvanced.Enabled = !locked;
 
-                ConditionalControls.UnlockHeight(this);
+                //ConditionalControls.UnlockHeight(this);
                 ConditionalControls.SetVisible(panelUI, canUseNativeUi, 20);
-                ConditionalControls.LockHeight(this);
+                //ConditionalControls.LockHeight(this);
 
                 suppressChangeEvent = false;
             }

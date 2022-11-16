@@ -123,6 +123,10 @@ namespace NAPS2.Scan
         public bool FlipDuplexedPages { get; set; }
 
         public KeyValueScanOptions KeyValueOptions { get; set; }
+
+        public bool AutoPageRotation { get; set; }
+
+        public bool AutoPageDeskew { get; set; }
     }
 
     [Serializable]
