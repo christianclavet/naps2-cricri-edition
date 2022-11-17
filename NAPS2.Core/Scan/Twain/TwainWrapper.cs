@@ -465,8 +465,17 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.False);
                     ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
-                    ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
-                    ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
+                    
+                    if (scanProfile.AutoPageDeskew)
+                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.False);
+
+                    if (scanProfile.AutoPageRotation)
+                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
+
                     ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
                     ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
                     ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);

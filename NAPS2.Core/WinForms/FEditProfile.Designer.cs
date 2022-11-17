@@ -357,6 +357,7 @@ namespace NAPS2.WinForms
             resources.GetString("cmbAutoRotation.Items"),
             resources.GetString("cmbAutoRotation.Items1")});
             this.cmbAutoRotation.Name = "cmbAutoRotation";
+            this.cmbAutoRotation.SelectedIndexChanged += new System.EventHandler(this.cmbAutoRotation_SelectedIndexChanged);
             // 
             // lab_AutoRotate
             // 
@@ -372,7 +373,7 @@ namespace NAPS2.WinForms
             resources.GetString("cmbAutoDeskew.Items"),
             resources.GetString("cmbAutoDeskew.Items1")});
             this.cmbAutoDeskew.Name = "cmbAutoDeskew";
-            this.cmbAutoDeskew.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbAutoDeskew.SelectedIndexChanged += new System.EventHandler(this.cmbAutoDeskew_SelectedIndexChanged);
             // 
             // lab_autoDeskew
             // 

@@ -556,9 +556,12 @@ namespace NAPS2.WinForms
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbAutoDeskew_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbAutoDeskew.SelectedIndex == 0)
+                scanProfile.AutoPageDeskew = true;
+            else
+                scanProfile.AutoPageDeskew = false;
         }
 
 
@@ -566,6 +569,14 @@ namespace NAPS2.WinForms
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbAutoRotation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAutoRotation.SelectedIndex == 0)
+                scanProfile.AutoPageRotation = true;
+            else
+                scanProfile.AutoPageRotation = false;            
         }
     }
 }
