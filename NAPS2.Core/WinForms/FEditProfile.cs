@@ -578,5 +578,25 @@ namespace NAPS2.WinForms
             else
                 scanProfile.AutoPageRotation = false;            
         }
+
+        private void cmbDoubleFeedDet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleFeedDet.SelectedIndex == 0) // None
+                scanProfile.DoubleFeedType = 10;
+            if (cmbDoubleFeedDet.SelectedIndex == 1) // Infrared
+                scanProfile.DoubleFeedType = 2;
+            if (cmbDoubleFeedDet.SelectedIndex == 2) // Ultrasonic
+                scanProfile.DoubleFeedType = 0;
+        }
+
+        private void cmbDoubleFeedAct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleFeedAct.SelectedIndex == 0) // Stop
+                scanProfile.DoubleFeedAction = 0;
+            if (cmbDoubleFeedAct.SelectedIndex == 1) // Stop and wait
+                scanProfile.DoubleFeedAction = 1;
+            if (cmbDoubleFeedAct.SelectedIndex == 2) // Stop and Sound Emit
+                scanProfile.DoubleFeedAction = 2;
+        }
     }
 }

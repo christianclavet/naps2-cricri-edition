@@ -391,6 +391,7 @@ namespace NAPS2.WinForms
             resources.GetString("cmbDoubleFeedDet.Items1"),
             resources.GetString("cmbDoubleFeedDet.Items2")});
             this.cmbDoubleFeedDet.Name = "cmbDoubleFeedDet";
+            this.cmbDoubleFeedDet.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleFeedDet_SelectedIndexChanged);
             // 
             // lab_DoubleFeedDet
             // 
@@ -407,6 +408,7 @@ namespace NAPS2.WinForms
             resources.GetString("cmbDoubleFeedAct.Items1"),
             resources.GetString("cmbDoubleFeedAct.Items2")});
             this.cmbDoubleFeedAct.Name = "cmbDoubleFeedAct";
+            this.cmbDoubleFeedAct.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleFeedAct_SelectedIndexChanged);
             // 
             // lab_DoubleFeedAct
             // 

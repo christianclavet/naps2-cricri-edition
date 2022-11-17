@@ -127,6 +127,11 @@ namespace NAPS2.Scan
         public bool AutoPageRotation { get; set; }
 
         public bool AutoPageDeskew { get; set; }
+
+        public int DoubleFeedType { get; set; }
+
+        public int DoubleFeedAction { get; set; }
+
     }
 
     [Serializable]
