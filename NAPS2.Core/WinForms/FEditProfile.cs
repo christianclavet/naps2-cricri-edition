@@ -89,10 +89,18 @@ namespace NAPS2.WinForms
             cbAutoSave.Checked = ScanProfile.EnableAutoSave;
 
             // New capabilities CC -- Defaults
-            cmbAutoRotation.SelectedIndex = 0;
-            cmbAutoDeskew.SelectedIndex = 0;
-            cmbDoubleFeedDet.SelectedIndex = 2;
-            cmbDoubleFeedAct.SelectedIndex = 2;
+            if (ScanProfile.AutoPageRotation)
+                cmbAutoRotation.SelectedIndex = 0;
+            else
+                cmbAutoRotation.SelectedIndex = 1;
+            
+            if (ScanProfile.AutoPageDeskew)
+                cmbAutoDeskew.SelectedIndex = 0;
+            else
+                cmbAutoDeskew.SelectedIndex = 1;
+
+            cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
+            cmbDoubleFeedAct.SelectedIndex = ScanProfile.DoubleFeedAction;
 
 
             // The setter updates the driver selection checkboxes
@@ -308,7 +316,13 @@ namespace NAPS2.WinForms
                 CustomPageSizeName = pageSize.CustomName,
                 CustomPageSize = pageSize.CustomDimens,
                 Resolution = (ScanDpi)cmbResolution.SelectedIndex,
-                PaperSource = (ScanSource)cmbSource.SelectedIndex,
+
+                AutoPageDeskew = ScanProfile.AutoPageDeskew,
+                AutoPageRotation = ScanProfile.AutoPageRotation,
+
+                DoubleFeedAction = cmbDoubleFeedAct.SelectedIndex,
+                DoubleFeedType = cmbDoubleFeedDet.SelectedIndex,
+
 
                 EnableAutoSave = cbAutoSave.Checked,
                 AutoSaveSettings = ScanProfile.AutoSaveSettings,
@@ -383,6 +397,11 @@ namespace NAPS2.WinForms
                 cmbDepth.Enabled = settingsEnabled;
                 cmbAlign.Enabled = settingsEnabled;
                 cmbScale.Enabled = settingsEnabled;
+                cmbAutoDeskew.Enabled = settingsEnabled;
+                cmbAutoRotation.Enabled = settingsEnabled;
+                cmbDoubleFeedDet.Enabled = settingsEnabled;
+                cmbDoubleFeedAct.Enabled = settingsEnabled;
+
                 trBrightness.Enabled = settingsEnabled;
                 trContrast.Enabled = settingsEnabled;
                 txtBrightness.Enabled = settingsEnabled;
