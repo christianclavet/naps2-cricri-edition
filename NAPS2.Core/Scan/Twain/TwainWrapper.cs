@@ -131,6 +131,7 @@ namespace NAPS2.Scan.Twain
             var waitHandle = new AutoResetEvent(false);
 
             int pageNumber = 0;
+            int sheetSide = 0;
 
             session.TransferReady += (sender, eventArgs) =>
             {
@@ -151,7 +152,8 @@ namespace NAPS2.Scan.Twain
                 try
                 {
                     Debug.WriteLine("NAPS2.TW - DataTransferred");
-                    pageNumber++;
+                    pageNumber++; 
+               
                     using (var output = twainImpl == TwainImpl.MemXfer
                                         ? GetBitmapFromMemXFer(eventArgs.MemoryData, eventArgs.ImageInfo)
                                         : Image.FromStream(eventArgs.GetNativeImageStream()))
@@ -162,7 +164,18 @@ namespace NAPS2.Scan.Twain
                             {
                                 return;
                             }
-
+                            Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
+                            
+                            if (sheetSide == 0 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
+                            {
+                                Log.Error("Current side of camera: Front");
+                                sheetSide = 2;
+                            }
+                            else if (sheetSide == 2 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
+                            {
+                                Log.Error("Current side of camera: Back");
+                                sheetSide = 0;
+                            }
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
@@ -399,7 +412,7 @@ namespace NAPS2.Scan.Twain
         private void ConfigureDS(DataSource ds, ScanProfile scanProfile, ScanParams scanParams)
         {
 
-            var Manu = ds.Manufacturer+" "+ds.ProductFamily;
+            var Manu = ds.Manufacturer+": "+ds.Name;
             // Test to force autosize the page scanned
             if (ds.Capabilities.ICapAutoSize.IsSupported)
                 Log.Error("Capability: Device support autosize:," + Manu);
@@ -434,7 +447,6 @@ namespace NAPS2.Scan.Twain
                 Log.Error("Capability: This device support Double Feed detection" + Manu);
             else
                 Log.Error("Capability: This device does not support Double Feed detection" + Manu);
-
 
             if (scanProfile.UseNativeUI)
             {
@@ -555,6 +567,7 @@ namespace NAPS2.Scan.Twain
 
 
                     ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
+                    
                     break;
             }
 
