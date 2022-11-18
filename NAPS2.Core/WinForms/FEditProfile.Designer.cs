@@ -82,6 +82,10 @@ namespace NAPS2.WinForms
             this.lab_DoubleFeedDet = new System.Windows.Forms.Label();
             this.cmbDoubleFeedAct = new System.Windows.Forms.ComboBox();
             this.lab_DoubleFeedAct = new System.Windows.Forms.Label();
+            this.cmbDoubleSensitivity = new System.Windows.Forms.ComboBox();
+            this.lbl_DoubleSensivity = new System.Windows.Forms.Label();
+            this.cmbAutoBorderDetection = new System.Windows.Forms.ComboBox();
+            this.lbl_AutoBorderDetect = new System.Windows.Forms.Label();
             this.panelUI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trContrast)).BeginInit();
@@ -415,12 +419,49 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.lab_DoubleFeedAct, "lab_DoubleFeedAct");
             this.lab_DoubleFeedAct.Name = "lab_DoubleFeedAct";
             // 
+            // cmbDoubleSensitivity
+            // 
+            this.cmbDoubleSensitivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbDoubleSensitivity, "cmbDoubleSensitivity");
+            this.cmbDoubleSensitivity.FormattingEnabled = true;
+            this.cmbDoubleSensitivity.Items.AddRange(new object[] {
+            resources.GetString("cmbDoubleSensitivity.Items"),
+            resources.GetString("cmbDoubleSensitivity.Items1"),
+            resources.GetString("cmbDoubleSensitivity.Items2")});
+            this.cmbDoubleSensitivity.Name = "cmbDoubleSensitivity";
+            this.cmbDoubleSensitivity.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleSensitivity_SelectedIndexChanged);
+            // 
+            // lbl_DoubleSensivity
+            // 
+            resources.ApplyResources(this.lbl_DoubleSensivity, "lbl_DoubleSensivity");
+            this.lbl_DoubleSensivity.Name = "lbl_DoubleSensivity";
+            // 
+            // cmbAutoBorderDetection
+            // 
+            this.cmbAutoBorderDetection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbAutoBorderDetection, "cmbAutoBorderDetection");
+            this.cmbAutoBorderDetection.FormattingEnabled = true;
+            this.cmbAutoBorderDetection.Items.AddRange(new object[] {
+            resources.GetString("cmbAutoBorderDetection.Items"),
+            resources.GetString("cmbAutoBorderDetection.Items1")});
+            this.cmbAutoBorderDetection.Name = "cmbAutoBorderDetection";
+            this.cmbAutoBorderDetection.SelectedIndexChanged += new System.EventHandler(this.cmbAutoBorderDetection_SelectedIndexChanged);
+            // 
+            // lbl_AutoBorderDetect
+            // 
+            resources.ApplyResources(this.lbl_AutoBorderDetect, "lbl_AutoBorderDetect");
+            this.lbl_AutoBorderDetect.Name = "lbl_AutoBorderDetect";
+            // 
             // FEditProfile
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.Controls.Add(this.cmbAutoBorderDetection);
+            this.Controls.Add(this.lbl_AutoBorderDetect);
+            this.Controls.Add(this.cmbDoubleSensitivity);
+            this.Controls.Add(this.lbl_DoubleSensivity);
             this.Controls.Add(this.cmbDoubleFeedAct);
             this.Controls.Add(this.lab_DoubleFeedAct);
             this.Controls.Add(this.cmbDoubleFeedDet);
@@ -526,5 +567,9 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.Label lab_DoubleFeedDet;
         private System.Windows.Forms.ComboBox cmbDoubleFeedAct;
         private System.Windows.Forms.Label lab_DoubleFeedAct;
+        private System.Windows.Forms.ComboBox cmbDoubleSensitivity;
+        private System.Windows.Forms.Label lbl_DoubleSensivity;
+        private System.Windows.Forms.ComboBox cmbAutoBorderDetection;
+        private System.Windows.Forms.Label lbl_AutoBorderDetect;
     }
 }

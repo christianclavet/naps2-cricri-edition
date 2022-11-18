@@ -132,6 +132,10 @@ namespace NAPS2.Scan
 
         public int DoubleFeedAction { get; set; }
 
+        public int DoubleFeedSensivity { get; set; }
+
+        public bool AutoBorderDetection { get; set; }
+
     }
 
     [Serializable]

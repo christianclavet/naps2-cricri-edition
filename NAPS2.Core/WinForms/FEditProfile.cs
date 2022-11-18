@@ -99,8 +99,14 @@ namespace NAPS2.WinForms
             else
                 cmbAutoDeskew.SelectedIndex = 1;
 
+            if (ScanProfile.AutoBorderDetection)
+                cmbAutoBorderDetection.SelectedIndex = 0;
+            else
+                cmbAutoBorderDetection.SelectedIndex = 1;
+
             cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
             cmbDoubleFeedAct.SelectedIndex = ScanProfile.DoubleFeedAction;
+            cmbDoubleSensitivity.SelectedIndex = ScanProfile.DoubleFeedSensivity;
 
 
             // The setter updates the driver selection checkboxes
@@ -307,6 +313,7 @@ namespace NAPS2.WinForms
                 MaxQuality = ScanProfile.MaxQuality,
                 UseNativeUI = rdbNative.Checked,
 
+                PaperSource = (ScanSource)cmbSource.SelectedIndex,
                 AfterScanScale = (ScanScale)cmbScale.SelectedIndex,
                 BitDepth = (ScanBitDepth)cmbDepth.SelectedIndex,
                 Brightness = trBrightness.Value,
@@ -319,9 +326,11 @@ namespace NAPS2.WinForms
 
                 AutoPageDeskew = ScanProfile.AutoPageDeskew,
                 AutoPageRotation = ScanProfile.AutoPageRotation,
+                AutoBorderDetection = ScanProfile.AutoBorderDetection,
 
                 DoubleFeedAction = cmbDoubleFeedAct.SelectedIndex,
                 DoubleFeedType = cmbDoubleFeedDet.SelectedIndex,
+                DoubleFeedSensivity = cmbDoubleSensitivity.SelectedIndex,
 
 
                 EnableAutoSave = cbAutoSave.Checked,
@@ -399,8 +408,10 @@ namespace NAPS2.WinForms
                 cmbScale.Enabled = settingsEnabled;
                 cmbAutoDeskew.Enabled = settingsEnabled;
                 cmbAutoRotation.Enabled = settingsEnabled;
+                cmbAutoBorderDetection.Enabled = settingsEnabled;
                 cmbDoubleFeedDet.Enabled = settingsEnabled;
                 cmbDoubleFeedAct.Enabled = settingsEnabled;
+                cmbDoubleSensitivity.Enabled = settingsEnabled;
 
                 trBrightness.Enabled = settingsEnabled;
                 trContrast.Enabled = settingsEnabled;
@@ -616,6 +627,24 @@ namespace NAPS2.WinForms
                 scanProfile.DoubleFeedAction = 1;
             if (cmbDoubleFeedAct.SelectedIndex == 2) // Stop and Sound Emit
                 scanProfile.DoubleFeedAction = 2;
+        }
+
+        private void cmbDoubleSensitivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleSensitivity.SelectedIndex == 0) // Low
+                scanProfile.DoubleFeedSensivity = 0;
+            if (cmbDoubleSensitivity.SelectedIndex == 1) // Medium
+                scanProfile.DoubleFeedSensivity = 1;
+            if (cmbDoubleSensitivity.SelectedIndex == 2) // High
+                scanProfile.DoubleFeedSensivity = 2;
+        }
+
+        private void cmbAutoBorderDetection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAutoBorderDetection.SelectedIndex == 0)
+                scanProfile.AutoBorderDetection = true;
+            else
+                scanProfile.AutoBorderDetection = false;
         }
     }
 }

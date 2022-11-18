@@ -460,11 +460,64 @@ namespace NAPS2.Scan.Twain
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.False);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.False);
                     ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
+                    if (scanProfile.AutoBorderDetection)
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     break;
+
                 case ScanSource.Feeder:
                     ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
                     ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.False);
-                    ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    
+                    if (scanProfile.AutoBorderDetection)
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+
+                    if (scanProfile.AutoPageDeskew)
+                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.False);
+
+                    if (scanProfile.AutoPageRotation)
+                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
+                    
+                    if (scanProfile.DoubleFeedType == 0)
+                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
+
+                    if (scanProfile.DoubleFeedType == 2)
+                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
+                    
+                    if (scanProfile.DoubleFeedAction == 0)
+                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                    if (scanProfile.DoubleFeedAction == 1)
+                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
+                    if (scanProfile.DoubleFeedAction == 2)
+                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
+                    // Double Feed Intensity setting
+                    if (scanProfile.DoubleFeedSensivity == 0)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+                    if (scanProfile.DoubleFeedSensivity == 1)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
+                    if (scanProfile.DoubleFeedSensivity == 2)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
+
+                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
+                    break;
+
+                case ScanSource.Duplex:
+                   
+                    ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
+                    ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.True);
+                    
+
+                    if (scanProfile.AutoBorderDetection)
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                    else
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     
                     if (scanProfile.AutoPageDeskew)
                         ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
@@ -475,43 +528,6 @@ namespace NAPS2.Scan.Twain
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     else
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
-
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedType == 0)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
-                    if (scanProfile.DoubleFeedType == 2)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
-
-
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedAction == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
-                    if (scanProfile.DoubleFeedAction == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
-                    if (scanProfile.DoubleFeedAction == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
-
-
-
-                    ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
-                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
-                    break;
-
-                case ScanSource.Duplex:
-                    ds.Capabilities.CapFeederEnabled.SetValue(BoolType.True);
-                    ds.Capabilities.CapDuplexEnabled.SetValue(BoolType.True);
-                    ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
-
-                    if (scanProfile.AutoPageDeskew)
-                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
-                    else
-                        ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.False);
-
-                    if (scanProfile.AutoPageRotation)
-                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
-                    else
-                        ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
-
                     // Double Feed Cap
                     if (scanProfile.DoubleFeedType == 0)
                         ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
@@ -527,7 +543,17 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.DoubleFeedAction == 2)
                         ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
 
-                    ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+                    // Double Feed Intensity setting
+                    if (scanProfile.DoubleFeedSensivity == 0)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+                    
+                    if (scanProfile.DoubleFeedSensivity == 1)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
+
+                    if (scanProfile.DoubleFeedSensivity == 2)
+                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
+
+
                     ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     break;
             }
