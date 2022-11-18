@@ -463,7 +463,7 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.AutoBorderDetection)
                         ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     else
-                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.False);
                     break;
 
                 case ScanSource.Feeder:
@@ -473,7 +473,7 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.AutoBorderDetection)
                         ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     else
-                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.False);
 
                     if (scanProfile.AutoPageDeskew)
                         ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
@@ -517,7 +517,7 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.AutoBorderDetection)
                         ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
                     else
-                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.True);
+                        ds.Capabilities.ICapAutomaticBorderDetection.SetValue(BoolType.False);
                     
                     if (scanProfile.AutoPageDeskew)
                         ds.Capabilities.ICapAutomaticDeskew.SetValue(BoolType.True);
