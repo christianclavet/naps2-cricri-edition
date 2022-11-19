@@ -86,6 +86,8 @@ namespace NAPS2.WinForms
             this.lbl_DoubleSensivity = new System.Windows.Forms.Label();
             this.cmbAutoBorderDetection = new System.Windows.Forms.ComboBox();
             this.lbl_AutoBorderDetect = new System.Windows.Forms.Label();
+            this.cmbPaperType = new System.Windows.Forms.ComboBox();
+            this.LBL_Paper = new System.Windows.Forms.Label();
             this.panelUI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trContrast)).BeginInit();
@@ -421,8 +423,8 @@ namespace NAPS2.WinForms
             // 
             // cmbDoubleSensitivity
             // 
-            this.cmbDoubleSensitivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbDoubleSensitivity, "cmbDoubleSensitivity");
+            this.cmbDoubleSensitivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoubleSensitivity.FormattingEnabled = true;
             this.cmbDoubleSensitivity.Items.AddRange(new object[] {
             resources.GetString("cmbDoubleSensitivity.Items"),
@@ -438,8 +440,8 @@ namespace NAPS2.WinForms
             // 
             // cmbAutoBorderDetection
             // 
-            this.cmbAutoBorderDetection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbAutoBorderDetection, "cmbAutoBorderDetection");
+            this.cmbAutoBorderDetection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAutoBorderDetection.FormattingEnabled = true;
             this.cmbAutoBorderDetection.Items.AddRange(new object[] {
             resources.GetString("cmbAutoBorderDetection.Items"),
@@ -452,12 +454,27 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.lbl_AutoBorderDetect, "lbl_AutoBorderDetect");
             this.lbl_AutoBorderDetect.Name = "lbl_AutoBorderDetect";
             // 
+            // cmbPaperType
+            // 
+            this.cmbPaperType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbPaperType, "cmbPaperType");
+            this.cmbPaperType.FormattingEnabled = true;
+            this.cmbPaperType.Name = "cmbPaperType";
+            this.cmbPaperType.SelectedIndexChanged += new System.EventHandler(this.cmbPaperType_SelectedIndexChanged);
+            // 
+            // LBL_Paper
+            // 
+            resources.ApplyResources(this.LBL_Paper, "LBL_Paper");
+            this.LBL_Paper.Name = "LBL_Paper";
+            // 
             // FEditProfile
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.Controls.Add(this.cmbPaperType);
+            this.Controls.Add(this.LBL_Paper);
             this.Controls.Add(this.cmbAutoBorderDetection);
             this.Controls.Add(this.lbl_AutoBorderDetect);
             this.Controls.Add(this.cmbDoubleSensitivity);
@@ -507,6 +524,7 @@ namespace NAPS2.WinForms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FEditProfile";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.panelUI.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trContrast)).EndInit();
@@ -571,5 +589,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.Label lbl_DoubleSensivity;
         private System.Windows.Forms.ComboBox cmbAutoBorderDetection;
         private System.Windows.Forms.Label lbl_AutoBorderDetect;
+        private System.Windows.Forms.ComboBox cmbPaperType;
+        private System.Windows.Forms.Label LBL_Paper;
     }
 }
