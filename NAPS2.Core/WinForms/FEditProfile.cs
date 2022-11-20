@@ -107,6 +107,7 @@ namespace NAPS2.WinForms
             cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
             cmbDoubleFeedAct.SelectedIndex = ScanProfile.DoubleFeedAction;
             cmbDoubleSensitivity.SelectedIndex = ScanProfile.DoubleFeedSensivity;
+            cmbPaperType.SelectedIndex = ScanProfile.PaperType;
 
 
             // The setter updates the driver selection checkboxes
@@ -324,6 +325,8 @@ namespace NAPS2.WinForms
                 CustomPageSize = pageSize.CustomDimens,
                 Resolution = (ScanDpi)cmbResolution.SelectedIndex,
 
+                PaperType = cmbPaperType.SelectedIndex,
+
                 AutoPageDeskew = ScanProfile.AutoPageDeskew,
                 AutoPageRotation = ScanProfile.AutoPageRotation,
                 AutoBorderDetection = ScanProfile.AutoBorderDetection,
@@ -403,6 +406,7 @@ namespace NAPS2.WinForms
                 cmbSource.Enabled = settingsEnabled;
                 cmbResolution.Enabled = settingsEnabled;
                 cmbPage.Enabled = settingsEnabled;
+                cmbPaperType.Enabled = settingsEnabled;
                 cmbDepth.Enabled = settingsEnabled;
                 cmbAlign.Enabled = settingsEnabled;
                 cmbScale.Enabled = settingsEnabled;

@@ -457,6 +457,12 @@ namespace NAPS2.WinForms
             this.cmbPaperType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cmbPaperType, "cmbPaperType");
             this.cmbPaperType.FormattingEnabled = true;
+            this.cmbPaperType.Items.AddRange(new object[] {
+            resources.GetString("cmbPaperType.Items"),
+            resources.GetString("cmbPaperType.Items1"),
+            resources.GetString("cmbPaperType.Items2"),
+            resources.GetString("cmbPaperType.Items3"),
+            resources.GetString("cmbPaperType.Items4")});
             this.cmbPaperType.Name = "cmbPaperType";
             this.cmbPaperType.SelectedIndexChanged += new System.EventHandler(this.cmbPaperType_SelectedIndexChanged);
             // 

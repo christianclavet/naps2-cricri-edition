@@ -134,6 +134,8 @@ namespace NAPS2.Scan
 
         public int DoubleFeedSensivity { get; set; }
 
+        public int PaperType { get; set; }
+
         public bool AutoBorderDetection { get; set; }
 
     }

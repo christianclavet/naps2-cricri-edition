@@ -1794,6 +1794,21 @@
   <data name="cmbPaperType.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
+  <data name="cmbPaperType.Items" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="cmbPaperType.Items1" xml:space="preserve">
+    <value>Fragile</value>
+  </data>
+  <data name="cmbPaperType.Items2" xml:space="preserve">
+    <value>Thick</value>
+  </data>
+  <data name="cmbPaperType.Items3" xml:space="preserve">
+    <value>TriFold</value>
+  </data>
+  <data name="cmbPaperType.Items4" xml:space="preserve">
+    <value>Photograph</value>
+  </data>
   <data name="cmbPaperType.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 340</value>
   </data>
@@ -1903,12 +1918,12 @@
     <value>ilProfileIcons</value>
   </data>
   <data name="&gt;&gt;ilProfileIcons.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ILProfileIcons, NAPS2.Core, Version=7.0.0.32740, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ILProfileIcons, NAPS2.Core, Version=7.0.0.39160, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FEditProfile</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.32740, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.39160, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -517,7 +517,17 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.DoubleFeedSensivity == 2)
                         ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
 
-                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
+                    if (scanProfile.PaperType == 0)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
+                    if (scanProfile.PaperType == 1)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Fragile);
+                    if (scanProfile.PaperType == 2)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Thick);
+                    if (scanProfile.PaperType == 3)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Trifold);
+                    if (scanProfile.PaperType == 4)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Photograph);
+
                     break;
 
                 case ScanSource.Duplex:
@@ -565,9 +575,18 @@ namespace NAPS2.Scan.Twain
                     if (scanProfile.DoubleFeedSensivity == 2)
                         ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
 
+                    if (scanProfile.PaperType == 0)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
+                    if (scanProfile.PaperType == 1)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Fragile);
+                    if (scanProfile.PaperType == 2)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Thick);
+                    if (scanProfile.PaperType == 3)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Trifold);
+                    if (scanProfile.PaperType == 4)
+                        ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Photograph);
 
-                    ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
-                    
+
                     break;
             }
 
