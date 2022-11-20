@@ -571,17 +571,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void InfoDisplayCaps_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
         {
 
         }
