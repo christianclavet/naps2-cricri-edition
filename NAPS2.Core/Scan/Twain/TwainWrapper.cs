@@ -176,6 +176,8 @@ namespace NAPS2.Scan.Twain
                                 Log.Error("Current side of camera: Back");
                                 sheetSide = 0;
                             }
+
+                            Log.Error("Capabilities\n"+ds.Capabilities.CapSupportedCaps.GetValues().ConvertToString());
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
