@@ -35,32 +35,32 @@ namespace NAPS2.WinForms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FEditProfile));
             this.txtDevice = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_device = new System.Windows.Forms.Label();
             this.btnChooseDevice = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_papersource = new System.Windows.Forms.Label();
             this.cmbSource = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.panelUI = new System.Windows.Forms.Panel();
             this.rdbConfig = new System.Windows.Forms.RadioButton();
             this.rdbNative = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_bitdepth = new System.Windows.Forms.Label();
             this.cmbDepth = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_pagesize = new System.Windows.Forms.Label();
             this.cmbPage = new System.Windows.Forms.ComboBox();
             this.cmbResolution = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_resolution = new System.Windows.Forms.Label();
+            this.lbl_brightness = new System.Windows.Forms.Label();
             this.trBrightness = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_contrast = new System.Windows.Forms.Label();
             this.trContrast = new System.Windows.Forms.TrackBar();
             this.btnCancel = new System.Windows.Forms.Button();
             this.pctIcon = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_displayname = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbAlign = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_horizontalalign = new System.Windows.Forms.Label();
             this.cmbScale = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbl_scale = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rdTWAIN = new System.Windows.Forms.RadioButton();
             this.rdWIA = new System.Windows.Forms.RadioButton();
@@ -102,10 +102,10 @@ namespace NAPS2.WinForms
             this.txtDevice.ReadOnly = true;
             this.txtDevice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDevice_KeyDown);
             // 
-            // label1
+            // lbl_device
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lbl_device, "lbl_device");
+            this.lbl_device.Name = "lbl_device";
             // 
             // btnChooseDevice
             // 
@@ -114,10 +114,10 @@ namespace NAPS2.WinForms
             this.btnChooseDevice.UseVisualStyleBackColor = true;
             this.btnChooseDevice.Click += new System.EventHandler(this.btnChooseDevice_Click);
             // 
-            // label2
+            // lbl_papersource
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lbl_papersource, "lbl_papersource");
+            this.lbl_papersource.Name = "lbl_papersource";
             // 
             // cmbSource
             // 
@@ -156,10 +156,10 @@ namespace NAPS2.WinForms
             this.rdbNative.UseVisualStyleBackColor = true;
             this.rdbNative.CheckedChanged += new System.EventHandler(this.rdbNativeWIA_CheckedChanged);
             // 
-            // label3
+            // lbl_bitdepth
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.lbl_bitdepth, "lbl_bitdepth");
+            this.lbl_bitdepth.Name = "lbl_bitdepth";
             // 
             // cmbDepth
             // 
@@ -168,10 +168,10 @@ namespace NAPS2.WinForms
             this.cmbDepth.FormattingEnabled = true;
             this.cmbDepth.Name = "cmbDepth";
             // 
-            // label4
+            // lbl_pagesize
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.lbl_pagesize, "lbl_pagesize");
+            this.lbl_pagesize.Name = "lbl_pagesize";
             // 
             // cmbPage
             // 
@@ -188,15 +188,15 @@ namespace NAPS2.WinForms
             this.cmbResolution.FormattingEnabled = true;
             this.cmbResolution.Name = "cmbResolution";
             // 
-            // label5
+            // lbl_resolution
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.lbl_resolution, "lbl_resolution");
+            this.lbl_resolution.Name = "lbl_resolution";
             // 
-            // label6
+            // lbl_brightness
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.lbl_brightness, "lbl_brightness");
+            this.lbl_brightness.Name = "lbl_brightness";
             // 
             // trBrightness
             // 
@@ -207,10 +207,10 @@ namespace NAPS2.WinForms
             this.trBrightness.TickFrequency = 200;
             this.trBrightness.Scroll += new System.EventHandler(this.trBrightness_Scroll);
             // 
-            // label7
+            // lbl_contrast
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.lbl_contrast, "lbl_contrast");
+            this.lbl_contrast.Name = "lbl_contrast";
             // 
             // trContrast
             // 
@@ -234,10 +234,10 @@ namespace NAPS2.WinForms
             this.pctIcon.Name = "pctIcon";
             this.pctIcon.TabStop = false;
             // 
-            // label8
+            // lbl_displayname
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.lbl_displayname, "lbl_displayname");
+            this.lbl_displayname.Name = "lbl_displayname";
             // 
             // txtName
             // 
@@ -251,10 +251,10 @@ namespace NAPS2.WinForms
             this.cmbAlign.FormattingEnabled = true;
             this.cmbAlign.Name = "cmbAlign";
             // 
-            // label9
+            // lbl_horizontalalign
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            resources.ApplyResources(this.lbl_horizontalalign, "lbl_horizontalalign");
+            this.lbl_horizontalalign.Name = "lbl_horizontalalign";
             // 
             // cmbScale
             // 
@@ -263,10 +263,10 @@ namespace NAPS2.WinForms
             this.cmbScale.FormattingEnabled = true;
             this.cmbScale.Name = "cmbScale";
             // 
-            // label10
+            // lbl_scale
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.lbl_scale, "lbl_scale");
+            this.lbl_scale.Name = "lbl_scale";
             // 
             // panel2
             // 
@@ -352,7 +352,6 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.lab_Cap, "lab_Cap");
             this.lab_Cap.Name = "lab_Cap";
-            this.lab_Cap.Click += new System.EventHandler(this.label11_Click);
             // 
             // cmbAutoRotation
             // 
@@ -385,7 +384,6 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.lab_autoDeskew, "lab_autoDeskew");
             this.lab_autoDeskew.Name = "lab_autoDeskew";
-            this.lab_autoDeskew.Click += new System.EventHandler(this.label13_Click);
             // 
             // cmbDoubleFeedDet
             // 
@@ -497,29 +495,29 @@ namespace NAPS2.WinForms
             this.Controls.Add(this.txtBrightness);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.cmbScale);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lbl_scale);
             this.Controls.Add(this.cmbAlign);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lbl_horizontalalign);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lbl_displayname);
             this.Controls.Add(this.pctIcon);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.trContrast);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbl_contrast);
             this.Controls.Add(this.trBrightness);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lbl_brightness);
             this.Controls.Add(this.cmbResolution);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbl_resolution);
             this.Controls.Add(this.cmbPage);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_pagesize);
             this.Controls.Add(this.cmbDepth);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbl_bitdepth);
             this.Controls.Add(this.panelUI);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cmbSource);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_papersource);
             this.Controls.Add(this.btnChooseDevice);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_device);
             this.Controls.Add(this.txtDevice);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -538,33 +536,33 @@ namespace NAPS2.WinForms
         #endregion
 
         private System.Windows.Forms.TextBox txtDevice;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_device;
         private System.Windows.Forms.Button btnChooseDevice;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_papersource;
         private System.Windows.Forms.ComboBox cmbSource;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Panel panelUI;
         private System.Windows.Forms.RadioButton rdbConfig;
         private System.Windows.Forms.RadioButton rdbNative;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_bitdepth;
         private System.Windows.Forms.ComboBox cmbDepth;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_pagesize;
         private System.Windows.Forms.ComboBox cmbPage;
         private System.Windows.Forms.ComboBox cmbResolution;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_resolution;
+        private System.Windows.Forms.Label lbl_brightness;
         private System.Windows.Forms.TrackBar trBrightness;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl_contrast;
         private System.Windows.Forms.TrackBar trContrast;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.PictureBox pctIcon;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_displayname;
         private System.Windows.Forms.TextBox txtName;
         private ILProfileIcons ilProfileIcons;
         private System.Windows.Forms.ComboBox cmbAlign;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_horizontalalign;
         private System.Windows.Forms.ComboBox cmbScale;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_scale;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rdTWAIN;
         private System.Windows.Forms.RadioButton rdWIA;

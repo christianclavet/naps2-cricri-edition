@@ -128,7 +128,7 @@ namespace NAPS2.WinForms
                     .RightToForm()
                 .Bind(cmbAlign, cmbDepth, cmbPage, cmbResolution, cmbScale, cmbSource, trBrightness, trContrast, rdbConfig, rdbNative, cmbAutoRotation, cmbAutoDeskew, cmbDoubleFeedAct, cmbDoubleFeedDet, lab_autoDeskew, lab_DoubleFeedAct)
                     .WidthTo(() => Width / 2)
-                .Bind(rdTWAIN, rdbNative, label3, cmbDepth, label9, cmbAlign, label10, cmbScale, label7, trContrast, lab_autoDeskew, lab_DoubleFeedAct, cmbAutoDeskew, cmbDoubleFeedAct)
+                .Bind(rdTWAIN, rdbNative, lbl_bitdepth, cmbDepth, lbl_horizontalalign, cmbAlign, lbl_scale, cmbScale, lbl_contrast, trContrast, lab_autoDeskew, lab_DoubleFeedAct, cmbAutoDeskew, cmbDoubleFeedAct)
                     .LeftTo(() => Width / 2)
                 .Bind(txtBrightness)
                     .LeftTo(() => trBrightness.Right)
