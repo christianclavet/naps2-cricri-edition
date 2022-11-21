@@ -181,7 +181,7 @@ namespace NAPS2.Scan.Twain
                             Log.Error("Capabilities\n" + support.Count().ToString());
                             foreach (var result2 in support)
                             {
-                                Log.Error("-> " + result2.ToString());
+                                Log.Error("-> " + result2.ToString()+": ");
                             }
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
