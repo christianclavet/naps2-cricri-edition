@@ -177,11 +177,18 @@ namespace NAPS2.Scan.Twain
                                 sheetSide = 0;
                             }
 
-                            Log.Error("Capabilities\n"+ds.Capabilities.CapSupportedCaps.GetValues().ConvertToString());
+                            IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
+                            Log.Error("Capabilities\n" + support.Count().ToString());
+                            foreach (var result2 in support)
+                            {
+                                Log.Error("-> " + result2.ToString());
+                            }
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
                             var image = new ScannedImage(result, bitDepth, scanProfile.MaxQuality, scanProfile.Quality);
+                            
+                            
                             if (scanParams.DetectPatchCodes)
                             {
                                 foreach (var patchCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.PatchCode))
