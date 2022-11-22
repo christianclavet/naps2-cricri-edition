@@ -164,6 +164,7 @@ namespace NAPS2.Scan.Twain
                             {
                                 return;
                             }
+                            /* Temporary hidden to not overload the log file --- debug use
                             Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
                             
                             if (sheetSide == 0 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
@@ -182,7 +183,8 @@ namespace NAPS2.Scan.Twain
                             foreach (var result2 in support)
                             {
                                 Log.Error("-> " + result2.ToString()+": ");
-                            }
+                            }*/
+                        
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
@@ -456,6 +458,12 @@ namespace NAPS2.Scan.Twain
                 Log.Error("Capability: This device support Double Feed detection" + Manu);
             else
                 Log.Error("Capability: This device does not support Double Feed detection" + Manu);
+
+            //Need to change this for rescan. (1-2 pages), -1 mean all the pages in the feeder.
+            if (!scanParams.RescanMode)
+                ds.Capabilities.CapXferCount.SetValue(-1);
+            else
+                ds.Capabilities.CapXferCount.SetValue(1);
 
             if (scanProfile.UseNativeUI)
             {

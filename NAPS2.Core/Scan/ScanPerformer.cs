@@ -26,6 +26,7 @@ namespace NAPS2.Scan
         private readonly AppConfigManager appConfigManager;
         private readonly IProfileManager profileManager;
         private readonly ScannedImageHelper scannedImageHelper;
+        private bool scanMode;
 
         public ScanPerformer(IScanDriverFactory driverFactory, IErrorOutput errorOutput, IAutoSave autoSave, AppConfigManager appConfigManager, IProfileManager profileManager, ScannedImageHelper scannedImageHelper)
         {
@@ -37,6 +38,10 @@ namespace NAPS2.Scan
             this.scannedImageHelper = scannedImageHelper;
         }
 
+        public void SetScanMode(bool scanmode) 
+        { 
+            this.scanMode = scanmode;
+        }
         public async Task PerformScan(ScanProfile scanProfile, ScanParams scanParams, IWin32Window dialogParent, ISaveNotify notify,
             Action<ScannedImage> imageCallback, CancellationToken cancelToken = default)
         {

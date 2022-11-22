@@ -15,6 +15,8 @@ namespace NAPS2.Scan
     {
         public bool DetectPatchCodes { get; set; }
 
+        public bool RescanMode { get; set; }
+
         public bool Modal { get; set; } = true;
 
         public bool NoUI { get; set; }

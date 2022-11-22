@@ -553,14 +553,19 @@ namespace NAPS2.WinForms
 
         public async Task ScanDefault()
         {
-
+            ScanParams param = new ScanParams();
+            
             if ((SelectedIndices.Any()) && (MessageBox.Show("Do you want to replace the first image", "Rescan first image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
-            { }
-                
+            {
+                param.RescanMode = true;
+            } else if (SelectedIndices.Any())
+                return;
+
             if (profileManager.DefaultProfile != null)
             {
-               await scanPerformer.PerformScan(profileManager.DefaultProfile, new ScanParams(), this, notify, ReceiveScannedImage());
+                await scanPerformer.PerformScan(profileManager.DefaultProfile, param, this, notify, ReceiveScannedImage());
                Activate();
+                param.RescanMode = false;
             }
             
             else if (profileManager.Profiles.Count == 0)
