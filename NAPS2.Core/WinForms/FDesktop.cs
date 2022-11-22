@@ -555,7 +555,7 @@ namespace NAPS2.WinForms
         {
             ScanParams param = new ScanParams();
             
-            if ((SelectedIndices.Any()) && (MessageBox.Show("Do you want to replace the first image", "Rescan first image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
+            if ((SelectedIndices.Any()) && (MessageBox.Show("Do you want to replace the selected image?", "Rescan image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
             {
                 param.RescanMode = true;
             } else if (SelectedIndices.Any())
@@ -726,11 +726,12 @@ namespace NAPS2.WinForms
                     var count = new List<int> { imageList.Images.Count()-1 };
                                        
                     imageList.MoveTo(count,SelectedIndices.First());
-
+                    int pos = SelectedIndices.First();
                     imageList.Delete(Enumerable.Range(SelectedIndices.First()+1, 1));
-
+                    thumbnailList1.Items[thumbnailList1.Items.Count - 1].Remove();
+                    //SelectedIndices = Enumerable.Range(0, thumbnailList1.Items.Count);
                     UpdateThumbnails(SelectedIndices, true, false);
-                    SelectedIndices = Enumerable.Range(0, 0);
+                    SelectedIndices = Enumerable.Range(pos, 1);
                     changeTracker.Made();
                 } 
                 // Trigger thumbnail rendering just in case the received image is out of date
@@ -925,6 +926,8 @@ namespace NAPS2.WinForms
             {
                 if (MessageBox.Show(string.Format(MiscResources.ConfirmDeleteItems, SelectedIndices.Count()), MiscResources.Delete, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+
+                    int value = SelectedIndices.First();
                     tiffViewerCtl1.Image = null;
 
                     imageList.Delete(SelectedIndices);
@@ -938,8 +941,9 @@ namespace NAPS2.WinForms
                     {
                         changeTracker.Clear();
                     }
+                    if (value < thumbnailList1.Items.Count)
+                        SelectedIndices = Enumerable.Range(value, 1);
 
-                    
                 }
             }
         }
