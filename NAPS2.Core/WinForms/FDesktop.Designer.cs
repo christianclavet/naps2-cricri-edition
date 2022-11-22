@@ -54,6 +54,7 @@ namespace NAPS2.WinForms
             this.tStrip = new System.Windows.Forms.ToolStrip();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsInsert = new System.Windows.Forms.ToolStripButton();
             this.tsCombo_Profiles = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.tsNewProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,8 +187,8 @@ namespace NAPS2.WinForms
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.splitContainer1.Panel2.Controls.Add(this.tiffViewerCtl1);
-            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // btnZoomIn
             // 
@@ -306,6 +307,7 @@ namespace NAPS2.WinForms
             this.tStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsScan,
+            this.tsInsert,
             this.tsCombo_Profiles,
             this.tsImport,
             this.toolStripSeparator5,
@@ -345,6 +347,12 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsBatchScan, "tsBatchScan");
             this.tsBatchScan.Name = "tsBatchScan";
             this.tsBatchScan.Click += new System.EventHandler(this.tsBatchScan_Click);
+            // 
+            // tsInsert
+            // 
+            resources.ApplyResources(this.tsInsert, "tsInsert");
+            this.tsInsert.Name = "tsInsert";
+            this.tsInsert.Click += new System.EventHandler(this.tsInsert_Click);
             // 
             // tsCombo_Profiles
             // 
@@ -953,6 +961,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem tsShowHideView;
+        private System.Windows.Forms.ToolStripButton tsInsert;
     }
 }
 

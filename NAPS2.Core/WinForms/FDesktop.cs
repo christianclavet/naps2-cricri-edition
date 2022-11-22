@@ -73,8 +73,9 @@ namespace NAPS2.WinForms
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
 
-        private Bitmap bitmap;
-        private bool splitter1 = false;
+        private Bitmap bitmap; // Used for the preview window
+        private bool splitter1 = false; // Used for the splitter GUI state of display
+        private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
 
         #endregion
 
@@ -555,11 +556,13 @@ namespace NAPS2.WinForms
         {
             ScanParams param = new ScanParams();
             
-            if ((SelectedIndices.Any()) && (MessageBox.Show("Do you want to replace the selected image?", "Rescan image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
+            if (SelectedIndices.Any()  && !this.insert)
             {
-                param.RescanMode = true;
-            } else if (SelectedIndices.Any())
-                return;
+                if (MessageBox.Show("Do you want to replace the selected image?", "Rescan image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    param.RescanMode = true; //In rescan, it only scan one picture and will replace it.
+                else
+                    return;
+            } 
 
             if (profileManager.DefaultProfile != null)
             {
@@ -690,6 +693,7 @@ namespace NAPS2.WinForms
             {
                 SafeInvoke(() =>
                 {
+                    int lastIndex = 0;
                     
                     lock (imageList)
                     {
@@ -698,7 +702,7 @@ namespace NAPS2.WinForms
                         // Use the index after the last image from the same source (if it exists)
                         if (last != null)
                         {
-                            int lastIndex = imageList.Images.IndexOf(last);
+                            lastIndex = imageList.Images.IndexOf(last);
                             if (lastIndex != -1)
                             {
                                 index = lastIndex + 1;
@@ -713,30 +717,43 @@ namespace NAPS2.WinForms
                         // Get the preview image while scanning
                         GetPreviewImage(scannedImage, true);
                         last = scannedImage;
+
+
+                        // Feature CC: If an image is selected it will be replace with the new scanned image (rescan), if there is more than one image in the source, the other images will be inserted
+                        // with the replaced image. TODO: Add a "insert" feature, that will NOT remove the selected image.
+                                           
+                        int pos = lastIndex;
+                       
+                        if (SelectedIndices.Any())
+                        {
+                            pos = SelectedIndices.First();
+                            var count = new List<int> { imageList.Images.Count() - 1 };
+
+                            imageList.MoveTo(count, pos);
+
+                            if (!this.insert) //If insert is true, Insert button was pressed. We don't replace picture
+                            {
+                                imageList.Delete(Enumerable.Range(SelectedIndices.First() + 1, 1));
+                                thumbnailList1.Items[thumbnailList1.Items.Count - 1].Remove();
+                            }
+                            
+                            UpdateThumbnails(SelectedIndices, true, false);
+                            changeTracker.Made();
+                            SelectedIndices = Enumerable.Range(pos, 1);
+                        }
+                        
                     }
                     changeTracker.Made();
                 });
+
                 
-                // Feature CC: If an image is selected it will be replace with the new scanned image (rescan), if there is more than one image in the source, the other images will be inserted
-                // with the replaced image. TODO: Add a "insert" feature, that will NOT remove the selected image.
-                // Note: The selection is dropped once the operation has been done.
-                // 
-                if (SelectedIndices.Any())
-                {
-                    var count = new List<int> { imageList.Images.Count()-1 };
-                                       
-                    imageList.MoveTo(count,SelectedIndices.First());
-                    int pos = SelectedIndices.First();
-                    imageList.Delete(Enumerable.Range(SelectedIndices.First()+1, 1));
-                    thumbnailList1.Items[thumbnailList1.Items.Count - 1].Remove();
-                    //SelectedIndices = Enumerable.Range(0, thumbnailList1.Items.Count);
-                    UpdateThumbnails(SelectedIndices, true, false);
-                    SelectedIndices = Enumerable.Range(pos, 1);
-                    changeTracker.Made();
-                } 
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
                 UpdateThumbnailList1Descriptions();
+                if (this.insert)
+                    this.insert = false;
+
+                
             };
         }
 
@@ -1360,6 +1377,13 @@ namespace NAPS2.WinForms
         private async void tsNewProfile_Click_1(object sender, EventArgs e)
         {
             await ScanWithNewProfile();
+        }
+
+        private async void tsInsert_Click(object sender, EventArgs e)
+        {
+            this.insert = true;
+            await ScanDefault();
+
         }
 
         private void tsBatchScan_Click(object sender, EventArgs e)
@@ -2334,6 +2358,7 @@ namespace NAPS2.WinForms
         {
 
         }
+
     }
         #endregion
 }
