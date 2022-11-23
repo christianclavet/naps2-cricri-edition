@@ -701,12 +701,9 @@ namespace NAPS2.WinForms
                         // Default to the end of the list
                         int index = imageList.Images.Count;
 
-                        if (!this.insert)
-                        {
+                        if (!this.insert) // Reset the page counter for insertion since it's not in insert mode.
                             insertCounter = 0;
-                            insert = false;
-                        }
-
+                        
                         // Use the index after the last image from the same source (if it exists)
                         if (last != null)
                         {
@@ -738,29 +735,6 @@ namespace NAPS2.WinForms
                         scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
                         last = scannedImage;
 
-
-                        // Feature CC: If an image is selected it will be replaced with the new scanned image (rescan)
-                        // TODO: Add a "insert" feature, that will NOT remove the selected image and allow more than one image to be inserted.
-                        /*                   
-                        int pos = lastIndex;
-                       
-                        if (SelectedIndices.Any())
-                        {
-                            pos = SelectedIndices.First();
-                            SelectedIndices = Enumerable.Range(pos, 1); // Use only the first selected item. Don't want 
-                                                                              
-                            if (!this.insert) //Rescan operation
-                            {
-                                imageList.Delete(Enumerable.Range(SelectedIndices.First() + 1, 1));
-                                thumbnailList1.Items[thumbnailList1.Items.Count - 1].Remove();
-                                UpdateThumbnails(SelectedIndices, true, false);
-                            }
-                            else
-                                MoveImages(Enumerable.Range(pos, 1), pos); // insert operation (More tweaks needed.)
-
-
-                        }
-                        */
                     }
                     // Get the preview image while scanning
                     GetPreviewImage(scannedImage, true);
@@ -1390,6 +1364,7 @@ namespace NAPS2.WinForms
 
         private async void tsScan_ButtonClick(object sender, EventArgs e)
         {
+            this.insert = false; // disable insert mode
             await ScanDefault();
         }
 
@@ -1400,7 +1375,7 @@ namespace NAPS2.WinForms
 
         private async void tsInsert_Click(object sender, EventArgs e)
         {
-            this.insert = true;
+            this.insert = true; // enable insert mode
             await ScanDefault();
 
         }
@@ -1502,6 +1477,15 @@ namespace NAPS2.WinForms
             if (appConfigManager.Config.HideImportButton)
             {
                 return;
+            }
+
+            if (SelectedIndices.Any())
+            {
+                this.insert = true; //import will insert the pages at the selected position
+            }
+            else
+            {
+                this.insert = false; //Since we are importing and there is no selection, no import function should occur -> append.
             }
 
             Import();
