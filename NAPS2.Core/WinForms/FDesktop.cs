@@ -76,6 +76,7 @@ namespace NAPS2.WinForms
         private Bitmap bitmap; // Used for the preview window
         private bool splitter1 = false; // Used for the splitter GUI state of display
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
+        private int insertCounter = 0; //Used to count the offset of images to insert
 
         #endregion
 
@@ -699,6 +700,13 @@ namespace NAPS2.WinForms
                     {
                         // Default to the end of the list
                         int index = imageList.Images.Count;
+
+                        if (!this.insert)
+                        {
+                            insertCounter = 0;
+                            insert = false;
+                        }
+
                         // Use the index after the last image from the same source (if it exists)
                         if (last != null)
                         {
@@ -708,41 +716,54 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-                        
-                        imageList.Images.Insert(index, scannedImage);
-                        scannedImage.MovedTo(index);
+                        if (SelectedIndices.Any() && !this.insert) // rescan will replace image only not add anything
+                        {
+                            imageList.Delete(Enumerable.Range(SelectedIndices.First(), 1));
+                            imageList.Images.Insert(SelectedIndices.First(), scannedImage);
+                            scannedImage.MovedTo(SelectedIndices.First());
+                            UpdateThumbnails(Enumerable.Range(SelectedIndices.First(),1), true,true);
+                        } else
+                        {
+                            if (this.insert) //Try to insert
+                            {
+                                index = SelectedIndices.First() + this.insertCounter;
+                                insertCounter++;
+                            }
+
+                            imageList.Images.Insert(index, scannedImage);
+                            scannedImage.MovedTo(index);
+                            AddThumbnails();
+                        }
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
                         scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
-                        AddThumbnails();
-                        // Get the preview image while scanning
-                        GetPreviewImage(scannedImage, true);
                         last = scannedImage;
 
 
-                        // Feature CC: If an image is selected it will be replace with the new scanned image (rescan), if there is more than one image in the source, the other images will be inserted
-                        // with the replaced image. TODO: Add a "insert" feature, that will NOT remove the selected image.
-                                           
+                        // Feature CC: If an image is selected it will be replaced with the new scanned image (rescan)
+                        // TODO: Add a "insert" feature, that will NOT remove the selected image and allow more than one image to be inserted.
+                        /*                   
                         int pos = lastIndex;
                        
                         if (SelectedIndices.Any())
                         {
                             pos = SelectedIndices.First();
-                            var count = new List<int> { imageList.Images.Count() - 1 };
-
-                            imageList.MoveTo(count, pos);
-
-                            if (!this.insert) //If insert is true, Insert button was pressed. We don't replace picture
+                            SelectedIndices = Enumerable.Range(pos, 1); // Use only the first selected item. Don't want 
+                                                                              
+                            if (!this.insert) //Rescan operation
                             {
                                 imageList.Delete(Enumerable.Range(SelectedIndices.First() + 1, 1));
                                 thumbnailList1.Items[thumbnailList1.Items.Count - 1].Remove();
+                                UpdateThumbnails(SelectedIndices, true, false);
                             }
-                            
-                            UpdateThumbnails(SelectedIndices, true, false);
-                            changeTracker.Made();
-                            SelectedIndices = Enumerable.Range(pos, 1);
+                            else
+                                MoveImages(Enumerable.Range(pos, 1), pos); // insert operation (More tweaks needed.)
+
+
                         }
-                        
+                        */
                     }
+                    // Get the preview image while scanning
+                    GetPreviewImage(scannedImage, true);
                     changeTracker.Made();
                 });
 
@@ -750,9 +771,6 @@ namespace NAPS2.WinForms
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
                 UpdateThumbnailList1Descriptions();
-                if (this.insert)
-                    this.insert = false;
-
                 
             };
         }
@@ -762,6 +780,7 @@ namespace NAPS2.WinForms
             thumbnailList1.AddedImages(imageList.Images);
 
             //Scroll the list so that every new item that get added can be viewed. -CC
+            //Should not do it if a selection is active.
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any())
              thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
@@ -2256,6 +2275,16 @@ namespace NAPS2.WinForms
                 changeTracker.Made();
             }
         }
+
+        private void MoveImages(IEnumerable<int> selection, int index)
+        {
+            if (index != -1)
+            {
+                UpdateThumbnails(imageList.MoveTo(selection, index), true, true);
+                changeTracker.Made();
+            }
+        }
+
 
         private void thumbnailList1_DragOver(object sender, DragEventArgs e)
         {
