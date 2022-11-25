@@ -939,7 +939,14 @@ namespace NAPS2.WinForms
 
                     int value = SelectedIndices.First();
                     tiffViewerCtl1.Image = null;
-
+                    // TESTING Progress delete
+                    // var op = operationFactory.Create<ImportOperation>();
+                    //var op = operationFactory.Create<ImportOperation>();
+                    //if (op.Start(OrderFiles(files), ReceiveScannedImage()))
+                    //{
+                    //    operationProgress.ShowProgress(op);
+                    //}
+                    //
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
 
