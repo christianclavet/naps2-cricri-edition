@@ -514,26 +514,6 @@ namespace NAPS2.Scan.Twain
                     else
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
                     
-                    if (scanProfile.DoubleFeedType == 0)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
-
-                    if (scanProfile.DoubleFeedType == 2)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
-                    
-                    if (scanProfile.DoubleFeedAction == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
-                    if (scanProfile.DoubleFeedAction == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
-                    if (scanProfile.DoubleFeedAction == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
-                    // Double Feed Intensity setting
-                    if (scanProfile.DoubleFeedSensivity == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
-                    if (scanProfile.DoubleFeedSensivity == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
-                    if (scanProfile.DoubleFeedSensivity == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
-
                     if (scanProfile.PaperType == 0)
                         ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     if (scanProfile.PaperType == 1)
@@ -567,31 +547,7 @@ namespace NAPS2.Scan.Twain
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     else
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedType == 0)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
-
-                    if (scanProfile.DoubleFeedType == 2)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
-
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedAction == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
-                    if (scanProfile.DoubleFeedAction == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
-                    if (scanProfile.DoubleFeedAction == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
-
-                    // Double Feed Intensity setting
-                    if (scanProfile.DoubleFeedSensivity == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
-                    
-                    if (scanProfile.DoubleFeedSensivity == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
-
-                    if (scanProfile.DoubleFeedSensivity == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
-
+                   
                     if (scanProfile.PaperType == 0)
                         ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     if (scanProfile.PaperType == 1)
@@ -602,7 +558,6 @@ namespace NAPS2.Scan.Twain
                         ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Trifold);
                     if (scanProfile.PaperType == 4)
                         ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Photograph);
-
 
                     break;
             }

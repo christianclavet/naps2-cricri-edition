@@ -78,12 +78,6 @@ namespace NAPS2.WinForms
             this.lab_AutoRotate = new System.Windows.Forms.Label();
             this.cmbAutoDeskew = new System.Windows.Forms.ComboBox();
             this.lab_autoDeskew = new System.Windows.Forms.Label();
-            this.cmbDoubleFeedDet = new System.Windows.Forms.ComboBox();
-            this.lab_DoubleFeedDet = new System.Windows.Forms.Label();
-            this.cmbDoubleFeedAct = new System.Windows.Forms.ComboBox();
-            this.lab_DoubleFeedAct = new System.Windows.Forms.Label();
-            this.cmbDoubleSensitivity = new System.Windows.Forms.ComboBox();
-            this.lbl_DoubleSensivity = new System.Windows.Forms.Label();
             this.cmbAutoBorderDetection = new System.Windows.Forms.ComboBox();
             this.lbl_AutoBorderDetect = new System.Windows.Forms.Label();
             this.cmbPaperType = new System.Windows.Forms.ComboBox();
@@ -385,57 +379,6 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.lab_autoDeskew, "lab_autoDeskew");
             this.lab_autoDeskew.Name = "lab_autoDeskew";
             // 
-            // cmbDoubleFeedDet
-            // 
-            this.cmbDoubleFeedDet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cmbDoubleFeedDet, "cmbDoubleFeedDet");
-            this.cmbDoubleFeedDet.FormattingEnabled = true;
-            this.cmbDoubleFeedDet.Items.AddRange(new object[] {
-            resources.GetString("cmbDoubleFeedDet.Items"),
-            resources.GetString("cmbDoubleFeedDet.Items1"),
-            resources.GetString("cmbDoubleFeedDet.Items2")});
-            this.cmbDoubleFeedDet.Name = "cmbDoubleFeedDet";
-            this.cmbDoubleFeedDet.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleFeedDet_SelectedIndexChanged);
-            // 
-            // lab_DoubleFeedDet
-            // 
-            resources.ApplyResources(this.lab_DoubleFeedDet, "lab_DoubleFeedDet");
-            this.lab_DoubleFeedDet.Name = "lab_DoubleFeedDet";
-            // 
-            // cmbDoubleFeedAct
-            // 
-            this.cmbDoubleFeedAct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cmbDoubleFeedAct, "cmbDoubleFeedAct");
-            this.cmbDoubleFeedAct.FormattingEnabled = true;
-            this.cmbDoubleFeedAct.Items.AddRange(new object[] {
-            resources.GetString("cmbDoubleFeedAct.Items"),
-            resources.GetString("cmbDoubleFeedAct.Items1"),
-            resources.GetString("cmbDoubleFeedAct.Items2")});
-            this.cmbDoubleFeedAct.Name = "cmbDoubleFeedAct";
-            this.cmbDoubleFeedAct.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleFeedAct_SelectedIndexChanged);
-            // 
-            // lab_DoubleFeedAct
-            // 
-            resources.ApplyResources(this.lab_DoubleFeedAct, "lab_DoubleFeedAct");
-            this.lab_DoubleFeedAct.Name = "lab_DoubleFeedAct";
-            // 
-            // cmbDoubleSensitivity
-            // 
-            resources.ApplyResources(this.cmbDoubleSensitivity, "cmbDoubleSensitivity");
-            this.cmbDoubleSensitivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDoubleSensitivity.FormattingEnabled = true;
-            this.cmbDoubleSensitivity.Items.AddRange(new object[] {
-            resources.GetString("cmbDoubleSensitivity.Items"),
-            resources.GetString("cmbDoubleSensitivity.Items1"),
-            resources.GetString("cmbDoubleSensitivity.Items2")});
-            this.cmbDoubleSensitivity.Name = "cmbDoubleSensitivity";
-            this.cmbDoubleSensitivity.SelectedIndexChanged += new System.EventHandler(this.cmbDoubleSensitivity_SelectedIndexChanged);
-            // 
-            // lbl_DoubleSensivity
-            // 
-            resources.ApplyResources(this.lbl_DoubleSensivity, "lbl_DoubleSensivity");
-            this.lbl_DoubleSensivity.Name = "lbl_DoubleSensivity";
-            // 
             // cmbAutoBorderDetection
             // 
             resources.ApplyResources(this.cmbAutoBorderDetection, "cmbAutoBorderDetection");
@@ -481,12 +424,6 @@ namespace NAPS2.WinForms
             this.Controls.Add(this.LBL_Paper);
             this.Controls.Add(this.cmbAutoBorderDetection);
             this.Controls.Add(this.lbl_AutoBorderDetect);
-            this.Controls.Add(this.cmbDoubleSensitivity);
-            this.Controls.Add(this.lbl_DoubleSensivity);
-            this.Controls.Add(this.cmbDoubleFeedAct);
-            this.Controls.Add(this.lab_DoubleFeedAct);
-            this.Controls.Add(this.cmbDoubleFeedDet);
-            this.Controls.Add(this.lab_DoubleFeedDet);
             this.Controls.Add(this.cmbAutoDeskew);
             this.Controls.Add(this.lab_autoDeskew);
             this.Controls.Add(this.cmbAutoRotation);
@@ -585,12 +522,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.Label lab_AutoRotate;
         private System.Windows.Forms.ComboBox cmbAutoDeskew;
         private System.Windows.Forms.Label lab_autoDeskew;
-        private System.Windows.Forms.ComboBox cmbDoubleFeedDet;
-        private System.Windows.Forms.Label lab_DoubleFeedDet;
-        private System.Windows.Forms.ComboBox cmbDoubleFeedAct;
-        private System.Windows.Forms.Label lab_DoubleFeedAct;
-        private System.Windows.Forms.ComboBox cmbDoubleSensitivity;
-        private System.Windows.Forms.Label lbl_DoubleSensivity;
         private System.Windows.Forms.ComboBox cmbAutoBorderDetection;
         private System.Windows.Forms.Label lbl_AutoBorderDetect;
         private System.Windows.Forms.ComboBox cmbPaperType;
