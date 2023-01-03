@@ -104,6 +104,7 @@ namespace NAPS2.WinForms
             this.workerServiceFactory = workerServiceFactory;
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
+            
             InitializeComponent();
 
             notify.ParentForm = this;
@@ -180,6 +181,8 @@ namespace NAPS2.WinForms
            
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
+
+            
 
         }
 
@@ -2379,6 +2382,15 @@ namespace NAPS2.WinForms
 
         }
 
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void tt_btnZoomOut_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
         #endregion
 }

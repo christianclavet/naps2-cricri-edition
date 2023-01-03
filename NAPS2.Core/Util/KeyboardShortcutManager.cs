@@ -99,7 +99,7 @@ namespace NAPS2.Util
             if (Assign(value, item.PerformClick))
             {
                 item.AutoToolTip = true;
-                item.ToolTipText = value;
+                item.ToolTipText += " ("+value+")";
                 return true;
             }
             return false;
@@ -114,8 +114,8 @@ namespace NAPS2.Util
         {
             if (Assign(value, item.PerformButtonClick))
             {
-                item.AutoToolTip = true;
-                item.ToolTipText = value;
+                //item.AutoToolTip = true;
+                item.ToolTipText += " ("+value+")";
                 return true;
             }
             return false;

@@ -123,6 +123,7 @@ namespace NAPS2.WinForms
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -196,6 +197,7 @@ namespace NAPS2.WinForms
             this.btnZoomIn.BackColor = System.Drawing.Color.White;
             this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
             this.btnZoomIn.Name = "btnZoomIn";
+            this.tt_FDesktop.SetToolTip(this.btnZoomIn, resources.GetString("btnZoomIn.ToolTip"));
             this.btnZoomIn.UseVisualStyleBackColor = false;
             this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
             // 
@@ -205,6 +207,7 @@ namespace NAPS2.WinForms
             this.btnZoomOut.BackColor = System.Drawing.Color.White;
             this.btnZoomOut.Image = global::NAPS2.Icons.zoom_out;
             this.btnZoomOut.Name = "btnZoomOut";
+            this.tt_FDesktop.SetToolTip(this.btnZoomOut, resources.GetString("btnZoomOut.ToolTip"));
             this.btnZoomOut.UseVisualStyleBackColor = false;
             this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
             // 
@@ -326,12 +329,12 @@ namespace NAPS2.WinForms
             this.tsTools,
             this.toolStripSeparator15});
             this.tStrip.Name = "tStrip";
-            this.tStrip.ShowItemToolTips = false;
             this.tStrip.TabStop = true;
             this.tStrip.DockChanged += new System.EventHandler(this.tStrip_DockChanged);
             // 
             // tsScan
             // 
+            this.tsScan.AutoToolTip = false;
             this.tsScan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsBatchScan});
             this.tsScan.Image = global::NAPS2.Icons.control_play_blue;
@@ -844,6 +847,10 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
+            // tt_FDesktop
+            // 
+            this.tt_FDesktop.Popup += new System.Windows.Forms.PopupEventHandler(this.tt_btnZoomOut_Popup);
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -962,6 +969,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem tsShowHideView;
         private System.Windows.Forms.ToolStripButton tsInsert;
+        private System.Windows.Forms.ToolTip tt_FDesktop;
     }
 }
 
