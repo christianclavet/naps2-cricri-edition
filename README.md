@@ -17,7 +17,18 @@ Have a look at the [Developer Onboarding](https://www.naps2.com/doc-dev-onboardi
 ## NOTE (About this fork): 
 I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner. I also want to experiment with improving the workflow of the application and add other small features.
 
-I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.5 because, I also updated the libraries used in the application and they now require .NET Framework 4.5+
+I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.8 because, I also updated the libraries used in the application and they now require .NET Framework 4.8+
 
+Here is the current preview 2 (January 2023)
+![Alt text](./ScreenPreview2.jpg?raw=true "Title")
 Here is a screenshot (july 2022)
 ![Alt text](./Naps2_Barcode.JPG?raw=true "Title")
+
+Specific features of this fork:
+- Internal image viewer
+- All thumbnails are numbered now. Easier to manage
+- Ability to rescan an image. Select the image and press the SCAN button; it will ask you if you want to replace the image.
+- Ability to import at a specifc position, by selecting an image and pressing the IMPORT button. Images will be insert right after the selection
+- Ability to insert scanned image from a specific position, by selecting an image and pressing the SCAN INSERT button.
+- There are now tooltips
+- More to come!
