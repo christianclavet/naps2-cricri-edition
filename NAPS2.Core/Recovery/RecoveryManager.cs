@@ -36,6 +36,7 @@ namespace NAPS2.Recovery
             }
         }
 
+        //Second variation to be originated from the GUI CC
         public void RecoverScannedImages2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
         {
             var op = new RecoveryOperation(formFactory, thumbnailRenderer);
@@ -147,40 +148,29 @@ namespace NAPS2.Recovery
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
                     if (imageCount == 0)
                     {
-                        // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
+                        // If there are no images, do nothing abd remove the folder for cleanup
                         ReleaseFolderLock();
+                        DeleteFolder();
                         return false;
                     }
-                    switch (PromptToRecover())
+                    RunAsync(async () =>
                     {
-                        case DialogResult.Yes: // Recover
-                            RunAsync(async () =>
+                        try
+                        {
+                            if (await DoRecover(imageCallback))
                             {
-                                try
-                                {
-                                    if (await DoRecover(imageCallback))
-                                    {
-                                        ReleaseFolderLock();
-                                        DeleteFolder();
-                                        return true;
-                                    }
-                                    return false;
-                                }
-                                finally
-                                {
-                                    ReleaseFolderLock();
-                                    GC.Collect();
-                                }
-                            });
-                            return true;
-                        case DialogResult.No: // Delete
+                                ReleaseFolderLock();
+                                DeleteFolder();
+                                return true;
+                            }
+                            return false;
+                        }
+                        finally
+                        {
                             ReleaseFolderLock();
-                            DeleteFolder();
-                            break;
-                        default: // Not Now
-                            ReleaseFolderLock();
-                            break;
-                    }
+                            GC.Collect();
+                        }
+                    });
                 }
                 catch (Exception)
                 {

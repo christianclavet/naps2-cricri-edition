@@ -339,7 +339,7 @@ namespace NAPS2.WinForms
             }
 
             // Allow scanned images to be recovered in case of an unexpected close
-            recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+            //recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
             new Thread(RenderThumbnails).Start();
 
