@@ -406,6 +406,7 @@ namespace NAPS2.WinForms
                         if (result != DialogResult.Yes)
                         {
                             e.Cancel = true;
+                            recoveryManager.DeleteFolderEmpty();
                         }
                     }
                 }
@@ -429,12 +430,14 @@ namespace NAPS2.WinForms
                             bitmap.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+                        recoveryManager.DeleteFolderEmpty();
 
                     }
                     else if (result ==DialogResult.No)
                     {
                         // User want to close but want to keep the data
                         changeTracker.Clear();
+                        recoveryManager.DeleteFolderEmpty();
                     }
                     else
  

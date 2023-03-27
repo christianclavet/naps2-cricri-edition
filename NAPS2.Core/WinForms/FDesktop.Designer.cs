@@ -38,8 +38,8 @@ namespace NAPS2.WinForms
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
+            this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
             this.thumbnailList1 = new NAPS2.WinForms.ThumbnailList();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -184,8 +184,8 @@ namespace NAPS2.WinForms
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomOut);
+            this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomMouseCatcher);
             this.splitContainer1.Panel1.Controls.Add(this.thumbnailList1);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
@@ -197,16 +197,6 @@ namespace NAPS2.WinForms
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
-            // btnZoomIn
-            // 
-            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
-            this.btnZoomIn.BackColor = System.Drawing.Color.White;
-            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.tt_FDesktop.SetToolTip(this.btnZoomIn, resources.GetString("btnZoomIn.ToolTip"));
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
-            // 
             // btnZoomOut
             // 
             resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
@@ -216,6 +206,16 @@ namespace NAPS2.WinForms
             this.tt_FDesktop.SetToolTip(this.btnZoomOut, resources.GetString("btnZoomOut.ToolTip"));
             this.btnZoomOut.UseVisualStyleBackColor = false;
             this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // btnZoomIn
+            // 
+            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
+            this.btnZoomIn.BackColor = System.Drawing.Color.White;
+            this.btnZoomIn.Image = global::NAPS2.Icons.zoom_in;
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.tt_FDesktop.SetToolTip(this.btnZoomIn, resources.GetString("btnZoomIn.ToolTip"));
+            this.btnZoomIn.UseVisualStyleBackColor = false;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
             // 
             // btnZoomMouseCatcher
             // 

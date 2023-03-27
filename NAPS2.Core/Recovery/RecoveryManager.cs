@@ -19,6 +19,7 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
+        public readonly RecoveryOperation operation;
 
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
@@ -46,7 +47,18 @@ namespace NAPS2.Recovery
             }
         }
 
-        private class RecoveryOperation : OperationBase
+        public void DeleteFolderEmpty()
+        {
+            if (operation.imageCount == 0)
+            {
+                // If there are no images, do nothing abd remove the folder for cleanup
+                operation.ReleaseFolderLock();
+                operation.DeleteFolder();
+            }
+
+        }
+
+        public class RecoveryOperation : OperationBase
         {
             private readonly IFormFactory formFactory;
             private readonly ThumbnailRenderer thumbnailRenderer;
@@ -54,7 +66,7 @@ namespace NAPS2.Recovery
             private FileStream lockFile;
             private DirectoryInfo folderToRecoverFrom;
             private RecoveryIndexManager recoveryIndexManager;
-            private int imageCount;
+            public int imageCount;
             private DateTime scannedDateTime;
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
@@ -225,7 +237,7 @@ namespace NAPS2.Recovery
                 return recoveryPromptForm.ShowDialog();
             }
 
-            private void DeleteFolder()
+            public void DeleteFolder()
             {
                 try
                 {
@@ -246,7 +258,7 @@ namespace NAPS2.Recovery
                     .FirstOrDefault(TryLockRecoveryFolder);
             }
 
-            private void ReleaseFolderLock()
+            public void ReleaseFolderLock()
             {
                 // Unlock the recover folder
                 if (lockFile != null)
