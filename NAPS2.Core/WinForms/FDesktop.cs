@@ -1399,7 +1399,7 @@ namespace NAPS2.WinForms
             updateProfileButton();
         }
 
-        private void tsOCR_Click_1(object sender, EventArgs e)
+        private void tsOCR_Click(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideOcrButton)
             {
@@ -1574,7 +1574,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async void printToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void printToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HidePrintButton)
             {
@@ -1608,7 +1608,7 @@ namespace NAPS2.WinForms
             Clear();
         }
 
-        private void tsAbout_Click_1(object sender, EventArgs e)
+        private void tsAbout_Click(object sender, EventArgs e)
         {
             FormFactory.Create<FAbout>().ShowDialog();
         }
@@ -1616,8 +1616,13 @@ namespace NAPS2.WinForms
 
         #region Event Handlers - Save/Email Menus
 
+         private void tsdSavePDF_Click(object sender, EventArgs e)
+        {
+        }
+
         private void tsSavePDFAll_Click(object sender, EventArgs e)
         {
+
             if (appConfigManager.Config.HideSavePdfButton)
             {
                 return;
@@ -1626,7 +1631,7 @@ namespace NAPS2.WinForms
             SavePDF(imageList.Images);
         }
 
-        private void tsSavePDFSelected_Click(object sender, EventArgs e)
+        private void tsSavePDFSelected_Click_1(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideSavePdfButton)
             {
@@ -1636,12 +1641,17 @@ namespace NAPS2.WinForms
             SavePDF(SelectedImages.ToList());
         }
 
-        private void tsPDFSettings_Click(object sender, EventArgs e)
+        private void tsPDFSettings_Click_1(object sender, EventArgs e)
         {
             FormFactory.Create<FPdfSettings>().ShowDialog();
         }
 
         private void tsSaveImagesAll_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tsSaveImagesAll_Click_1(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideSaveImagesButton)
             {
@@ -1649,9 +1659,9 @@ namespace NAPS2.WinForms
             }
 
             SaveImages(imageList.Images);
-        }
 
-        private void tsSaveImagesSelected_Click(object sender, EventArgs e)
+        }
+        private void tsSaveImagesSelected_Click_1(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideSaveImagesButton)
             {
@@ -1661,7 +1671,7 @@ namespace NAPS2.WinForms
             SaveImages(SelectedImages.ToList());
         }
 
-        private void tsImageSettings_Click(object sender, EventArgs e)
+        private void tsImageSettings_Click_1(object sender, EventArgs e)
         {
             FormFactory.Create<FImageSettings>().ShowDialog();
         }
@@ -1676,6 +1686,7 @@ namespace NAPS2.WinForms
             EmailPDF(imageList.Images);
         }
 
+    
         private void tsEmailPDFSelected_Click(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HideEmailButton)
@@ -2343,7 +2354,7 @@ namespace NAPS2.WinForms
 
         #region QuickView
         // Quickview use the panel 2, Thumbnails use panel 1
-        private void tsShowHideView_Click_1(object sender, EventArgs e)
+        private void tsShowHideView_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
 
@@ -2383,20 +2394,11 @@ namespace NAPS2.WinForms
 
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
         private void tt_btnZoomOut_Popup(object sender, PopupEventArgs e)
         {
 
         }
 
-        private void loadProjectTool_TSMI_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void FileDm_Click(object sender, EventArgs e)
         {
@@ -2416,6 +2418,15 @@ namespace NAPS2.WinForms
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
             }
         }
+
+       
+
+        private void renameCurrentProject_TSMI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
         #endregion
 }

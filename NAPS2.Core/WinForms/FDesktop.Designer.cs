@@ -55,6 +55,7 @@ namespace NAPS2.WinForms
             this.FileDm = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadProjectTool_TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.renameCurrentProject_TSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdSavePDF = new System.Windows.Forms.ToolStripMenuItem();
             this.tsSavePDFAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tsSavePDFSelected = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +72,7 @@ namespace NAPS2.WinForms
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tsEmailSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPdfSettings2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.tsTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -78,6 +80,8 @@ namespace NAPS2.WinForms
             this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsInsert = new System.Windows.Forms.ToolStripButton();
@@ -126,10 +130,6 @@ namespace NAPS2.WinForms
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -363,6 +363,12 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.renameCurrentProject_TSMI, "renameCurrentProject_TSMI");
             this.renameCurrentProject_TSMI.Name = "renameCurrentProject_TSMI";
+            this.renameCurrentProject_TSMI.Click += new System.EventHandler(this.renameCurrentProject_TSMI_Click);
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
             // 
             // tsdSavePDF
             // 
@@ -375,16 +381,19 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsdSavePDF, "tsdSavePDF");
             this.tsdSavePDF.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.tsdSavePDF.Name = "tsdSavePDF";
+            this.tsdSavePDF.Click += new System.EventHandler(this.tsdSavePDF_Click);
             // 
             // tsSavePDFAll
             // 
             this.tsSavePDFAll.Name = "tsSavePDFAll";
             resources.ApplyResources(this.tsSavePDFAll, "tsSavePDFAll");
+            this.tsSavePDFAll.Click += new System.EventHandler(this.tsSavePDFAll_Click);
             // 
             // tsSavePDFSelected
             // 
             this.tsSavePDFSelected.Name = "tsSavePDFSelected";
             resources.ApplyResources(this.tsSavePDFSelected, "tsSavePDFSelected");
+            this.tsSavePDFSelected.Click += new System.EventHandler(this.tsSavePDFSelected_Click_1);
             // 
             // toolStripSeparator10
             // 
@@ -395,6 +404,7 @@ namespace NAPS2.WinForms
             // 
             this.tsPDFSettings.Name = "tsPDFSettings";
             resources.ApplyResources(this.tsPDFSettings, "tsPDFSettings");
+            this.tsPDFSettings.Click += new System.EventHandler(this.tsPDFSettings_Click_1);
             // 
             // tsdSaveImages
             // 
@@ -412,11 +422,13 @@ namespace NAPS2.WinForms
             // 
             this.tsSaveImagesAll.Name = "tsSaveImagesAll";
             resources.ApplyResources(this.tsSaveImagesAll, "tsSaveImagesAll");
+            this.tsSaveImagesAll.Click += new System.EventHandler(this.tsSaveImagesAll_Click_1);
             // 
             // tsSaveImagesSelected
             // 
             this.tsSaveImagesSelected.Name = "tsSaveImagesSelected";
             resources.ApplyResources(this.tsSaveImagesSelected, "tsSaveImagesSelected");
+            this.tsSaveImagesSelected.Click += new System.EventHandler(this.tsSaveImagesSelected_Click_1);
             // 
             // toolStripSeparator11
             // 
@@ -427,6 +439,7 @@ namespace NAPS2.WinForms
             // 
             this.tsImageSettings.Name = "tsImageSettings";
             resources.ApplyResources(this.tsImageSettings, "tsImageSettings");
+            this.tsImageSettings.Click += new System.EventHandler(this.tsImageSettings_Click_1);
             // 
             // tsdEmailPDF
             // 
@@ -466,6 +479,11 @@ namespace NAPS2.WinForms
             this.tsPdfSettings2.Name = "tsPdfSettings2";
             resources.ApplyResources(this.tsPdfSettings2, "tsPdfSettings2");
             // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
+            // 
             // tsTools
             // 
             this.tsTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -495,23 +513,38 @@ namespace NAPS2.WinForms
             this.tsShowHideView.Image = global::NAPS2.Icons.view_fullscreen_view1;
             resources.ApplyResources(this.tsShowHideView, "tsShowHideView");
             this.tsShowHideView.Name = "tsShowHideView";
+            this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click);
             // 
             // tsOCR
             // 
             this.tsOCR.Image = global::NAPS2.Icons.text;
             this.tsOCR.Name = "tsOCR";
             resources.ApplyResources(this.tsOCR, "tsOCR");
+            this.tsOCR.Click += new System.EventHandler(this.tsOCR_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Image = global::NAPS2.Icons.printer;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click_1);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
             resources.ApplyResources(this.toolStripSeparator14, "toolStripSeparator14");
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
+            // 
+            // tsAbout
+            // 
+            this.tsAbout.Image = global::NAPS2.Icons.information;
+            this.tsAbout.Name = "tsAbout";
+            resources.ApplyResources(this.tsAbout, "tsAbout");
+            this.tsAbout.Click += new System.EventHandler(this.tsAbout_Click);
             // 
             // tsScan
             // 
@@ -857,27 +890,6 @@ namespace NAPS2.WinForms
             // folderBrowserDialog1
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
-            // 
-            // tsAbout
-            // 
-            this.tsAbout.Image = global::NAPS2.Icons.information;
-            this.tsAbout.Name = "tsAbout";
-            resources.ApplyResources(this.tsAbout, "tsAbout");
-            // 
-            // toolStripSeparator15
-            // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
-            // 
-            // toolStripSeparator16
-            // 
-            this.toolStripSeparator16.Name = "toolStripSeparator16";
-            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
-            // 
-            // toolStripSeparator17
-            // 
-            this.toolStripSeparator17.Name = "toolStripSeparator17";
-            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
             // 
             // FDesktop
             // 
