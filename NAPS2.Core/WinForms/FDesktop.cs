@@ -2395,15 +2395,25 @@ namespace NAPS2.WinForms
 
         private void loadProjectTool_TSMI_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void FileDm_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
+        {
             // Display the path the recovery folder to get the choosen path instead of the last
             folderBrowserDialog1.SelectedPath = Paths.Recovery;
             // 
-            DialogResult result = folderBrowserDialog1.ShowDialog(); 
+            DialogResult result = folderBrowserDialog1.ShowDialog();
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
             if (result == DialogResult.OK)
             {
 
-              recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
+                recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
             }
         }
     }
