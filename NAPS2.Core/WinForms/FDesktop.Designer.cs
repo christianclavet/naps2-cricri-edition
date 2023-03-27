@@ -52,6 +52,9 @@ namespace NAPS2.WinForms
             this.ctxDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tiffViewerCtl1 = new NAPS2.WinForms.TiffViewerCtl();
             this.tStrip = new System.Windows.Forms.ToolStrip();
+            this.FileDM = new System.Windows.Forms.ToolStripSplitButton();
+            this.loadProjectTool_TSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameCurrentProject_TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsInsert = new System.Windows.Forms.ToolStripButton();
@@ -124,6 +127,7 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -309,6 +313,7 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tStrip, "tStrip");
             this.tStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileDM,
             this.tsScan,
             this.tsInsert,
             this.tsCombo_Profiles,
@@ -331,6 +336,26 @@ namespace NAPS2.WinForms
             this.tStrip.Name = "tStrip";
             this.tStrip.TabStop = true;
             this.tStrip.DockChanged += new System.EventHandler(this.tStrip_DockChanged);
+            // 
+            // FileDM
+            // 
+            this.FileDM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadProjectTool_TSMI,
+            this.renameCurrentProject_TSMI});
+            resources.ApplyResources(this.FileDM, "FileDM");
+            this.FileDM.Name = "FileDM";
+            // 
+            // loadProjectTool_TSMI
+            // 
+            this.loadProjectTool_TSMI.Image = global::NAPS2.Icons.folder_picture;
+            this.loadProjectTool_TSMI.Name = "loadProjectTool_TSMI";
+            resources.ApplyResources(this.loadProjectTool_TSMI, "loadProjectTool_TSMI");
+            this.loadProjectTool_TSMI.Click += new System.EventHandler(this.loadProjectTool_TSMI_Click);
+            // 
+            // renameCurrentProject_TSMI
+            // 
+            resources.ApplyResources(this.renameCurrentProject_TSMI, "renameCurrentProject_TSMI");
+            this.renameCurrentProject_TSMI.Name = "renameCurrentProject_TSMI";
             // 
             // tsScan
             // 
@@ -851,6 +876,10 @@ namespace NAPS2.WinForms
             // 
             this.tt_FDesktop.Popup += new System.Windows.Forms.PopupEventHandler(this.tt_btnZoomOut_Popup);
             // 
+            // folderBrowserDialog1
+            // 
+            resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -970,6 +999,10 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsShowHideView;
         private System.Windows.Forms.ToolStripButton tsInsert;
         private System.Windows.Forms.ToolTip tt_FDesktop;
+        private System.Windows.Forms.ToolStripSplitButton FileDM;
+        private System.Windows.Forms.ToolStripMenuItem loadProjectTool_TSMI;
+        private System.Windows.Forms.ToolStripMenuItem renameCurrentProject_TSMI;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

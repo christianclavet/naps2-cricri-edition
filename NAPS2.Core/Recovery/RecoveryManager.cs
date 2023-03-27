@@ -36,6 +36,15 @@ namespace NAPS2.Recovery
             }
         }
 
+        public void RecoverScannedImages2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
+        {
+            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
+            if (op.Start2(imageCallback, dir))
+            {
+                operationProgress.ShowProgress(op);
+            }
+        }
+
         private class RecoveryOperation : OperationBase
         {
             private readonly IFormFactory formFactory;
@@ -65,6 +74,68 @@ namespace NAPS2.Recovery
                 };
 
                 folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
+                if (folderToRecoverFrom == null)
+                {
+                    return false;
+                }
+                try
+                {
+                    recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
+                    imageCount = recoveryIndexManager.Index.Images.Count;
+                    scannedDateTime = folderToRecoverFrom.LastWriteTime;
+                    if (imageCount == 0)
+                    {
+                        // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
+                        ReleaseFolderLock();
+                        return false;
+                    }
+                    switch (PromptToRecover())
+                    {
+                        case DialogResult.Yes: // Recover
+                            RunAsync(async () =>
+                            {
+                                try
+                                {
+                                    if (await DoRecover(imageCallback))
+                                    {
+                                        ReleaseFolderLock();
+                                        DeleteFolder();
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                                finally
+                                {
+                                    ReleaseFolderLock();
+                                    GC.Collect();
+                                }
+                            });
+                            return true;
+                        case DialogResult.No: // Delete
+                            ReleaseFolderLock();
+                            DeleteFolder();
+                            break;
+                        default: // Not Now
+                            ReleaseFolderLock();
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    ReleaseFolderLock();
+                    throw;
+                }
+                return false;
+            }
+
+            public bool Start2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
+            {
+                Status = new OperationStatus
+                {
+                    StatusText = MiscResources.Recovering
+                };
+
+                folderToRecoverFrom = dir;
                 if (folderToRecoverFrom == null)
                 {
                     return false;

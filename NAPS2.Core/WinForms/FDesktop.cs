@@ -31,6 +31,7 @@ using NAPS2.Scan.Wia.Native;
 using NAPS2.Update;
 using NAPS2.Util;
 using NAPS2.Worker;
+using ZXing;
 
 #endregion
 
@@ -2390,6 +2391,20 @@ namespace NAPS2.WinForms
         private void tt_btnZoomOut_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void loadProjectTool_TSMI_Click(object sender, EventArgs e)
+        {
+            // Display the path the recovery folder to get the choosen path instead of the last
+            folderBrowserDialog1.SelectedPath = Paths.Recovery;
+            // 
+            DialogResult result = folderBrowserDialog1.ShowDialog(); 
+            DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
+            if (result == DialogResult.OK)
+            {
+
+              recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
+            }
         }
     }
         #endregion
