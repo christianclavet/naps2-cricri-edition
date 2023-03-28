@@ -100,8 +100,10 @@ namespace NAPS2.Recovery
                     {
                         // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
                         ReleaseFolderLock();
+                        DeleteFolder();
                         return false;
                     }
+                    /*
                     switch (PromptToRecover())
                     {
                         case DialogResult.Yes: // Recover
@@ -131,7 +133,7 @@ namespace NAPS2.Recovery
                         default: // Not Now
                             ReleaseFolderLock();
                             break;
-                    }
+                    }*/
                 }
                 catch (Exception)
                 {

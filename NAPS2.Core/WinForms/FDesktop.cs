@@ -339,7 +339,7 @@ namespace NAPS2.WinForms
             }
 
             // Allow scanned images to be recovered in case of an unexpected close
-            //recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+            recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
             new Thread(RenderThumbnails).Start();
 
@@ -406,7 +406,7 @@ namespace NAPS2.WinForms
                         if (result != DialogResult.Yes)
                         {
                             e.Cancel = true;
-                            recoveryManager.DeleteFolderEmpty();
+                            //recoveryManager.DeleteFolderEmpty();
                         }
                     }
                 }
@@ -430,14 +430,14 @@ namespace NAPS2.WinForms
                             bitmap.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-                        recoveryManager.DeleteFolderEmpty();
+                        //recoveryManager.DeleteFolderEmpty();
 
                     }
                     else if (result ==DialogResult.No)
                     {
                         // User want to close but want to keep the data
                         changeTracker.Clear();
-                        recoveryManager.DeleteFolderEmpty();
+                        //recoveryManager.DeleteFolderEmpty();
                     }
                     else
  
@@ -475,6 +475,8 @@ namespace NAPS2.WinForms
 
             if (bitmap != null)
                 bitmap.Dispose();
+
+            //recoveryManager.DeleteFolderEmpty();
         }
 
         private void FDesktop_Closed(object sender, EventArgs e)
@@ -486,6 +488,8 @@ namespace NAPS2.WinForms
             //Want to use it as a "SAVE" feature CC
 
             //imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+            //recoveryManager.DeleteFolderEmpty();
+
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
@@ -861,7 +865,7 @@ namespace NAPS2.WinForms
             // put the image inside the preview
             if (thumbnailList1.SelectedItems.Count == 1 && thumbnailList1.SelectedItems[0].Index >= 0)
                 {
-                    GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
+                   GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
                 }
 
             // "All" dropdown items
