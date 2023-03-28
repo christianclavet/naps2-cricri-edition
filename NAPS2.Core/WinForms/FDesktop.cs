@@ -226,6 +226,7 @@ namespace NAPS2.WinForms
             ResetToolbarMargin();
             // Recalculate visibility for the below check
             Application.DoEvents();
+           
             // Check if toolbar buttons are overflowing
             if (tStrip.Items.OfType<ToolStripItem>().Any(btn => !btn.Visible)
                 && (tStrip.Parent.Dock == DockStyle.Top || tStrip.Parent.Dock == DockStyle.Bottom))
@@ -297,6 +298,7 @@ namespace NAPS2.WinForms
             UpdateRTL();
             InitializeComponent();
             PostInitializeComponent();
+            
             AddThumbnails();
             notify.Rebuild();
             Focus();
@@ -855,7 +857,8 @@ namespace NAPS2.WinForms
 
         private void UpdateToolbar()
         {
-
+            //Rename the title to include the name of the current project. -- IN PROGRESS
+            this.Text = this.Text + " | Current project name: " + RecoveryImage.project_name;
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)
             {
