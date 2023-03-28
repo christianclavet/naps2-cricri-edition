@@ -397,7 +397,6 @@ namespace NAPS2.WinForms
         {
             if (closed) return;
 
-            recoveryManager.DeleteFolderEmpty();
             if (operationProgress.ActiveOperations.Any())
             {
                 if (e.CloseReason == CloseReason.UserClosing)
