@@ -19,7 +19,7 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
-        public readonly RecoveryOperation operation;
+        private static RecoveryOperation op1;
 
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
@@ -40,20 +40,20 @@ namespace NAPS2.Recovery
         //Second variation to be originated from the GUI CC
         public void RecoverScannedImages2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
         {
-            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
-            if (op.Start2(imageCallback, dir))
+            op1 = new RecoveryOperation(formFactory, thumbnailRenderer);
+            if (op1.Start2(imageCallback, dir))
             {
-                operationProgress.ShowProgress(op);
+                operationProgress.ShowProgress(op1);
             }
         }
 
         public void DeleteFolderEmpty()
         {
-            if (operation.imageCount == 0)
+            if (op1.imageCount == 0)
             {
                 // If there are no images, do nothing abd remove the folder for cleanup
-                operation.ReleaseFolderLock();
-                operation.DeleteFolder();
+                op1.ReleaseFolderLock();
+                op1.DeleteFolder();
             }
 
         }

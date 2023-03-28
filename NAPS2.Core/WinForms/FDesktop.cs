@@ -397,6 +397,7 @@ namespace NAPS2.WinForms
         {
             if (closed) return;
 
+            recoveryManager.DeleteFolderEmpty();
             if (operationProgress.ActiveOperations.Any())
             {
                 if (e.CloseReason == CloseReason.UserClosing)
@@ -478,7 +479,6 @@ namespace NAPS2.WinForms
             if (bitmap != null)
                 bitmap.Dispose();
 
-            //recoveryManager.DeleteFolderEmpty();
         }
 
         private void FDesktop_Closed(object sender, EventArgs e)
