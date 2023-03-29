@@ -146,19 +146,19 @@ namespace NAPS2.WinForms
             }
             if (appConfigManager.Config.HideImportButton)
             {
-                tStrip.Items.Remove(tsImport);
+                FileDm.DropDownItems.Remove(tsImport);
             }
             if (appConfigManager.Config.HideSavePdfButton)
             {
-                tStrip.Items.Remove(tsdSavePDF);
+                FileDm.DropDownItems.Remove(tsdSavePDF);
             }
             if (appConfigManager.Config.HideSaveImagesButton)
             {
-                tStrip.Items.Remove(tsdSaveImages);
+                FileDm.DropDownItems.Remove(tsdSaveImages);
             }
             if (appConfigManager.Config.HideEmailButton)
             {
-                tStrip.Items.Remove(tsdEmailPDF);
+                FileDm.DropDownItems.Remove(tsdEmailPDF);
             }
             if (appConfigManager.Config.HidePrintButton)
             {
@@ -1498,8 +1498,8 @@ namespace NAPS2.WinForms
             ShowProfilesForm();
         }
 
-        private void tsImport_Click(object sender, EventArgs e)
-        {
+        private void tsImport_Click_1(object sender, EventArgs e)
+       {
             if (appConfigManager.Config.HideImportButton)
             {
                 return;
@@ -2441,7 +2441,6 @@ namespace NAPS2.WinForms
 
         }
 
-        
-    }
+     }
         #endregion
 }

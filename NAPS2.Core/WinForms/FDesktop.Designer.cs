@@ -72,6 +72,8 @@ namespace NAPS2.WinForms
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tsEmailSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPdfSettings2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.tsTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLanguage = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +92,6 @@ namespace NAPS2.WinForms
             this.tsScan = new System.Windows.Forms.ToolStripSplitButton();
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsImport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
@@ -321,7 +322,6 @@ namespace NAPS2.WinForms
             this.tsCombo_Profiles,
             this.tsScan,
             this.tsInsert,
-            this.tsImport,
             this.toolStripSeparator4,
             this.tsdImage,
             this.tsdRotate,
@@ -344,6 +344,8 @@ namespace NAPS2.WinForms
             this.tsdSavePDF,
             this.tsdSaveImages,
             this.tsdEmailPDF,
+            this.toolStripSeparator5,
+            this.tsImport,
             this.toolStripSeparator16,
             this.tsTools,
             this.toolStripSeparator17,
@@ -480,6 +482,19 @@ namespace NAPS2.WinForms
             this.tsPdfSettings2.Name = "tsPdfSettings2";
             resources.ApplyResources(this.tsPdfSettings2, "tsPdfSettings2");
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // tsImport
+            // 
+            this.tsImport.Image = global::NAPS2.Icons.folder_picture;
+            resources.ApplyResources(this.tsImport, "tsImport");
+            this.tsImport.Name = "tsImport";
+            this.tsImport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.tsImport.Click += new System.EventHandler(this.tsImport_Click_1);
+            // 
             // toolStripSeparator16
             // 
             this.toolStripSeparator16.Name = "toolStripSeparator16";
@@ -606,14 +621,6 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsInsert, "tsInsert");
             this.tsInsert.Name = "tsInsert";
             this.tsInsert.Click += new System.EventHandler(this.tsInsert_Click);
-            // 
-            // tsImport
-            // 
-            this.tsImport.Image = global::NAPS2.Icons.folder_picture;
-            resources.ApplyResources(this.tsImport, "tsImport");
-            this.tsImport.Name = "tsImport";
-            this.tsImport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.tsImport.Click += new System.EventHandler(this.tsImport_Click);
             // 
             // toolStripSeparator4
             // 
@@ -936,7 +943,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStrip tStrip;
         private System.Windows.Forms.ToolStripSplitButton tsScan;
         private System.Windows.Forms.ToolStripMenuItem tsBatchScan;
-        private System.Windows.Forms.ToolStripButton tsImport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripDropDownButton tsdImage;
         private System.Windows.Forms.ToolStripMenuItem tsView;
@@ -1017,6 +1023,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripMenuItem tsAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem tsImport;
     }
 }
 
