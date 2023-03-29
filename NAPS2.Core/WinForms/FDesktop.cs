@@ -585,7 +585,7 @@ namespace NAPS2.WinForms
             if (profileManager.DefaultProfile != null)
             {
                 await scanPerformer.PerformScan(profileManager.DefaultProfile, param, this, notify, ReceiveScannedImage());
-               Activate();
+                Activate();
                 param.RescanMode = false;
             }
             
@@ -2442,9 +2442,33 @@ namespace NAPS2.WinForms
 
         }
 
+        public void CopyFolder(DirectoryInfo srcPath, string destPath)
+        {
+            Directory.CreateDirectory(destPath);
+            Parallel.ForEach(srcPath.GetDirectories("*", SearchOption.AllDirectories),
+              srcInfo => Directory.CreateDirectory($"{destPath}{srcInfo.FullName}"));
+            Parallel.ForEach(srcPath.GetFiles("*", SearchOption.AllDirectories),
+              srcInfo => File.Copy(srcInfo.FullName, $"{destPath}{srcInfo.FullName}", true));
+        }
+
         private void closeCurrentProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            changeTracker.Clear();
+            thumbnailList1.Clear();
+            imageList.Images.Clear();
+            bitmap = null;
+            tiffViewerCtl1.Image = bitmap;
+            tiffViewerCtl1.Refresh();
 
+            Directory.Move(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "Saved project");
+            //DirectoryInfo di = new DirectoryInfo(RecoveryImage.RecoveryFolder);
+            //RecoveryImage.project_name = Paths.Recovery + "Saved project";
+            //DirectoryInfo di1 = new DirectoryInfo("BACKUP");
+
+            //CopyFolder(di, di1.FullName);
+            UpdateToolbar();
+            
+            //recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di1);
         }
 
     }
