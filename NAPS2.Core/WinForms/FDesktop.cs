@@ -2420,6 +2420,7 @@ namespace NAPS2.WinForms
             
         }
 
+        // 
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
             // Display the path the recovery folder to get the choosen path instead of the last
@@ -2441,6 +2442,11 @@ namespace NAPS2.WinForms
 
         }
 
-     }
+        private void closeCurrentProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+    }
         #endregion
 }

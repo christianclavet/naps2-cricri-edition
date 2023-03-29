@@ -131,6 +131,7 @@ namespace NAPS2.WinForms
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.closeCurrentProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -340,6 +341,7 @@ namespace NAPS2.WinForms
             this.FileDm.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadProjectTool_TSMI,
             this.renameCurrentProject_TSMI,
+            this.closeCurrentProject,
             this.toolStripSeparator15,
             this.tsdSavePDF,
             this.tsdSaveImages,
@@ -899,6 +901,12 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
             // 
+            // closeCurrentProject
+            // 
+            resources.ApplyResources(this.closeCurrentProject, "closeCurrentProject");
+            this.closeCurrentProject.Name = "closeCurrentProject";
+            this.closeCurrentProject.Click += new System.EventHandler(this.closeCurrentProjectToolStripMenuItem_Click);
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -1025,6 +1033,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem tsImport;
+        private System.Windows.Forms.ToolStripMenuItem closeCurrentProject;
     }
 }
 
