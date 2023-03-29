@@ -19,9 +19,9 @@ namespace NAPS2.Recovery
         public static string project_name = "Untitled_"+Path.GetRandomFileName();
         private static readonly string RecoveryFolderPath = Path.Combine(Paths.Recovery, project_name );
 
-        private static DirectoryInfo _recoveryFolder;
-        private static FileInfo _recoveryLockFile;
-        private static FileStream _recoveryLock;
+        public static DirectoryInfo _recoveryFolder;
+        public static FileInfo _recoveryLockFile;
+        public static FileStream _recoveryLock;
         private static RecoveryIndexManager _recoveryIndexManager;
 
         private static int _recoveryFileNumber = 1;

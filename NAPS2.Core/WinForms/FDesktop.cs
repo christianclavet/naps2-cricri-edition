@@ -78,6 +78,7 @@ namespace NAPS2.WinForms
         private bool splitter1 = false; // Used for the splitter GUI state of display
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
+        private string title = "";
 
         #endregion
 
@@ -183,7 +184,8 @@ namespace NAPS2.WinForms
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
 
-            
+            // Set the title bar info
+            this.title = this.Text;
 
         }
 
@@ -397,6 +399,7 @@ namespace NAPS2.WinForms
         {
             if (closed) return;
 
+            // There is an operation in progress while the user want to close the application
             if (operationProgress.ActiveOperations.Any())
             {
                 if (e.CloseReason == CloseReason.UserClosing)
@@ -408,7 +411,6 @@ namespace NAPS2.WinForms
                         if (result != DialogResult.Yes)
                         {
                             e.Cancel = true;
-                            //recoveryManager.DeleteFolderEmpty();
                         }
                     }
                 }
@@ -416,7 +418,7 @@ namespace NAPS2.WinForms
                 {
                     RecoveryImage.DisableRecoveryCleanup = true;
                 }
-            }
+            } // Or there are unsaved changes
             else if (changeTracker.HasUnsavedChanges)
             {
                 if (e.CloseReason == CloseReason.UserClosing && !RecoveryImage.DisableRecoveryCleanup)
@@ -432,14 +434,12 @@ namespace NAPS2.WinForms
                             bitmap.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-                        //recoveryManager.DeleteFolderEmpty();
 
                     }
                     else if (result ==DialogResult.No)
                     {
                         // User want to close but want to keep the data
                         changeTracker.Clear();
-                        //recoveryManager.DeleteFolderEmpty();
                     }
                     else
  
@@ -475,6 +475,11 @@ namespace NAPS2.WinForms
                 });
             }
 
+            //CC Try to remove the folder when it's closing.
+            //RecoveryImage.RecoveryFolder.Delete(true);
+            //RecoveryImage._recoveryLock.Dispose();
+            //RecoveryImage.RecoveryFolder = null;
+            
             if (bitmap != null)
                 bitmap.Dispose();
 
@@ -856,8 +861,9 @@ namespace NAPS2.WinForms
 
         private void UpdateToolbar()
         {
-            //Rename the title to include the name of the current project. -- IN PROGRESS
-            this.Text = this.Text + " | Current project name: " + RecoveryImage.project_name;
+            //Rename the title to include the name of the current project.
+            this.Text = title + " | Current project name: " + RecoveryImage.project_name;
+
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)
             {
