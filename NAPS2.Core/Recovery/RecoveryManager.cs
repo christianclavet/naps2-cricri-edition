@@ -19,7 +19,7 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
-        private static RecoveryOperation op1;
+        public RecoveryOperation recoveryOP;
 
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
@@ -40,22 +40,17 @@ namespace NAPS2.Recovery
         //Second variation to be originated from the GUI CC
         public void RecoverScannedImages2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
         {
-            op1 = new RecoveryOperation(formFactory, thumbnailRenderer);
-            if (op1.Start2(imageCallback, dir))
+            recoveryOP = new RecoveryOperation(formFactory, thumbnailRenderer);
+            if (recoveryOP.Start2(imageCallback, dir))
             {
-                operationProgress.ShowProgress(op1);
+                operationProgress.ShowProgress(recoveryOP);
             }
         }
 
-        public void DeleteFolderEmpty()
+        public void ReleaseFolderLK()
         {
-            if (op1.imageCount == 0)
-            {
-                // If there are no images, do nothing abd remove the folder for cleanup
-                op1.ReleaseFolderLock();
-                op1.DeleteFolder();
-            }
-
+            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
+            op.ReleaseFolderLock();
         }
 
         public class RecoveryOperation : OperationBase
@@ -274,8 +269,8 @@ namespace NAPS2.Recovery
             {
                 try
                 {
-                    string lockFilePath = Path.Combine(recoveryFolder.FullName, RecoveryImage.LOCK_FILE_NAME);
-                    lockFile = new FileStream(lockFilePath, FileMode.Open);
+                    //string lockFilePath = Path.Combine(recoveryFolder.FullName, RecoveryImage.LOCK_FILE_NAME);
+                    //lockFile = new FileStream(lockFilePath, FileMode.Open);
                     return true;
                 }
                 catch (Exception)

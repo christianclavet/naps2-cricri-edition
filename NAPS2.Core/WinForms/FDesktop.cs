@@ -2442,33 +2442,58 @@ namespace NAPS2.WinForms
 
         }
 
-        public void CopyFolder(DirectoryInfo srcPath, string destPath)
+        static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
         {
-            Directory.CreateDirectory(destPath);
-            Parallel.ForEach(srcPath.GetDirectories("*", SearchOption.AllDirectories),
-              srcInfo => Directory.CreateDirectory($"{destPath}{srcInfo.FullName}"));
-            Parallel.ForEach(srcPath.GetFiles("*", SearchOption.AllDirectories),
-              srcInfo => File.Copy(srcInfo.FullName, $"{destPath}{srcInfo.FullName}", true));
+            // Get information about the source directory
+            var dir = new DirectoryInfo(sourceDir);
+
+            // Check if the source directory exists
+            if (!dir.Exists)
+                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+            // Cache directories before we start copying
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // Create the destination directory
+            Directory.CreateDirectory(destinationDir);
+
+            // Get the files in the source directory and copy to the destination directory
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath);
+            }
+
+            // If recursive and copying subdirectories, recursively call this method
+            if (recursive)
+            {
+                foreach (DirectoryInfo subDir in dirs)
+                {
+                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                    CopyDirectory(subDir.FullName, newDestinationDir, true);
+                }
+            }
         }
 
         private void closeCurrentProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeTracker.Clear();
-            thumbnailList1.Clear();
-            imageList.Images.Clear();
+            //Recovery lock must be removed first to do operations
+            recoveryManager.ReleaseFolderLK();
+
+            //Copy the work folder to another folder to keep it
+            CopyDirectory(RecoveryImage.RecoveryFolder.FullName,Paths.Recovery+"\\"+Path.GetRandomFileName(), false);
+
             bitmap = null;
-            tiffViewerCtl1.Image = bitmap;
-            tiffViewerCtl1.Refresh();
+            // Clear the images in the work folder and start as new
+            tiffViewerCtl1.Image = null;
 
-            Directory.Move(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "Saved project");
-            //DirectoryInfo di = new DirectoryInfo(RecoveryImage.RecoveryFolder);
-            //RecoveryImage.project_name = Paths.Recovery + "Saved project";
-            //DirectoryInfo di1 = new DirectoryInfo("BACKUP");
+            imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+            DeleteThumbnails();
+            changeTracker.Clear();
 
-            //CopyFolder(di, di1.FullName);
+            //UPdate the toolbar
             UpdateToolbar();
-            
-            //recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di1);
+                       
         }
 
     }
