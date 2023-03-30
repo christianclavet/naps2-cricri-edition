@@ -17,7 +17,7 @@ namespace NAPS2.Recovery
     public class RecoveryImage : IDisposable
     {
         public const string LOCK_FILE_NAME = ".lock";
-        public static string project_name = "Untitled_"+Path.GetRandomFileName();
+        public static string project_name = "Work_folder_"+Path.GetRandomFileName();
         private static readonly string RecoveryFolderPath = Path.Combine(Paths.Recovery, project_name );
 
         public static DirectoryInfo _recoveryFolder;

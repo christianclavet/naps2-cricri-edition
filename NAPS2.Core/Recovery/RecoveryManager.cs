@@ -168,8 +168,9 @@ namespace NAPS2.Recovery
                         {
                             if (await DoRecover(imageCallback))
                             {
-                                ReleaseFolderLock();
-                                DeleteFolder();
+                                // Theses are not recovered but used as loading a previous projet, so no delete
+                                //ReleaseFolderLock();
+                                //DeleteFolder();
                                 return true;
                             }
                             return false;

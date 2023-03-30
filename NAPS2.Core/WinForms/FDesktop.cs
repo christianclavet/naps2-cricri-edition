@@ -474,11 +474,6 @@ namespace NAPS2.WinForms
                     SafeInvoke(Close);
                 });
             }
-
-            //CC Try to remove the folder when it's closing.
-            //RecoveryImage.RecoveryFolder.Delete(true);
-            //RecoveryImage._recoveryLock.Dispose();
-            //RecoveryImage.RecoveryFolder = null;
             
             if (bitmap != null)
                 bitmap.Dispose();
@@ -494,8 +489,7 @@ namespace NAPS2.WinForms
             //Want to use it as a "SAVE" feature CC
 
             //imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-            //recoveryManager.DeleteFolderEmpty();
-
+    
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
@@ -2423,6 +2417,8 @@ namespace NAPS2.WinForms
         // 
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
+            closeWorkspace(); // Backup the current project before getting a new one.
+
             // Display the path the recovery folder to get the choosen path instead of the last
             folderBrowserDialog1.SelectedPath = Paths.Recovery;
             // 
@@ -2430,7 +2426,6 @@ namespace NAPS2.WinForms
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
             if (result == DialogResult.OK)
             {
-
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
             }
         }
@@ -2442,58 +2437,38 @@ namespace NAPS2.WinForms
 
         }
 
-        static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
-        {
-            // Get information about the source directory
-            var dir = new DirectoryInfo(sourceDir);
-
-            // Check if the source directory exists
-            if (!dir.Exists)
-                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
-
-            // Cache directories before we start copying
-            DirectoryInfo[] dirs = dir.GetDirectories();
-
-            // Create the destination directory
-            Directory.CreateDirectory(destinationDir);
-
-            // Get the files in the source directory and copy to the destination directory
-            foreach (FileInfo file in dir.GetFiles())
-            {
-                string targetFilePath = Path.Combine(destinationDir, file.Name);
-                file.CopyTo(targetFilePath);
-            }
-
-            // If recursive and copying subdirectories, recursively call this method
-            if (recursive)
-            {
-                foreach (DirectoryInfo subDir in dirs)
-                {
-                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
-                    CopyDirectory(subDir.FullName, newDestinationDir, true);
-                }
-            }
-        }
-
-        private void closeCurrentProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void closeWorkspace()
         {
             //Recovery lock must be removed first to do operations
-            recoveryManager.ReleaseFolderLK();
+            // TODO. Currently disabled.
+            
+            var todayDate = DateTime.Now;
+            string strToday = todayDate.ToString("MM_dd_yyyy_HH_mm_ss"); // converts date to string as per current culture
 
-            //Copy the work folder to another folder to keep it
-            CopyDirectory(RecoveryImage.RecoveryFolder.FullName,Paths.Recovery+"\\"+Path.GetRandomFileName(), false);
+            //Copy the work folder to another folder to keep it, if only it contain images
+            if (imageList.Images.Count() > 0)          
+                PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "\\Untitled_"+strToday, false); ;
 
             bitmap = null;
             // Clear the images in the work folder and start as new
             tiffViewerCtl1.Image = null;
 
-            imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-            DeleteThumbnails();
+            if (imageList.Images.Count() > 0)
+            {
+                imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+                DeleteThumbnails();
+            }
             changeTracker.Clear();
 
             //UPdate the toolbar
             UpdateToolbar();
-                       
+        }
+        
+        // Closing the project and make fresh start (like new)
+        private void closeCurrentProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Will backup the current projet if it contain images.
+            closeWorkspace();                               
         }
 
     }
