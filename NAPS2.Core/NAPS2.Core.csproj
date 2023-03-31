@@ -311,6 +311,12 @@
     <Compile Include="Util\WebClientExtensions.cs" />
     <Compile Include="Util\Win32Window.cs" />
     <Compile Include="Logging\WindowsEventLogger.cs" />
+    <Compile Include="WinForms\FProjectName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\FProjectName.Designer.cs">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\FProxyConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -713,12 +719,6 @@
     <Compile Include="WinForms\FProgress.Designer.cs">
       <DependentUpon>FProgress.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\FRecover.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\FRecover.Designer.cs">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinForms\FRotate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -822,6 +822,132 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.af.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ar.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.bg.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ca.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.cs.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.da.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.de.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.el.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.es.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.et.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.fa.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.fi.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.fr.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.he.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.hr.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.hu.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.it.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ja.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ko.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.lt.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.lv.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.nb.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.nl.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.nn.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.pl.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.pt-BR.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.pt-PT.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ro.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.ru.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.si.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sk.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sl.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sq.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sr-Cyrl.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sr-Latn.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.sv.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.tr.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.uk.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.vi.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.zh-CHS.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FProjectName.zh-TW.resx">
+      <DependentUpon>FProjectName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\FProxyConfig.af.resx" Condition="'$(Configuration)' != 'Debug'">
       <DependentUpon>FProxyConfig.cs</DependentUpon>
@@ -4506,132 +4632,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\FProgress.zh-TW.resx" Condition="'$(Configuration)' != 'Debug'">
       <DependentUpon>FProgress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.af.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ar.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.bg.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ca.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.cs.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.da.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.de.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.el.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.es.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.et.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.fa.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.fi.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.fr.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.he.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.hr.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.hu.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.it.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ja.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ko.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.lt.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.lv.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.nb.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.nl.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.nn.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.pl.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.pt-BR.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.pt-PT.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.resx">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ro.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.ru.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.si.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sk.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sl.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sq.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sr-Cyrl.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sr-Latn.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.sv.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.tr.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.uk.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.vi.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.zh-CHS.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\FRecover.zh-TW.resx" Condition="'$(Configuration)' != 'Debug'">
-      <DependentUpon>FRecover.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\FRotate.af.resx" Condition="'$(Configuration)' != 'Debug'">
       <DependentUpon>FRotate.cs</DependentUpon>

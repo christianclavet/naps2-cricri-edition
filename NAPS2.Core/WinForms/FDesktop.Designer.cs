@@ -55,6 +55,7 @@ namespace NAPS2.WinForms
             this.FileDm = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadProjectTool_TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.renameCurrentProject_TSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeCurrentProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdSavePDF = new System.Windows.Forms.ToolStripMenuItem();
             this.tsSavePDFAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +132,6 @@ namespace NAPS2.WinForms
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.closeCurrentProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -369,6 +369,12 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.renameCurrentProject_TSMI, "renameCurrentProject_TSMI");
             this.renameCurrentProject_TSMI.Name = "renameCurrentProject_TSMI";
             this.renameCurrentProject_TSMI.Click += new System.EventHandler(this.renameCurrentProject_TSMI_Click);
+            // 
+            // closeCurrentProject
+            // 
+            resources.ApplyResources(this.closeCurrentProject, "closeCurrentProject");
+            this.closeCurrentProject.Name = "closeCurrentProject";
+            this.closeCurrentProject.Click += new System.EventHandler(this.closeCurrentProjectToolStripMenuItem_Click);
             // 
             // toolStripSeparator15
             // 
@@ -901,16 +907,10 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
             // 
-            // closeCurrentProject
-            // 
-            resources.ApplyResources(this.closeCurrentProject, "closeCurrentProject");
-            this.closeCurrentProject.Name = "closeCurrentProject";
-            this.closeCurrentProject.Click += new System.EventHandler(this.closeCurrentProjectToolStripMenuItem_Click);
-            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Name = "FDesktop";

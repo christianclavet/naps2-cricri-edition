@@ -79,6 +79,7 @@ namespace NAPS2.WinForms
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
         private string title = "";
+        private string projectName = "Untitled";
 
         #endregion
 
@@ -856,7 +857,7 @@ namespace NAPS2.WinForms
         private void UpdateToolbar()
         {
             //Rename the title to include the name of the current project.
-            this.Text = title + " | Current project name: " + RecoveryImage.project_name;
+            this.Text = title + " | Current project name: " + projectName;
 
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)
@@ -2434,7 +2435,14 @@ namespace NAPS2.WinForms
 
         private void renameCurrentProject_TSMI_Click(object sender, EventArgs e)
         {
-
+            var form = FormFactory.Create<FProjectName>();
+            form.setFileName(projectName); // The "old" filename will be set
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                projectName = form.getFileName();
+                UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
+            }
         }
 
         private void closeWorkspace()
@@ -2447,7 +2455,7 @@ namespace NAPS2.WinForms
 
             //Copy the work folder to another folder to keep it, if only it contain images
             if (imageList.Images.Count() > 0)          
-                PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "\\Untitled_"+strToday, false); ;
+                PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery +"//"+projectName+"_"+strToday, false); ;
 
             bitmap = null;
             // Clear the images in the work folder and start as new
@@ -2459,6 +2467,7 @@ namespace NAPS2.WinForms
                 DeleteThumbnails();
             }
             changeTracker.Clear();
+            projectName = "Untitled";
 
             //UPdate the toolbar
             UpdateToolbar();

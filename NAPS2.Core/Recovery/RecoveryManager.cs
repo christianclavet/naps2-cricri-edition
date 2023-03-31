@@ -228,12 +228,12 @@ namespace NAPS2.Recovery
                 return true;
             }
 
-            private DialogResult PromptToRecover()
+            /*private DialogResult PromptToRecover()
             {
-                var recoveryPromptForm = formFactory.Create<FRecover>();
-                recoveryPromptForm.SetData(imageCount, scannedDateTime);
-                return recoveryPromptForm.ShowDialog();
-            }
+                //var recoveryPromptForm = formFactory.Create<FRecover>();
+                //recoveryPromptForm.SetData(imageCount, scannedDateTime);
+                return; //recoveryPromptForm.ShowDialog();
+            }*/
 
             public void DeleteFolder()
             {
