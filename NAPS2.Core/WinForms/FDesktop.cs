@@ -939,6 +939,8 @@ namespace NAPS2.WinForms
                     imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                     DeleteThumbnails();
                     changeTracker.Clear();
+                    projectName = "Untitled";
+                    UpdateToolbar();
                 }
             }
         }
@@ -2424,12 +2426,12 @@ namespace NAPS2.WinForms
             // 
             DialogResult result = folderBrowserDialog1.ShowDialog();
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
-            if (result == DialogResult.OK)
+            if (result == DialogResult.OK) // Only recover if the user acknoledge and don't change the project name
             {
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
-            }
-            projectName = di.Name;
-            UpdateToolbar();
+                projectName = di.Name;
+                UpdateToolbar();
+            }         
         }
 
        
