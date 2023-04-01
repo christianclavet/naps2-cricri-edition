@@ -2390,32 +2390,6 @@ namespace NAPS2.WinForms
             splitter1 = true;
         }
 
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tiffViewerCtl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tt_btnZoomOut_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-
-        private void FileDm_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         // 
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
@@ -2434,9 +2408,7 @@ namespace NAPS2.WinForms
             }         
         }
 
-       
-
-        private void renameCurrentProject_TSMI_Click(object sender, EventArgs e)
+        private void RenameCurrentProject_TSMI_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
             form.setFileName(projectName); // The "old" filename will be set

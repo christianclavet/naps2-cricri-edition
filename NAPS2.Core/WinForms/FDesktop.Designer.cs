@@ -157,7 +157,6 @@ namespace NAPS2.WinForms
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            this.toolStripContainer1.ContentPanel.Load += new System.EventHandler(this.toolStripContainer1_ContentPanel_Load);
             resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
@@ -190,7 +189,6 @@ namespace NAPS2.WinForms
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomMouseCatcher);
             this.splitContainer1.Panel1.Controls.Add(this.thumbnailList1);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -311,7 +309,6 @@ namespace NAPS2.WinForms
             this.tiffViewerCtl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tiffViewerCtl1.Image = null;
             this.tiffViewerCtl1.Name = "tiffViewerCtl1";
-            this.tiffViewerCtl1.Load += new System.EventHandler(this.tiffViewerCtl1_Load);
             // 
             // tStrip
             // 
@@ -355,7 +352,6 @@ namespace NAPS2.WinForms
             this.FileDm.Image = global::NAPS2.Icons.folder_picture;
             resources.ApplyResources(this.FileDm, "FileDm");
             this.FileDm.Name = "FileDm";
-            this.FileDm.Click += new System.EventHandler(this.FileDm_Click);
             // 
             // loadProjectTool_TSMI
             // 
@@ -368,7 +364,7 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.renameCurrentProject_TSMI, "renameCurrentProject_TSMI");
             this.renameCurrentProject_TSMI.Name = "renameCurrentProject_TSMI";
-            this.renameCurrentProject_TSMI.Click += new System.EventHandler(this.renameCurrentProject_TSMI_Click);
+            this.renameCurrentProject_TSMI.Click += new System.EventHandler(this.RenameCurrentProject_TSMI_Click);
             // 
             // closeCurrentProject
             // 
@@ -898,10 +894,6 @@ namespace NAPS2.WinForms
             // ContentPanel
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
-            // 
-            // tt_FDesktop
-            // 
-            this.tt_FDesktop.Popup += new System.Windows.Forms.PopupEventHandler(this.tt_btnZoomOut_Popup);
             // 
             // folderBrowserDialog1
             // 
