@@ -2452,6 +2452,7 @@ namespace NAPS2.WinForms
         {
             //Recovery lock must be removed first to do operations
             // TODO. Currently disabled.
+            RecoveryImage._recoveryLock.Dispose();
 
             var todayDate = DateTime.Now;
             string strToday = todayDate.ToString("MM_dd_yyyy_HH_mm_ss"); // converts date to string as per current culture

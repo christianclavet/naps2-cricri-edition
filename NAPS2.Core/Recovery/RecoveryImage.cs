@@ -54,7 +54,7 @@ namespace NAPS2.Recovery
                     _recoveryFolder = new DirectoryInfo(RecoveryFolderPath);
                     _recoveryFolder.Create();
                     _recoveryLockFile = new FileInfo(Path.Combine(_recoveryFolder.FullName, LOCK_FILE_NAME));
-                    //_recoveryLock = _recoveryLockFile.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None);
+                    _recoveryLock = _recoveryLockFile.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None);
                     _recoveryIndexManager = new RecoveryIndexManager(_recoveryFolder);
                 }
                 return _recoveryFolder;
@@ -218,8 +218,7 @@ namespace NAPS2.Recovery
                     }
                     if (_recoveryIndexManager.Index.Images.Count == 0)
                     {
-                        // Temporary remove the lock until I can figure out more about this code.
-                        //_recoveryLock.Dispose();
+                        _recoveryLock.Dispose();
                         RecoveryFolder.Delete(true);
                         _recoveryFolder = null;
                     }
