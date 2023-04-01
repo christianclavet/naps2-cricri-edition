@@ -439,8 +439,7 @@ namespace NAPS2.WinForms
                     }
                     else if (result ==DialogResult.No)
                     {
-                        // User want to close but want to keep the data
-                        changeTracker.Clear();
+                        closeWorkspace();
                     }
                     else
  
@@ -2429,6 +2428,8 @@ namespace NAPS2.WinForms
             {
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
             }
+            projectName = di.Name;
+            UpdateToolbar();
         }
 
        
@@ -2449,14 +2450,19 @@ namespace NAPS2.WinForms
         {
             //Recovery lock must be removed first to do operations
             // TODO. Currently disabled.
-            
+
             var todayDate = DateTime.Now;
             string strToday = todayDate.ToString("MM_dd_yyyy_HH_mm_ss"); // converts date to string as per current culture
 
             //Copy the work folder to another folder to keep it, if only it contain images
-            if (imageList.Images.Count() > 0)          
-                PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery +"//"+projectName+"_"+strToday, false); ;
-
+            if (imageList.Images.Count() > 0)
+            {
+                // If the projectname was not named, will put the "untitled" and the date so it will be easier to find out later, else keep the defined name for the folder
+                if (projectName.Contains("Untitled"))
+                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName + "_" + strToday, false);
+                else
+                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName, false);
+            }  
             bitmap = null;
             // Clear the images in the work folder and start as new
             tiffViewerCtl1.Image = null;
