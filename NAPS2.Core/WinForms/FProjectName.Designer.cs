@@ -46,7 +46,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(202, 92);
+            this.btnAccept.Location = new System.Drawing.Point(17, 92);
             this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(180, 46);
@@ -71,9 +71,9 @@
             // 
             this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.inputTextBox.Location = new System.Drawing.Point(12, 49);
+            this.inputTextBox.Location = new System.Drawing.Point(17, 44);
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(564, 19);
+            this.inputTextBox.Size = new System.Drawing.Size(559, 19);
             this.inputTextBox.TabIndex = 3;
             this.inputTextBox.Text = "Untitled";
             // 
