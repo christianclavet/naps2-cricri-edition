@@ -2426,7 +2426,7 @@ namespace NAPS2.WinForms
             // 
             DialogResult result = folderBrowserDialog1.ShowDialog();
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
-            if (result == DialogResult.OK) // Only recover if the user acknoledge and don't change the project name
+            if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))// Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
                 projectName = di.Name;

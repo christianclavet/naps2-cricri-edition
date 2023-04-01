@@ -47,12 +47,6 @@ namespace NAPS2.Recovery
             }
         }
 
-        public void ReleaseFolderLK()
-        {
-            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
-            op.ReleaseFolderLock();
-        }
-
         public class RecoveryOperation : OperationBase
         {
             private readonly IFormFactory formFactory;
@@ -91,7 +85,7 @@ namespace NAPS2.Recovery
                     recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
                     imageCount = recoveryIndexManager.Index.Images.Count;
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
-                    if (imageCount == 0)
+                    if (imageCount == 0) //TODO, check if a index file exist before deleting the folder. Caused a bug if the user select a wrong folder will delete it content!
                     {
                         // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
                         ReleaseFolderLock();
@@ -239,6 +233,7 @@ namespace NAPS2.Recovery
             {
                 try
                 {
+                    ReleaseFolderLock();
                     folderToRecoverFrom.Delete(true);
                 }
                 catch (Exception ex)
