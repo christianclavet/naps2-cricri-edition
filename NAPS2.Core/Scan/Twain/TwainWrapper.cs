@@ -131,7 +131,7 @@ namespace NAPS2.Scan.Twain
             var waitHandle = new AutoResetEvent(false);
 
             int pageNumber = 0;
-            int sheetSide = 0;
+            //int sheetSide = 0;
 
             session.TransferReady += (sender, eventArgs) =>
             {

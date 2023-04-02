@@ -13,6 +13,14 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.13.0\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
+#: FAbout.resx$label2.Text$Message
+msgid "\"CriCri Edition\""
+msgstr ""
+
+#: FEditProfile.resx$InfoDisplayCaps.Text$Message
+msgid "* Here are the detected Capabilities"
+msgstr ""
+
 #: SettingsResources.resx$Dpi_100$Message
 msgid "100 dpi"
 msgstr ""
@@ -71,12 +79,28 @@ msgstr ""
 msgid "Acquiring data"
 msgstr ""
 
+#: FViewer.resx$toolStripButton2.Text$Message
+msgid "Add"
+msgstr ""
+
+#: FViewer.resx$toolStripButton2.ToolTipText$Message
+msgid "Add more pages"
+msgstr ""
+
+#: FDesktop.resx$tsHueSaturation.ToolTipText$Message
+msgid "Adjust the hue and saturation of the selected image(s)"
+msgstr ""
+
 #: FEditProfile.resx$btnAdvanced.Text$Message
 msgid "Advanced"
 msgstr ""
 
 #: FAdvancedScanSettings.resx$$this.Text$Message
 msgid "Advanced Profile Settings"
+msgstr ""
+
+#: FDesktop.resx$tsBrightnessContrast.ToolTipText$Message
+msgid "Ajust the brightness and contrast of the selected image(s)"
 msgstr ""
 
 #: FDesktop.resx$tsEmailPDFAll.Text$Message
@@ -240,6 +264,14 @@ msgstr ""
 msgid "Auto Save Settings"
 msgstr ""
 
+#: FEditProfile.resx$lab_autoDeskew.Text$Message
+msgid "Auto-Deskew (Twain)"
+msgstr ""
+
+#: FEditProfile.resx$lab_AutoRotate.Text$Message
+msgid "Auto-Rotation (Twain)"
+msgstr ""
+
 #: FPlaceholders.resx$label13.Text$Message
 msgid "Auto-incrementing number (1 digit)"
 msgstr ""
@@ -254,6 +286,10 @@ msgstr ""
 
 #: FPlaceholders.resx$label10.Text$Message
 msgid "Auto-incrementing number (4 digits)"
+msgstr ""
+
+#: FEditProfile.resx$lbl_AutoBorderDetect.Text$Message
+msgid "Automatic border detection (Twain)"
 msgstr ""
 
 #: FOcrSetup.resx$checkBoxRunInBG.Text$Message
@@ -285,7 +321,7 @@ msgstr ""
 msgid "Batch scan stopped due to error"
 msgstr ""
 
-#: FEditProfile.resx$label3.Text$Message
+#: FEditProfile.resx$lbl_bitdepth.Text$Message
 msgid "Bit depth"
 msgstr ""
 
@@ -307,7 +343,7 @@ msgstr ""
 msgid "Blank Pages"
 msgstr ""
 
-#: FEditProfile.resx$label6.Text$Message
+#: FEditProfile.resx$lbl_brightness.Text$Message
 msgid "Brightness"
 msgstr ""
 
@@ -336,6 +372,7 @@ msgstr ""
 #: FPdfSettings.resx$btnCancel.Text$Message
 #: FPlaceholders.resx$btnCancel.Text$Message
 #: FProgress.resx$btnCancel.Text$Message
+#: FProxyConfig.resx$btnCancel.Text$Message
 #: FScanProgress.resx$btnCancel.Text$Message
 #: FSelectDevice.resx$btnCancel.Text$Message
 #: ImageForm.resx$btnCancel.Text$Message
@@ -393,6 +430,10 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: FDesktop.resx$closeCurrentProject.Text$Message
+msgid "Close current project"
+msgstr ""
+
 #: FAdvancedScanSettings.resx$groupBox2.Text$Message
 #: FPdfSettings.resx$groupCompat.Text$Message
 msgid "Compatibility"
@@ -402,8 +443,16 @@ msgstr ""
 msgid "Compression"
 msgstr ""
 
-#: FEditProfile.resx$label7.Text$Message
+#: FProxyConfig.resx$cbUseProxy.Text$Message
+msgid "Connect to NAPS2 Server"
+msgstr ""
+
+#: FEditProfile.resx$lbl_contrast.Text$Message
 msgid "Contrast"
+msgstr ""
+
+#: FDesktop.resx$tsBlackWhite.ToolTipText$Message
+msgid "Convert the selected image to bitonal"
 msgstr ""
 
 #: FDesktop.resx$ctxCopy.Text$Message
@@ -420,7 +469,7 @@ msgid "Copying"
 msgstr ""
 
 #: FAbout.resx$labelCopyright.Text$Message
-msgid "Copyright 2009, 2012-2018 NAPS2 Contributors"
+msgid "Copyright 2009, 2012-2018-2022 NAPS2 Contributors"
 msgstr ""
 
 #: FAdvancedScanSettings.resx$label3.Text$Message
@@ -433,8 +482,16 @@ msgstr ""
 msgid "Crop"
 msgstr ""
 
+#: FDesktop.resx$tsCrop.ToolTipText$Message
+msgid "Crop the selected image(s)"
+msgstr ""
+
 #: FAdvancedScanSettings.resx$cbForcePageSizeCrop.Text$Message
 msgid "Crop to page size"
+msgstr ""
+
+#: FDesktop.resx$tsCombo_Profiles.Text$Message
+msgid "Current profile"
 msgstr ""
 
 #: SettingsResources.resx$PageSize_Custom$Message
@@ -500,11 +557,23 @@ msgstr ""
 msgid "Deskew scanned pages"
 msgstr ""
 
+#: FDesktop.resx$tsDeskew.ToolTipText$Message
+msgid "Deskew the image"
+msgstr ""
+
 #: MiscResources.resx$AutoDeskewing$Message
 msgid "Deskewing"
 msgstr ""
 
-#: FEditProfile.resx$label1.Text$Message
+#: FEditProfile.resx$lab_Cap.Text$Message
+msgid "Detected Capabilities (Twain)"
+msgstr ""
+
+#: FAbout.resx$label3.Text$Message
+msgid "Dev: Christian Clavet"
+msgstr ""
+
+#: FEditProfile.resx$lbl_device.Text$Message
 msgid "Device"
 msgstr ""
 
@@ -512,8 +581,26 @@ msgstr ""
 msgid "Dimensions"
 msgstr ""
 
-#: FEditProfile.resx$label8.Text$Message
+#: FEditProfile.resx$cmbAutoBorderDetection.Items1$Message
+#: FEditProfile.resx$cmbAutoDeskew.Items1$Message
+#: FEditProfile.resx$cmbAutoRotation.Items1$Message
+msgid "Disabled"
+msgstr ""
+
+#: FDesktop.resx$tsAbout.ToolTipText$Message
+msgid "Display informations about Naps 2"
+msgstr ""
+
+#: FEditProfile.resx$lbl_displayname.Text$Message
 msgid "Display name"
+msgstr ""
+
+#: FDesktop.resx$tsShowHideView.ToolTipText$Message
+msgid "Display or hide the integrated image viewer"
+msgstr ""
+
+#: FDesktop.resx$tsCustomRotation.ToolTipText$Message
+msgid "Do a custom rotation"
 msgstr ""
 
 #: MiscResources.resx$Donate$Message
@@ -568,6 +655,12 @@ msgstr ""
 msgid "Enable Auto Save"
 msgstr ""
 
+#: FEditProfile.resx$cmbAutoBorderDetection.Items$Message
+#: FEditProfile.resx$cmbAutoDeskew.Items$Message
+#: FEditProfile.resx$cmbAutoRotation.Items$Message
+msgid "Enabled"
+msgstr ""
+
 #: FPdfSettings.resx$cbEncryptPdf.Text$Message
 msgid "Encrypt PDF"
 msgstr ""
@@ -602,8 +695,16 @@ msgstr ""
 msgid "Feeder"
 msgstr ""
 
+#: FDesktop.resx$FileDm.Text$Message
+msgid "File"
+msgstr ""
+
 #: FPlaceholders.resx$label1.Text$Message
 msgid "File Name"
+msgstr ""
+
+#: FDesktop.resx$FileDm.ToolTipText$Message
+msgid "File menu"
 msgstr ""
 
 #: FAutoSaveSettings.resx$lblFilePath.Text$Message
@@ -620,8 +721,16 @@ msgstr ""
 msgid "Flip duplexed pages"
 msgstr ""
 
+#: FDesktop.resx$tsFlip.ToolTipText$Message
+msgid "Flip the orientation of the image"
+msgstr ""
+
 #: FImageSettings.resx$lblWarning.Text$Message
 msgid "For high JPEG qualities (80+), also increase Image Quality in your profile for best results"
+msgstr ""
+
+#: FEditProfile.resx$cmbPaperType.Items1$Message
+msgid "Fragile"
 msgstr ""
 
 #: MiscResources.resx$FileTypeGif$Message
@@ -644,7 +753,7 @@ msgstr ""
 msgid "Grayscale"
 msgstr ""
 
-#: FEditProfile.resx$label9.Text$Message
+#: FEditProfile.resx$lbl_horizontalalign.Text$Message
 msgid "Horizontal align"
 msgstr ""
 
@@ -656,6 +765,10 @@ msgstr ""
 #: FHueSaturation.resx$$this.Text$Message
 #: FViewer.resx$tsHueSaturation.Text$Message
 msgid "Hue / Saturation"
+msgstr ""
+
+#: FProxyConfig.resx$label2.Text$Message
+msgid "IP"
 msgstr ""
 
 #: FAbout.resx$label1.Text$Message
@@ -679,6 +792,10 @@ msgstr ""
 msgid "Image Settings"
 msgstr ""
 
+#: FDesktop.resx$tsImageSettings.ToolTipText$Message
+msgid "Image save settings"
+msgstr ""
+
 #: MiscResources.resx$ImageSaved$Message
 msgid "Image saved"
 msgstr ""
@@ -697,6 +814,10 @@ msgstr ""
 
 #: MiscResources.resx$ImportingFormat$Message
 msgid "Importing {0}"
+msgstr ""
+
+#: FViewer.resx$toolStripButton3.Text$Message
+msgid "Insert before"
 msgstr ""
 
 #: MiscResources.resx$Install$Message
@@ -739,7 +860,7 @@ msgstr ""
 msgid "LZW"
 msgstr ""
 
-#: FDesktop.resx$toolStripDropDownButton1.Text$Message
+#: FDesktop.resx$tsLanguage.Text$Message
 msgid "Language"
 msgstr ""
 
@@ -751,8 +872,16 @@ msgstr ""
 msgid "Legacy (native UI only)"
 msgstr ""
 
+#: MiscResources.resx$ListeningOnPort$Message
+msgid "Listening on port {0}"
+msgstr ""
+
 #: FBatchScan.resx$rdLoadIntoNaps2.Text$Message
 msgid "Load images into NAPS2"
+msgstr ""
+
+#: FDesktop.resx$loadProjectTool_TSMI.Text$Message
+msgid "Load project"
 msgstr ""
 
 #: FDesktop.resx$tStrip.Text$Message
@@ -792,6 +921,10 @@ msgstr ""
 msgid "Move Up"
 msgstr ""
 
+#: FDesktop.resx$tsMove.ToolTipText$Message
+msgid "Move up or down the image"
+msgstr ""
+
 #: FBatchScan.resx$rdMultipleScansDelay.Text$Message
 msgid "Multiple scans (fixed delay between scans)"
 msgstr ""
@@ -804,11 +937,16 @@ msgstr ""
 msgid "NAPS2"
 msgstr ""
 
+#: MiscResources.resx$Naps2Server$Message
+msgid "NAPS2 Server"
+msgstr ""
+
 #: MiscResources.resx$DonatePrompt$Message
 msgid "NAPS2 is completely free. Consider making a donation"
 msgstr ""
 
 #: FPageSize.resx$label1.Text$Message
+#: FProxyConfig.resx$label1.Text$Message
 msgid "Name (optional)"
 msgstr ""
 
@@ -816,12 +954,16 @@ msgstr ""
 msgid "Name missing"
 msgstr ""
 
+#: FProxyConfig.resx$$this.Text$Message
+msgid "Network Setup"
+msgstr ""
+
 #: FProfiles.resx$btnAdd.Text$Message
 msgid "New"
 msgstr ""
 
 #: FDesktop.resx$tsNewProfile.Text$Message
-msgid "New Profile"
+msgid "New profile"
 msgstr ""
 
 #: FViewer.resx$tsNext.Text$Message
@@ -857,8 +999,12 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: FEditProfile.resx$cmbPaperType.Items$Message
+msgid "Normal"
+msgstr ""
+
 #: FDesktop.resx$$this.Text$Message
-msgid "Not Another PDF Scanner 2"
+msgid "Not Another PDF Scanner 2 - Cricri Edition"
 msgstr ""
 
 #: FRecover.resx$btnCancel.Text$Message
@@ -869,7 +1015,7 @@ msgstr ""
 msgid "Number of scans"
 msgstr ""
 
-#: FDesktop.resx$tsOcr.Text$Message
+#: FDesktop.resx$tsOCR.Text$Message
 msgid "OCR"
 msgstr ""
 
@@ -905,6 +1051,7 @@ msgstr ""
 #: FPdfPassword.resx$btnOK.Text$Message
 #: FPdfSettings.resx$btnOK.Text$Message
 #: FPlaceholders.resx$btnOK.Text$Message
+#: FProxyConfig.resx$btnOK.Text$Message
 #: ImageForm.resx$btnOK.Text$Message
 msgid "OK"
 msgstr ""
@@ -935,6 +1082,10 @@ msgstr ""
 msgid "Open Folder"
 msgstr ""
 
+#: FDesktop.resx$tsView.ToolTipText$Message
+msgid "Open viewer"
+msgstr ""
+
 #: MiscResources.resx$ActiveOperations$Message
 msgid "Operation in Progress"
 msgstr ""
@@ -957,6 +1108,10 @@ msgstr ""
 
 #: MiscResources.resx$FileTypePdf$Message
 msgid "PDF Document (*.pdf)"
+msgstr ""
+
+#: FDesktop.resx$tsPDFSettings.ToolTipText$Message
+msgid "PDF Save settings"
 msgstr ""
 
 #: FDesktop.resx$tsPDFSettings.Text$Message
@@ -989,12 +1144,16 @@ msgstr ""
 msgid "PNG File (*.png)"
 msgstr ""
 
-#: FEditProfile.resx$label4.Text$Message
+#: FEditProfile.resx$lbl_pagesize.Text$Message
 msgid "Page size"
 msgstr ""
 
-#: FEditProfile.resx$label2.Text$Message
+#: FEditProfile.resx$lbl_papersource.Text$Message
 msgid "Paper source"
+msgstr ""
+
+#: FEditProfile.resx$LBL_Paper.Text$Message
+msgid "Paper type"
 msgstr ""
 
 #: FPdfPassword.resx$$this.Text$Message
@@ -1006,6 +1165,10 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+#: FEditProfile.resx$cmbPaperType.Items4$Message
+msgid "Photograph"
+msgstr ""
+
 #: FAutoSaveSettings.resx$linkPlaceholders.Text$Message
 #: FBatchScan.resx$linkPlaceholders.Text$Message
 #: FEmailSettings.resx$linkPlaceholders.Text$Message
@@ -1014,6 +1177,10 @@ msgstr ""
 #: FPlaceholders.resx$$this.Text$Message
 #: FPlaceholders.resx$gboxPlaceholders.Text$Message
 msgid "Placeholders"
+msgstr ""
+
+#: FProxyConfig.resx$lblPort.Text$Message
+msgid "Port"
 msgstr ""
 
 #: FAdvancedScanSettings.resx$groupBox4.Text$Message
@@ -1033,9 +1200,13 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: FDesktop.resx$tsPrint.Text$Message
+#: FDesktop.resx$printToolStripMenuItem.Text$Message
 #: MiscResources.resx$Print$Message
 msgid "Print"
+msgstr ""
+
+#: FDesktop.resx$printToolStripMenuItem.ToolTipText$Message
+msgid "Print the selected images"
 msgstr ""
 
 #: FBatchScan.resx$lblProfile.Text$Message
@@ -1089,6 +1260,10 @@ msgstr ""
 msgid "Reorder"
 msgstr ""
 
+#: FViewer.resx$toolStripButton1.Text$Message
+msgid "Rescan"
+msgstr ""
+
 #: FDesktop.resx$tsReset.Text$Message
 msgid "Reset"
 msgstr ""
@@ -1097,7 +1272,11 @@ msgstr ""
 msgid "Reset Image"
 msgstr ""
 
-#: FEditProfile.resx$label5.Text$Message
+#: FDesktop.resx$tsReset.ToolTipText$Message
+msgid "Reset all transformations on the images"
+msgstr ""
+
+#: FEditProfile.resx$lbl_resolution.Text$Message
 msgid "Resolution"
 msgstr ""
 
@@ -1136,6 +1315,18 @@ msgstr ""
 msgid "Rotate Right"
 msgstr ""
 
+#: FDesktop.resx$tsdRotate.ToolTipText$Message
+msgid "Rotate operations"
+msgstr ""
+
+#: FDesktop.resx$tsRotateLeft.ToolTipText$Message
+msgid "Rotate to the left"
+msgstr ""
+
+#: FDesktop.resx$tsRotateRight.ToolTipText$Message
+msgid "Rotate to the right"
+msgstr ""
+
 #: FProgress.resx$btnRunInBG.Text$Message
 msgid "Run in Background"
 msgstr ""
@@ -1171,6 +1362,22 @@ msgstr ""
 msgid "Save PDF Progress"
 msgstr ""
 
+#: FDesktop.resx$tsSaveImagesAll.ToolTipText$Message
+msgid "Save all images"
+msgstr ""
+
+#: FDesktop.resx$tsSavePDFAll.ToolTipText$Message
+msgid "Save all images inside a PDF"
+msgstr ""
+
+#: FDesktop.resx$tsSaveImagesSelected.ToolTipText$Message
+msgid "Save only selected images"
+msgstr ""
+
+#: FDesktop.resx$tsSavePDFSelected.ToolTipText$Message
+msgid "Save selected images in a PDF"
+msgstr ""
+
 #: FBatchScan.resx$rdSaveToSingleFile.Text$Message
 msgid "Save to a single file"
 msgstr ""
@@ -1187,7 +1394,7 @@ msgstr ""
 msgid "Saving {0}"
 msgstr ""
 
-#: FEditProfile.resx$label10.Text$Message
+#: FEditProfile.resx$lbl_scale.Text$Message
 msgid "Scale"
 msgstr ""
 
@@ -1199,12 +1406,17 @@ msgstr ""
 #: FDesktop.resx$tsScan.Text$Message
 #: FProfiles.resx$btnScan.Text$Message
 #: FProfiles.resx$ctxScan.Text$Message
+#: FViewer.resx$Scan.Text$Message
 #: MiscResources.resx$Scan$Message
 msgid "Scan"
 msgstr ""
 
 #: FBatchScan.resx$groupboxScanConfig.Text$Message
 msgid "Scan Configuration"
+msgstr ""
+
+#: FDesktop.resx$tsInsert.Text$Message
+msgid "Scan Insert"
 msgstr ""
 
 #: MiscResources.resx$ScannedImage$Message
@@ -1259,8 +1471,28 @@ msgstr ""
 msgid "Separate files by Patch-T"
 msgstr ""
 
+#: MiscResources.resx$ServerStarted$Message
+msgid "Server started"
+msgstr ""
+
 #: FProfiles.resx$ctxSetDefault.Text$Message
 msgid "Set Default"
+msgstr ""
+
+#: FDesktop.resx$renameCurrentProject_TSMI.Text$Message
+msgid "Set current project name"
+msgstr ""
+
+#: FDesktop.resx$tsOCR.ToolTipText$Message
+msgid "Set the OCR parameters"
+msgstr ""
+
+#: FDesktop.resx$tsLanguage.ToolTipText$Message
+msgid "Set the language of the application"
+msgstr ""
+
+#: FDesktop.resx$tsTools.Text$Message
+msgid "Settings and tools"
 msgstr ""
 
 #: FDesktop.resx$tsSharpen.Text$Message
@@ -1269,12 +1501,21 @@ msgstr ""
 msgid "Sharpen"
 msgstr ""
 
+#: FDesktop.resx$tsSharpen.ToolTipText$Message
+msgid "Sharpen the selected image(s)"
+msgstr ""
+
 #: FPdfSettings.resx$cbShowOwnerPassword.Text$Message
 #: FPdfSettings.resx$cbShowUserPassword.Text$Message
 msgid "Show"
 msgstr ""
 
+#: FDesktop.resx$tsShowHideView.Text$Message
+msgid "Show|Hide image viewer"
+msgstr ""
+
 #: FImageSettings.resx$cbSinglePageTiff.Text$Message
+#: FPdfSettings.resx$cbSinglePagePdf.Text$Message
 msgid "Single page files"
 msgstr ""
 
@@ -1289,6 +1530,14 @@ msgstr ""
 
 #: FBatchScan.resx$btnStart.Text$Message
 msgid "Start"
+msgstr ""
+
+#: FDesktop.resx$tsScan.ToolTipText$Message
+msgid "Start scanning"
+msgstr ""
+
+#: FViewer.resx$toolStripStatusLabel1.Text$Message
+msgid "Status"
 msgstr ""
 
 #: FAdvancedScanSettings.resx$cbForcePageSize.Text$Message
@@ -1309,6 +1558,10 @@ msgstr ""
 
 #: FError.resx$linkDetails.Text$Message
 msgid "Technical Details"
+msgstr ""
+
+#: FAbout.resx$label4.Text$Message
+msgid "Thanks for TACTGROUP for their support!"
 msgstr ""
 
 #: MiscResources.resx$TesseractNotAvailable$Message
@@ -1375,6 +1628,10 @@ msgstr ""
 msgid "The selected scanner is offline"
 msgstr ""
 
+#: FEditProfile.resx$cmbPaperType.Items2$Message
+msgid "Thick"
+msgstr ""
+
 #: FImageSettings.resx$groupTiff.Text$Message
 msgid "Tiff Options"
 msgstr ""
@@ -1385,6 +1642,10 @@ msgstr ""
 
 #: FPdfSettings.resx$label4.Text$Message
 msgid "Title"
+msgstr ""
+
+#: FEditProfile.resx$cmbPaperType.Items3$Message
+msgid "TriFold"
 msgstr ""
 
 #: FAdvancedScanSettings.resx$label1.Text$Message
@@ -1516,6 +1777,10 @@ msgstr ""
 msgid "http://www.naps2.com"
 msgstr ""
 
+#: FAbout.resx$linkLabel3.Text$Message
+msgid "http://www.tactgroup.com"
+msgstr ""
+
 #: SettingsResources.resx$PageSizeUnit_Inch$Message
 msgid "in"
 msgstr ""
@@ -1527,6 +1792,14 @@ msgstr ""
 #: FViewer.resx$lblPageTotal.Text$Message
 #: MiscResources.resx$OfN$Message
 msgid "of {0}"
+msgstr ""
+
+#: FViewer.resx$statusStrip1.Text$Message
+msgid "statusStrip1"
+msgstr ""
+
+#: FViewer.resx$toolStrip2.Text$Message
+msgid "toolStrip2"
 msgstr ""
 
 #: SettingsResources.resx$TwainImpl_X64$Message

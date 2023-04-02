@@ -580,7 +580,6 @@ namespace NAPS2.WinForms
             this.tsCombo_Profiles.Image = global::NAPS2.Icons.accept;
             resources.ApplyResources(this.tsCombo_Profiles, "tsCombo_Profiles");
             this.tsCombo_Profiles.Name = "tsCombo_Profiles";
-            this.tsCombo_Profiles.Click += new System.EventHandler(this.tsCombo_Profiles_Click);
             // 
             // toolStripSeparator13
             // 

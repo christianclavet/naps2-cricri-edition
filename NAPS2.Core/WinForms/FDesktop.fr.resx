@@ -1,5 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -27,32 +132,32 @@
   <data name="ctxDelete.Text" xml:space="preserve">
     <value>Supprimer</value>
   </data>
-  <data name="tsBatchScan.Text" xml:space="preserve">
-    <value>&amp;Acquisition par lot</value>
+  <data name="loadProjectTool_TSMI.Text" xml:space="preserve">
+    <value>Charger un projet</value>
   </data>
-  <data name="tsScan.Text" xml:space="preserve">
-    <value>&amp;Numériser</value>
+  <data name="renameCurrentProject_TSMI.Text" xml:space="preserve">
+    <value>Nommer le projet actuel</value>
   </data>
-  <data name="tsNewProfile.Text" xml:space="preserve">
-    <value>&amp;New profile</value>
-  </data>
-  <data name="tsProfiles.Text" xml:space="preserve">
-    <value>&amp;Profils</value>
-  </data>
-  <data name="tsCombo_Profiles.Text" xml:space="preserve">
-    <value>Current profile</value>
-  </data>
-  <data name="tsImport.Text" xml:space="preserve">
-    <value>&amp;Importer</value>
+  <data name="closeCurrentProject.Text" xml:space="preserve">
+    <value>Fermer le projet actuel</value>
   </data>
   <data name="tsSavePDFAll.Text" xml:space="preserve">
     <value>&amp;Tout ({0})</value>
   </data>
+  <data name="tsSavePDFAll.ToolTipText" xml:space="preserve">
+    <value>Sauvegarde toutes les images dans un PDF</value>
+  </data>
   <data name="tsSavePDFSelected.Text" xml:space="preserve">
     <value>&amp;Sélection ({0})</value>
   </data>
+  <data name="tsSavePDFSelected.ToolTipText" xml:space="preserve">
+    <value>Sauvegarde toutes les images sélectionnées dans un PDF</value>
+  </data>
   <data name="tsPDFSettings.Text" xml:space="preserve">
     <value>&amp;Paramètres PDF</value>
+  </data>
+  <data name="tsPDFSettings.ToolTipText" xml:space="preserve">
+    <value>Paramètres sauvegarde PDF</value>
   </data>
   <data name="tsdSavePDF.Text" xml:space="preserve">
     <value>&amp;Enregistrer en PDF</value>
@@ -60,11 +165,20 @@
   <data name="tsSaveImagesAll.Text" xml:space="preserve">
     <value>&amp;Tout ({0})</value>
   </data>
+  <data name="tsSaveImagesAll.ToolTipText" xml:space="preserve">
+    <value>Sauvegarde toutes les images</value>
+  </data>
   <data name="tsSaveImagesSelected.Text" xml:space="preserve">
     <value>&amp;Sélection ({0})</value>
   </data>
+  <data name="tsSaveImagesSelected.ToolTipText" xml:space="preserve">
+    <value>Sauvegarde seulement les images sélectionnées</value>
+  </data>
   <data name="tsImageSettings.Text" xml:space="preserve">
     <value>&amp;Paramètres d'image</value>
+  </data>
+  <data name="tsImageSettings.ToolTipText" xml:space="preserve">
+    <value>Ajustements des paramètres de sauvegarde</value>
   </data>
   <data name="tsdSaveImages.Text" xml:space="preserve">
     <value>&amp;Enregistrer les images</value>
@@ -84,26 +198,110 @@
   <data name="tsdEmailPDF.Text" xml:space="preserve">
     <value>&amp;PDF par courriel</value>
   </data>
+  <data name="tsImport.Text" xml:space="preserve">
+    <value>&amp;Importer</value>
+  </data>
+  <data name="tsLanguage.Text" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="tsLanguage.ToolTipText" xml:space="preserve">
+    <value>Change la langue de l'application</value>
+  </data>
+  <data name="tsShowHideView.Text" xml:space="preserve">
+    <value>Montre|Cache la visionneuse d'image</value>
+  </data>
+  <data name="tsShowHideView.ToolTipText" xml:space="preserve">
+    <value>Montre ou cache la visionneuse d'image intégrée</value>
+  </data>
+  <data name="tsOCR.Text" xml:space="preserve">
+    <value>OCR</value>
+  </data>
+  <data name="tsOCR.ToolTipText" xml:space="preserve">
+    <value>Ajuste les paramètres OCR</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Imprimer</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Imprimer les images sélectionnées</value>
+  </data>
+  <data name="tsTools.Text" xml:space="preserve">
+    <value>Ajustements et outils</value>
+  </data>
+  <data name="tsAbout.Text" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+  <data name="tsAbout.ToolTipText" xml:space="preserve">
+    <value>Montre les informations de NAPS 2 CriCri Édition</value>
+  </data>
+  <data name="FileDm.Text" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="FileDm.ToolTipText" xml:space="preserve">
+    <value>Menu des fichiers</value>
+  </data>
+  <data name="tsNewProfile.Text" xml:space="preserve">
+    <value>&amp;Nouveau profil</value>
+  </data>
+  <data name="tsProfiles.Text" xml:space="preserve">
+    <value>&amp;Profils</value>
+  </data>
+  <data name="tsCombo_Profiles.Text" xml:space="preserve">
+    <value>Profil actuel</value>
+  </data>
+  <data name="tsBatchScan.Text" xml:space="preserve">
+    <value>&amp;Acquisition par lot</value>
+  </data>
+  <data name="tsScan.Text" xml:space="preserve">
+    <value>&amp;Numériser</value>
+  </data>
+  <data name="tsScan.ToolTipText" xml:space="preserve">
+    <value>Débute la numérisation</value>
+  </data>
+  <data name="tsInsert.Text" xml:space="preserve">
+    <value>Insertion</value>
+  </data>
   <data name="tsView.Text" xml:space="preserve">
     <value>&amp;Afficher...</value>
+  </data>
+  <data name="tsView.ToolTipText" xml:space="preserve">
+    <value>Ouvrir l'image dans une fenêtre</value>
   </data>
   <data name="tsCrop.Text" xml:space="preserve">
     <value>&amp;Recadrer</value>
   </data>
+  <data name="tsCrop.ToolTipText" xml:space="preserve">
+    <value>Recadrer l'image</value>
+  </data>
   <data name="tsBrightnessContrast.Text" xml:space="preserve">
     <value>&amp;Luminosité / Contraste</value>
+  </data>
+  <data name="tsBrightnessContrast.ToolTipText" xml:space="preserve">
+    <value>Ajuster le contraste et la luminosité de l'image</value>
   </data>
   <data name="tsHueSaturation.Text" xml:space="preserve">
     <value>&amp;Teinte / Saturation</value>
   </data>
+  <data name="tsHueSaturation.ToolTipText" xml:space="preserve">
+    <value>Adjust the hue and saturation of the selected image(s)</value>
+  </data>
   <data name="tsBlackWhite.Text" xml:space="preserve">
     <value>&amp;Noir et blanc</value>
+  </data>
+  <data name="tsBlackWhite.ToolTipText" xml:space="preserve">
+    <value>Convertir l'image actuelle en bitonal</value>
   </data>
   <data name="tsSharpen.Text" xml:space="preserve">
     <value>&amp;Accentuation</value>
   </data>
+  <data name="tsSharpen.ToolTipText" xml:space="preserve">
+    <value>Sharpen the selected image(s)</value>
+  </data>
   <data name="tsReset.Text" xml:space="preserve">
     <value>&amp;Réinitialiser…</value>
+  </data>
+  <data name="tsReset.ToolTipText" xml:space="preserve">
+    <value>Réintialise les transformations d'image</value>
   </data>
   <data name="tsdImage.Text" xml:space="preserve">
     <value>&amp;Image</value>
@@ -111,26 +309,47 @@
   <data name="tsRotateLeft.Text" xml:space="preserve">
     <value>&amp;Pivoter à gauche</value>
   </data>
+  <data name="tsRotateLeft.ToolTipText" xml:space="preserve">
+    <value>Pivoter à gauche</value>
+  </data>
   <data name="tsRotateRight.Text" xml:space="preserve">
     <value>&amp;Pivoter à droite</value>
+  </data>
+  <data name="tsRotateRight.ToolTipText" xml:space="preserve">
+    <value>Pivoter à droite</value>
   </data>
   <data name="tsFlip.Text" xml:space="preserve">
     <value>&amp;Retourner</value>
   </data>
+  <data name="tsFlip.ToolTipText" xml:space="preserve">
+    <value>Retourne l'image</value>
+  </data>
   <data name="tsDeskew.Text" xml:space="preserve">
     <value>&amp;Réaligner</value>
+  </data>
+  <data name="tsDeskew.ToolTipText" xml:space="preserve">
+    <value>Redresse l'image</value>
   </data>
   <data name="tsCustomRotation.Text" xml:space="preserve">
     <value>&amp;Rotation personnalisée...</value>
   </data>
+  <data name="tsCustomRotation.ToolTipText" xml:space="preserve">
+    <value>Faire une rotation personnalisée</value>
+  </data>
   <data name="tsdRotate.Text" xml:space="preserve">
     <value>&amp;Rotation</value>
+  </data>
+  <data name="tsdRotate.ToolTipText" xml:space="preserve">
+    <value>Opérations de rotation</value>
   </data>
   <data name="tsMove.FirstText" xml:space="preserve">
     <value>Monter</value>
   </data>
   <data name="tsMove.SecondText" xml:space="preserve">
     <value>Descendre</value>
+  </data>
+  <data name="tsMove.ToolTipText" xml:space="preserve">
+    <value>Bouge l'image par le bas</value>
   </data>
   <data name="tsInterleave.Text" xml:space="preserve">
     <value>&amp;Appairer [135246&gt;123456]</value>
@@ -161,24 +380,6 @@
   </data>
   <data name="tsClear.Text" xml:space="preserve">
     <value>&amp;Tout supprimer</value>
-  </data>
-  <data name="tsLanguage.Text" xml:space="preserve">
-    <value>Langue</value>
-  </data>
-  <data name="tsShowHideView.Text" xml:space="preserve">
-    <value>Show|Hide image viewer</value>
-  </data>
-  <data name="tsOCR.Text" xml:space="preserve">
-    <value>OCR</value>
-  </data>
-  <data name="printToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Imprimer</value>
-  </data>
-  <data name="tsAbout.Text" xml:space="preserve">
-    <value>À propos</value>
-  </data>
-  <data name="tsTools.Text" xml:space="preserve">
-    <value>Settings and tools</value>
   </data>
   <data name="tStrip.Text" xml:space="preserve">
     <value>Barre d'outils principale</value>

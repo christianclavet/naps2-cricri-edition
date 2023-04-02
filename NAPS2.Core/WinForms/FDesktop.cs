@@ -2354,15 +2354,7 @@ namespace NAPS2.WinForms
         }
 
         #endregion
-
-        #region new stuff
                         
-        private void tsCombo_Profiles_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
         #region QuickView
         // Quickview use the panel 2, Thumbnails use panel 1
         private void tsShowHideView_Click(object sender, EventArgs e)
@@ -2389,8 +2381,9 @@ namespace NAPS2.WinForms
         {
             splitter1 = true;
         }
+        #endregion
 
-        // 
+        #region new stuff
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
             closeWorkspace(); // Backup the current project before getting a new one.

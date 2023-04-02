@@ -262,7 +262,7 @@
     <value>Reset Image</value>
   </data>
   <data name="ExitWithUnsavedChanges" xml:space="preserve">
-    <value>You have unsaved changes. Are you sure you want to exit and discard those changes?</value>
+    <value>Do you want to exit the application and not keep the content of the current project?</value>
   </data>
   <data name="ExitWithActiveOperations" xml:space="preserve">
     <value>An operation is in progress. Are you sure you want to exit and cancel the operation?</value>

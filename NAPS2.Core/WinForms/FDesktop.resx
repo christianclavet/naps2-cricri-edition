@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>382, 17</value>
-  </metadata>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="StatusText.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 15</value>
   </data>
@@ -192,9 +192,9 @@
   <data name="btnZoomOut.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <metadata name="tt_FDesktop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="tt_FDesktop.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>486, 14</value>
-  </metadata>
+  </data>
   <data name="btnZoomOut.ToolTip" xml:space="preserve">
     <value>Make the thumbnail smaller</value>
   </data>
@@ -276,9 +276,9 @@
   <data name="&gt;&gt;btnZoomMouseCatcher.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>233, 17</value>
-  </metadata>
+  </data>
   <data name="ctxView.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -498,9 +498,9 @@
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <metadata name="tStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="tStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>152, 17</value>
-  </metadata>
+  </data>
   <data name="tStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -864,22 +864,21 @@
   </data>
   <data name="tsInsert.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMfSURBVFhHtZdLTxNRGIZJVOLGxEYcI15+gGyMGxdKXLgy
-        /gMX/gR/AhdRF7J2h4lgDYlDO4XGBk00CKUoJMY/IJRSeqN3Sm+0fH7vOZ2x6JR08PAmT9o0c97vnXPm
-        nPnac4R6da+XoI3wJoU3I7QZ2fov4AEvCN6oIUvZy2UGiPDgaHRbCfCCWgFcspS9NN3rERdHY3GKxRNK
-        gBcEb9SQpeyl6R4ZIJFMUjKVUgK8IHijhixlLytAaidNO+mMEuAFOQqQzeQom1UEe0GOAhQKRaVAjgLs
-        lkpKgRwFKJfLSoHaA/Ree/6J+p99xA/tB4M209qG1WqdqSmiLjzbA7guj83Tq59l6hsJtIfQvIYM0Gw2
-        qdloqIG9oNZBJAJol54G6OX3Ao2vFunCyAczhOafNcTFJyGPz3c4wFgoRzcmwvTiW57OD4uZ6He/mfhs
-        +AwxXcrgO/cYBr2enAxyjYtWgNHlPN2ZitDdt1s0GirS2aF5hLjJ3GPuKwaeA8w5RgYY5gAP3kfpoR6j
-        kT8BrjN9uEYxuHMUP83IAEPBPD3yJ+hxIE0uuQSDAb+eCK2E6OvS0rFZWl4mv9+fZL8zKGYnuQQrRXry
-        Jc87QTyEg8yAqoewXqvR7NxcjD1tQ2jYhuM/KqSNyjtnrjJXvIbsB9Y3whJuJrqCr/21HhZjp9xu8Vmt
-        VskwjDj7/hNCkweRWHOzuNiGM62GBN1MZCvKcEPRFVExBnJPT1MulxffK5UK6bruZe9TjCV0JbeY24xZ
-        HOKGRAaIxra5mUBT0j0YA73jAFVegjS/iiHMBPseCoGCCAHM4pD1LognktxIoJnonhiPgTADEEKYM1Hj
-        74bP5+caYhd0khUgmdoRjYQTMAZaXVsTITAT+DSficVgEEsuzoFOsgKksxnKZLOOSGcytLcn33x2WuAt
-        yjXESdhJVoBcPn8ssjnugP4iw0ALi4sIgEOpo6wAxeKuMgqFXeHpKECptKcUyFEA7F+VQI4C1Os1sXVU
-        ATkK0Gg0aX+/oQjZETkKAB0cHCjBVDcBzCParqFQAbyP/HNqHtFIeRKwd0/vb5fwDTXE+fG0AAAAAElF
-        TkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
+        JQAAFiUBSVIk8AAAAx9JREFUWEe1l0tPE1EYhklU4sbERhwjXn6AbIwbF0pcuDL+Axf+BH8CF1EXsnaH
+        iWANiUM7hcYGTTQIpSgkxj8glFJ6o3dKb7R8fu85nbHolHTw8CZP2jRz3u+dc+ac+dpzhHp1r5egjfAm
+        hTcjtBnZ+i/gAS8I3qghS9nLZQaI8OBodFsJ8IJaAVyylL003esRF0djcYrFE0qAFwRv1JCl7KXpHhkg
+        kUxSMpVSArwgeKOGLGUvK0BqJ0076YwS4AU5CpDN5CibVQR7QY4CFApFpUCOAuyWSkqBHAUol8tKgdoD
+        9F57/on6n33ED+0HgzbT2obVap2pKaIuPNsDuC6PzdOrn2XqGwm0h9C8hgzQbDap2Wiogb2g1kEkAmiX
+        ngbo5fcCja8W6cLIBzOE5p81xMUnIY/PdzjAWChHNybC9OJbns4Pi5nod7+Z+Gz4DDFdyuA79xgGvZ6c
+        DHKNi1aA0eU83ZmK0N23WzQaKtLZoXmEuMncY+4rBp4DzDlGBhjmAA/eR+mhHqORPwGuM324RjG4cxQ/
+        zcgAQ8E8PfIn6HEgTS65BIMBv54IrYTo69LSsVlaXia/359kvzMoZie5BCtFevIlzztBPISDzICqh7Be
+        q9Hs3FyMPW1DaNiG4z8qpI3KO2euMle8huwH1jfCEm4muoKv/bUeFmOn3G7xWa1WyTCMOPv+E0KTB5FY
+        c7O42IYzrYYE3UxkK8pwQ9EVUTEGck9PUy6XF98rlQrpuu5l71OMJXQlt5jbjFkc4oZEBojGtrmZQFPS
+        PRgDveMAVV6CNL+KIcwE+x4KgYIIAczikPUuiCeS3EigmeieGI+BMAMQQpgzUePvhs/n5xpiF3SSFSCZ
+        2hGNhBMwBlpdWxMhMBP4NJ+JxWAQSy7OgU6yAqSzGcpks45IZzK0tyfffHZa4C3KNcRJ2ElWgFw+fyyy
+        Oe6A/iLDQAuLiwiAQ6mjrADF4q4yCoVd4ekoQKm0pxTIUQDsX5VAjgLU6zWxdVQBOQrQaDRpf7+hCNkR
+        OQoAHRwcKMFUNwHMI9quoVABvI/8c2oe0Uh5ErB3T+9vl/ANNcT58bQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsInsert.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1272,18 +1271,18 @@
   <data name="&gt;&gt;ContentPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>602, 14</value>
-  </metadata>
+  </data>
   <data name="folderBrowserDialog1.Description" xml:space="preserve">
     <value>Choose your project to load</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>42</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>144, 144</value>
   </data>
@@ -1823,5 +1822,17 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.36028, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="closeCurrentProject" xml:space="preserve">
+    <value>Close current project</value>
+  </data>
+  <data name="FileDm" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="loadProjectTool_TSMI" xml:space="preserve">
+    <value>Load project</value>
+  </data>
+  <data name="renameCurrentProject_TSMI" xml:space="preserve">
+    <value>Set current project name</value>
   </data>
 </root>

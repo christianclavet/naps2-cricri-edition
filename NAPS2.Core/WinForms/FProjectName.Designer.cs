@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FProjectName));
             this.lblPrompt_filename = new System.Windows.Forms.Label();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -36,67 +37,46 @@
             // 
             // lblPrompt_filename
             // 
-            this.lblPrompt_filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblPrompt_filename.Location = new System.Drawing.Point(13, 9);
-            this.lblPrompt_filename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.lblPrompt_filename, "lblPrompt_filename");
             this.lblPrompt_filename.Name = "lblPrompt_filename";
-            this.lblPrompt_filename.Size = new System.Drawing.Size(558, 32);
-            this.lblPrompt_filename.TabIndex = 0;
-            this.lblPrompt_filename.Text = "Please, type in the new project name";
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(17, 92);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            resources.ApplyResources(this.btnAccept, "btnAccept");
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(180, 46);
-            this.btnAccept.TabIndex = 1;
-            this.btnAccept.Text = "OK";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnRecover_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(396, 92);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(180, 46);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // inputTextBox
             // 
             this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.inputTextBox.Location = new System.Drawing.Point(17, 44);
+            resources.ApplyResources(this.inputTextBox, "inputTextBox");
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(559, 19);
-            this.inputTextBox.TabIndex = 3;
-            this.inputTextBox.Text = "Untitled";
             // 
             // FProjectName
             // 
             this.AcceptButton = this.btnAccept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(594, 156);
             this.Controls.Add(this.inputTextBox);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lblPrompt_filename);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FProjectName";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Name current project";
             this.ResumeLayout(false);
             this.PerformLayout();
 
