@@ -7,11 +7,13 @@ namespace NAPS2.ImportExport.Pdf
     public class PdfSettings
     {
         private PdfMetadata metadata;
+        private PdfImageSettings imageSettings;
         private PdfEncryption encryption;
 
         public PdfSettings()
         {
             metadata = new PdfMetadata();
+            imageSettings = new PdfImageSettings();
             encryption = new PdfEncryption();
         }
 
@@ -25,6 +27,19 @@ namespace NAPS2.ImportExport.Pdf
         {
             get => metadata;
             set => metadata = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public PdfImageSettings ImageSettings
+        {
+            get { return imageSettings; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                imageSettings = value;
+            }
         }
 
         public PdfEncryption Encryption

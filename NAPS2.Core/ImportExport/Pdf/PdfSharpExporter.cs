@@ -19,6 +19,9 @@ using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf.Security;
+using System.Drawing.Imaging;
+
+
 
 namespace NAPS2.ImportExport.Pdf
 {
@@ -356,7 +359,38 @@ namespace NAPS2.ImportExport.Pdf
             page.Height = realSize.Height;
             using (XGraphics gfx = XGraphics.FromPdfPage(page))
             {
+                
                 gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
+                // Patch to adapt from Luca De Petrillo
+               /* if (scannedImage.IsHighQuality() && settings.ImageSettings.CompressImages)
+                {
+                    // Compress the image to JPEG and use it if smaller than the original one.
+                    var quality = Math.Max(Math.Min(settings.ImageSettings.JpegQuality, 100), 0);
+                    var encoder = ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid);
+                    var encoderParams = new EncoderParameters(1);
+                    encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, quality);
+
+                    using (var streamJpg = new MemoryStream())
+                    {
+                        img.Save(streamJpg, encoder, encoderParams);
+                        if (streamJpg.Length < stream.Length)
+                        {
+                            using (var imgJpg = Bitmap.FromStream(streamJpg))
+                            {
+                                gfx.DrawImage(imgJpg, 0, 0, (int)realWidth, (int)realHeight);
+                            }
+                        }
+                        else
+                        {
+                            gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
+                        }
+
+                    }
+                }
+                else
+                {
+                    gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
+                } */
             }
         }
 

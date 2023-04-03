@@ -24,6 +24,9 @@ namespace NAPS2.Scan.Images
         // so that JPEG degradation is minimized when multiple rotations/flips are performed
         private readonly List<Transform> transformList;
 
+        // patch CC
+        private readonly bool highQuality;
+
         private Bitmap thumbnail;
         private int thumbnailState;
         private int transformState;
@@ -40,6 +43,7 @@ namespace NAPS2.Scan.Images
 
         public ScannedImage(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
+            this.highQuality = highQuality;
             string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
 
             transformList = new List<Transform>();
@@ -165,6 +169,11 @@ namespace NAPS2.Scan.Images
         public void MovedTo(int index)
         {
             recoveryImage.Move(index);
+        }
+
+        public bool IsHighQuality()
+        {
+            return highQuality;
         }
 
         public Snapshot Preserve() => new Snapshot(this);
