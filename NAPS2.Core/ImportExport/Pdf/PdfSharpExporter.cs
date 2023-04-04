@@ -391,14 +391,14 @@ namespace NAPS2.ImportExport.Pdf
                         }
                         else
                         {
-                            gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
+                            gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
                         }
 
                     }*/
                 }
                 else
                 {
-                    gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
+                    gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
                 } 
             }
         }
