@@ -46,6 +46,9 @@ namespace NAPS2.WinForms
             txtDefaultFilePath.Text = pdfSettings.DefaultFileName;
             cbSkipSavePrompt.Checked = pdfSettings.SkipSavePrompt;
             cbSinglePagePdf.Checked = pdfSettings.SinglePagePdf;
+            recompressCB.Checked = pdfSettings.ImageSettings.CompressImages;
+            txtJpegQuality.Text = pdfSettings.ImageSettings.JpegQuality.ToString();
+            
             txtTitle.Text = pdfSettings.Metadata.Title;
             txtAuthor.Text = pdfSettings.Metadata.Author;
             txtSubject.Text = pdfSettings.Metadata.Subject;
@@ -75,7 +78,9 @@ namespace NAPS2.WinForms
             clbPerms.Enabled = encrypt;
 
             cmbCompat.Enabled = appConfigManager.Config.ForcePdfCompat == PdfCompat.Default;
-        }
+
+            bool compressImage = recompressCB.Checked;
+            txtJpegQuality.Enabled = tbJpegQuality.Enabled = compression_lbl.Enabled = compressImage;        }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -84,6 +89,11 @@ namespace NAPS2.WinForms
                 DefaultFileName = txtDefaultFilePath.Text,
                 SkipSavePrompt = cbSkipSavePrompt.Checked,
                 SinglePagePdf = cbSinglePagePdf.Checked,
+                ImageSettings =
+                {
+                    CompressImages = recompressCB.Checked,
+                    JpegQuality = tbJpegQuality.Value,
+                },
                 Metadata =
                 {
                     Title = txtTitle.Text,
@@ -162,6 +172,28 @@ namespace NAPS2.WinForms
             if (dialogHelper.PromptToSavePdf(txtDefaultFilePath.Text, out string savePath))
             {
                 txtDefaultFilePath.Text = savePath;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateEnabled();
+        }
+
+        private void tbJpegQuality_Scroll(object sender, EventArgs e)
+        {
+            txtJpegQuality.Text = tbJpegQuality.Value.ToString("G");
+        }
+
+        private void txtJpegQuality_TextChanged(object sender, EventArgs e)
+        {
+            int value;
+            if (int.TryParse(txtJpegQuality.Text, out value))
+            {
+                if (value >= tbJpegQuality.Minimum && value <= tbJpegQuality.Maximum)
+                {
+                    tbJpegQuality.Value = value;
+                }
             }
         }
     }

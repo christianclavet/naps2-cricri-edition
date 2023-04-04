@@ -20,8 +20,8 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf.Security;
 using System.Drawing.Imaging;
-
-
+using NAPS2.ImportExport.Images;
+using static NAPS2.Scan.Images.ScannedImage;
 
 namespace NAPS2.ImportExport.Pdf
 {
@@ -37,14 +37,15 @@ namespace NAPS2.ImportExport.Pdf
 
         private readonly OcrManager ocrManager;
         private readonly ScannedImageRenderer scannedImageRenderer;
-        private readonly AppConfigManager appConfigManager;
+        private static AppConfigManager appConfigManager;
         private readonly OcrRequestQueue ocrRequestQueue;
+        private static PdfSettings settings;
 
         public PdfSharpExporter(OcrManager ocrManager, ScannedImageRenderer scannedImageRenderer, AppConfigManager appConfigManager, OcrRequestQueue ocrRequestQueue)
         {
             this.ocrManager = ocrManager;
             this.scannedImageRenderer = scannedImageRenderer;
-            this.appConfigManager = appConfigManager;
+            //this.appConfigManager = appConfigManager;
             this.ocrRequestQueue = ocrRequestQueue;
         }
 
@@ -52,6 +53,7 @@ namespace NAPS2.ImportExport.Pdf
         {
             return await Task.Factory.StartNew(() =>
             {
+                //this.settings = settings;
                 var forced = appConfigManager.Config.ForcePdfCompat;
                 var compat = forced == PdfCompat.Default ? settings.Compat : forced;
 
@@ -360,15 +362,22 @@ namespace NAPS2.ImportExport.Pdf
             using (XGraphics gfx = XGraphics.FromPdfPage(page))
             {
                 
-                gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
+                //gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
                 // Patch to adapt from Luca De Petrillo
-               /* if (scannedImage.IsHighQuality() && settings.ImageSettings.CompressImages)
-                {
+                if (appConfigManager.Config.DefaultProfileSettings.MaxQuality && settings.ImageSettings.CompressImages)
+
+                { 
                     // Compress the image to JPEG and use it if smaller than the original one.
                     var quality = Math.Max(Math.Min(settings.ImageSettings.JpegQuality, 100), 0);
                     var encoder = ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid);
                     var encoderParams = new EncoderParameters(1);
                     encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, quality);
+
+                    // Code changed a lot since 2015. Not sure to be able to fix now
+                    // Will have to investigate on how to adapt this following code
+                    // img.Save is was removed and I need to find alternate way.
+
+                    /*
 
                     using (var streamJpg = new MemoryStream())
                     {
@@ -377,7 +386,7 @@ namespace NAPS2.ImportExport.Pdf
                         {
                             using (var imgJpg = Bitmap.FromStream(streamJpg))
                             {
-                                gfx.DrawImage(imgJpg, 0, 0, (int)realWidth, (int)realHeight);
+                                gfx.DrawImage(imgJpg, 0, 0, realSize.Width, realSize.Height);
                             }
                         }
                         else
@@ -385,12 +394,12 @@ namespace NAPS2.ImportExport.Pdf
                             gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
                         }
 
-                    }
+                    }*/
                 }
                 else
                 {
                     gfx.DrawImage(img, 0, 0, (int)realWidth, (int)realHeight);
-                } */
+                } 
             }
         }
 

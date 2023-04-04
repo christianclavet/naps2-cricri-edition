@@ -65,9 +65,16 @@ namespace NAPS2.WinForms
             this.groupCompat = new System.Windows.Forms.GroupBox();
             this.cmbCompat = new System.Windows.Forms.ComboBox();
             this.cbSinglePagePdf = new System.Windows.Forms.CheckBox();
+            this.recompressCB = new System.Windows.Forms.CheckBox();
+            this.tbJpegQuality = new System.Windows.Forms.TrackBar();
+            this.txtJpegQuality = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.compression_lbl = new System.Windows.Forms.Label();
             this.groupMetadata.SuspendLayout();
             this.groupProtection.SuspendLayout();
             this.groupCompat.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbJpegQuality)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -277,10 +284,47 @@ namespace NAPS2.WinForms
             this.cbSinglePagePdf.Name = "cbSinglePagePdf";
             this.cbSinglePagePdf.UseVisualStyleBackColor = true;
             // 
+            // recompressCB
+            // 
+            resources.ApplyResources(this.recompressCB, "recompressCB");
+            this.recompressCB.Name = "recompressCB";
+            this.recompressCB.UseVisualStyleBackColor = true;
+            this.recompressCB.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // tbJpegQuality
+            // 
+            resources.ApplyResources(this.tbJpegQuality, "tbJpegQuality");
+            this.tbJpegQuality.Maximum = 100;
+            this.tbJpegQuality.Name = "tbJpegQuality";
+            this.tbJpegQuality.TickFrequency = 25;
+            this.tbJpegQuality.Scroll += new System.EventHandler(this.tbJpegQuality_Scroll);
+            // 
+            // txtJpegQuality
+            // 
+            resources.ApplyResources(this.txtJpegQuality, "txtJpegQuality");
+            this.txtJpegQuality.Name = "txtJpegQuality";
+            this.txtJpegQuality.TextChanged += new System.EventHandler(this.txtJpegQuality_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.compression_lbl);
+            this.groupBox1.Controls.Add(this.txtJpegQuality);
+            this.groupBox1.Controls.Add(this.recompressCB);
+            this.groupBox1.Controls.Add(this.tbJpegQuality);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // compression_lbl
+            // 
+            resources.ApplyResources(this.compression_lbl, "compression_lbl");
+            this.compression_lbl.Name = "compression_lbl";
+            // 
             // FPdfSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbSinglePagePdf);
             this.Controls.Add(this.groupCompat);
             this.Controls.Add(this.cbSkipSavePrompt);
@@ -302,6 +346,9 @@ namespace NAPS2.WinForms
             this.groupProtection.ResumeLayout(false);
             this.groupProtection.PerformLayout();
             this.groupCompat.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbJpegQuality)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +387,10 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.GroupBox groupCompat;
         private System.Windows.Forms.ComboBox cmbCompat;
         private System.Windows.Forms.CheckBox cbSinglePagePdf;
+        private System.Windows.Forms.CheckBox recompressCB;
+        private System.Windows.Forms.TrackBar tbJpegQuality;
+        private System.Windows.Forms.TextBox txtJpegQuality;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label compression_lbl;
     }
 }
