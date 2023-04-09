@@ -22,6 +22,7 @@ using PdfSharp.Pdf.Security;
 using System.Drawing.Imaging;
 using NAPS2.ImportExport.Images;
 using static NAPS2.Scan.Images.ScannedImage;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace NAPS2.ImportExport.Pdf
 {
@@ -37,23 +38,23 @@ namespace NAPS2.ImportExport.Pdf
 
         private readonly OcrManager ocrManager;
         private readonly ScannedImageRenderer scannedImageRenderer;
-        private static AppConfigManager appConfigManager;
+        private readonly AppConfigManager appConfigManager;
         private readonly OcrRequestQueue ocrRequestQueue;
-        private static PdfSettings settings;
-
+        private static PdfSettings imageSettings;
+ 
         public PdfSharpExporter(OcrManager ocrManager, ScannedImageRenderer scannedImageRenderer, AppConfigManager appConfigManager, OcrRequestQueue ocrRequestQueue)
         {
             this.ocrManager = ocrManager;
+            this.appConfigManager = appConfigManager;
             this.scannedImageRenderer = scannedImageRenderer;
-            //this.appConfigManager = appConfigManager;
             this.ocrRequestQueue = ocrRequestQueue;
         }
 
         public async Task<bool> Export(string path, ICollection<ScannedImage.Snapshot> snapshots, PdfSettings settings, OcrParams ocrParams, ProgressHandler progressCallback, CancellationToken cancelToken)
         {
+            imageSettings = settings;
             return await Task.Factory.StartNew(() =>
             {
-                //this.settings = settings;
                 var forced = appConfigManager.Config.ForcePdfCompat;
                 var compat = forced == PdfCompat.Default ? settings.Compat : forced;
 
@@ -151,15 +152,17 @@ namespace NAPS2.ImportExport.Pdf
                 else
                 {
                     using (Stream stream = scannedImageRenderer.RenderToStream(snapshot).Result)
-                    using (var img = XImage.FromStream(stream))
                     {
-                        if (cancelToken.IsCancellationRequested)
+                        using (var img = XImage.FromStream(stream))
                         {
-                            return false;
-                        }
+                            if (cancelToken.IsCancellationRequested)
+                            {
+                                return false;
+                            }
 
-                        PdfPage page = document.AddPage();
-                        DrawImageOnPage(page, img, compat);
+                            PdfPage page = document.AddPage();
+                            DrawImageOnPage(page, img, stream, compat);
+                        }
                     }
                 }
                 progress++;
@@ -212,7 +215,7 @@ namespace NAPS2.ImportExport.Pdf
 
                     if (!importedPdfPassThrough)
                     {
-                        DrawImageOnPage(page, img, compat);
+                        DrawImageOnPage(page, img, stream, compat);
                     }
 
                     if (cancelToken.IsCancellationRequested)
@@ -350,7 +353,8 @@ namespace NAPS2.ImportExport.Pdf
             return string.Concat(elements);
         }
 
-        private static void DrawImageOnPage(PdfPage page, XImage img, PdfCompat compat)
+        private static void DrawImageOnPage(PdfPage page, XImage img, Stream stream, PdfCompat compat)
+            //NOTE: CC - Added new code to try to compress the image using the JPG Encoder to reduce the PDF image size.
         {
             if (compat != PdfCompat.Default)
             {
@@ -361,40 +365,40 @@ namespace NAPS2.ImportExport.Pdf
             page.Height = realSize.Height;
             using (XGraphics gfx = XGraphics.FromPdfPage(page))
             {
-                
+                //OLD CODE HERE
                 //gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
-                // Patch to adapt from Luca De Petrillo
-                if (appConfigManager.Config.DefaultProfileSettings.MaxQuality && settings.ImageSettings.CompressImages)
 
+                //NEW CODE HERE
+                // Code from Luca De Petrillo from a submitted patch in 2015 to NAPS2. Adapted to work here (hopefully)
+                //if (settings.DefaultProfileSettings.MaxQuality && settings.ImageSettings.CompressImages)
+                if (imageSettings.ImageSettings.CompressImages)
                 { 
                     // Compress the image to JPEG and use it if smaller than the original one.
-                    var quality = Math.Max(Math.Min(settings.ImageSettings.JpegQuality, 100), 0);
+                    var quality = Math.Max(Math.Min(imageSettings.ImageSettings.JpegQuality, 100), 0);
                     var encoder = ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid);
                     var encoderParams = new EncoderParameters(1);
                     encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, quality);
-
-                    // Code changed a lot since 2015. Not sure to be able to fix now
-                    // Will have to investigate on how to adapt this following code
-                    // img.Save is was removed and I need to find alternate way.
-
-                    /*
-
-                    using (var streamJpg = new MemoryStream())
+                   
                     {
-                        img.Save(streamJpg, encoder, encoderParams);
-                        if (streamJpg.Length < stream.Length)
+                        using (var streamJpg = new MemoryStream())
                         {
-                            using (var imgJpg = Bitmap.FromStream(streamJpg))
+                            img.GdiImage.Save(streamJpg, encoder, encoderParams);
+                            if (streamJpg.Length < stream.Length)
                             {
-                                gfx.DrawImage(imgJpg, 0, 0, realSize.Width, realSize.Height);
+                                using (var imgJpg = XImage.FromStream(streamJpg))
+                                {
+                                    gfx.DrawImage(imgJpg, 0, 0, realSize.Width, realSize.Height);
+                                }
                             }
-                        }
-                        else
-                        {
-                            gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
+                            else
+                            {
+                                gfx.DrawImage(img, 0, 0, realSize.Width, realSize.Height);
+                            }
+
                         }
 
-                    }*/
+                    }
+                    
                 }
                 else
                 {
