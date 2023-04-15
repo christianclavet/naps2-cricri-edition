@@ -11,6 +11,7 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
 using NAPS2.WinForms;
+using ZXing;
 
 namespace NAPS2.Recovery
 {
@@ -163,8 +164,8 @@ namespace NAPS2.Recovery
                             if (await DoRecover(imageCallback))
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete
-                                //ReleaseFolderLock();
-                                //DeleteFolder();
+                                ReleaseFolderLock();
+                                DeleteFolder();
                                 return true;
                             }
                             return false;
@@ -234,7 +235,9 @@ namespace NAPS2.Recovery
                 try
                 {
                     ReleaseFolderLock();
-                    folderToRecoverFrom.Delete(true);
+                    //Only delete the folder if the temporary .lock file is present. Don't delete any other folder.
+                    if (File.Exists(Path.Combine(folderToRecoverFrom.FullName, ".lock")))
+                        folderToRecoverFrom.Delete(true);
                 }
                 catch (Exception ex)
                 {

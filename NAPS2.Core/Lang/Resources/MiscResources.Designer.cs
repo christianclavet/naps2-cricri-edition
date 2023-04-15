@@ -988,6 +988,24 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Do you want to replace the selected image?.
+        /// </summary>
+        internal static string Rescan {
+            get {
+                return ResourceManager.GetString("Rescan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rescan image.
+        /// </summary>
+        internal static string Rescan_title {
+            get {
+                return ResourceManager.GetString("Rescan_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Reset Image.
         /// </summary>
         internal static string ResetImage {

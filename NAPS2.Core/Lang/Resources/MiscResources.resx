@@ -501,4 +501,10 @@
   <data name="AcquiringData" xml:space="preserve">
     <value>Acquiring data...</value>
   </data>
+  <data name="Rescan" xml:space="preserve">
+    <value>Do you want to replace the selected image?</value>
+  </data>
+  <data name="Rescan_title" xml:space="preserve">
+    <value>Rescan image</value>
+  </data>
 </root>

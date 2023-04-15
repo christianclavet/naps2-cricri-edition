@@ -498,4 +498,10 @@
   <data name="AcquiringData" xml:space="preserve">
     <value>Acquisition des données...</value>
   </data>
+  <data name="Rescan" xml:space="preserve">
+    <value>Voulez-vous remplacer l'image sélectionnée?</value>
+  </data>
+  <data name="Rescan_title" xml:space="preserve">
+    <value>Renumériser l'image</value>
+  </data>
 </root>

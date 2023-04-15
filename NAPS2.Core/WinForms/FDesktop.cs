@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAPS2.Config;
 using NAPS2.ImportExport;
+using NAPS2.ImportExport.Pdf;
 using NAPS2.Lang;
 using NAPS2.Lang.Resources;
 using NAPS2.Logging;
@@ -417,7 +418,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = true;
+                    //RecoveryImage.DisableRecoveryCleanup = true;
                 }
             } // Or there are unsaved changes
             else if (changeTracker.HasUnsavedChanges)
@@ -444,12 +445,12 @@ namespace NAPS2.WinForms
                     else
  
                     {
-                        e.Cancel = true;
+                       e.Cancel = true;
                     }
                 }
                 else
                 {
-                    RecoveryImage.DisableRecoveryCleanup = true;
+                    //RecoveryImage.DisableRecoveryCleanup = true;
                 }
             }
 
@@ -484,12 +485,8 @@ namespace NAPS2.WinForms
         {
             SaveToolStripLocation();
             Pipes.KillServer();
-
-            //For the moment, do not remove the images in the recovery folder.
-            //Want to use it as a "SAVE" feature CC
-
-            //imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-    
+            //Remove the work folder when closing the application
+            imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
@@ -570,7 +567,7 @@ namespace NAPS2.WinForms
             
             if (SelectedIndices.Any()  && !this.insert)
             {
-                if (MessageBox.Show("Do you want to replace the selected image?", "Rescan image", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show(string.Format(MiscResources.Rescan), string.Format(MiscResources.Rescan_title), MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     param.RescanMode = true; //In rescan, it only scan one picture and will replace it.
                 else
                     return;
@@ -954,14 +951,6 @@ namespace NAPS2.WinForms
 
                     int value = SelectedIndices.First();
                     tiffViewerCtl1.Image = null;
-                    // TESTING Progress delete
-                    // var op = operationFactory.Create<ImportOperation>();
-                    //var op = operationFactory.Create<ImportOperation>();
-                    //if (op.Start(OrderFiles(files), ReceiveScannedImage()))
-                    //{
-                    //    operationProgress.ShowProgress(op);
-                    //}
-                    //
                     imageList.Delete(SelectedIndices);
                     DeleteThumbnails();
 
@@ -2397,6 +2386,9 @@ namespace NAPS2.WinForms
             {
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
                 projectName = di.Name;
+                //Set the default filename with the new project name
+                UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+                UserConfigManager.Save();
                 UpdateToolbar();
             }         
         }
@@ -2411,12 +2403,14 @@ namespace NAPS2.WinForms
                 projectName = form.getFileName();
                 UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
+            //Set the default filename with the new project name
+            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            UserConfigManager.Save();
         }
 
         private void closeWorkspace()
         {
             //Recovery lock must be removed first to do operations
-            // TODO. Currently disabled.
             RecoveryImage._recoveryLock.Dispose();
 
             var todayDate = DateTime.Now;
