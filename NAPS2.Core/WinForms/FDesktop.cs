@@ -2358,6 +2358,7 @@ namespace NAPS2.WinForms
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
+            
             if (splitter1)
             {
                 UserConfigManager.Config.Splitter1_distance = splitContainer1.SplitterDistance;
