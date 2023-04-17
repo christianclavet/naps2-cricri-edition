@@ -71,7 +71,8 @@ namespace NAPS2.WinForms
                 string firstFileSaved = await ExportPDF(savePath, images, false, null);
                 if (firstFileSaved != null)
                 {
-                    changeTracker.Saved(changeToken);
+                    //Don't change the tracker since the project is not saved (backed up)
+                    //changeTracker.Saved(changeToken);
                     notify?.PdfSaved(firstFileSaved);
                     return true;
                 }
@@ -119,7 +120,8 @@ namespace NAPS2.WinForms
                 }
                 if (await op.Success)
                 {
-                    changeTracker.Saved(changeToken);
+                    //Don't change the tracker since the project is not saved (backed up)
+                    //changeTracker.Saved(changeToken);
                     notify?.ImagesSaved(images.Count, op.FirstFileSaved);
                     return true;
                 }
@@ -167,7 +169,8 @@ namespace NAPS2.WinForms
                 var message = new EmailMessage();
                 if (await ExportPDF(targetPath, images, true, message) != null)
                 {
-                    changeTracker.Saved(changeToken);
+                    //Don't change the tracker since the project is not saved (backed up)
+                    //changeTracker.Saved(changeToken);
                     return true;
                 }
             }

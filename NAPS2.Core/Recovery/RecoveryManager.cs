@@ -165,7 +165,7 @@ namespace NAPS2.Recovery
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete
                                 ReleaseFolderLock();
-                                DeleteFolder();
+                                //DeleteFolder();
                                 return true;
                             }
                             return false;
