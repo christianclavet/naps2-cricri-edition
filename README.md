@@ -19,6 +19,15 @@ I, Christian Clavet, not the original developper of this excellent application, 
 
 I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.8 because, I also updated the libraries used in the application and they now require .NET Framework 4.8+
 
+Here is the current preview 3 (april 2023)
+
+<img src="https://user-images.githubusercontent.com/13395943/232607347-802a030c-b283-4319-9ac1-9e48aa1bc773.jpg" width="679" height="381">
+
+Added features:
+- New "File" menu with all file related items, take less space and is more coherent.
+- Work can be saved as project. Updated work will create a backup (appending .old to the project name).
+- PDF can now be recompressed. Compression can be adjusted.
+
 Here is the current preview 2 (January 2023)
 ![Alt text](./ScreenPreview2.jpg?raw=true "Title")
 Here is a screenshot (july 2022)
