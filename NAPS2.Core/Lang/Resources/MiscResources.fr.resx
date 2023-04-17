@@ -262,7 +262,7 @@
     <value>Réinitialisation de l'image</value>
   </data>
   <data name="ExitWithUnsavedChanges" xml:space="preserve">
-    <value>Voulez-vous vraiment quitter l'application et ne pas garder le projet en cours?</value>
+    <value>Voulez-vous sauvegarder le projet actuel avant de quitter l'application?</value>
   </data>
   <data name="ExitWithActiveOperations" xml:space="preserve">
     <value>Une opération est en cours. Faut-il vraiment quitter et annuler l'opération ?</value>
@@ -487,7 +487,7 @@
     <value>NAPS2 Server</value>
   </data>
   <data name="ServerStarted" xml:space="preserve">
-    <value>Server started</value>
+    <value>Serveur démarré</value>
   </data>
   <data name="ListeningOnPort" xml:space="preserve">
     <value>Listening on port {0}</value>

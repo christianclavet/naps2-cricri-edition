@@ -283,7 +283,7 @@
     <value>&amp;Teinte / Saturation</value>
   </data>
   <data name="tsHueSaturation.ToolTipText" xml:space="preserve">
-    <value>Adjust the hue and saturation of the selected image(s)</value>
+    <value>Ajuster la teinte et la saturation de l'image</value>
   </data>
   <data name="tsBlackWhite.Text" xml:space="preserve">
     <value>&amp;Noir et blanc</value>

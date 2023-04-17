@@ -547,7 +547,7 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Do you want to exit the application and not keep the content of the current project?.
+        ///   Recherche une chaîne localisée semblable à Do you want to back-up the current project before leaving the application?.
         /// </summary>
         internal static string ExitWithUnsavedChanges {
             get {

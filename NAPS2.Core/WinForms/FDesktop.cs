@@ -427,7 +427,7 @@ namespace NAPS2.WinForms
                 {
                     var result = MessageBox.Show(MiscResources.ExitWithUnsavedChanges, MiscResources.UnsavedChanges,
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                    if (result == DialogResult.Yes)
+                    if (result == DialogResult.No)
                     {
                         // User want to close and delete the current work
                         changeTracker.Clear();
@@ -438,7 +438,7 @@ namespace NAPS2.WinForms
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
 
                     }
-                    else if (result ==DialogResult.No)
+                    else if (result ==DialogResult.Yes)
                     {
                         closeWorkspace();
                     }
