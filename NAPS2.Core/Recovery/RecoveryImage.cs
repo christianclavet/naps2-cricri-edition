@@ -53,6 +53,11 @@ namespace NAPS2.Recovery
                     // Automatically create a recovery folder owned by this process
                     _recoveryFolder = new DirectoryInfo(RecoveryFolderPath);
                     _recoveryFolder.Create();
+                    if ((_recoveryFolder.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden)
+                    {
+                        //Add Hidden flag    
+                        _recoveryFolder.Attributes |= FileAttributes.Hidden;
+                    }
                     _recoveryLockFile = new FileInfo(Path.Combine(_recoveryFolder.FullName, LOCK_FILE_NAME));
                     _recoveryLock = _recoveryLockFile.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None);
                     _recoveryIndexManager = new RecoveryIndexManager(_recoveryFolder);
