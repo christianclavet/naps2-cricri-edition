@@ -901,8 +901,8 @@ namespace NAPS2.WinForms
             // 
             // FDesktop
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Name = "FDesktop";
