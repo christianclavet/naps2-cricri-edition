@@ -22,6 +22,10 @@ namespace NAPS2.Util
             { "ins", Keys.Insert },
             { "break", Keys.Pause },
             { "shift", Keys.Shift },
+            { "pgup", Keys.PageUp },
+            { "pgdn", Keys.PageDown },
+            { "home", Keys.Home },
+            { "end", Keys.End },
         }; 
 
         public Keys Parse(string value)

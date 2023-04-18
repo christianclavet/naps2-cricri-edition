@@ -1301,6 +1301,13 @@ namespace NAPS2.WinForms
 
         private void thumbnailList1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Disable the keys in the thubnail list. Will try to reuse them for something else (PGDN|PGUP)
+            if (e.KeyCode == Keys.PageUp)
+            { e.Handled = true; }
+
+            if (e.KeyCode == Keys.PageDown)
+            { e.Handled = true; }
+
             ksm.Perform(e.KeyData);
         }
 
