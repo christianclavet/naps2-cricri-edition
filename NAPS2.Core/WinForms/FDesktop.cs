@@ -1204,6 +1204,8 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+C", ctxCopy);
             ksm.Assign("Ctrl+V", ctxPaste);
             ksm.Assign("Space", tsView);
+            ksm.Assign("pgdn", pageDown);
+            ksm.Assign("pgup", pageUp);
             
             // Configured
           
@@ -1299,32 +1301,29 @@ namespace NAPS2.WinForms
             return null;
         }
 
-        private void thumbnailList1_KeyDown(object sender, KeyEventArgs e)
+        private void pageDown()
         {
-            // Disable the keys in the thubnail list. Will try to reuse them for something else (PGDN|PGUP)
-            if (e.KeyCode == Keys.PageUp)
-            { e.Handled = true;
-                int count = SelectedIndices.First() - 1;
-                if (SelectedIndices.Count()>0)
-                {
-                    if (count > -1)
-                    {
-                        thumbnailList1.Items[count].Selected = true;
-                        thumbnailList1.Items[count + 1].Selected = false;
-                    }
-                }
+            int count = SelectedIndices.First() + 1;
+            if (SelectedIndices.Count() > 0 && count < thumbnailList1.Items.Count)
+            {
+                thumbnailList1.Items[count].Selected = true;
+                thumbnailList1.Items[count - 1].Selected = false;
             }
-
-            if (e.KeyCode == Keys.PageDown)
-            { e.Handled = true;
-                int count = SelectedIndices.First() + 1;
-                if (SelectedIndices.Count()>0 && count<thumbnailList1.Items.Count)
+        }
+        private void pageUp()
+        {
+            int count = SelectedIndices.First() - 1;
+            if (SelectedIndices.Count() > 0)
+            {
+                if (count > -1)
                 {
                     thumbnailList1.Items[count].Selected = true;
-                    thumbnailList1.Items[count-1].Selected = false;
+                    thumbnailList1.Items[count + 1].Selected = false;
                 }
             }
-
+        }
+        private void thumbnailList1_KeyDown(object sender, KeyEventArgs e)
+        {
             ksm.Perform(e);
         }
 
