@@ -76,25 +76,27 @@
     <TwainImpl>Default</TwainImpl>
   </DefaultProfileSettings>
   <KeyboardShortcuts>
-    <ScanDefault>Enter</ScanDefault>
-    <ScanProfile1>F2</ScanProfile1>
-    <ScanProfile2>F3</ScanProfile2>
-    <ScanProfile3>F4</ScanProfile3>
-    <ScanProfile4>F5</ScanProfile4>
-    <ScanProfile5>F6</ScanProfile5>
-    <ScanProfile6>F7</ScanProfile6>
-    <ScanProfile7>F8</ScanProfile7>
-    <ScanProfile8>F9</ScanProfile8>
-    <ScanProfile9>F10</ScanProfile9>
-    <ScanProfile10>F11</ScanProfile10>
-    <ScanProfile11>F12</ScanProfile11>
-    <ScanProfile12></ScanProfile12>
+	<pgdn></pgdn>
+	<pgup></pgup>
+    <ScanDefault></ScanDefault>
+    <ScanProfile1>F1</ScanProfile1>
+    <ScanProfile2>F2</ScanProfile2>
+    <ScanProfile3>F3</ScanProfile3>
+    <ScanProfile4>F4</ScanProfile4>
+    <ScanProfile5>F5</ScanProfile5>
+    <ScanProfile6>F6</ScanProfile6>
+    <ScanProfile7>F7</ScanProfile7>
+    <ScanProfile8>F8</ScanProfile8>
+    <ScanProfile9>F9</ScanProfile9>
+    <ScanProfile10>F10</ScanProfile10>
+    <ScanProfile11>F11</ScanProfile11>
+    <ScanProfile12>F12</ScanProfile12>
     <NewProfile></NewProfile>
-    <BatchScan>Ctrl+B</BatchScan>
+    <BatchScan></BatchScan>
     <Profiles></Profiles>
     <Ocr></Ocr>
-    <Import>Ctrl+O</Import>
-    <SavePDF>Ctrl+S</SavePDF>
+    <Import></Import>
+    <SavePDF></SavePDF>
     <SavePDFAll></SavePDFAll>
     <SavePDFSelected></SavePDFSelected>
     <SaveImages></SaveImages>
@@ -106,9 +108,9 @@
     <Print>Ctrl+P</Print>
     <ImageView>Space</ImageView>
     <ImageBlackWhite></ImageBlackWhite>
-    <ImageBrightness></ImageBrightness>
+    <ImageBrightness>Shift+B</ImageBrightness>
     <ImageContrast></ImageContrast>
-    <ImageCrop></ImageCrop>
+    <ImageCrop>Shift+C</ImageCrop>
     <ImageHue></ImageHue>
     <ImageSaturation></ImageSaturation>
     <ImageSharpen></ImageSharpen>
@@ -128,8 +130,8 @@
     <ReorderReverseSelected></ReorderReverseSelected>
     <Delete></Delete>
     <Clear>Ctrl+Shift+Del</Clear>
-    <About>F1</About>
     <ZoomIn>Ctrl+Oemplus</ZoomIn>
     <ZoomOut>Ctrl+OemMinus</ZoomOut>
   </KeyboardShortcuts>
 </AppConfig>
+

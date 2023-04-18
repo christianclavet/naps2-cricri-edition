@@ -1196,7 +1196,7 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+Down", MoveDown);
             ksm.Assign("Ctrl+Right", MoveDown);
             ksm.Assign("Ctrl+Shift+Del", tsClear);
-            ksm.Assign("F1", tsAbout);
+            ksm.Assign("Ctrl+L", loadProjectTool_TSMI);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
             ksm.Assign("Del", ctxDelete);
@@ -2399,7 +2399,7 @@ namespace NAPS2.WinForms
         #region new stuff
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
-            closeWorkspace(); // Backup the current project before getting a new one.
+           
 
             // Display the path the recovery folder to get the choosen path instead of the last
             folderBrowserDialog1.SelectedPath = Paths.Recovery;
@@ -2408,6 +2408,7 @@ namespace NAPS2.WinForms
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
             if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))// Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
+                closeWorkspace(); // Backup the current project before getting a new one.
                 recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
                 projectName = di.Name;
                 //Set the default filename with the new project name
