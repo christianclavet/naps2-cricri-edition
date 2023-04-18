@@ -130,11 +130,13 @@ namespace NAPS2.Util
             return Assign(value, item.PerformClick);
         }
 
-        public void Perform(Keys keyData)
+        public void Perform(KeyEventArgs e)
         {
+            Keys keyData = e.KeyData;
             if (dict.ContainsKey(keyData))
             {
                 dict[keyData]();
+                e.Handled= true;
             }
         }
     }

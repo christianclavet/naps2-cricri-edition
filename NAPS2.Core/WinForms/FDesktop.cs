@@ -1325,7 +1325,7 @@ namespace NAPS2.WinForms
                 }
             }
 
-            ksm.Perform(e.KeyData);
+            ksm.Perform(e);
         }
 
         private void thumbnailList1_MouseWheel(object sender, MouseEventArgs e)

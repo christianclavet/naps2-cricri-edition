@@ -651,7 +651,7 @@ namespace NAPS2.WinForms
                 }
             }
 
-            ksm.Perform(e.KeyData);
+            ksm.Perform(e);
         }
 
         private async void tbPageCurrent_KeyDown(object sender, KeyEventArgs e)
@@ -673,7 +673,7 @@ namespace NAPS2.WinForms
                 }
             }
 
-            ksm.Perform(e.KeyData);
+            ksm.Perform(e);
         }
 
         private void AssignKeyboardShortcuts()
