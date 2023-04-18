@@ -1303,10 +1303,27 @@ namespace NAPS2.WinForms
         {
             // Disable the keys in the thubnail list. Will try to reuse them for something else (PGDN|PGUP)
             if (e.KeyCode == Keys.PageUp)
-            { e.Handled = true; }
+            { e.Handled = true;
+                int count = SelectedIndices.First() - 1;
+                if (SelectedIndices.Count()>0)
+                {
+                    if (count > -1)
+                    {
+                        thumbnailList1.Items[count].Selected = true;
+                        thumbnailList1.Items[count + 1].Selected = false;
+                    }
+                }
+            }
 
             if (e.KeyCode == Keys.PageDown)
-            { e.Handled = true; }
+            { e.Handled = true;
+                int count = SelectedIndices.First() + 1;
+                if (SelectedIndices.Count()>0 && count<thumbnailList1.Items.Count)
+                {
+                    thumbnailList1.Items[count].Selected = true;
+                    thumbnailList1.Items[count-1].Selected = false;
+                }
+            }
 
             ksm.Perform(e.KeyData);
         }
