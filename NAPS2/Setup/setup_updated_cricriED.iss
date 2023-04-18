@@ -6,7 +6,7 @@
 [Setup]
 AppName=NAPS2 (Not Another PDF Scanner 2) CriCri Edition
 AppVerName=NAPS2 - CriCri edition {#AppVersion}
-AppPublisher=Ben Olden-Cooligan | Chsitian Clavet
+AppPublisher=Ben Olden-Cooligan | Christian Clavet
 AppPublisherURL=http://www.sourceforge.net/projects/naps2
 AppSupportURL=http://www.sourceforge.net/projects/naps2
 AppUpdatesURL=http://www.sourceforge.net/projects/naps2
