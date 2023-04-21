@@ -1744,7 +1744,9 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FCrop>();
+           
                 form.Image = SelectedImages.First();
+                form.MaximizeBox = true;
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
                 UpdateToolbar();
@@ -1756,6 +1758,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FBrightnessContrast>();
+                form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
@@ -1768,6 +1771,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FHueSaturation>();
+                form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
@@ -1780,6 +1784,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FBlackWhite>();
+                form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
@@ -1792,6 +1797,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FSharpen>();
+                form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
@@ -1832,6 +1838,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FRotate>();
+                form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();

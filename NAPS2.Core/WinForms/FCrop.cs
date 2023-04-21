@@ -24,6 +24,7 @@ namespace NAPS2.WinForms
             : base(changeTracker, scannedImageRenderer)
         {
             InitializeComponent();
+            SaveFormState = true;
 
             lm = new LayoutManager(this)
                 .Bind(tbLeft, tbRight)

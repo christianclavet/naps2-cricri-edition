@@ -115,10 +115,10 @@
     <ImageSaturation></ImageSaturation>
     <ImageSharpen></ImageSharpen>
     <ImageReset></ImageReset>
-    <RotateLeft>q</RotateLeft>
-    <RotateRight>e</RotateRight>
-    <RotateFlip>w</RotateFlip>
-    <RotateDeskew>d</RotateDeskew>
+    <RotateLeft>Ctrl+Numpad1</RotateLeft>
+    <RotateRight>Ctrl+Numpad3</RotateRight>
+    <RotateFlip>Ctrl+Numpad2</RotateFlip>
+    <RotateDeskew>Ctrl+Numpad5</RotateDeskew>
     <RotateCustom>Shift+Down</RotateCustom>
     <MoveUp>Ctrl+Up</MoveUp>
     <MoveDown>Ctrl+Down</MoveDown>
