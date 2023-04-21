@@ -885,7 +885,7 @@ namespace NAPS2.WinForms
 
             // Top-level toolbar actions
             tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
-            tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = tsClear.Enabled = imageList.Images.Any();
+            tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
 
             // Context-menu actions
             ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
@@ -1199,7 +1199,7 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+Left", MoveUp);
             ksm.Assign("Ctrl+Down", MoveDown);
             ksm.Assign("Ctrl+Right", MoveDown);
-            ksm.Assign("Ctrl+Shift+Del", tsClear);
+            //ksm.Assign("Ctrl+Shift+Del", tsClear);
             ksm.Assign("Ctrl+L", loadProjectTool_TSMI);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
@@ -1217,7 +1217,7 @@ namespace NAPS2.WinForms
 
             //ksm.Assign(ks.About, tsAbout);
             ksm.Assign(ks.BatchScan, tsBatchScan);
-            ksm.Assign(ks.Clear, tsClear);
+            //ksm.Assign(ks.Clear, tsClear);
             ksm.Assign(ks.Delete, tsDelete);
             ksm.Assign(ks.EmailPDF, tsdEmailPDF);
             ksm.Assign(ks.EmailPDFAll, tsEmailPDFAll);
