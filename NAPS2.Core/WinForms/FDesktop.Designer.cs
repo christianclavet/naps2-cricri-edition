@@ -123,7 +123,6 @@ namespace NAPS2.WinForms
             this.tsReverseSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsClear = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -144,8 +143,6 @@ namespace NAPS2.WinForms
             this.contextMenuStrip.SuspendLayout();
             this.tStrip.SuspendLayout();
             this.SuspendLayout();
-            this.ResizeEnd += new System.EventHandler(this.app_SizeChanged);
-
             // 
             // toolStripContainer1
             // 
@@ -330,7 +327,6 @@ namespace NAPS2.WinForms
             this.tsdReorder,
             this.toolStripSeparator2,
             this.tsDelete,
-            this.tsClear,
             this.toolStripSeparator3});
             this.tStrip.Name = "tStrip";
             this.tStrip.TabStop = true;
@@ -852,14 +848,6 @@ namespace NAPS2.WinForms
             this.tsDelete.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
-            // tsClear
-            // 
-            this.tsClear.Image = global::NAPS2.Icons.cancel;
-            resources.ApplyResources(this.tsClear, "tsClear");
-            this.tsClear.Name = "tsClear";
-            this.tsClear.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.tsClear.Click += new System.EventHandler(this.tsClear_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -908,6 +896,7 @@ namespace NAPS2.WinForms
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Name = "FDesktop";
+            this.Resize += new System.EventHandler(this.app_SizeChanged);
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -975,7 +964,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsReverseSelected;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsDelete;
-        private System.Windows.Forms.ToolStripButton tsClear;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
         private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;

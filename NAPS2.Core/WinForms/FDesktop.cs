@@ -1346,18 +1346,12 @@ namespace NAPS2.WinForms
         private void app_SizeChanged(object sender, System.EventArgs e)
         {
             Control control = (Control)sender;
-            if (Oldsize!=Size.Empty && Oldsize.Width!=control.Size.Width)
+            if (Oldsize!=Size.Empty)
             {
-                long ratio = (long)(control.Size.Width / Oldsize.Width);
-                splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);    
+                float ratio = (float)control.Size.Width / (float)Oldsize.Width;
+                splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);
             }
             Oldsize.Width = control.Size.Width;
-            // Ensure the Form remains square (Height = Width).
-            // if (control.Size.Height != control.Size.Width)
-            //{
-            //    control.Size = new Size(control.Size.Width, control.Size.Width);
-            //}
-
         }
 
         private void thumbnailList1_ItemActivate(object sender, EventArgs e)
