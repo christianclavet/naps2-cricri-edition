@@ -144,6 +144,8 @@ namespace NAPS2.WinForms
             this.contextMenuStrip.SuspendLayout();
             this.tStrip.SuspendLayout();
             this.SuspendLayout();
+            this.ResizeEnd += new System.EventHandler(this.app_SizeChanged);
+
             // 
             // toolStripContainer1
             // 

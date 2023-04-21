@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -74,6 +75,7 @@ namespace NAPS2.WinForms
         private bool closed = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
+        
 
         private Bitmap bitmap; // Used for the preview window
         private bool splitter1 = false; // Used for the splitter GUI state of display
@@ -81,6 +83,8 @@ namespace NAPS2.WinForms
         private int insertCounter = 0; //Used to count the offset of images to insert
         private string title = "";
         private string projectName = "Untitled";
+        private Size Oldsize = Size.Empty;
+        
 
         #endregion
 
@@ -1339,6 +1343,23 @@ namespace NAPS2.WinForms
 
         #region Event Handlers - Misc
 
+        private void app_SizeChanged(object sender, System.EventArgs e)
+        {
+            Control control = (Control)sender;
+            if (Oldsize!=Size.Empty && Oldsize.Width!=control.Size.Width)
+            {
+                long ratio = (long)(control.Size.Width / Oldsize.Width);
+                splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);    
+            }
+            Oldsize.Width = control.Size.Width;
+            // Ensure the Form remains square (Height = Width).
+            // if (control.Size.Height != control.Size.Width)
+            //{
+            //    control.Size = new Size(control.Size.Width, control.Size.Width);
+            //}
+
+        }
+
         private void thumbnailList1_ItemActivate(object sender, EventArgs e)
         {
             PreviewImage();
@@ -2386,8 +2407,10 @@ namespace NAPS2.WinForms
         }
         
 
+
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
+            
             
             if (splitter1)
             {
@@ -2396,6 +2419,8 @@ namespace NAPS2.WinForms
                 splitter1 = false;
             }
         }
+
+        
 
         private void splitContainer1_SplitterMoving(object sender, SplitterCancelEventArgs e)
         {
