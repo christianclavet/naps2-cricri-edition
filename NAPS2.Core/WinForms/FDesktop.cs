@@ -1343,6 +1343,7 @@ namespace NAPS2.WinForms
 
         #region Event Handlers - Misc
 
+        // New feature. Will update the position of splitter bar relatively by a ratio when the application window size is changed.
         private void app_SizeChanged(object sender, System.EventArgs e)
         {
             Control control = (Control)sender;
@@ -1376,11 +1377,6 @@ namespace NAPS2.WinForms
             else
             {
                 statusStrip1.Items[0].Text = "No item selected";
-                //tiffViewerCtl1.Image = null;
-                //if (bitmap != null)
-                //{
-                    //bitmap.Dispose();
-                //}
             }
             if (thumbnailList1.SelectedItems.Count > 1)
             {
@@ -1508,6 +1504,7 @@ namespace NAPS2.WinForms
 
                     updateProfileButton();
 
+                    //By default it should not perform a scan when pressing the profile key. Investigating an alternate way to trigger this like CTRL+PROFILE KEY
                     //await scanPerformer.PerformScan(profile, new ScanParams(), this, notify, ReceiveScannedImage());
                     //Activate();
                 };
@@ -1527,7 +1524,7 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-
+            // New feature insert when a icon is selected in the list, else, will append in the list
             if (SelectedIndices.Any())
             {
                 this.insert = true; //import will insert the pages at the selected position
@@ -1639,11 +1636,6 @@ namespace NAPS2.WinForms
         private void tsDelete_Click(object sender, EventArgs e)
         {
             Delete();
-        }
-
-        private void tsClear_Click(object sender, EventArgs e)
-        {
-            Clear();
         }
 
         private void tsAbout_Click(object sender, EventArgs e)
