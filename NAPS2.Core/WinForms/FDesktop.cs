@@ -1267,7 +1267,7 @@ namespace NAPS2.WinForms
             var sh = GetProfileShortcut(i);
             if (string.IsNullOrWhiteSpace(sh) && i <= 11)
             {
-                sh = "F" + (i + 1);
+                sh = "F" + (i+1);
             }
             ksm.Assign(sh, item);
         }
@@ -1491,7 +1491,7 @@ namespace NAPS2.WinForms
             var defaultProfile = profileManager.DefaultProfile;
             tsCombo_Profiles.Text = defaultProfile.DisplayName;
             tsCombo_Profiles.Image = Icons.scanner_48;
-            int i = 0;
+            int i = 1;
             foreach (var profile in profileManager.Profiles)
             {
                 var item = new ToolStripMenuItem
