@@ -970,6 +970,15 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Untitled.
+        /// </summary>
+        internal static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Recovering....
         /// </summary>
         internal static string Recovering {

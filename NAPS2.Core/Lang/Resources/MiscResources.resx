@@ -507,4 +507,7 @@
   <data name="Rescan_title" xml:space="preserve">
     <value>Rescan image</value>
   </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
 </root>

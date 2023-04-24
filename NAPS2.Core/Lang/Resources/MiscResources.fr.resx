@@ -504,4 +504,7 @@
   <data name="Rescan_title" xml:space="preserve">
     <value>Renumériser l'image</value>
   </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Sans nom</value>
+  </data>
 </root>

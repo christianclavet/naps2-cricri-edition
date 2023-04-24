@@ -82,7 +82,7 @@ namespace NAPS2.WinForms
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
         private string title = "";
-        private string projectName = "Untitled";
+        private string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         
 
@@ -192,6 +192,8 @@ namespace NAPS2.WinForms
 
             // Set the title bar info
             this.title = this.Text;
+            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            UserConfigManager.Save();
 
         }
 
@@ -940,7 +942,7 @@ namespace NAPS2.WinForms
                     imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                     DeleteThumbnails();
                     changeTracker.Clear();
-                    projectName = "Untitled";
+                    projectName = string.Format(MiscResources.ProjectName);
                     UpdateToolbar();
                 }
             }
@@ -2463,7 +2465,7 @@ namespace NAPS2.WinForms
             if (imageList.Images.Count() > 0)
             {
                 // If the projectname was not named, will put the "untitled" and the date so it will be easier to find out later, else keep the defined name for the folder
-                if (projectName.Contains("Untitled"))
+                if (projectName.Contains(string.Format(MiscResources.ProjectName)))
                     PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName + "_" + strToday, false);
                 else
                     PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName, false);
@@ -2478,7 +2480,9 @@ namespace NAPS2.WinForms
                 DeleteThumbnails();
             }
             changeTracker.Clear();
-            projectName = "Untitled";
+            projectName = string.Format(MiscResources.ProjectName);
+            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            UserConfigManager.Save();
 
             //UPdate the toolbar
             UpdateToolbar();
