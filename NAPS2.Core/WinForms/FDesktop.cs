@@ -15,6 +15,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
 using NAPS2.Config;
 using NAPS2.ImportExport;
 using NAPS2.ImportExport.Pdf;
@@ -84,6 +86,7 @@ namespace NAPS2.WinForms
         private string title = "";
         private string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
+        private bool darkMode=false;
         
 
         #endregion
@@ -119,6 +122,7 @@ namespace NAPS2.WinForms
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+
         }
 
         protected override void OnLoad(object sender, EventArgs eventArgs)
@@ -179,9 +183,9 @@ namespace NAPS2.WinForms
             
 
             layoutManager?.Deactivate();
-            btnZoomIn.Location = new Point(btnZoomIn.Location.X, thumbnailList1.Height - 33);
-            btnZoomOut.Location = new Point(btnZoomOut.Location.X, thumbnailList1.Height - 33);
-            btnZoomMouseCatcher.Location = new Point(btnZoomMouseCatcher.Location.X, thumbnailList1.Height - 33);
+            btnZoomIn.Location = new Point(btnZoomIn.Location.X, thumbnailList1.Height - 44);
+            btnZoomOut.Location = new Point(btnZoomOut.Location.X, thumbnailList1.Height - 44);
+            btnZoomMouseCatcher.Location = new Point(btnZoomMouseCatcher.Location.X, thumbnailList1.Height - 44);
             layoutManager = new LayoutManager(this)
                   .Bind(btnZoomIn, btnZoomOut, btnZoomMouseCatcher)
                        .BottomTo(() => thumbnailList1.Height)
@@ -2497,6 +2501,33 @@ namespace NAPS2.WinForms
             closeWorkspace();                               
         }
 
+        private void TSI_ToggleDarkMode_Click(object sender, EventArgs e)
+        {
+            if (!darkMode)
+            {
+                BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
+                this.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                this.ForeColor = System.Drawing.Color.White;
+                //TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                tStrip.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+
+                statusStrip1.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                darkMode = true;
+            }
+            else
+            {
+                BackgroundForm.UseImmersiveDarkMode(this.Handle, false);
+                this.BackColor = System.Drawing.Color.White;
+                this.ForeColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                TopToolStripPanel.BackColor = System.Drawing.Color.White;
+                tStrip.BackColor = System.Drawing.Color.White;
+
+                statusStrip1.BackColor = System.Drawing.Color.White;
+                darkMode = false;
+
+            }
+
+        }
     }
         #endregion
 }

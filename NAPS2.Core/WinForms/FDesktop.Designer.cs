@@ -131,6 +131,7 @@ namespace NAPS2.WinForms
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.TSI_ToggleDarkMode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -161,6 +162,7 @@ namespace NAPS2.WinForms
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tStrip);
             // 
             // statusStrip1
@@ -312,6 +314,7 @@ namespace NAPS2.WinForms
             // 
             // tStrip
             // 
+            this.tStrip.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.tStrip, "tStrip");
             this.tStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -328,7 +331,9 @@ namespace NAPS2.WinForms
             this.toolStripSeparator2,
             this.tsDelete,
             this.toolStripSeparator3});
+            this.tStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.tStrip.Name = "tStrip";
+            this.tStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tStrip.TabStop = true;
             this.tStrip.DockChanged += new System.EventHandler(this.tStrip_DockChanged);
             // 
@@ -511,7 +516,8 @@ namespace NAPS2.WinForms
             this.tsShowHideView,
             this.tsOCR,
             this.printToolStripMenuItem,
-            this.toolStripSeparator14});
+            this.toolStripSeparator14,
+            this.TSI_ToggleDarkMode});
             this.tsTools.Image = global::NAPS2.Icons.toolbox;
             resources.ApplyResources(this.tsTools, "tsTools");
             this.tsTools.Name = "tsTools";
@@ -889,6 +895,12 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
             // 
+            // TSI_ToggleDarkMode
+            // 
+            this.TSI_ToggleDarkMode.Name = "TSI_ToggleDarkMode";
+            resources.ApplyResources(this.TSI_ToggleDarkMode, "TSI_ToggleDarkMode");
+            this.TSI_ToggleDarkMode.Click += new System.EventHandler(this.TSI_ToggleDarkMode_Click);
+            // 
             // FDesktop
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1016,6 +1028,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem tsImport;
         private System.Windows.Forms.ToolStripMenuItem closeCurrentProject;
+        private System.Windows.Forms.ToolStripMenuItem TSI_ToggleDarkMode;
     }
 }
 
