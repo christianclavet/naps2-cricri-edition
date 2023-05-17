@@ -672,6 +672,8 @@ namespace NAPS2.WinForms
 
             if (bitmap != null)
             {
+                //Get the barcode info              
+                img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
                 Size size = bitmap.Size;
                 img.infoResolution = size.Width + " px X " + size.Height + " px ";
 
