@@ -1,9 +1,5 @@
 # NAPS 2 CRICRI EDITION
 ## NOTES (About this fork): 
-I, Christian Clavet, not the original developper of this excellent application, plan to rework the application for supporting a method I prefer for Batch Scanning as post-process in a non-destructive manner. I also want to experiment with improving the workflow of the application and add other small features.
-
-I also had to upgrade the requirement for .NET Framework going from 4.0 to 4.8 because, I also updated the libraries used in the application and they now require .NET Framework 4.8+
-
 Here is the current release (6.2 Unoficial)
 
 <img src="https://user-images.githubusercontent.com/13395943/232607347-802a030c-b283-4319-9ac1-9e48aa1bc773.jpg" width="679" height="381">
