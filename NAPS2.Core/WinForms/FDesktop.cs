@@ -869,7 +869,9 @@ namespace NAPS2.WinForms
         private void UpdateToolbar()
         {
             //Rename the title to include the name of the current project.
-            this.Text = title + " | Current project name: " + projectName;
+            title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
+            if (Text!=null)
+                this.Text = title + " | Current project name: " + projectName;
 
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)
@@ -2466,7 +2468,8 @@ namespace NAPS2.WinForms
         private void closeWorkspace()
         {
             //Recovery lock must be removed first to do operations
-            RecoveryImage._recoveryLock.Dispose();
+            if (RecoveryImage._recoveryLock!=null)
+                RecoveryImage._recoveryLock.Dispose();
 
             var todayDate = DateTime.Now;
             string strToday = todayDate.ToString("MM_dd_yyyy_HH_mm_ss"); // converts date to string as per current culture
@@ -2489,7 +2492,8 @@ namespace NAPS2.WinForms
                 imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                 DeleteThumbnails();
             }
-            changeTracker.Clear();
+            if (changeTracker!=null)
+                changeTracker.Clear();
             projectName = string.Format(MiscResources.ProjectName);
             UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
             UserConfigManager.Save();
