@@ -83,6 +83,7 @@ namespace NAPS2.WinForms
             this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSI_ToggleDarkMode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
@@ -110,7 +111,6 @@ namespace NAPS2.WinForms
             this.tsFlip = new System.Windows.Forms.ToolStripMenuItem();
             this.tsDeskew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsCustomRotation = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMove = new NAPS2.WinForms.ToolStripDoubleButton();
             this.tsdReorder = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsInterleave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsDeinterleave = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +131,6 @@ namespace NAPS2.WinForms
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.TSI_ToggleDarkMode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -162,7 +161,7 @@ namespace NAPS2.WinForms
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tStrip);
             // 
             // statusStrip1
@@ -326,14 +325,12 @@ namespace NAPS2.WinForms
             this.toolStripSeparator4,
             this.tsdImage,
             this.tsdRotate,
-            this.tsMove,
             this.tsdReorder,
             this.toolStripSeparator2,
             this.tsDelete,
             this.toolStripSeparator3});
-            this.tStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.tStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.tStrip.Name = "tStrip";
-            this.tStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tStrip.TabStop = true;
             this.tStrip.DockChanged += new System.EventHandler(this.tStrip_DockChanged);
             // 
@@ -559,6 +556,12 @@ namespace NAPS2.WinForms
             this.toolStripSeparator14.Name = "toolStripSeparator14";
             resources.ApplyResources(this.toolStripSeparator14, "toolStripSeparator14");
             // 
+            // TSI_ToggleDarkMode
+            // 
+            this.TSI_ToggleDarkMode.Name = "TSI_ToggleDarkMode";
+            resources.ApplyResources(this.TSI_ToggleDarkMode, "TSI_ToggleDarkMode");
+            this.TSI_ToggleDarkMode.Click += new System.EventHandler(this.TSI_ToggleDarkMode_Click);
+            // 
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
@@ -759,18 +762,6 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsCustomRotation, "tsCustomRotation");
             this.tsCustomRotation.Click += new System.EventHandler(this.tsCustomRotation_Click);
             // 
-            // tsMove
-            // 
-            this.tsMove.FirstImage = global::NAPS2.Icons.arrow_up_small;
-            resources.ApplyResources(this.tsMove, "tsMove");
-            this.tsMove.MaxTextWidth = 80;
-            this.tsMove.Name = "tsMove";
-            this.tsMove.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.tsMove.SecondImage = global::NAPS2.Icons.arrow_down_small;
-            this.tsMove.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.tsMove.FirstClick += new System.EventHandler(this.tsMove_FirstClick);
-            this.tsMove.SecondClick += new System.EventHandler(this.tsMove_SecondClick);
-            // 
             // tsdReorder
             // 
             this.tsdReorder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -856,6 +847,7 @@ namespace NAPS2.WinForms
             // 
             // toolStripSeparator3
             // 
+            this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
@@ -894,12 +886,6 @@ namespace NAPS2.WinForms
             // folderBrowserDialog1
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
-            // 
-            // TSI_ToggleDarkMode
-            // 
-            this.TSI_ToggleDarkMode.Name = "TSI_ToggleDarkMode";
-            resources.ApplyResources(this.TSI_ToggleDarkMode, "TSI_ToggleDarkMode");
-            this.TSI_ToggleDarkMode.Click += new System.EventHandler(this.TSI_ToggleDarkMode_Click);
             // 
             // FDesktop
             // 
@@ -963,7 +949,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsFlip;
         private System.Windows.Forms.ToolStripMenuItem tsDeskew;
         private System.Windows.Forms.ToolStripMenuItem tsCustomRotation;
-        private ToolStripDoubleButton tsMove;
         private System.Windows.Forms.ToolStripDropDownButton tsdReorder;
         private System.Windows.Forms.ToolStripMenuItem tsInterleave;
         private System.Windows.Forms.ToolStripMenuItem tsDeinterleave;

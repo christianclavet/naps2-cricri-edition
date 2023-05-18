@@ -892,7 +892,7 @@ namespace NAPS2.WinForms
                 SelectedIndices.Any();
 
             // Top-level toolbar actions
-            tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
+            //tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
 
             // Context-menu actions
@@ -2508,7 +2508,7 @@ namespace NAPS2.WinForms
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
                 this.ForeColor = System.Drawing.Color.White;
-                //TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
                 tStrip.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
 
                 statusStrip1.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
