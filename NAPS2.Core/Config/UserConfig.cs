@@ -56,6 +56,8 @@ namespace NAPS2.Config
 
         public int Splitter1_distance { get; set; } = 590; // Default value for the view splitter
 
+        public bool DarkMode { get; set; }
+
         public BatchSettings LastBatchSettings { get; set; }
 
         public DockStyle DesktopToolStripDock { get; set; }

@@ -150,6 +150,8 @@ namespace NAPS2.WinForms
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
 
+            darkMode = SetDarkMode(UserConfigManager.Config.DarkMode);
+
             if (appConfigManager.Config.HideOcrButton)
             {
                 //tStrip.Items.Remove(tsOcr_1);
@@ -2501,32 +2503,40 @@ namespace NAPS2.WinForms
             closeWorkspace();                               
         }
 
-        private void TSI_ToggleDarkMode_Click(object sender, EventArgs e)
+        private bool SetDarkMode(bool input)
         {
-            if (!darkMode)
+            if (input)
             {
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
                 this.ForeColor = System.Drawing.Color.White;
-                TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+               
                 tStrip.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
 
                 statusStrip1.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                darkMode = true;
+                
             }
             else
             {
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, false);
                 this.BackColor = System.Drawing.Color.White;
                 this.ForeColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                TopToolStripPanel.BackColor = System.Drawing.Color.White;
+                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.White;
                 tStrip.BackColor = System.Drawing.Color.White;
 
                 statusStrip1.BackColor = System.Drawing.Color.White;
-                darkMode = false;
+                
 
             }
+            return input;
+        }
 
+        private void TSI_ToggleDarkMode_Click(object sender, EventArgs e)
+        {
+            darkMode = SetDarkMode(!darkMode);
+            UserConfigManager.Config.DarkMode = darkMode;
+            UserConfigManager.Save();
         }
     }
         #endregion

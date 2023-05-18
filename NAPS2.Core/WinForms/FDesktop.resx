@@ -132,7 +132,7 @@
     <value>0, 0</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1770, 22</value>
+    <value>784, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -346,7 +346,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="thumbnailList1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>936, 689</value>
+    <value>936, 485</value>
   </data>
   <data name="thumbnailList1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -355,7 +355,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=7.0.0.16086, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=7.0.0.19401, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -388,7 +388,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="tiffViewerCtl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>828, 689</value>
+    <value>25, 485</value>
   </data>
   <data name="tiffViewerCtl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -397,7 +397,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=7.0.0.16086, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=7.0.0.19401, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -418,7 +418,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1770, 689</value>
+    <value>784, 485</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>936</value>
@@ -445,7 +445,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1770, 689</value>
+    <value>784, 485</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -493,7 +493,7 @@
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1770, 765</value>
+    <value>784, 561</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1153,7 +1153,7 @@
     <value>3, 0</value>
   </data>
   <data name="tStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 54</value>
+    <value>597, 54</value>
   </data>
   <data name="tStrip.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1267,7 +1267,7 @@
     <value>247</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1770, 765</value>
+    <value>784, 561</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1795,6 +1795,6 @@
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.16086, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.19401, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
