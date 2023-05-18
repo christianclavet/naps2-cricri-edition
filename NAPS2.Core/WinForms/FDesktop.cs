@@ -200,7 +200,7 @@ namespace NAPS2.WinForms
             //if (this.title.Length>0)
             //    title = projectName + Text;
 
-            //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
             //UserConfigManager.Save();
 
         }
