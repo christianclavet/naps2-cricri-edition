@@ -3,7 +3,7 @@
 Here is the current release (6.2 Unoficial)
 
 <img src="https://user-images.githubusercontent.com/13395943/232607347-802a030c-b283-4319-9ac1-9e48aa1bc773.jpg" width="679" height="381">
-This is an unofficial release. This fork could be compared to Naps2 v6.2, as it's based upon Naps 6.1.2 Official
+This is an unofficial release. This fork could be compared to Naps2 v6.2, as it's based upon Naps 6.1.2 Official.
 This fork and version have these new features that have been added:
 
 ### **Interface**
