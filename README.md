@@ -14,8 +14,10 @@ This fork and versions have these new features that have been added:
 - Changed interface with bigger icons. Was feeling too small on 4k screens and still look nice on 2k screens.
 - Reworked the menus workflow. Each command that is assigned to shortcuts are displayed, and there is some mouse over information.
 - When new pictures are received (import or scan) the display will scroll to the last visible line 
+- Started "Darkmode" for the interface. This can be changed from the user in the menu (standard | darkmode). Mostly apply to the main interface for now.
 
 ### **Scanning**
+- The current used device is directly on the toolbar. If you change the device (F1, F2, F3, etc) the device will be changed for the current device. This behavior is different from Vanilla NAPS2
 - Added feature to rescan a page with a new image. You select the page and press the "scan" button. It will ask if you want to replace the image. This can also be used with the import feature.
 - Added feature to insert images between pages. You select the page that you want before the added picture and press the new button.
 - Barcodes are read from the application and displayed. Plan to later have metadata's and store theses (export and multi-projects). A single page barcode is supported for the moment. 
