@@ -1,6 +1,6 @@
 # NAPS 2 CRICRI EDITION
 ## NOTES (About this fork): 
-Here is the current release (6.2 Unoficial)
+Here is the current release (6.2 Un-official)
 
 <img src="https://user-images.githubusercontent.com/13395943/232607347-802a030c-b283-4319-9ac1-9e48aa1bc773.jpg" width="679" height="381">
 This is an unofficial release. This fork could be compared to Naps2 v6.2, as it's based upon Naps 6.1.2 Official.
