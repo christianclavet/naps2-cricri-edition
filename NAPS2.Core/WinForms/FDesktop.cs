@@ -83,10 +83,10 @@ namespace NAPS2.WinForms
         private bool splitter1 = false; // Used for the splitter GUI state of display
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
-        private string title = "";
+        private string title = Application.ProductName.ToString()+" "+Application.ProductVersion.ToString();
         private string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
-        private bool darkMode=false;
+        public bool darkMode=false;
         
 
         #endregion
@@ -197,9 +197,11 @@ namespace NAPS2.WinForms
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
 
             // Set the title bar info
-            this.title = this.Text;
-            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-            UserConfigManager.Save();
+            //if (this.title.Length>0)
+            //    title = projectName + Text;
+
+            //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            //UserConfigManager.Save();
 
         }
 

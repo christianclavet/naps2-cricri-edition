@@ -81,6 +81,7 @@ namespace NAPS2.WinForms
             this.operationProgress = operationProgress;
             this.fDesktop = fDesktop;
             InitializeComponent();
+            BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
         }
 
         public ScannedImageList ImageList { get; set; }
