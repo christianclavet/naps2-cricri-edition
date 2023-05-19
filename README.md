@@ -2,7 +2,12 @@
 ## NOTES (About this fork): 
 Here is the current release (6.2 Un-official)
 
-<img src="https://user-images.githubusercontent.com/13395943/232607347-802a030c-b283-4319-9ac1-9e48aa1bc773.jpg" width="679" height="381">
+## Darkmode activated
+<img src="https://github.com/christianclavet/naps2-cricri-edition/assets/13395943/1fab8b6f-e11d-42e5-ade6-ac5c14701c54" width="729" height="364">
+
+## Darkmode deactivated
+<img src="https://github.com/christianclavet/naps2-cricri-edition/assets/13395943/844162e4-a2cd-4b72-bb6d-893a076954ce" width="729" height="364">
+
 This is an unofficial release. This fork could be compared to Naps2 v6.2, as it's based upon Naps 6.1.2 Official.
 
 This fork and versions have these new features that have been added:
@@ -18,8 +23,8 @@ This fork and versions have these new features that have been added:
 
 ### **Scanning**
 - The current used device is directly on the toolbar. If you change the device (F1, F2, F3, etc) the device will be changed for the current device. This behavior is different from Vanilla NAPS2
-- Added feature to rescan a page with a new image. You select the page and press the "scan" button. It will ask if you want to replace the image. This can also be used with the import feature.
-- Added feature to insert images between pages. You select the page that you want before the added picture and press the new button.
+- Added feature to rescan a page with a new image. You select the page and press the "scan" button. It will ask if you want to replace the image. 
+- Added feature to insert images between pages. You select the page that you want before the added picture and press the new "insert Scan" button.
 - Barcodes are read from the application and displayed. Plan to later have metadata's and store theses (export and multi-projects). A single page barcode is supported for the moment. 
 
 ### **Export**
@@ -35,7 +40,7 @@ The application build is in 64bit and support all the memory you have.
 
 I plan to give back some patches to official NAPS 7.0+ (Already done the first one with the help of  @cyanfish) but the author will decide if he incorporate it or not. I don't have the hardware for building for Linux and Mac (nor the will to). I will still developing for windows only as it's my main platform of use here and at work. 
 
-- [Get current release installer (6.2 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/download/v6.2.0_CriCri_Edition/naps2-CriCri-edition.6.2.0-setup.exe)
+- [Get current release installer (6.2 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/tag/v6.2.0_CriCri_Edition)
 
 ### Others informations about NAPS: (From official REPO)
 ## NAPS2 (Not Another PDF Scanner 2) (CriCri Edition - Fork of NAPS2)
