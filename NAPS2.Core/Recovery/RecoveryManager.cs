@@ -91,6 +91,7 @@ namespace NAPS2.Recovery
                         // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
                         ReleaseFolderLock();
                         DeleteFolder();
+                        GC.Collect();
                         return false;
                     }
                     /*
@@ -165,6 +166,7 @@ namespace NAPS2.Recovery
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete
                                 ReleaseFolderLock();
+                                GC.Collect();
                                 //DeleteFolder();
                                 return true;
                             }

@@ -118,6 +118,10 @@ namespace NAPS2.WinForms
             
             InitializeComponent();
 
+            title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
+            if (Text != null)
+                this.Text = title + " | Current project name: " + projectName;
+
             notify.ParentForm = this;
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
@@ -195,13 +199,6 @@ namespace NAPS2.WinForms
            
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
-
-            // Set the title bar info
-            //if (this.title.Length>0)
-            //    title = projectName + Text;
-
-            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-            //UserConfigManager.Save();
 
         }
 
@@ -858,10 +855,6 @@ namespace NAPS2.WinForms
                 for (int i = 0; i < thumbnailList1.Items.Count; i++)
                 {
                         thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString(); 
-
-                    if (i < imageList.Images.Count)
-                        thumbnailList1.Items[i].Text += ": " + imageList.Images[i].BarCodeData;
-
                 }
             }
         }
@@ -2445,15 +2438,21 @@ namespace NAPS2.WinForms
             folderBrowserDialog1.SelectedPath = Paths.Recovery;
             // 
             DialogResult result = folderBrowserDialog1.ShowDialog();
+
             DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
             if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))// Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
+                DirectoryInfo di2 = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
+                if (di2.Name.Length > 0)
+                    projectName = di2.Name;
+
                 closeWorkspace(); // Backup the current project before getting a new one.
-                recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di);
-                projectName = di.Name;
+                recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di2);
+                                
                 //Set the default filename with the new project name
-                UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-                UserConfigManager.Save();
+    
+                //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+                //UserConfigManager.Save();
                 UpdateToolbar();
             }         
         }
@@ -2469,8 +2468,8 @@ namespace NAPS2.WinForms
                 UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
             //Set the default filename with the new project name
-            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-            UserConfigManager.Save();
+            //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+            //UserConfigManager.Save();
         }
 
         private void closeWorkspace()
@@ -2502,11 +2501,9 @@ namespace NAPS2.WinForms
             }
             if (changeTracker!=null)
                 changeTracker.Clear();
+            
             projectName = string.Format(MiscResources.ProjectName);
-            UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-            UserConfigManager.Save();
-
-            //UPdate the toolbar
+            //Update the toolbar
             UpdateToolbar();
         }
         
