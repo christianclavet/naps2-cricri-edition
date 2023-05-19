@@ -14,8 +14,10 @@ This fork and versions have these new features that have been added:
 - Changed interface with bigger icons. Was feeling too small on 4k screens and still look nice on 2k screens.
 - Reworked the menus workflow. Each command that is assigned to shortcuts are displayed, and there is some mouse over information.
 - When new pictures are received (import or scan) the display will scroll to the last visible line 
+- Started "Darkmode" for the interface. This can be changed from the user in the menu (standard | darkmode). Mostly apply to the main interface for now.
 
 ### **Scanning**
+- The current used device is directly on the toolbar. If you change the device (F1, F2, F3, etc) the device will be changed for the current device. This behavior is different from Vanilla NAPS2
 - Added feature to rescan a page with a new image. You select the page and press the "scan" button. It will ask if you want to replace the image. This can also be used with the import feature.
 - Added feature to insert images between pages. You select the page that you want before the added picture and press the new button.
 - Barcodes are read from the application and displayed. Plan to later have metadata's and store theses (export and multi-projects). A single page barcode is supported for the moment. 
@@ -33,7 +35,7 @@ The application build is in 64bit and support all the memory you have.
 
 I plan to give back some patches to official NAPS 7.0+ (Already done the first one with the help of  @cyanfish) but the author will decide if he incorporate it or not. I don't have the hardware for building for Linux and Mac (nor the will to). I will still developing for windows only as it's my main platform of use here and at work. 
 
-- [Get current release installer (6.2 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/download/v6.2_CriCriEdition/naps2-CriCri-edition.6.2.0-setup.exe)
+- [Get current release installer (6.2 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/download/v6.2.0_CriCri_Edition/naps2-CriCri-edition.6.2.0-setup.exe)
 
 ### Others informations about NAPS: (From official REPO)
 ## NAPS2 (Not Another PDF Scanner 2) (CriCri Edition - Fork of NAPS2)
