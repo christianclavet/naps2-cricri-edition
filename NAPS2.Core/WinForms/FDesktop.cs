@@ -1209,10 +1209,10 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+O", tsImport);
             ksm.Assign("Ctrl+S", tsdSavePDF);
             ksm.Assign("Ctrl+P", printToolStripMenuItem);
-            ksm.Assign("Ctrl+Up", MoveUp);
-            ksm.Assign("Ctrl+Left", MoveUp);
-            ksm.Assign("Ctrl+Down", MoveDown);
-            ksm.Assign("Ctrl+Right", MoveDown);
+            //ksm.Assign("Ctrl+Up", MoveUp);
+            //ksm.Assign("Ctrl+Left", MoveUp);
+            //ksm.Assign("Ctrl+Down", MoveDown);
+            //ksm.Assign("Ctrl+Right", MoveDown);
             //ksm.Assign("Ctrl+Shift+Del", tsClear);
             ksm.Assign("Ctrl+L", loadProjectTool_TSMI);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
@@ -1224,6 +1224,14 @@ namespace NAPS2.WinForms
             ksm.Assign("Space", tsView);
             ksm.Assign("pgdn", pageDown);
             ksm.Assign("pgup", pageUp);
+            ksm.Assign("Ctrl+Numpad1", tsRotateLeft);
+            ksm.Assign("Ctrl+NumPad2", tsFlip);
+            ksm.Assign("Ctrl+Numpad3", tsRotateRight);
+            ksm.Assign("Ctrl+Down", tsCustomRotation);
+            ksm.Assign("C", tsCrop);
+            ksm.Assign("B", tsBrightnessContrast);
+            ksm.Assign("H", tsHueSaturation);
+            ksm.Assign("D", tsDeskew);
             
             // Configured
           
@@ -1246,8 +1254,8 @@ namespace NAPS2.WinForms
             ksm.Assign(ks.ImageReset, tsReset);
             ksm.Assign(ks.ImageView, tsView);
             ksm.Assign(ks.Import, tsImport);
-            ksm.Assign(ks.MoveDown, MoveDown); // TODO
-            ksm.Assign(ks.MoveUp, MoveUp); // TODO
+            //ksm.Assign(ks.MoveDown, MoveDown); // TODO
+            //ksm.Assign(ks.MoveUp, MoveUp); // TODO
             ksm.Assign(ks.NewProfile, tsNewProfile);
             //ksm.Assign(ks.Ocr, tsOcr);
             ksm.Assign(ks.Print, printToolStripMenuItem);

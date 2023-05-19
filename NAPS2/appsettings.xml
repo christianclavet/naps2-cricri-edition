@@ -76,9 +76,7 @@
     <TwainImpl>Default</TwainImpl>
   </DefaultProfileSettings>
   <KeyboardShortcuts>
-	<pgdn></pgdn>
-	<pgup></pgup>
-    <ScanDefault></ScanDefault>
+	<ScanDefault></ScanDefault>
     <ScanProfile1>F1</ScanProfile1>
     <ScanProfile2>F2</ScanProfile2>
     <ScanProfile3>F3</ScanProfile3>
@@ -105,23 +103,21 @@
     <EmailPDF></EmailPDF>
     <EmailPDFAll></EmailPDFAll>
     <EmailPDFSelected></EmailPDFSelected>
-    <Print>Ctrl+P</Print>
-    <ImageView>Space</ImageView>
+    <Print></Print>
+    <ImageView></ImageView>
     <ImageBlackWhite></ImageBlackWhite>
-    <ImageBrightness>Shift+B</ImageBrightness>
+    <ImageBrightness></ImageBrightness>
     <ImageContrast></ImageContrast>
-    <ImageCrop>Shift+C</ImageCrop>
+    <ImageCrop></ImageCrop>
     <ImageHue></ImageHue>
     <ImageSaturation></ImageSaturation>
     <ImageSharpen></ImageSharpen>
     <ImageReset></ImageReset>
-    <RotateLeft>Ctrl+Numpad1</RotateLeft>
-    <RotateRight>Ctrl+Numpad3</RotateRight>
-    <RotateFlip>Ctrl+Numpad2</RotateFlip>
-    <RotateDeskew>Ctrl+Numpad5</RotateDeskew>
-    <RotateCustom>Shift+Down</RotateCustom>
-    <MoveUp>Ctrl+Up</MoveUp>
-    <MoveDown>Ctrl+Down</MoveDown>
+    <RotateLeft></RotateLeft>
+    <RotateRight></RotateRight>
+    <RotateFlip></RotateFlip>
+    <RotateDeskew></RotateDeskew>
+    <RotateCustom></RotateCustom>
     <ReorderInterleave></ReorderInterleave>
     <ReorderDeinterleave></ReorderDeinterleave>
     <ReorderAltInterleave></ReorderAltInterleave>
@@ -129,9 +125,8 @@
     <ReorderReverseAll></ReorderReverseAll>
     <ReorderReverseSelected></ReorderReverseSelected>
     <Delete></Delete>
-    <Clear>Ctrl+Shift+Del</Clear>
-    <ZoomIn>Ctrl+Oemplus</ZoomIn>
-    <ZoomOut>Ctrl+OemMinus</ZoomOut>
+    <ZoomIn></ZoomIn>
+    <ZoomOut></ZoomOut>
   </KeyboardShortcuts>
 </AppConfig>
 
