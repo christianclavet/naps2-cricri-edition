@@ -356,7 +356,7 @@ namespace NAPS2.WinForms
             }
 
             // Allow scanned images to be recovered in case of an unexpected close
-            recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+            //recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
             new Thread(RenderThumbnails).Start();
 
@@ -2447,12 +2447,7 @@ namespace NAPS2.WinForms
                     projectName = di2.Name;
 
                 closeWorkspace(); // Backup the current project before getting a new one.
-                recoveryManager.RecoverScannedImages2(ReceiveScannedImage(), di2);
-                                
-                //Set the default filename with the new project name
-    
-                //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-                //UserConfigManager.Save();
+                recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di2);
                 UpdateToolbar();
             }         
         }

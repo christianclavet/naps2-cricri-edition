@@ -20,8 +20,7 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
-        public RecoveryOperation recoveryOP;
-
+       
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
             this.formFactory = formFactory;
@@ -29,22 +28,13 @@ namespace NAPS2.Recovery
             this.operationProgress = operationProgress;
         }
 
-        public void RecoverScannedImages(Action<ScannedImage> imageCallback)
+        public void RecoverScannedImages(Action<ScannedImage> imageCallback, DirectoryInfo dir)
         {
-            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
-            if (op.Start(imageCallback))
-            {
-                operationProgress.ShowProgress(op);
-            }
-        }
-
-        //Second variation to be originated from the GUI CC
-        public void RecoverScannedImages2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
-        {
-            recoveryOP = new RecoveryOperation(formFactory, thumbnailRenderer);
-            if (recoveryOP.Start2(imageCallback, dir))
-            {
-                operationProgress.ShowProgress(recoveryOP);
+            var recovery = new RecoveryOperation(formFactory, thumbnailRenderer);
+            
+            if (recovery.Start(imageCallback, dir))
+            {                
+                operationProgress.ShowProgress(recovery);
             }
         }
 
@@ -66,75 +56,10 @@ namespace NAPS2.Recovery
 
                 ProgressTitle = MiscResources.ImportProgress;
                 AllowCancel = true;
-                AllowBackground = true;
+                AllowBackground = false;
             }
 
-            public bool Start(Action<ScannedImage> imageCallback)
-            {
-                Status = new OperationStatus
-                {
-                    StatusText = MiscResources.Recovering
-                };
-
-                folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
-                if (folderToRecoverFrom == null)
-                {
-                    return false;
-                }
-                try
-                {
-                    recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
-                    imageCount = recoveryIndexManager.Index.Images.Count;
-                    scannedDateTime = folderToRecoverFrom.LastWriteTime;
-                    if (imageCount == 0) //TODO, check if a index file exist before deleting the folder. Caused a bug if the user select a wrong folder will delete it content!
-                    {
-                        // If there are no images, do nothing. Don't delete the folder in case the index was corrupted somehow.
-                        ReleaseFolderLock();
-                        DeleteFolder();
-                        GC.Collect();
-                        return false;
-                    }
-                    /*
-                    switch (PromptToRecover())
-                    {
-                        case DialogResult.Yes: // Recover
-                            RunAsync(async () =>
-                            {
-                                try
-                                {
-                                    if (await DoRecover(imageCallback))
-                                    {
-                                        ReleaseFolderLock();
-                                        DeleteFolder();
-                                        return true;
-                                    }
-                                    return false;
-                                }
-                                finally
-                                {
-                                    ReleaseFolderLock();
-                                    GC.Collect();
-                                }
-                            });
-                            return true;
-                        case DialogResult.No: // Delete
-                            ReleaseFolderLock();
-                            DeleteFolder();
-                            break;
-                        default: // Not Now
-                            ReleaseFolderLock();
-                            break;
-                    }*/
-                }
-                catch (Exception)
-                {
-                    ReleaseFolderLock();
-                    throw;
-                }
-                return false;
-            }
-
-            public bool Start2(Action<ScannedImage> imageCallback, DirectoryInfo dir)
+            public bool Start(Action<ScannedImage> imageCallback, DirectoryInfo dir)
             {
                 Status = new OperationStatus
                 {
@@ -153,7 +78,7 @@ namespace NAPS2.Recovery
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
                     if (imageCount == 0)
                     {
-                        // If there are no images, do nothing abd remove the folder for cleanup
+                        // If there are no images, do nothing and remove the folder for cleanup
                         ReleaseFolderLock();
                         DeleteFolder();
                         return false;
@@ -218,19 +143,12 @@ namespace NAPS2.Recovery
                     }
                     scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
                     imageCallback(scannedImage);
-
+                    Status.StatusText = string.Format(MiscResources.ActiveOperations, Path.GetFileName(indexImage.FileName));
                     Status.CurrentProgress++;
                     InvokeStatusChanged();
                 }
                 return true;
             }
-
-            /*private DialogResult PromptToRecover()
-            {
-                //var recoveryPromptForm = formFactory.Create<FRecover>();
-                //recoveryPromptForm.SetData(imageCount, scannedDateTime);
-                return; //recoveryPromptForm.ShowDialog();
-            }*/
 
             public void DeleteFolder()
             {
