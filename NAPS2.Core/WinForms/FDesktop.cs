@@ -86,8 +86,7 @@ namespace NAPS2.WinForms
         private string title = Application.ProductName.ToString()+" "+Application.ProductVersion.ToString();
         private string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
-        public bool darkMode=false;
-        
+        public bool darkMode = false;
 
         #endregion
 
@@ -2440,13 +2439,25 @@ namespace NAPS2.WinForms
 
             // Display the path the recovery folder to get the choosen path instead of the last
             folderBrowserDialog1.SelectedPath = Paths.Recovery;
-            // 
-            DialogResult result = folderBrowserDialog1.ShowDialog();
 
-            DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.CheckFileExists = false;
+            openFileDialog.AutoUpgradeEnabled = true;
+            openFileDialog.InitialDirectory = Paths.Recovery;
+            openFileDialog.ValidateNames = false;
+            openFileDialog.Filter = "(*.xml) |*.xml";
+            openFileDialog.FileName = " ";
+
+
+            // 
+            //DialogResult result = folderBrowserDialog1.ShowDialog();
+            DialogResult result = openFileDialog.ShowDialog();
+
+            //DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
+            DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
             if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))// Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
-                DirectoryInfo di2 = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
+                DirectoryInfo di2 = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
                 if (di2.Name.Length > 0)
                     projectName = di2.Name;
 
