@@ -67,10 +67,6 @@ namespace NAPS2.Recovery
                 };
 
                 folderToRecoverFrom = dir;
-                if (folderToRecoverFrom == null)
-                {
-                    return false;
-                }
                 try
                 {
                     recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
@@ -83,10 +79,15 @@ namespace NAPS2.Recovery
                         DeleteFolder();
                         return false;
                     }
+                    if (folderToRecoverFrom == null)
+                    {
+                        return false;
+                    }
                     RunAsync(async () =>
                     {
                         try
                         {
+
                             if (await DoRecover(imageCallback))
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete

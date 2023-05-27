@@ -355,8 +355,9 @@ namespace NAPS2.WinForms
                     appConfig.StartupMessageIcon);
             }
 
+
             // Allow scanned images to be recovered in case of an unexpected close
-            //recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), null);
 
             new Thread(RenderThumbnails).Start();
 
@@ -678,7 +679,7 @@ namespace NAPS2.WinForms
             if (bitmap != null)
             {
                 //Get the barcode info              
-                img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
+                img.BarCodeData = ""; //PatchCodeDetector.DetectBarcode(bitmap);
                 Size size = bitmap.Size;
                 img.infoResolution = size.Width + " px X " + size.Height + " px ";
 
@@ -1368,6 +1369,7 @@ namespace NAPS2.WinForms
                 splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);
             }
             Oldsize.Width = control.Size.Width;
+            appConfigManager.Save();
         }
 
         private void thumbnailList1_ItemActivate(object sender, EventArgs e)
@@ -1426,6 +1428,7 @@ namespace NAPS2.WinForms
         {
             this.insert = false; // disable insert mode
             await ScanDefault();
+            changeTracker.Made();
         }
 
         private async void tsNewProfile_Click_1(object sender, EventArgs e)
@@ -1437,6 +1440,7 @@ namespace NAPS2.WinForms
         {
             this.insert = true; // enable insert mode
             await ScanDefault();
+            changeTracker.Made();
 
         }
 
