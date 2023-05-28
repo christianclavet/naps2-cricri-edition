@@ -62,7 +62,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
-                    if (!dialogHelper.PromptToSavePdf(pdfSettings.DefaultFileName, out savePath))
+                    if (!dialogHelper.PromptToSavePdf(userConfigManager.Config.project, out savePath))
                     {
                         return false;
                     }
