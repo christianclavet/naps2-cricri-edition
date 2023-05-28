@@ -763,7 +763,7 @@ namespace NAPS2.WinForms
                 
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
-                //UpdateThumbnailList1Descriptions();
+                //UpdateThumbnailList1Descriptions(); // This cause an exception from another thread. Need to investigate.
                 
             };
         }
