@@ -130,7 +130,6 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -883,10 +882,6 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
-            // folderBrowserDialog1
-            // 
-            resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
-            // 
             // FDesktop
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -978,7 +973,6 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsProfiles;
         private System.Windows.Forms.ToolStripButton tsInsert;
         private System.Windows.Forms.ToolTip tt_FDesktop;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ToolStripDropDownButton FileDm;
         private System.Windows.Forms.ToolStripMenuItem loadProjectTool_TSMI;
         private System.Windows.Forms.ToolStripMenuItem renameCurrentProject_TSMI;

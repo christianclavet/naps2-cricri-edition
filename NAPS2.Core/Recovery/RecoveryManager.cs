@@ -55,6 +55,7 @@ namespace NAPS2.Recovery
                 this.thumbnailRenderer = thumbnailRenderer;
 
                 ProgressTitle = MiscResources.ImportProgress;
+                
                 AllowCancel = true;
                 AllowBackground = false;
             }

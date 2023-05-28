@@ -323,7 +323,7 @@ namespace NAPS2.WinForms
 
         private async void FDesktop_Shown(object sender, EventArgs e)
         {
-            UpdateToolbar();
+            //UpdateToolbar();
 
             // Receive messages from other processes
             Pipes.StartServer(msg =>
@@ -356,7 +356,8 @@ namespace NAPS2.WinForms
 
 
             // Allow scanned images to be recovered in case of an unexpected close
-            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), null);
+            DirectoryInfo di = new DirectoryInfo(Paths.Recovery);
+            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
 
             new Thread(RenderThumbnails).Start();
 
@@ -762,7 +763,7 @@ namespace NAPS2.WinForms
                 
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
-                UpdateThumbnailList1Descriptions();
+                //UpdateThumbnailList1Descriptions();
                 
             };
         }
@@ -1864,7 +1865,7 @@ namespace NAPS2.WinForms
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
                 form.ShowDialog();
-                UpdateThumbnails(SelectedIndices.ToList(), false, true);
+                UpdateThumbnails(SelectedIndices.ToList(), true, false);
             }
         }
 
@@ -2438,7 +2439,7 @@ namespace NAPS2.WinForms
             openFileDialog.InitialDirectory = Paths.Recovery;
             openFileDialog.ValidateNames = false;
             
-            openFileDialog.Filter = "(*.xml) | *.xml |" + MiscResources.FileTypeAllFiles + "(*.*) | *.*";
+            openFileDialog.Filter = "NAPS2 Index|index.xml|" + MiscResources.FileTypeAllFiles + "(*.*)|*.*";
             openFileDialog.FileName = " ";
 
             DialogResult result = openFileDialog.ShowDialog();
@@ -2447,12 +2448,18 @@ namespace NAPS2.WinForms
             if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))
                 // Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
-                DirectoryInfo di2 = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
-                if (di2.Name.Length > 0)
-                    projectName = di2.Name;
+                projectName = Path.GetDirectoryName(openFileDialog.FileName);
+                
+                if (projectName.Length > 0)
+                {
+                    projectName = projectName + "Miaous";
+                    UpdateToolbar();
+                    //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+                    //UserConfigManager.Save();
+                }
 
                 closeWorkspace(); // Backup the current project before getting a new one.
-                recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di2);
+                recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
                 UpdateToolbar();
             }         
         }
