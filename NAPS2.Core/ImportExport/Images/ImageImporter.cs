@@ -15,6 +15,7 @@ namespace NAPS2.ImportExport.Images
     public class ImageImporter : IImageImporter
     {
         private readonly ThumbnailRenderer thumbnailRenderer;
+        private const int exifOrientationID = 0x112; //274
 
         public ImageImporter(ThumbnailRenderer thumbnailRenderer)
         {
@@ -38,6 +39,7 @@ namespace NAPS2.ImportExport.Images
                     try
                     {
                         toImport = new Bitmap(filePath);
+                        ExifRotate(toImport);
                     }
                     catch (Exception e)
                     {
@@ -60,20 +62,21 @@ namespace NAPS2.ImportExport.Images
                             }
 
                             toImport.SelectActiveFrame(FrameDimension.Page, frameIndex);
+                           
                             var image = new ScannedImage(toImport, ScanBitDepth.C24Bit, IsLossless(toImport.RawFormat), -1);
                             if (!importParams.NoThumbnails)
                             {
                                 image.SetThumbnail(thumbnailRenderer.RenderThumbnail(toImport));
                             }
                             
-                            
+                          /*  
                             //if (importParams.DetectPatchCodes) 
                             // CC
                             {
                                 image.PatchCode = PatchCodeDetector.Detect(toImport);
                                 if (image.PatchCode == PatchCode.Unknown)
                                     image.BarCodeData = PatchCodeDetector.DataBarcode;
-                            }
+                            }*/
 
                             source.Put(image);
                         }
@@ -90,6 +93,33 @@ namespace NAPS2.ImportExport.Images
             return source;
         }
 
+        // Rotate the bipmap from the exif data
+        private void ExifRotate(Bitmap img)
+        {
+            if (!img.PropertyIdList.Contains(exifOrientationID))
+                return;
+
+            var prop = img.GetPropertyItem(exifOrientationID);
+            int val = BitConverter.ToUInt16(prop.Value, 0);
+            var rot = RotateFlipType.RotateNoneFlipNone;
+
+            if (val == 3 || val == 4)
+                rot = RotateFlipType.Rotate180FlipNone;
+            else if (val == 5 || val == 6)
+                rot = RotateFlipType.Rotate90FlipNone;
+            else if (val == 7 || val == 8)
+                rot = RotateFlipType.Rotate270FlipNone;
+
+            if (val == 2 || val == 4 || val == 5 || val == 7)
+                rot |= RotateFlipType.RotateNoneFlipX;
+
+            if (rot != RotateFlipType.RotateNoneFlipNone)
+            {
+                img.RotateFlip(rot);
+                img.RemovePropertyItem(exifOrientationID);
+            }
+
+        }
         private bool IsLossless(ImageFormat format)
         {
             return Equals(format, ImageFormat.Bmp) || Equals(format, ImageFormat.Png);
