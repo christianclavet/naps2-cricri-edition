@@ -659,9 +659,6 @@ namespace NAPS2.WinForms
 
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
-            //if (bitmap != null)
-            //    bitmap.Dispose();
-
             // Try something to stop the file lock
             Bitmap bit = await scannedImageRenderer.Render(img);
             bitmap = new Bitmap(bit);
@@ -677,7 +674,7 @@ namespace NAPS2.WinForms
 
             if (bitmap != null)
             {
-                //Get the barcode info              
+                //Get the barcode info. Take some time to interpret the barcode data from the image. Will use something else, more on demand.              
                 img.BarCodeData = ""; //PatchCodeDetector.DetectBarcode(bitmap);
                 Size size = bitmap.Size;
                 img.infoResolution = size.Width + " px X " + size.Height + " px ";
@@ -2435,27 +2432,20 @@ namespace NAPS2.WinForms
         #region new stuff
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
-           
-
-            // Display the path the recovery folder to get the choosen path instead of the last
-            folderBrowserDialog1.SelectedPath = Paths.Recovery;
-
             var openFileDialog = new OpenFileDialog();
             openFileDialog.CheckFileExists = false;
             openFileDialog.AutoUpgradeEnabled = true;
             openFileDialog.InitialDirectory = Paths.Recovery;
             openFileDialog.ValidateNames = false;
-            openFileDialog.Filter = "(*.xml) |*.xml";
+            
+            openFileDialog.Filter = "(*.xml) | *.xml |" + MiscResources.FileTypeAllFiles + "(*.*) | *.*";
             openFileDialog.FileName = " ";
 
-
-            // 
-            //DialogResult result = folderBrowserDialog1.ShowDialog();
             DialogResult result = openFileDialog.ShowDialog();
 
-            //DirectoryInfo di = new DirectoryInfo(@folderBrowserDialog1.SelectedPath);
             DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
-            if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))// Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
+            if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))
+                // Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
             {
                 DirectoryInfo di2 = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
                 if (di2.Name.Length > 0)
