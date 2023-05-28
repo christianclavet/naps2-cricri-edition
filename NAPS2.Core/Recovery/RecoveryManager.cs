@@ -16,22 +16,29 @@ namespace NAPS2.Recovery
 {
     public class RecoveryManager
     {
+        public static DirectoryInfo folderToRecoverFrom;
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
        
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
+            
             this.formFactory = formFactory;
             this.thumbnailRenderer = thumbnailRenderer;
             this.operationProgress = operationProgress;
         }
+        public void setFolder(DirectoryInfo info)
+        {
+            folderToRecoverFrom = info;
+        }
 
-        public void RecoverScannedImages(Action<ScannedImage> imageCallback, DirectoryInfo dir)
+        public void RecoverScannedImages(Action<ScannedImage> imageCallback)
         {
             var recovery = new RecoveryOperation(formFactory, thumbnailRenderer);
+            recovery.setFolder(folderToRecoverFrom);
             
-            if (recovery.Start(imageCallback, dir))
+            if (recovery.Start(imageCallback))
             {                
                 operationProgress.ShowProgress(recovery);
             }
@@ -43,11 +50,16 @@ namespace NAPS2.Recovery
             private readonly ThumbnailRenderer thumbnailRenderer;
 
             private FileStream lockFile;
-            private DirectoryInfo folderToRecoverFrom;
+            public static DirectoryInfo folderToRecoverFrom;
             private RecoveryIndexManager recoveryIndexManager;
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
+
+            public void setFolder(DirectoryInfo info)
+            { 
+                folderToRecoverFrom = info;
+            }
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
             {
@@ -59,19 +71,20 @@ namespace NAPS2.Recovery
                 AllowCancel = true;
                 AllowBackground = false;
                 cleanup = false;
+                folderToRecoverFrom = null;
             }
 
-            public bool Start(Action<ScannedImage> imageCallback, DirectoryInfo dir)
+            public bool Start(Action<ScannedImage> imageCallback)
             {
                 Status = new OperationStatus
                 {
                     StatusText = MiscResources.Recovering
                 };
 
-                folderToRecoverFrom = dir;
+                
                 try
                 {
-                    if (dir == null)
+                    if (folderToRecoverFrom == null)
                     {
                         folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
                         cleanup = true;

@@ -357,7 +357,7 @@ namespace NAPS2.WinForms
 
             // Allow scanned images to be recovered in case of an unexpected close
             //DirectoryInfo di = new DirectoryInfo(Paths.Recovery);
-            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), null);
+            recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
             new Thread(RenderThumbnails).Start();
 
@@ -2457,7 +2457,8 @@ namespace NAPS2.WinForms
                     this.projectName = di.Name;
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
-                    recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
+                    recoveryManager.setFolder(di); //Set to a folder other than the last used one.
+                    recoveryManager.RecoverScannedImages(ReceiveScannedImage());
                     UpdateToolbar();
                 }
             }         
