@@ -356,8 +356,8 @@ namespace NAPS2.WinForms
 
 
             // Allow scanned images to be recovered in case of an unexpected close
-            DirectoryInfo di = new DirectoryInfo(Paths.Recovery);
-            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
+            //DirectoryInfo di = new DirectoryInfo(Paths.Recovery);
+            recoveryManager.RecoverScannedImages(ReceiveScannedImage(), null);
 
             new Thread(RenderThumbnails).Start();
 
@@ -2510,6 +2510,7 @@ namespace NAPS2.WinForms
                 changeTracker.Clear();
             
             projectName = string.Format(MiscResources.ProjectName);
+            SelectedIndices = Enumerable.Range(0, 0);
             //Update the toolbar
             UpdateToolbar();
         }

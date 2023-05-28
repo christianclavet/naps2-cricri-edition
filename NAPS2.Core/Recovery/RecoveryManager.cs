@@ -11,7 +11,6 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
 using NAPS2.WinForms;
-using ZXing;
 
 namespace NAPS2.Recovery
 {
@@ -48,6 +47,7 @@ namespace NAPS2.Recovery
             private RecoveryIndexManager recoveryIndexManager;
             public int imageCount;
             private DateTime scannedDateTime;
+            private bool cleanup;
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
             {
@@ -58,6 +58,7 @@ namespace NAPS2.Recovery
                 
                 AllowCancel = true;
                 AllowBackground = false;
+                cleanup = false;
             }
 
             public bool Start(Action<ScannedImage> imageCallback, DirectoryInfo dir)
@@ -70,18 +71,23 @@ namespace NAPS2.Recovery
                 folderToRecoverFrom = dir;
                 try
                 {
+                    if (dir == null)
+                    {
+                        folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
+                        cleanup = true;
+                    }
                     recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
                     imageCount = recoveryIndexManager.Index.Images.Count;
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
-                    if (imageCount == 0)
+                    if (cleanup)
                     {
-                        // If there are no images, do nothing and remove the folder for cleanup
-                        ReleaseFolderLock();
-                        DeleteFolder();
-                        return false;
-                    }
-                    if (folderToRecoverFrom == null)
-                    {
+                        if (imageCount == 0)
+                        {
+                            // If there are no images, do nothing and remove the folder for cleanup
+                            ReleaseFolderLock();
+                            DeleteFolder();
+                            return false;
+                        }
                         return false;
                     }
                     RunAsync(async () =>
@@ -147,6 +153,7 @@ namespace NAPS2.Recovery
                     imageCallback(scannedImage);
                     Status.StatusText = string.Format(MiscResources.ActiveOperations, Path.GetFileName(indexImage.FileName));
                     Status.CurrentProgress++;
+                    
                     InvokeStatusChanged();
                 }
                 return true;
