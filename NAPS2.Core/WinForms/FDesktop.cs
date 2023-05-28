@@ -2475,7 +2475,6 @@ namespace NAPS2.WinForms
                 UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
             //Set the default filename with the new project name
-            //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
             UserConfigManager.Config.project = projectName;
             UserConfigManager.Save();
         }
@@ -2523,6 +2522,7 @@ namespace NAPS2.WinForms
             closeWorkspace();                               
         }
 
+        // Ajust the interface to be themed in "dark mode" like windows.
         private bool SetDarkMode(bool input)
         {
             if (input)
@@ -2530,10 +2530,8 @@ namespace NAPS2.WinForms
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
                 this.ForeColor = System.Drawing.Color.White;
-                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-               
+                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);               
                 tStrip.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-
                 statusStrip1.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
                 
             }
@@ -2545,8 +2543,7 @@ namespace NAPS2.WinForms
                 toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.White;
                 tStrip.BackColor = System.Drawing.Color.White;
 
-                statusStrip1.BackColor = System.Drawing.Color.White;
-                
+                statusStrip1.BackColor = System.Drawing.Color.White;   
 
             }
             return input;

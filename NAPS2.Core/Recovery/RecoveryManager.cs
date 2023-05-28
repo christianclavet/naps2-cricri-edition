@@ -35,12 +35,14 @@ namespace NAPS2.Recovery
 
         public void RecoverScannedImages(Action<ScannedImage> imageCallback)
         {
-            var recovery = new RecoveryOperation(formFactory, thumbnailRenderer);
-            recovery.setFolder(folderToRecoverFrom);
-            
-            if (recovery.Start(imageCallback))
-            {                
-                operationProgress.ShowProgress(recovery);
+
+            var op = new RecoveryOperation(formFactory, thumbnailRenderer);
+            op.setFolder(folderToRecoverFrom);
+
+            if (op.Start(imageCallback))
+            {
+                operationProgress.ShowProgress(op);
+                                  
             }
         }
 
@@ -76,11 +78,11 @@ namespace NAPS2.Recovery
 
             public bool Start(Action<ScannedImage> imageCallback)
             {
-                Status = new OperationStatus
+                Status = new OperationStatus();
+                if (Status != null)
                 {
-                    StatusText = MiscResources.Recovering
-                };
-
+                    Status.StatusText = MiscResources.Recovering;
+                }
                 
                 try
                 {
@@ -124,6 +126,7 @@ namespace NAPS2.Recovery
                             GC.Collect();
                         }
                     });
+                    return true;
                 }
                 catch (Exception)
                 {
@@ -166,7 +169,7 @@ namespace NAPS2.Recovery
                     imageCallback(scannedImage);
                     Status.StatusText = string.Format(MiscResources.ActiveOperations, Path.GetFileName(indexImage.FileName));
                     Status.CurrentProgress++;
-                    
+                    this.OnProgress(Status.CurrentProgress, Status.MaxProgress);
                     InvokeStatusChanged();
                 }
                 return true;
