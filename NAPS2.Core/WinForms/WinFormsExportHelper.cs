@@ -57,7 +57,8 @@ namespace NAPS2.WinForms
                 var pdfSettings = pdfSettingsContainer.PdfSettings;
                 if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
                 {
-                    savePath = pdfSettings.DefaultFileName;
+                    userConfigManager.Load();
+                    savePath = userConfigManager.Config.project; //pdfSettings.DefaultFileName;
                 }
                 else
                 {

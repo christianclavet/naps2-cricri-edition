@@ -40,7 +40,8 @@ namespace NAPS2.WinForms
         {
             if (userConfigManager.Config.BackgroundOperations.Contains(op.GetType().Name))
             {
-                ShowBackgroundProgress(op);
+               // ShowModalProgress(op); 
+               ShowBackgroundProgress(op);
             }
             else
             {

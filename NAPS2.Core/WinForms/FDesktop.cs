@@ -2444,23 +2444,22 @@ namespace NAPS2.WinForms
 
             DialogResult result = openFileDialog.ShowDialog();
 
-            DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
-            if (result == DialogResult.OK && File.Exists(Path.Combine(di.FullName,".lock")))
-                // Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
+            // Only recover if the user acknoledge and don't change the project name. Also check if the folder contain a .lock file so it will not remove the content later.
+            if (result == DialogResult.OK)
             {
-                projectName = Path.GetDirectoryName(openFileDialog.FileName);
-                
-                if (projectName.Length > 0)
+                DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
+                if (File.Exists(Path.Combine(di.FullName, ".lock")))
                 {
-                    projectName = projectName + "Miaous";
+                    if (imageList.Images.Count > 0) 
+                    {
+                        closeWorkspace(); // Backup the current project before getting a new one.
+                    }
+                    this.projectName = di.Name;
+                    userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
+                    userConfigManager.Save();
+                    recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
                     UpdateToolbar();
-                    //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-                    //UserConfigManager.Save();
                 }
-
-                closeWorkspace(); // Backup the current project before getting a new one.
-                recoveryManager.RecoverScannedImages(ReceiveScannedImage(), di);
-                UpdateToolbar();
             }         
         }
 
@@ -2476,7 +2475,8 @@ namespace NAPS2.WinForms
             }
             //Set the default filename with the new project name
             //UserConfigManager.Config.PdfSettings.DefaultFileName = projectName;
-            //UserConfigManager.Save();
+            UserConfigManager.Config.project = projectName;
+            UserConfigManager.Save();
         }
 
         private void closeWorkspace()
