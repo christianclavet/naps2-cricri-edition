@@ -257,6 +257,7 @@
     <Compile Include="Config\SaveButtonDefaultAction.cs" />
     <Compile Include="Platform\DefaultRuntimeCompat.cs" />
     <Compile Include="Scan\Exceptions\DriverNotSupportedException.cs" />
+    <Compile Include="Scan\Images\BarCodeOperation.cs" />
     <Compile Include="Scan\Images\HoughLineDeskewer.cs" />
     <Compile Include="Scan\Images\ScannedImageSource.cs" />
     <Compile Include="Scan\KeyValueScanOptions.cs" />

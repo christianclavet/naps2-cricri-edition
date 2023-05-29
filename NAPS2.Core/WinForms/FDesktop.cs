@@ -1107,6 +1107,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SavePDF(images, notify))
             {
+                changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
                     SafeInvoke(() =>
@@ -1122,6 +1123,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SaveImages(images, notify))
             {
+                changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
                     imageList.Delete(imageList.Images.IndiciesOf(images));
