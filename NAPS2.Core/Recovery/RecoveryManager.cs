@@ -133,7 +133,7 @@ namespace NAPS2.Recovery
                     ReleaseFolderLock();
                     throw;
                 }
-                return false;
+               
             }
 
             private async Task<bool> DoRecover(Action<ScannedImage> imageCallback)
