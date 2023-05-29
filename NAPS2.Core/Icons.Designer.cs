@@ -303,6 +303,16 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap barcodePetit {
+            get {
+                object obj = ResourceManager.GetObject("barcodePetit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blueprints {
             get {
                 object obj = ResourceManager.GetObject("blueprints", resourceCulture);

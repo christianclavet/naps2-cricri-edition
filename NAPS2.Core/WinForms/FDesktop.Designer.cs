@@ -98,6 +98,8 @@ namespace NAPS2.WinForms
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsBarCodeCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.tsCrop = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBrightnessContrast = new System.Windows.Forms.ToolStripMenuItem();
             this.tsHueSaturation = new System.Windows.Forms.ToolStripMenuItem();
@@ -642,6 +644,8 @@ namespace NAPS2.WinForms
             this.tsdImage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsView,
             this.toolStripSeparator6,
+            this.tsBarCodeCheck,
+            this.toolStripSeparator19,
             this.tsCrop,
             this.tsBrightnessContrast,
             this.tsHueSaturation,
@@ -665,6 +669,18 @@ namespace NAPS2.WinForms
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
+            // 
+            // tsBarCodeCheck
+            // 
+            this.tsBarCodeCheck.Image = global::NAPS2.Icons.barcodePetit;
+            this.tsBarCodeCheck.Name = "tsBarCodeCheck";
+            resources.ApplyResources(this.tsBarCodeCheck, "tsBarCodeCheck");
+            this.tsBarCodeCheck.Click += new System.EventHandler(this.tsBarCodeCheck_Click);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            resources.ApplyResources(this.toolStripSeparator19, "toolStripSeparator19");
             // 
             // tsCrop
             // 
@@ -1008,6 +1024,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsImport;
         private System.Windows.Forms.ToolStripMenuItem closeCurrentProject;
         private System.Windows.Forms.ToolStripMenuItem TSI_ToggleDarkMode;
+        private System.Windows.Forms.ToolStripMenuItem tsBarCodeCheck;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
     }
 }
 

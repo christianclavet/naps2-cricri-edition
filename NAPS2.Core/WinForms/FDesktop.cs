@@ -676,7 +676,7 @@ namespace NAPS2.WinForms
             if (bitmap != null)
             {
                 //Get the barcode info. Take some time to interpret the barcode data from the image. Will use something else, more on demand.              
-                img.BarCodeData = ""; //PatchCodeDetector.DetectBarcode(bitmap);
+                //img.BarCodeData = ""; //PatchCodeDetector.DetectBarcode(bitmap);
                 Size size = bitmap.Size;
                 img.infoResolution = size.Width + " px X " + size.Height + " px ";
 
@@ -695,7 +695,7 @@ namespace NAPS2.WinForms
                 img.infoFormat = format;
             }   else
             {
-                img.BarCodeData = "";
+                //img.BarCodeData = "";
                 img.infoResolution = "";
                 img.infoFormat = "";
             }
@@ -2556,6 +2556,23 @@ namespace NAPS2.WinForms
             darkMode = SetDarkMode(!darkMode);
             UserConfigManager.Config.DarkMode = darkMode;
             UserConfigManager.Save();
+        }
+
+        private void tsBarCodeCheck_Click(object sender, EventArgs e)
+        {
+            if (!SelectedIndices.Any())
+            {
+                return;
+            }
+
+            var op = operationFactory.Create<barCodeOperation>();
+            if (op.Start(SelectedImages.ToList()))
+            {
+                operationProgress.ShowProgress(op);
+                changeTracker.Made();
+                UpdateToolbar();
+            }
+
         }
     }
         #endregion
