@@ -25,10 +25,10 @@ namespace NAPS2.Scan.Images
 
         public bool Start(ICollection<ScannedImage> images)
         {
-            ProgressTitle = MiscResources.AutoDeskewProgress;
+            ProgressTitle = MiscResources.BarcodeTitle;
             Status = new OperationStatus
             {
-                StatusText = MiscResources.AutoDeskewing,
+                StatusText = MiscResources.BarcodeProgress,
                 MaxProgress = images.Count
             };
 

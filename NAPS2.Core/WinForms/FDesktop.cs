@@ -644,20 +644,7 @@ namespace NAPS2.WinForms
 
         // Check for barcode Data CC
         // Also check for getting more information about the images, not just the barcode
-        private void GetBarCode(ScannedImage img)
-        {
-            if (img != null) 
-            {
-                GetPreviewImage(img, false);
-                if (bitmap != null)
-                {
-                    img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
-                }
-
-            }
-
-        }
-
+        
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
             // Try something to stop the file lock
@@ -862,7 +849,7 @@ namespace NAPS2.WinForms
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text!=null)
-                this.Text = title + " | Current project name: " + projectName;
+                this.Text = title + " | " + MiscResources.ProjectNameTitle + projectName;
 
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)

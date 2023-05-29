@@ -124,6 +124,24 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Analysing images for barcodes....
+        /// </summary>
+        internal static string BarcodeProgress {
+            get {
+                return ResourceManager.GetString("BarcodeProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Scanning images for barcode data.
+        /// </summary>
+        internal static string BarcodeTitle {
+            get {
+                return ResourceManager.GetString("BarcodeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An unknown error ocurred during the batch scan..
         /// </summary>
         internal static string BatchError {
@@ -975,6 +993,15 @@ namespace NAPS2.Lang.Resources {
         internal static string ProjectName {
             get {
                 return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Current project name:.
+        /// </summary>
+        internal static string ProjectNameTitle {
+            get {
+                return ResourceManager.GetString("ProjectNameTitle", resourceCulture);
             }
         }
         

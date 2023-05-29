@@ -507,4 +507,13 @@
   <data name="ProjectName" xml:space="preserve">
     <value>Sans titre</value>
   </data>
+  <data name="BarcodeProgress" xml:space="preserve">
+    <value>Analyse en cours...</value>
+  </data>
+  <data name="BarcodeTitle" xml:space="preserve">
+    <value>Recherche de données de codes à barre dans l'image</value>
+  </data>
+  <data name="ProjectNameTitle" xml:space="preserve">
+    <value>Projet actuel:</value>
+  </data>
 </root>

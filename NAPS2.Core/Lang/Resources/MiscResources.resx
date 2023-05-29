@@ -510,4 +510,13 @@
   <data name="ProjectName" xml:space="preserve">
     <value>Untitled</value>
   </data>
+  <data name="BarcodeProgress" xml:space="preserve">
+    <value>Analysing images for barcodes...</value>
+  </data>
+  <data name="BarcodeTitle" xml:space="preserve">
+    <value>Scanning images for barcode data</value>
+  </data>
+  <data name="ProjectNameTitle" xml:space="preserve">
+    <value>Current project name:</value>
+  </data>
 </root>
