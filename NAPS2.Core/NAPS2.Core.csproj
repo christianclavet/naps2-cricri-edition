@@ -241,6 +241,7 @@
     <Compile Include="Ocr\OcrRequestQueue.cs" />
     <Compile Include="Ocr\OcrOperation.cs" />
     <Compile Include="Ocr\Tesseract400Beta4Engine.cs" />
+    <Compile Include="Ocr\Tesseract531Engine.cs" />
     <Compile Include="Ocr\TesseractLanguageData.cs" />
     <Compile Include="Ocr\TesseractSystemEngine.cs" />
     <Compile Include="Ocr\Tesseract304XpEngine.cs" />

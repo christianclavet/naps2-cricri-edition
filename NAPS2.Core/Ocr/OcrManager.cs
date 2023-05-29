@@ -14,7 +14,7 @@ namespace NAPS2.Ocr
 
         private readonly List<IOcrEngine> engines;
 
-        public OcrManager(Tesseract302Engine t302, Tesseract304Engine t304, Tesseract304XpEngine t304Xp, Tesseract400Beta4Engine t400B4, TesseractSystemEngine tsys, IUserConfigManager userConfigManager, AppConfigManager appConfigManager)
+        public OcrManager(Tesseract302Engine t302, Tesseract304Engine t304, Tesseract304XpEngine t304Xp, Tesseract400Beta4Engine t400B4, Tesseract531Engine t531, TesseractSystemEngine tsys, IUserConfigManager userConfigManager, AppConfigManager appConfigManager)
         {
             this.userConfigManager = userConfigManager;
             this.appConfigManager = appConfigManager;
