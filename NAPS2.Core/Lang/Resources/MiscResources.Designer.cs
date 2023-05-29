@@ -844,6 +844,15 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à No item selected.
+        /// </summary>
+        internal static string No_selection {
+            get {
+                return ResourceManager.GetString("No selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à No device selected..
         /// </summary>
         internal static string NoDeviceSelected {
@@ -997,7 +1006,7 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Current project name:.
+        ///   Recherche une chaîne localisée semblable à Current project name: .
         /// </summary>
         internal static string ProjectNameTitle {
             get {
@@ -1155,6 +1164,15 @@ namespace NAPS2.Lang.Resources {
         internal static string SelectedCount {
             get {
                 return ResourceManager.GetString("SelectedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Selected items: .
+        /// </summary>
+        internal static string Selection {
+            get {
+                return ResourceManager.GetString("Selection", resourceCulture);
             }
         }
         

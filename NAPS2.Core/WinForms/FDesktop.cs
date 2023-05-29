@@ -1372,18 +1372,18 @@ namespace NAPS2.WinForms
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
                 String text4 = "";
-                if (text3 != "")
+                if (text3 != "" && text3 != null)
                     text4 = "Barcode: " + text3;
                 String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
                 statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
             }
             else
             {
-                statusStrip1.Items[0].Text = "No item selected";
+                statusStrip1.Items[0].Text = MiscResources.No_selection;
             }
             if (thumbnailList1.SelectedItems.Count > 1)
             {
-                statusStrip1.Items[0].Text = "Selected items: " + thumbnailList1.SelectedItems.Count.ToString();
+                statusStrip1.Items[0].Text = MiscResources.Selection + thumbnailList1.SelectedItems.Count.ToString();
             }
                 if (!disableSelectedIndexChangedEvent)
             {

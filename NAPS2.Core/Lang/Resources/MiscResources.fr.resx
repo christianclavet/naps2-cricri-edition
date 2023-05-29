@@ -514,6 +514,12 @@
     <value>Recherche de données de codes à barre dans l'image</value>
   </data>
   <data name="ProjectNameTitle" xml:space="preserve">
-    <value>Projet actuel:</value>
+    <value>Projet actuel: </value>
+  </data>
+  <data name="No selection" xml:space="preserve">
+    <value>Aucun item de sélectionné</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Items sélectionnés: </value>
   </data>
 </root>

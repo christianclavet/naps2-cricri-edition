@@ -393,4 +393,10 @@
   <data name="tsBarCodeCheck.ToolTipText" xml:space="preserve">
     <value>Fait une recherche dans les images pour des codes à barres</value>
   </data>
+  <data name="TSI_ToggleDarkMode.Text" xml:space="preserve">
+    <value>Basculer vers thème sombre | thème clair</value>
+  </data>
+  <data name="TSI_ToggleDarkMode.ToolTipText" xml:space="preserve">
+    <value>Faire basculer le thème de l'interface de sombre à clair</value>
+  </data>
 </root>

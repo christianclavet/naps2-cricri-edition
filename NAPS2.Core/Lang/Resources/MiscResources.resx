@@ -517,6 +517,12 @@
     <value>Scanning images for barcode data</value>
   </data>
   <data name="ProjectNameTitle" xml:space="preserve">
-    <value>Current project name:</value>
+    <value>Current project name: </value>
+  </data>
+  <data name="No selection" xml:space="preserve">
+    <value>No item selected</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Selected items: </value>
   </data>
 </root>
