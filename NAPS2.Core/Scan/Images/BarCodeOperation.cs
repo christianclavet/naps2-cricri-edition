@@ -8,6 +8,7 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images.Transforms;
 using NAPS2.Scan;
 using NAPS2.Util;
+using NAPS2.Recovery;
 
 namespace NAPS2.Scan.Images
 {
@@ -54,6 +55,10 @@ namespace NAPS2.Scan.Images
                         lock (img)
                         {
                             img.BarCodeData = PatchCodeDetector.DetectBarcode(bitmap);
+                            if (img.BarCodeData != null) 
+                            {
+                                img.RecoveryIndexImage.BarCode = img.BarCodeData;
+                            }
                         }
 
                         // The final pipeline step is pretty fast, so updating progress here is more accurate

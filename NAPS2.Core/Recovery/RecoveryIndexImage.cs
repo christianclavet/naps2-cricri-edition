@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using NAPS2.Scan.Images.Transforms;
+using PdfSharp.Drawing.BarCodes;
 
 namespace NAPS2.Recovery
 {
@@ -16,6 +17,8 @@ namespace NAPS2.Recovery
         public string FileName { get; set; }
 
         public List<Transform> TransformList { get; set; }
+
+        public string BarCode { get; set; }
 
         public ScanBitDepth BitDepth { get; set; }
 

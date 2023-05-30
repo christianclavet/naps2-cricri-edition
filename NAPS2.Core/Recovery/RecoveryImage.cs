@@ -81,9 +81,9 @@ namespace NAPS2.Recovery
             return DeferredSave.Defer();
         }
 
-        public static RecoveryImage CreateNew(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList)
+        public static RecoveryImage CreateNew(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList, string barcode)
         {
-            return new RecoveryImage(fileFormat, bitDepth, highQuality, transformList);
+            return new RecoveryImage(fileFormat, bitDepth, highQuality, transformList, barcode);
         }
 
         public static RecoveryImage LoadExisting(RecoveryIndexImage recoveryIndexImage)
@@ -133,15 +133,17 @@ namespace NAPS2.Recovery
         private bool saved;
         private bool disposed;
 
-        private RecoveryImage(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList)
+        private RecoveryImage(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList, string barcode)
         {
             FileFormat = fileFormat;
             FileName = GetNextFileName() + GetExtension(FileFormat);
+            barCode = barcode;
             FilePath = Path.Combine(RecoveryFolder.FullName, FileName);
             IndexImage = new RecoveryIndexImage
             {
                 FileName = FileName,
                 BitDepth = bitDepth,
+                BarCode = barcode,
                 HighQuality = highQuality,
                 TransformList = transformList
             };
@@ -159,6 +161,7 @@ namespace NAPS2.Recovery
                 : ".pdf".Equals(ext, StringComparison.InvariantCultureIgnoreCase) ? null
                 : ImageFormat.Jpeg;
             FileName = recoveryIndexImage.FileName;
+            barCode = recoveryIndexImage.BarCode;
             FilePath = Path.Combine(RecoveryFolder.FullName, FileName);
             IndexImage = recoveryIndexImage;
             Save();
@@ -169,6 +172,8 @@ namespace NAPS2.Recovery
         public string FileName { get; }
 
         public string FilePath { get; }
+
+        public string barCode { get; }
 
         public RecoveryIndexImage IndexImage { get; }
 

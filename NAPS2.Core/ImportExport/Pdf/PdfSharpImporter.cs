@@ -375,7 +375,7 @@ namespace NAPS2.ImportExport.Pdf
                 }
                 
                 
-                //if (importParams.DetectPatchCodes)
+                if (importParams.DetectPatchCodes)
                 {
                     image.PatchCode = PatchCodeDetector.Detect(bitmap);
                     if (image.PatchCode == PatchCode.Unknown)

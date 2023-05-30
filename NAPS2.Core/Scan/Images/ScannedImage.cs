@@ -47,7 +47,7 @@ namespace NAPS2.Scan.Images
             string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
 
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
+            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList, BarCodeData);
 
             File.Move(tempFilePath, recoveryImage.FilePath);
 
@@ -63,7 +63,7 @@ namespace NAPS2.Scan.Images
         private ScannedImage(string pdfPath, bool copy)
         {
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(null, ScanBitDepth.C24Bit, false, transformList);
+            recoveryImage = RecoveryImage.CreateNew(null, ScanBitDepth.C24Bit, false, transformList, BarCodeData);
 
             if (copy)
             {
@@ -224,6 +224,7 @@ namespace NAPS2.Scan.Images
                 info.AddValue("RecoveryIndexImage", Source.RecoveryIndexImage);
                 info.AddValue("TransformList", TransformList);
                 info.AddValue("TransformState", TransformState);
+                //info.AddValue("BarcodeInfo", Source.recoveryImage);
             }
 
             private Snapshot(SerializationInfo info, StreamingContext context)
