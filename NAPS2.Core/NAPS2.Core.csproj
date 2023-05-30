@@ -314,6 +314,12 @@
     <Compile Include="Util\WebClientExtensions.cs" />
     <Compile Include="Util\Win32Window.cs" />
     <Compile Include="Logging\WindowsEventLogger.cs" />
+    <Compile Include="WinForms\FExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\FExport.Designer.cs">
+      <DependentUpon>FExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\FProjectName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -825,6 +831,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FExport.resx">
+      <DependentUpon>FExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\FProjectName.af.resx">
       <DependentUpon>FProjectName.cs</DependentUpon>

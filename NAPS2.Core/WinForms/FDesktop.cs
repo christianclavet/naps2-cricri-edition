@@ -2561,6 +2561,17 @@ namespace NAPS2.WinForms
             }
 
         }
+
+        //New export panel
+        private void tsExport_Click(object sender, EventArgs e)
+        {
+            var form = FormFactory.Create<FPlaceholders>();
+            form.FileName = projectName;
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                projectName = form.FileName;
+            }
+        }
     }
         #endregion
 }

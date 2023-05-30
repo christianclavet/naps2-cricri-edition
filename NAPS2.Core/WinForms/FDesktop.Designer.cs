@@ -75,15 +75,16 @@ namespace NAPS2.WinForms
             this.tsPdfSettings2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsExport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.tsTools = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsLanguage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.TSI_ToggleDarkMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsShowHideView = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsOCR = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
@@ -337,6 +338,7 @@ namespace NAPS2.WinForms
             // 
             // FileDm
             // 
+            this.FileDm.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.FileDm.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadProjectTool_TSMI,
             this.renameCurrentProject_TSMI,
@@ -347,6 +349,7 @@ namespace NAPS2.WinForms
             this.tsdEmailPDF,
             this.toolStripSeparator5,
             this.tsImport,
+            this.tsExport,
             this.toolStripSeparator16,
             this.tsTools,
             this.toolStripSeparator17,
@@ -501,6 +504,13 @@ namespace NAPS2.WinForms
             this.tsImport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tsImport.Click += new System.EventHandler(this.tsImport_Click_1);
             // 
+            // tsExport
+            // 
+            resources.ApplyResources(this.tsExport, "tsExport");
+            this.tsExport.Image = global::NAPS2.Icons.folder_picture;
+            this.tsExport.Name = "tsExport";
+            this.tsExport.Click += new System.EventHandler(this.tsExport_Click);
+            // 
             // toolStripSeparator16
             // 
             this.toolStripSeparator16.Name = "toolStripSeparator16";
@@ -520,16 +530,12 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsTools, "tsTools");
             this.tsTools.Name = "tsTools";
             // 
-            // tsLanguage
+            // TSI_ToggleDarkMode
             // 
-            this.tsLanguage.Image = global::NAPS2.Icons.world;
-            this.tsLanguage.Name = "tsLanguage";
-            resources.ApplyResources(this.tsLanguage, "tsLanguage");
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            this.TSI_ToggleDarkMode.Image = global::NAPS2.Icons.DarkMode;
+            this.TSI_ToggleDarkMode.Name = "TSI_ToggleDarkMode";
+            resources.ApplyResources(this.TSI_ToggleDarkMode, "TSI_ToggleDarkMode");
+            this.TSI_ToggleDarkMode.Click += new System.EventHandler(this.TSI_ToggleDarkMode_Click);
             // 
             // tsShowHideView
             // 
@@ -538,12 +544,10 @@ namespace NAPS2.WinForms
             this.tsShowHideView.Name = "tsShowHideView";
             this.tsShowHideView.Click += new System.EventHandler(this.tsShowHideView_Click);
             // 
-            // tsOCR
+            // toolStripSeparator8
             // 
-            this.tsOCR.Image = global::NAPS2.Icons.text;
-            this.tsOCR.Name = "tsOCR";
-            resources.ApplyResources(this.tsOCR, "tsOCR");
-            this.tsOCR.Click += new System.EventHandler(this.tsOCR_Click);
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
             // 
             // printToolStripMenuItem
             // 
@@ -552,17 +556,23 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click_1);
             // 
+            // tsOCR
+            // 
+            this.tsOCR.Image = global::NAPS2.Icons.text;
+            this.tsOCR.Name = "tsOCR";
+            resources.ApplyResources(this.tsOCR, "tsOCR");
+            this.tsOCR.Click += new System.EventHandler(this.tsOCR_Click);
+            // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
             resources.ApplyResources(this.toolStripSeparator14, "toolStripSeparator14");
             // 
-            // TSI_ToggleDarkMode
+            // tsLanguage
             // 
-            this.TSI_ToggleDarkMode.Image = global::NAPS2.Icons.DarkMode;
-            this.TSI_ToggleDarkMode.Name = "TSI_ToggleDarkMode";
-            resources.ApplyResources(this.TSI_ToggleDarkMode, "TSI_ToggleDarkMode");
-            this.TSI_ToggleDarkMode.Click += new System.EventHandler(this.TSI_ToggleDarkMode_Click);
+            this.tsLanguage.Image = global::NAPS2.Icons.world;
+            this.tsLanguage.Name = "tsLanguage";
+            resources.ApplyResources(this.tsLanguage, "tsLanguage");
             // 
             // toolStripSeparator17
             // 
@@ -1027,6 +1037,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsBarCodeCheck;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem TSI_ToggleDarkMode;
+        private System.Windows.Forms.ToolStripMenuItem tsExport;
     }
 }
 
