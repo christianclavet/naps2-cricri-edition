@@ -2565,11 +2565,13 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            var form = FormFactory.Create<FPlaceholders>();
-            form.FileName = projectName;
+            var form = FormFactory.Create<FExport>();
+            form.projectName = projectName;
+            form.setName(projectName);
+            
             if (form.ShowDialog() == DialogResult.OK)
             {
-                projectName = form.FileName;
+                projectName = form.projectName;
             }
         }
     }

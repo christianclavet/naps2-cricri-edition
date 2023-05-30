@@ -506,9 +506,9 @@ namespace NAPS2.WinForms
             // 
             // tsExport
             // 
-            resources.ApplyResources(this.tsExport, "tsExport");
             this.tsExport.Image = global::NAPS2.Icons.folder_picture;
             this.tsExport.Name = "tsExport";
+            resources.ApplyResources(this.tsExport, "tsExport");
             this.tsExport.Click += new System.EventHandler(this.tsExport_Click);
             // 
             // toolStripSeparator16
