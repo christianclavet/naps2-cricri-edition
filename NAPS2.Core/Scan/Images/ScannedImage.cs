@@ -32,6 +32,7 @@ namespace NAPS2.Scan.Images
         private int transformState;
         public string infoResolution;
         public string infoFormat;
+        public string barCodeData;
 
         private bool disposed;
         private int snapshotCount;
@@ -41,13 +42,19 @@ namespace NAPS2.Scan.Images
             return new ScannedImage(pdfPath, copy);
         }
 
+        public void update(string barCodeData)
+        {
+            recoveryImage.barCode = barCodeData;
+            recoveryImage.Save();
+        }
+
         public ScannedImage(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
             this.highQuality = highQuality;
             string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
 
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList, BarCodeData);
+            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
 
             File.Move(tempFilePath, recoveryImage.FilePath);
 
@@ -58,12 +65,13 @@ namespace NAPS2.Scan.Images
         {
             recoveryImage = RecoveryImage.LoadExisting(recoveryIndexImage);
             transformList = recoveryImage.IndexImage.TransformList;
+            barCodeData = recoveryImage.IndexImage.BarCode;
         }
 
         private ScannedImage(string pdfPath, bool copy)
         {
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(null, ScanBitDepth.C24Bit, false, transformList, BarCodeData);
+            recoveryImage = RecoveryImage.CreateNew(null, ScanBitDepth.C24Bit, false, transformList);
 
             if (copy)
             {
@@ -80,6 +88,7 @@ namespace NAPS2.Scan.Images
         public PatchCode PatchCode { get; set; }
 
         public string BarCodeData { get; set; }
+        //public string BarCodeData => recoveryImage.barCode;
 
         public ImageFormat FileFormat => recoveryImage.FileFormat;
 
@@ -224,7 +233,7 @@ namespace NAPS2.Scan.Images
                 info.AddValue("RecoveryIndexImage", Source.RecoveryIndexImage);
                 info.AddValue("TransformList", TransformList);
                 info.AddValue("TransformState", TransformState);
-                //info.AddValue("BarcodeInfo", Source.recoveryImage);
+                info.AddValue("BarcodeInfo", Source.recoveryImage.barCode);
             }
 
             private Snapshot(SerializationInfo info, StreamingContext context)
@@ -232,6 +241,8 @@ namespace NAPS2.Scan.Images
                 Source = new ScannedImage((RecoveryIndexImage)info.GetValue("RecoveryIndexImage", typeof(RecoveryIndexImage)));
                 TransformList = (List<Transform>)info.GetValue("TransformList", typeof(List<Transform>));
                 TransformState = (int)info.GetValue("TransformState", typeof(int));
+                Source.BarCodeData = info.GetString("BarcodeInfo");
+                
             }
 
             // ReSharper disable once UnusedMember.Local

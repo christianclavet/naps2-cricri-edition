@@ -19,7 +19,7 @@ namespace NAPS2.Scan.Images
         public barCodeOperation(ScannedImageRenderer scannedImageRenderer)
         {
             this.scannedImageRenderer = scannedImageRenderer;
-
+    
             AllowCancel = true;
             AllowBackground = true;
         }
@@ -30,9 +30,10 @@ namespace NAPS2.Scan.Images
             Status = new OperationStatus
             {
                 StatusText = MiscResources.BarcodeProgress,
-                MaxProgress = images.Count
+                MaxProgress = images.Count,
+     
             };
-
+            
             RunAsync(() =>
             {
                 var memoryLimitingSem = new Semaphore(4, 4);
@@ -58,6 +59,7 @@ namespace NAPS2.Scan.Images
                             if (img.BarCodeData != null) 
                             {
                                 img.RecoveryIndexImage.BarCode = img.BarCodeData;
+                                img.update(img.BarCodeData);
                             }
                         }
 

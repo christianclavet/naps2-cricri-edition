@@ -81,9 +81,9 @@ namespace NAPS2.Recovery
             return DeferredSave.Defer();
         }
 
-        public static RecoveryImage CreateNew(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList, string barcode)
+        public static RecoveryImage CreateNew(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList)
         {
-            return new RecoveryImage(fileFormat, bitDepth, highQuality, transformList, barcode);
+            return new RecoveryImage(fileFormat, bitDepth, highQuality, transformList);
         }
 
         public static RecoveryImage LoadExisting(RecoveryIndexImage recoveryIndexImage)
@@ -133,17 +133,17 @@ namespace NAPS2.Recovery
         private bool saved;
         private bool disposed;
 
-        private RecoveryImage(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList, string barcode)
+        private RecoveryImage(ImageFormat fileFormat, ScanBitDepth bitDepth, bool highQuality, List<Transform> transformList)
         {
             FileFormat = fileFormat;
             FileName = GetNextFileName() + GetExtension(FileFormat);
-            barCode = barcode;
+             
             FilePath = Path.Combine(RecoveryFolder.FullName, FileName);
             IndexImage = new RecoveryIndexImage
             {
                 FileName = FileName,
                 BitDepth = bitDepth,
-                BarCode = barcode,
+                BarCode = barCode,
                 HighQuality = highQuality,
                 TransformList = transformList
             };
@@ -173,7 +173,7 @@ namespace NAPS2.Recovery
 
         public string FilePath { get; }
 
-        public string barCode { get; }
+        public string barCode { get; set; }
 
         public RecoveryIndexImage IndexImage { get; }
 

@@ -189,13 +189,13 @@ namespace NAPS2.ImportExport.Pdf
                     {
                         image.SetThumbnail(thumbnailRenderer.RenderThumbnail(bitmap));
                     }
-
-                    // if (importParams.DetectPatchCodes)
+                    /*
+                    if (importParams.DetectPatchCodes)
                     {
                         image.PatchCode = PatchCodeDetector.Detect(bitmap);
                         if (image.PatchCode == PatchCode.Unknown)
                             image.BarCodeData = PatchCodeDetector.DataBarcode;
-                    }
+                    }*/
                 }
             }
             return image;
@@ -213,14 +213,6 @@ namespace NAPS2.ImportExport.Pdf
                     if (!importParams.NoThumbnails)
                     {
                         image.SetThumbnail(thumbnailRenderer.RenderThumbnail(bitmap));
-                    }
-                    
-                    
-                    //if (importParams.DetectPatchCodes)
-                    {
-                        image.PatchCode = PatchCodeDetector.Detect(bitmap);
-                        if (image.PatchCode == PatchCode.Unknown)
-                            image.BarCodeData = PatchCodeDetector.DataBarcode;
                     }
                     return image;
                 }
@@ -260,14 +252,6 @@ namespace NAPS2.ImportExport.Pdf
                 if (!importParams.NoThumbnails)
                 {
                     image.SetThumbnail(thumbnailRenderer.RenderThumbnail(bitmap));
-                }
-                
-                
-                //if (importParams.DetectPatchCodes)
-                {
-                    image.PatchCode = PatchCodeDetector.Detect(bitmap);
-                    if (image.PatchCode == PatchCode.Unknown)
-                        image.BarCodeData = PatchCodeDetector.DataBarcode;
                 }
                 return image;
             }
@@ -375,12 +359,12 @@ namespace NAPS2.ImportExport.Pdf
                 }
                 
                 
-                if (importParams.DetectPatchCodes)
+                /*if (importParams.DetectPatchCodes)
                 {
                     image.PatchCode = PatchCodeDetector.Detect(bitmap);
                     if (image.PatchCode == PatchCode.Unknown)
                         image.BarCodeData = PatchCodeDetector.DataBarcode;
-                }
+                }*/
                 return image;
             }
         }
