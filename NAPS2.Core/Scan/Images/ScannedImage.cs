@@ -92,6 +92,9 @@ namespace NAPS2.Scan.Images
 
         public ImageFormat FileFormat => recoveryImage.FileFormat;
 
+        //Future use, an image could have a separator flag, to split in multiple documents
+        public bool IsSeparator { get; set; }
+
         public RecoveryIndexImage RecoveryIndexImage => recoveryImage.IndexImage;
 
         public string RecoveryFilePath => recoveryImage.FilePath;
