@@ -14,6 +14,7 @@ using NAPS2.Recovery;
 using NAPS2.Scan.Images;
 using NAPS2.WinForms;
 using NAPS2;
+using CsvHelper;
 
 namespace NAPS2.WinForms
 {
