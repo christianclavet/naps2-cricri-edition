@@ -2530,22 +2530,60 @@ namespace NAPS2.WinForms
             if (input)
             {
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
-                this.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                this.ForeColor = System.Drawing.Color.White;
-                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);               
-                tStrip.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                statusStrip1.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                
+                this.BackColor = Color.FromArgb(24, 24, 24);
+                this.ForeColor = Color.White;
+                // Toolstrip
+                toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);               
+                tStrip.BackColor = Color.FromArgb(24, 24, 24);
+                // Status strip
+                statusStrip1.BackColor = Color.FromArgb(24, 24, 24);
+                // File menu
+                FileDm.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                FileDm.DropDown.ForeColor = Color.White;
+                // Scan menu
+                tsScan.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                tsScan.DropDown.ForeColor = Color.White;
+                // Profiles menu
+                tsCombo_Profiles.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                tsCombo_Profiles.DropDown.ForeColor = Color.White;
+                // Images menu
+                tsdImage.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                tsdImage.DropDown.ForeColor = Color.White;
+                // Rotate menu
+                tsdRotate.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                tsdRotate.DropDown.ForeColor = Color.White;
+                // Reorder menu
+                tsdReorder.DropDown.BackColor = Color.FromArgb(24, 24, 24);
+                tsdReorder.DropDown.ForeColor = Color.White;
             }
             else
             {
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, false);
-                this.BackColor = System.Drawing.Color.White;
-                this.ForeColor = System.Drawing.Color.FromArgb(24, 24, 24);
-                toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.White;
-                tStrip.BackColor = System.Drawing.Color.White;
-
-                statusStrip1.BackColor = System.Drawing.Color.White;   
+                this.BackColor = Color.White;
+                this.ForeColor = Color.FromArgb(24, 24, 24);
+                //toolstrip
+                toolStripContainer1.TopToolStripPanel.BackColor = Color.White;
+                tStrip.BackColor = Color.White;
+                //status strip
+                statusStrip1.BackColor = Color.White;
+                // File menu
+                FileDm.DropDown.BackColor = Color.White;
+                FileDm.DropDown.ForeColor = Color.Black;
+                // Scan menu
+                tsScan.DropDown.BackColor = Color.White;
+                tsScan.DropDown.ForeColor = Color.Black;
+                // Profile menu
+                tsCombo_Profiles.DropDown.BackColor = Color.White;
+                tsCombo_Profiles.DropDown.ForeColor = Color.Black;
+                // Image menu
+                tsdImage.DropDown.BackColor = Color.White;
+                tsdImage.DropDown.ForeColor = Color.Black;
+                // Image menu
+                tsdRotate.DropDown.BackColor = Color.White;
+                tsdRotate.DropDown.ForeColor = Color.Black;
+                // Reorder menu
+                tsdReorder.DropDown.BackColor = Color.White;
+                tsdReorder.DropDown.ForeColor = Color.Black;
 
             }
             return input;
