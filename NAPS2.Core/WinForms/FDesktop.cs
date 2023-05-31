@@ -540,6 +540,7 @@ namespace NAPS2.WinForms
 
                 // No profile for the device we're scanning with, so prompt to create one
                 var editSettingsForm = FormFactory.Create<FEditProfile>();
+                BackgroundForm.UseImmersiveDarkMode(editSettingsForm.Handle, darkMode);
                 editSettingsForm.ScanProfile = appConfigManager.Config.DefaultProfileSettings ??
                                                new ScanProfile { Version = ScanProfile.CURRENT_VERSION };
                 try
@@ -605,6 +606,7 @@ namespace NAPS2.WinForms
         private async Task ScanWithNewProfile()
         {
             var editSettingsForm = FormFactory.Create<FEditProfile>();
+            BackgroundForm.UseImmersiveDarkMode(editSettingsForm.Handle, darkMode);
             editSettingsForm.ScanProfile = appConfigManager.Config.DefaultProfileSettings ?? new ScanProfile { Version = ScanProfile.CURRENT_VERSION };
             editSettingsForm.ShowDialog();
             if (!editSettingsForm.Result)
@@ -1048,6 +1050,7 @@ namespace NAPS2.WinForms
             {
                 using (var viewer = FormFactory.Create<FViewer>())
                 {
+                    BackgroundForm.UseImmersiveDarkMode(viewer.Handle, darkMode);
                     viewer.Fdesktop = this;
                     viewer.ImageList = imageList;
                     viewer.ImageIndex = SelectedIndices.First();
@@ -1068,6 +1071,7 @@ namespace NAPS2.WinForms
         private void ShowProfilesForm()
         {
             var form = FormFactory.Create<FProfiles>();
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
             updateProfileButton();
@@ -1433,6 +1437,7 @@ namespace NAPS2.WinForms
         private void tsBatchScan_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FBatchScan>();
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.ImageCallback = ReceiveScannedImage();
             form.ShowDialog();
             updateProfileButton();
@@ -1450,6 +1455,7 @@ namespace NAPS2.WinForms
                 // Re-download a fixed version on Windows XP if needed
                 MessageBox.Show(MiscResources.OcrUpdateAvailable, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var progressForm = FormFactory.Create<FDownloadProgress>();
+                BackgroundForm.UseImmersiveDarkMode(progressForm.Handle, darkMode);
                 progressForm.QueueFile(ocrManager.EngineToInstall.Component);
                 progressForm.ShowDialog();
             }
@@ -1645,7 +1651,7 @@ namespace NAPS2.WinForms
 
         private void tsAbout_Click(object sender, EventArgs e)
         {
-            FormFactory.Create<FAbout>().ShowDialog();
+            var form = FormFactory.Create<FAbout>().ShowDialog();
         }
      #endregion
 
@@ -1678,7 +1684,7 @@ namespace NAPS2.WinForms
 
         private void tsPDFSettings_Click_1(object sender, EventArgs e)
         {
-            FormFactory.Create<FPdfSettings>().ShowDialog();
+            var form = FormFactory.Create<FPdfSettings>().ShowDialog();
         }
 
         private void tsSaveImagesAll_Click(object sender, EventArgs e)
@@ -1708,7 +1714,7 @@ namespace NAPS2.WinForms
 
         private void tsImageSettings_Click_1(object sender, EventArgs e)
         {
-            FormFactory.Create<FImageSettings>().ShowDialog();
+            var form = FormFactory.Create<FImageSettings>().ShowDialog();
         }
 
         private void tsEmailPDFAll_Click(object sender, EventArgs e)
@@ -1734,12 +1740,12 @@ namespace NAPS2.WinForms
 
         private void tsPdfSettings2_Click(object sender, EventArgs e)
         {
-            FormFactory.Create<FPdfSettings>().ShowDialog();
+            var form = FormFactory.Create<FPdfSettings>().ShowDialog();
         }
 
         private void tsEmailSettings_Click(object sender, EventArgs e)
         {
-            FormFactory.Create<FEmailSettings>().ShowDialog();
+            var form = FormFactory.Create<FEmailSettings>().ShowDialog();
         }
 
         #endregion
@@ -1756,7 +1762,8 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FCrop>();
-           
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
+
                 form.Image = SelectedImages.First();
                 form.MaximizeBox = true;
                 form.SelectedImages = SelectedImages.ToList();
@@ -1770,6 +1777,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FBrightnessContrast>();
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
                 form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
@@ -1783,6 +1791,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FHueSaturation>();
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
                 form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
@@ -1796,6 +1805,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FBlackWhite>();
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
                 form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
@@ -1809,6 +1819,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FSharpen>();
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
                 form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
@@ -1850,6 +1861,7 @@ namespace NAPS2.WinForms
             if (SelectedIndices.Any())
             {
                 var form = FormFactory.Create<FRotate>();
+                BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
                 form.MaximizeBox = true;
                 form.Image = SelectedImages.First();
                 form.SelectedImages = SelectedImages.ToList();
@@ -2456,6 +2468,7 @@ namespace NAPS2.WinForms
         private void RenameCurrentProject_TSMI_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.setFileName(projectName); // The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
@@ -2566,9 +2579,11 @@ namespace NAPS2.WinForms
         private void tsExport_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FExport>();
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.projectName = projectName;
             form.setName(projectName);
-            
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
+
             if (form.ShowDialog() == DialogResult.OK)
             {
                 projectName = form.projectName;
