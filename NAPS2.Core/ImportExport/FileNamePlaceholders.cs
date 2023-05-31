@@ -55,7 +55,12 @@ namespace NAPS2.ImportExport
                 result = result.Insert(result.Length - Path.GetExtension(result).Length, ".");
                 result = SubstituteNumber(result, result.Length - Path.GetExtension(result).Length, autoNumberDigits, numberSkip, incrementIfExists);
             }
+
+            // New keyword
+            result = result.Replace("$(filename)", fileNameWithPath);
+            result = result.Replace("$(barcode)", "1234-5678");
             return result;
+
         }
 
         private string SubstituteNumber(string path, int insertionIndex, int minDigits, int skip, bool incrementIfExists)

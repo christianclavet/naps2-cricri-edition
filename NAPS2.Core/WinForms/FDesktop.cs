@@ -2620,6 +2620,8 @@ namespace NAPS2.WinForms
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.projectName = projectName;
             form.setName(projectName);
+            form.notify = notify;
+            form.imagesList = imageList;
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)

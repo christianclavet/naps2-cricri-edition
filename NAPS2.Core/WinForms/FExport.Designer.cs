@@ -32,8 +32,10 @@
             this.tb_CSVExpression = new System.Windows.Forms.TextBox();
             this.btn_Expression = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_meta = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_FilenameCSV = new System.Windows.Forms.Label();
             this.tb_exportFilename = new System.Windows.Forms.TextBox();
             this.cb_CSVEnabler = new System.Windows.Forms.CheckBox();
             this.tb_ExportPath = new System.Windows.Forms.TextBox();
@@ -41,6 +43,8 @@
             this.BTN_Export = new System.Windows.Forms.Button();
             this.BTN_Cancel = new System.Windows.Forms.Button();
             this.BTN_File = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LBL_Exemple = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,24 +63,35 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lbl_meta);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lbl_FilenameCSV);
             this.groupBox1.Controls.Add(this.tb_exportFilename);
             this.groupBox1.Controls.Add(this.tb_CSVExpression);
-            this.groupBox1.Controls.Add(this.btn_Expression);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_meta
+            // 
+            resources.ApplyResources(this.lbl_meta, "lbl_meta");
+            this.lbl_meta.Name = "lbl_meta";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // label1
+            // lbl_FilenameCSV
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lbl_FilenameCSV, "lbl_FilenameCSV");
+            this.lbl_FilenameCSV.Name = "lbl_FilenameCSV";
             // 
             // tb_exportFilename
             // 
@@ -125,15 +140,28 @@
             this.BTN_File.UseVisualStyleBackColor = true;
             this.BTN_File.Click += new System.EventHandler(this.BTN_File_Click);
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // LBL_Exemple
+            // 
+            resources.ApplyResources(this.LBL_Exemple, "LBL_Exemple");
+            this.LBL_Exemple.Name = "LBL_Exemple";
+            // 
             // FExport
             // 
             this.AcceptButton = this.BTN_Export;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BTN_Cancel;
+            this.Controls.Add(this.LBL_Exemple);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_File);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_Export);
+            this.Controls.Add(this.btn_Expression);
             this.Controls.Add(this.cb_CSVEnabler);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
@@ -153,7 +181,7 @@
         private System.Windows.Forms.Button btn_Expression;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cb_CSVEnabler;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_FilenameCSV;
         private System.Windows.Forms.TextBox tb_ExportPath;
         private System.Windows.Forms.TextBox tb_exportFilename;
         private System.Windows.Forms.Label label2;
@@ -161,5 +189,9 @@
         private System.Windows.Forms.Button BTN_Cancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BTN_File;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LBL_Exemple;
+        private System.Windows.Forms.Label lbl_meta;
+        private System.Windows.Forms.Label label1;
     }
 }
