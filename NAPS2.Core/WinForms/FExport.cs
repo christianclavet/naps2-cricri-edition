@@ -18,6 +18,7 @@ using CsvHelper;
 using NAPS2.Util;
 using NAPS2.ImportExport.Images;
 using NTwain.Data;
+using System.IO;
 
 namespace NAPS2.WinForms
 {
@@ -58,7 +59,7 @@ namespace NAPS2.WinForms
             tb_ExportPath.Text = "$(nnnnnnnn).jpg";
             filename = tb_ExportPath.Text;
             tb_exportFilename.Text = name + ".csv";
-            tb_CSVExpression.Text = "$(filename)";
+            tb_CSVExpression.Text = "TEST,$(barcode),$(filename)";
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -94,14 +95,12 @@ namespace NAPS2.WinForms
 
         private void tb_ExportPath_TextChanged(object sender, EventArgs e)
         {
-            LBL_Exemple.Text = fileNamePlaceholders.SubstitutePlaceholders(tb_ExportPath.Text, DateTime.Now, true);
             filename = tb_ExportPath.Text;
-            imageSettingsContainer.ImageSettings = new ImageSettings
-            {
-                DefaultFileName = tb_ExportPath.Text,
-                SkipSavePrompt = true,
-
-            };
+            var fileExample = fileNamePlaceholders.SubstitutePlaceholders(tb_ExportPath.Text, DateTime.Now, true);
+            var file = Path.GetFileName(fileExample);
+            fileExample = Path.Combine(Path.GetDirectoryName(fileExample), projectName);
+            fileExample = Path.Combine(fileExample,file);
+            LBL_Exemple.Text = fileExample;
         }
 
         private void cb_CSVEnabler_CheckedChanged(object sender, EventArgs e)
@@ -125,12 +124,10 @@ namespace NAPS2.WinForms
         {
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
-
                 UseCSVExport = false,
                 SkipSavePrompt = false,
-
             };
-        Close();
+            Close();
         }
 
         private void BTN_Export_Click(object sender, EventArgs e)
@@ -150,6 +147,7 @@ namespace NAPS2.WinForms
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
                 UseCSVExport = false,
+                SkipSavePrompt = false,
             };
 
             Close();

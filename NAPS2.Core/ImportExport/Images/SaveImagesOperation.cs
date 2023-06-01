@@ -20,11 +20,6 @@ using CsvHelper.Configuration;
 
 namespace NAPS2.ImportExport.Images
 {
-    public class field    
-    {
-        public string data { get; set; }
-    }
-
     public class SaveImagesOperation : OperationBase
     {
         private readonly FileNamePlaceholders fileNamePlaceholders;
@@ -71,6 +66,7 @@ namespace NAPS2.ImportExport.Images
                 try
                 {
                     string path = "";
+                    //NEW: Add support to export .CSV files with metadata along the images when using the EXPORT interface.
                     if (imageSettings.UseCSVExport == true)
                     {
                         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -184,7 +180,9 @@ namespace NAPS2.ImportExport.Images
                                 //Parse the CSV expression and extract based on the ","
                                 string phrase = imageSettings.CSVExpression;
                                 phrase = phrase.Replace("$(filename)", Path.GetFileName(fileNameN));
-                                phrase = phrase.Replace("$(barcode)", snapshot.Source.barCodeData);
+
+
+                                phrase = phrase.Replace("$(barcode)", snapshot.BarCodeData);
                                 string[] words = phrase.Split(',');
 
                                 using (var stream = File.Open(path, FileMode.Append))

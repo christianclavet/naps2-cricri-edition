@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using NAPS2.Logging;
 using NAPS2.Recovery;
 using NAPS2.Scan.Images.Transforms;
 using NAPS2.Util;
@@ -208,10 +209,14 @@ namespace NAPS2.Scan.Images
                     Source = source;
                     TransformList = source.transformList.ToList();
                     TransformState = source.transformState;
+                    BarCodeData = source.barCodeData;
+                    Log.Error("BarCode: " + source.BarCodeData, this);
                 }
             }
 
             public ScannedImage Source { get; }
+
+            public string BarCodeData { get; set; }
 
             public List<Transform> TransformList { get; }
 
@@ -236,7 +241,7 @@ namespace NAPS2.Scan.Images
                 info.AddValue("RecoveryIndexImage", Source.RecoveryIndexImage);
                 info.AddValue("TransformList", TransformList);
                 info.AddValue("TransformState", TransformState);
-                info.AddValue("BarcodeInfo", Source.recoveryImage.barCode);
+                info.AddValue("BarcodeInfo", BarCodeData);
             }
 
             private Snapshot(SerializationInfo info, StreamingContext context)
@@ -244,7 +249,7 @@ namespace NAPS2.Scan.Images
                 Source = new ScannedImage((RecoveryIndexImage)info.GetValue("RecoveryIndexImage", typeof(RecoveryIndexImage)));
                 TransformList = (List<Transform>)info.GetValue("TransformList", typeof(List<Transform>));
                 TransformState = (int)info.GetValue("TransformState", typeof(int));
-                Source.BarCodeData = info.GetString("BarcodeInfo");
+                BarCodeData = info.GetString("BarcodeInfo");
                 
             }
 
