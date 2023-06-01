@@ -182,7 +182,7 @@ namespace NAPS2.ImportExport.Images
                                 phrase = phrase.Replace("$(filename)", Path.GetFileName(fileNameN));
 
 
-                                phrase = phrase.Replace("$(barcode)", snapshot.BarCodeData);
+                                phrase = phrase.Replace("$(barcode)",images[i].BarCodeData);
                                 string[] words = phrase.Split(',');
 
                                 using (var stream = File.Open(path, FileMode.Append))
