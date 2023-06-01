@@ -69,8 +69,13 @@ Source: "..\bin\InstallerEXE\NLog.dll"; DestDir: "{app}\lib"; Flags: ignoreversi
 Source: "..\bin\InstallerEXE\NTwain.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\PdfSharp.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\CsvHelper.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
-Source: "..\bin\InstallerEXE\CsvHelper.xml"; DestDir: "{app}\lib"; Flags: ignoreversion
-; Source: "..\bin\InstallerEXE\System.ValueTuple.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Microsoft.Bcl.AsyncInterfaces.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Microsoft.Bcl.HashCode.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\System.Buffers.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\System.Memory.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\System.Numerics.Vectors.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\zxing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: ignoreversion           
 Source: "..\..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Flags: ignoreversion
