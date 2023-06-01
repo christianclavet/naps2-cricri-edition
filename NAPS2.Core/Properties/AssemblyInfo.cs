@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NAPS2.Core")]
-[assembly: AssemblyCopyright("Copyright 2009, 2012-2022 NAPS2 Contributors;")]
+[assembly: AssemblyCopyright("Copyright 2009, 2012-2023 NAPS2 Contributors;")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,4 +28,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("7.0.0.*")]
+[assembly: AssemblyVersion("6.2.1.*")]

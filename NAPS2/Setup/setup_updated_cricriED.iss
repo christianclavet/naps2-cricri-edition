@@ -68,6 +68,8 @@ Source: "..\bin\InstallerEXE\Ninject.dll"; DestDir: "{app}\lib"; Flags: ignoreve
 Source: "..\bin\InstallerEXE\NLog.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\NTwain.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\PdfSharp.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\CsvHelper.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\CsvHelper.xml"; DestDir: "{app}\lib"; Flags: ignoreversion
 ; Source: "..\bin\InstallerEXE\System.ValueTuple.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\zxing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: ignoreversion           
