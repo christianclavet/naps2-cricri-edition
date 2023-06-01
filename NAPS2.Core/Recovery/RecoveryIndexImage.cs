@@ -20,6 +20,8 @@ namespace NAPS2.Recovery
 
         public string BarCode { get; set; }
 
+        public int SheetSide { get; set; }
+
         public ScanBitDepth BitDepth { get; set; }
 
         public bool HighQuality { get; set; }

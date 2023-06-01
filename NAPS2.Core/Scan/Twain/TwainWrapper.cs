@@ -131,7 +131,7 @@ namespace NAPS2.Scan.Twain
             var waitHandle = new AutoResetEvent(false);
 
             int pageNumber = 0;
-            //int sheetSide = 0;
+            int sheetSide = 2;
 
             session.TransferReady += (sender, eventArgs) =>
             {
@@ -164,20 +164,21 @@ namespace NAPS2.Scan.Twain
                             {
                                 return;
                             }
-                            /* Temporary hidden to not overload the log file --- debug use
-                            Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
+                            //Temporary hidden to not overload the log file --- debug use
                             
-                            if (sheetSide == 0 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
+                            //Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
+                            
+                            if (sheetSide == 2 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
-                                Log.Error("Current side of camera: Front");
+                                //Log.Error("Current side of camera: Front");
+                                sheetSide = 1;
+                            }
+                            else if (sheetSide == 1 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
+                            {
+                                //Log.Error("Current side of camera: Back");
                                 sheetSide = 2;
                             }
-                            else if (sheetSide == 2 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
-                            {
-                                Log.Error("Current side of camera: Back");
-                                sheetSide = 0;
-                            }
-
+                            /*
                             IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
                             Log.Error("Capabilities\n" + support.Count().ToString());
                             foreach (var result2 in support)
@@ -188,8 +189,7 @@ namespace NAPS2.Scan.Twain
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
-                            var image = new ScannedImage(result, bitDepth, scanProfile.MaxQuality, scanProfile.Quality);
-                            
+                            var image = new ScannedImage(result, bitDepth, scanProfile.MaxQuality, scanProfile.Quality);                            
                             
                             if (scanParams.DetectPatchCodes)
                             {
@@ -198,13 +198,26 @@ namespace NAPS2.Scan.Twain
                                     if (patchCodeInfo.ReturnCode == ReturnCode.Success)
                                     {
                                         image.PatchCode = GetPatchCode(patchCodeInfo);
+                                        image.BarCodeData = GetBarCode();
                                     }
                                 }
                             }
+                            foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.BarcodeText))
+                            {
+                                if (barCodeInfo.ReturnCode == ReturnCode.Success)
+                                {
+                                    image.BarCodeData = barCodeInfo.ReadValues().FirstOrDefault().ToString();
+                                    //Debug.WriteLine("BARCODE BARCODE BARCODE : "+image.BarCodeData);
+                                }
+                            }
+
                             scannedImageHelper.PostProcessStep2(image, result, scanProfile, scanParams, pageNumber);
                             string tempPath = scannedImageHelper.SaveForBackgroundOcr(result, scanParams);
                             runBackgroundOcr(image, scanParams, tempPath);
+                            image.RecoveryIndexImage.SheetSide = image.SheetSide;
+                            image.SheetSide = image.SheetSide;
                             source.Put(image);
+                        
                         }
                     }
                 }
@@ -420,9 +433,14 @@ namespace NAPS2.Scan.Twain
             }
         }
 
+        private static string GetBarCode()
+        {
+            return NTwain.Data.ExtendedImageInfo.BarcodeText.ToString();
+        }
+
         private void ConfigureDS(DataSource ds, ScanProfile scanProfile, ScanParams scanParams)
         {
-
+            /*
             var Manu = ds.Manufacturer+": "+ds.Name;
             // Test to force autosize the page scanned
             if (ds.Capabilities.ICapAutoSize.IsSupported)
@@ -459,7 +477,11 @@ namespace NAPS2.Scan.Twain
             else
                 Log.Error("Capability: This device does not support Double Feed detection" + Manu);
 
-            //Need to change this for rescan. (1-2 pages), -1 mean all the pages in the feeder.
+            //Need to change this for rescan. (1-2 pages), -1 mean all the pages in the feeder.*/
+
+            //try to enable barcode capability
+            ds.Capabilities.ICapBarcodeDetectionEnabled.SetValue(BoolType.True);
+
             if (!scanParams.RescanMode)
                 ds.Capabilities.CapXferCount.SetValue(-1);
             else

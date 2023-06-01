@@ -112,6 +112,7 @@ namespace NAPS2.WinForms
         {
             string text = tb_CSVExpression.Text.Replace("$(filename)", fileNamePlaceholders.SubstitutePlaceholders(filename, DateTime.Now, true));
             text = text.Replace("$(barcode)", "1234-5678");
+            text = text.Replace("$(sheetside)", "1=front-2=back");
             lbl_meta.Text = text;
         }
 

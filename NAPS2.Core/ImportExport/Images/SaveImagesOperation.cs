@@ -180,9 +180,11 @@ namespace NAPS2.ImportExport.Images
                                 //Parse the CSV expression and extract based on the ","
                                 string phrase = imageSettings.CSVExpression;
                                 phrase = phrase.Replace("$(filename)", Path.GetFileName(fileNameN));
+                                phrase = phrase.Replace("$(barcode)", images[i].BarCodeData);
+                                if (images[i].SheetSide==0)
+                                    images[i].SheetSide=1;
 
-
-                                phrase = phrase.Replace("$(barcode)",images[i].BarCodeData);
+                                phrase = phrase.Replace("$(sheetside)", images[i].SheetSide.ToString());
                                 string[] words = phrase.Split(',');
 
                                 using (var stream = File.Open(path, FileMode.Append))

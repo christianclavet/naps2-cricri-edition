@@ -100,7 +100,9 @@ namespace NAPS2.ClientServer
                         FileName = Path.GetExtension(indexImage.FileName),
                         TransformList = indexImage.TransformList,
                         BitDepth = indexImage.BitDepth,
-                        HighQuality = indexImage.HighQuality
+                        HighQuality = indexImage.HighQuality,
+                        SheetSide = indexImage.SheetSide,
+                        BarCode = indexImage.BarCode,
                     };
                     callback.ImageReceived(imageBytes, sanitizedIndexImage);
                     pages++;

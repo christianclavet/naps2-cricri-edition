@@ -162,6 +162,8 @@ namespace NAPS2.Recovery
                 : ImageFormat.Jpeg;
             FileName = recoveryIndexImage.FileName;
             barCode = recoveryIndexImage.BarCode;
+            SheetSide = recoveryIndexImage.SheetSide;
+            
             FilePath = Path.Combine(RecoveryFolder.FullName, FileName);
             IndexImage = recoveryIndexImage;
             Save();
@@ -174,6 +176,8 @@ namespace NAPS2.Recovery
         public string FilePath { get; }
 
         public string barCode { get; set; }
+
+        public int SheetSide { get; set; }
 
         public RecoveryIndexImage IndexImage { get; }
 

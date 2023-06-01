@@ -77,7 +77,6 @@ namespace NAPS2.Scan
                 // Start the scan
                 int imageCount = 0;
                 var source = driver.Scan().Then(img => imageCount++);
-
                 bool doAutoSave = !scanParams.NoAutoSave && !appConfigManager.Config.DisableAutoSave && scanProfile.EnableAutoSave && scanProfile.AutoSaveSettings != null;
                 if (doAutoSave)
                 {
@@ -118,7 +117,7 @@ namespace NAPS2.Scan
                     // No auto save, so just pipe images back as we get them
                     await source.ForEach(imageCallback);
                 }
-
+                Log.Error("Image count is:" + imageCount.ToString(), this);
                 if (imageCount > 0)
                 {
                     Log.Event(EventType.Scan, new Event

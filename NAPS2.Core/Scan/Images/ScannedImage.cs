@@ -56,7 +56,6 @@ namespace NAPS2.Scan.Images
 
             transformList = new List<Transform>();
             recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
-
             File.Move(tempFilePath, recoveryImage.FilePath);
 
             recoveryImage.Save();
@@ -67,6 +66,8 @@ namespace NAPS2.Scan.Images
             recoveryImage = RecoveryImage.LoadExisting(recoveryIndexImage);
             transformList = recoveryImage.IndexImage.TransformList;
             barCodeData = recoveryImage.IndexImage.BarCode;
+            SheetSide = recoveryImage.IndexImage.SheetSide;
+            
         }
 
         private ScannedImage(string pdfPath, bool copy)
@@ -85,6 +86,8 @@ namespace NAPS2.Scan.Images
 
             recoveryImage.Save();
         }
+
+        public int SheetSide { get; set; }
 
         public PatchCode PatchCode { get; set; }
 
@@ -210,13 +213,15 @@ namespace NAPS2.Scan.Images
                     TransformList = source.transformList.ToList();
                     TransformState = source.transformState;
                     BarCodeData = source.barCodeData;
-                    Log.Error("BarCode: " + source.BarCodeData, this);
+                    SheetSide = source.SheetSide;
                 }
             }
 
             public ScannedImage Source { get; }
 
             public string BarCodeData { get; set; }
+
+            public int SheetSide { get; set; }
 
             public List<Transform> TransformList { get; }
 
