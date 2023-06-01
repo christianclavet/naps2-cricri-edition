@@ -1353,13 +1353,13 @@ namespace NAPS2.WinForms
         private void app_SizeChanged(object sender, System.EventArgs e)
         {
             Control control = (Control)sender;
-            if (Oldsize!=Size.Empty)
-            {
-                float ratio = (float)control.Size.Width / (float)Oldsize.Width;
-                splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);
+            if (Oldsize!=Size.Empty && WindowState != FormWindowState.Minimized)
+            {        
+                    float ratio = (float)control.Size.Width / (float)Oldsize.Width;
+                    splitContainer1.SplitterDistance = (int)(splitContainer1.SplitterDistance * ratio);
+                    Oldsize.Width = control.Size.Width;
+                    appConfigManager.Save();          
             }
-            Oldsize.Width = control.Size.Width;
-            appConfigManager.Save();
         }
 
         private void thumbnailList1_ItemActivate(object sender, EventArgs e)

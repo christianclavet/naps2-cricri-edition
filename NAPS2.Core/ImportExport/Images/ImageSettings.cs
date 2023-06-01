@@ -28,5 +28,7 @@ namespace NAPS2.ImportExport.Images
         public string CSVFileName { get; set; }
 
         public string CSVExpression { get; set; }
+
+        public string ProjectName { get; set; } 
     }
 }

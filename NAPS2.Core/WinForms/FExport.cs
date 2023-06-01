@@ -137,6 +137,7 @@ namespace NAPS2.WinForms
         {
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
+                ProjectName = this.projectName,
                 DefaultFileName = tb_ExportPath.Text,
                 CSVExpression = tb_CSVExpression.Text,
                 CSVFileName = tb_exportFilename.Text,

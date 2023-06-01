@@ -70,6 +70,7 @@ namespace NAPS2.ImportExport.Images
             {
                 try
                 {
+                    string path = "";
                     if (imageSettings.UseCSVExport == true)
                     {
                         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -77,18 +78,28 @@ namespace NAPS2.ImportExport.Images
                             // Don't write the header again.
                             HasHeaderRecord = false,
                         };
-                        string path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.CSVFileName);
-                        // Path.GetFullPath(imageSettings.DefaultFileName) + imageSettings.CSVFileName)
+                        // Create a new folder, in the path using the project name and put  the file there
+                        Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName));
+                        path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName);
+                        path = Path.Combine(path, imageSettings.CSVFileName);
+
+                        //Create the CSV file
                         using (var writer = new StreamWriter(path)) 
                         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                        {
-                           
+                        {                         
                         }
-
 
                     }
 
                     var subFileName = fileNamePlaceholders.SubstitutePlaceholders(fileName, dateTime, batch);
+                    // Change the path to be in the Folder export (CSV only)
+                    if (imageSettings.UseCSVExport == true)
+                    {
+                        var file = Path.GetFileName(subFileName);
+                        subFileName = Path.Combine(Path.GetDirectoryName(subFileName), imageSettings.ProjectName);
+                        subFileName = Path.Combine(subFileName, file);
+                    }
+
                     if (Directory.Exists(subFileName))
                     {
                         // Not supposed to be a directory, but ok...
@@ -146,6 +157,16 @@ namespace NAPS2.ImportExport.Images
                         {
                             var fileNameN = fileNamePlaceholders.SubstitutePlaceholders(fileName, dateTime, true, i,
                                 digits);
+
+                            // Change the path to be in the Folder export (CSV only)
+                            if (imageSettings.UseCSVExport == true)
+                            {
+                                var file = Path.GetFileName(fileNameN);
+                                fileNameN = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName);
+                                fileNameN = Path.Combine(fileNameN, file);
+                                //Log.Error("FilenameN is: " + fileNameN, this);
+                            }
+
                             Status.StatusText = string.Format(MiscResources.SavingFormat, Path.GetFileName(fileNameN));
                             InvokeStatusChanged();
                             
@@ -160,10 +181,12 @@ namespace NAPS2.ImportExport.Images
                                 
                                 //Log.Error("Here is the info:" + path, this);
 
+                                //Parse the CSV expression and extract based on the ","
                                 string phrase = imageSettings.CSVExpression;
-                                phrase = phrase.Replace("$(filename)", fileNameN);
+                                phrase = phrase.Replace("$(filename)", Path.GetFileName(fileNameN));
+                                phrase = phrase.Replace("$(barcode)", snapshot.Source.barCodeData);
                                 string[] words = phrase.Split(',');
-                                string path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.CSVFileName);
+
                                 using (var stream = File.Open(path, FileMode.Append))
                                 using (var writer = new StreamWriter(stream))
                                 using (var csv = new CsvWriter(writer, config))
@@ -221,6 +244,7 @@ namespace NAPS2.ImportExport.Images
         private async Task DoSaveImage(ScannedImage.Snapshot snapshot, string path, ImageFormat format)
         {
             PathHelper.EnsureParentDirExists(path);
+            //Log.Error("Final file path is: " + path, this);
             if (Equals(format, ImageFormat.Tiff))
             {
                 await tiffHelper.SaveMultipage(new List<ScannedImage.Snapshot> { snapshot }, path, imageSettingsContainer.ImageSettings.TiffCompression, (i, j) => { }, CancellationToken.None);
