@@ -123,18 +123,34 @@ namespace NAPS2.WinForms
 
         private void BTN_Cancel_Click(object sender, EventArgs e)
         {
-            Close();
+            imageSettingsContainer.ImageSettings = new ImageSettings
+            {
+
+                UseCSVExport = false,
+                SkipSavePrompt = false,
+
+            };
+        Close();
         }
 
         private void BTN_Export_Click(object sender, EventArgs e)
         {
-            SaveImages(imagesList.Images);
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
-                DefaultFileName = "",
-                SkipSavePrompt = false,
-
+                DefaultFileName = tb_ExportPath.Text,
+                CSVExpression = tb_CSVExpression.Text,
+                CSVFileName = tb_exportFilename.Text,
+                SkipSavePrompt = true,
+                UseCSVExport = cb_CSVEnabler.Checked,
             };
+
+            SaveImages(imagesList.Images);
+
+            imageSettingsContainer.ImageSettings = new ImageSettings
+            {
+                UseCSVExport = false,
+            };
+
             Close();
         }
 

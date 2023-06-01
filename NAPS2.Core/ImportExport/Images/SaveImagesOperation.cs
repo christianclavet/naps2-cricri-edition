@@ -13,9 +13,18 @@ using NAPS2.Logging;
 using NAPS2.Operation;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
+using CsvHelper;
+using System.Globalization;
+using ZXing;
+using CsvHelper.Configuration;
 
 namespace NAPS2.ImportExport.Images
 {
+    public class field    
+    {
+        public string data { get; set; }
+    }
+
     public class SaveImagesOperation : OperationBase
     {
         private readonly FileNamePlaceholders fileNamePlaceholders;
@@ -31,13 +40,15 @@ namespace NAPS2.ImportExport.Images
             this.overwritePrompt = overwritePrompt;
             this.scannedImageRenderer = scannedImageRenderer;
             this.tiffHelper = tiffHelper;
+            this.imageSettings = null;
 
             ProgressTitle = MiscResources.SaveImagesProgress;
             AllowCancel = true;
             AllowBackground = true;
         }
-
+        
         public string FirstFileSaved { get; private set; }
+        public ImageSettings imageSettings { get; set; }
 
         /// <summary>
         /// Saves the provided collection of images to a file with the given name. The image type is inferred from the file extension.
@@ -59,6 +70,24 @@ namespace NAPS2.ImportExport.Images
             {
                 try
                 {
+                    if (imageSettings.UseCSVExport == true)
+                    {
+                        var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                        {
+                            // Don't write the header again.
+                            HasHeaderRecord = false,
+                        };
+                        string path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.CSVFileName);
+                        // Path.GetFullPath(imageSettings.DefaultFileName) + imageSettings.CSVFileName)
+                        using (var writer = new StreamWriter(path)) 
+                        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                           
+                        }
+
+
+                    }
+
                     var subFileName = fileNamePlaceholders.SubstitutePlaceholders(fileName, dateTime, batch);
                     if (Directory.Exists(subFileName))
                     {
@@ -84,6 +113,7 @@ namespace NAPS2.ImportExport.Images
 
                     int i = 0;
                     int digits = (int)Math.Floor(Math.Log10(snapshots.Count)) + 1;
+                   
                     foreach (ScannedImage.Snapshot snapshot in snapshots)
                     {
                         if (CancelToken.IsCancellationRequested)
@@ -118,6 +148,33 @@ namespace NAPS2.ImportExport.Images
                                 digits);
                             Status.StatusText = string.Format(MiscResources.SavingFormat, Path.GetFileName(fileNameN));
                             InvokeStatusChanged();
+                            
+                            if (imageSettings.UseCSVExport == true)
+                            {
+
+                                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                                {
+                                    // Don't write the header again.
+                                    HasHeaderRecord = false,
+                                };
+                                
+                                //Log.Error("Here is the info:" + path, this);
+
+                                string phrase = imageSettings.CSVExpression;
+                                phrase = phrase.Replace("$(filename)", fileNameN);
+                                string[] words = phrase.Split(',');
+                                string path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.CSVFileName);
+                                using (var stream = File.Open(path, FileMode.Append))
+                                using (var writer = new StreamWriter(stream))
+                                using (var csv = new CsvWriter(writer, config))
+                                {
+                                    foreach (var word in words)
+                                    {
+                                        csv.WriteField<string>(word);
+                                    }    
+                                    csv.NextRecord();
+                                }
+                            }
                             await DoSaveImage(snapshot, fileNameN, format);
 
                             if (i == 0)
@@ -127,7 +184,6 @@ namespace NAPS2.ImportExport.Images
                         }
                         i++;
                     }
-
                     return FirstFileSaved != null;
                 }
                 catch (UnauthorizedAccessException ex)
