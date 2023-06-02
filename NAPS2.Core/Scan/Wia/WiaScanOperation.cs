@@ -155,6 +155,9 @@ namespace NAPS2.Scan.Wia
                 scannedImageHelper.PostProcessStep2(image, result, ScanProfile, ScanParams, pageNumber);
                 string tempPath = scannedImageHelper.SaveForBackgroundOcr(result, ScanParams);
                 scannedImageHelper.RunBackgroundOcr(image, ScanParams, tempPath);
+                
+                //try to attribute a sheetside if the paper sheet is being scanned on a duplex scanner or feeder
+                //This is only a trick only until a find a better way (wia information on the camera side)
                 if (ScanProfile.PaperSource != ScanSource.Glass)
                 {
                     if (sheetSide == 0 || sheetSide == 2) 
