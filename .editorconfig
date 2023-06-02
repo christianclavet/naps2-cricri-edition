@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# IDE0090: Utiliser 'new(...)'
+dotnet_diagnostic.IDE0090.severity = silent
+
+# IDE0063: Utiliser une instruction 'using' simple
+dotnet_diagnostic.IDE0063.severity = silent
+
+# IDE0041: Utiliser la vérification 'is null'
+dotnet_diagnostic.IDE0041.severity = silent
+
+# IDE0066: Convertir l'instruction switch en expression
+dotnet_diagnostic.IDE0066.severity = silent

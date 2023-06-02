@@ -43,7 +43,7 @@ namespace NAPS2.Scan.Images
             return new ScannedImage(pdfPath, copy);
         }
 
-        public void update(string barCodeData)
+        public void Update(string barCodeData)
         {
             recoveryImage.barCode = barCodeData;
             recoveryImage.Save();

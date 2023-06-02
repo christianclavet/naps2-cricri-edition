@@ -59,7 +59,7 @@ namespace NAPS2.Scan.Images
                             if (img.BarCodeData != null) 
                             {
                                 img.RecoveryIndexImage.BarCode = img.BarCodeData;
-                                img.update(img.BarCodeData);
+                                img.Update(img.BarCodeData);
                             }
                         }
 

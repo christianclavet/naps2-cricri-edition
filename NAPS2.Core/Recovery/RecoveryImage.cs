@@ -145,7 +145,8 @@ namespace NAPS2.Recovery
                 BitDepth = bitDepth,
                 BarCode = barCode,
                 HighQuality = highQuality,
-                TransformList = transformList
+                TransformList = transformList,
+                SheetSide = SheetSide,
             };
         }
 
