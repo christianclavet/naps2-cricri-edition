@@ -142,6 +142,7 @@ namespace NAPS2.Scan.Wia
 
         private void ProduceImage(ScannedImageSource.Concrete source, Image output, ref int pageNumber)
         {
+            var sheetSide = 0;
             using (var result = scannedImageHelper.PostProcessStep1(output, ScanProfile))
             {
                 if (blankDetector.ExcludePage(result, ScanProfile))
@@ -154,6 +155,21 @@ namespace NAPS2.Scan.Wia
                 scannedImageHelper.PostProcessStep2(image, result, ScanProfile, ScanParams, pageNumber);
                 string tempPath = scannedImageHelper.SaveForBackgroundOcr(result, ScanParams);
                 scannedImageHelper.RunBackgroundOcr(image, ScanParams, tempPath);
+                if (ScanProfile.PaperSource != ScanSource.Glass)
+                {
+                    if (sheetSide == 0 || sheetSide == 2) 
+                    {
+                        sheetSide = 1;
+                    }
+                    if (sheetSide == 1) 
+                    {
+                        sheetSide = 2;
+                    }
+                    image.SheetSide = sheetSide;
+                    image.RecoveryIndexImage.SheetSide = sheetSide;
+
+                }
+
                 source.Put(image);
 
                 pageNumber++;

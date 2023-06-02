@@ -131,7 +131,7 @@ namespace NAPS2.Scan.Twain
             var waitHandle = new AutoResetEvent(false);
 
             int pageNumber = 0;
-            int sheetSide = 2;
+            int sheetSide = 0;
 
             session.TransferReady += (sender, eventArgs) =>
             {
@@ -167,7 +167,7 @@ namespace NAPS2.Scan.Twain
                             //Temporary hidden to not overload the log file --- debug use
                             
                             Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());                            
-                            if (sheetSide == 2 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
+                            if ((sheetSide == 2 || sheetSide==0) && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
                                 //Log.Error("Current side of camera: Front");
                                 sheetSide = 1;
