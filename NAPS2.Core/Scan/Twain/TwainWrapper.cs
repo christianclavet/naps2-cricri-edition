@@ -166,8 +166,7 @@ namespace NAPS2.Scan.Twain
                             }
                             //Temporary hidden to not overload the log file --- debug use
                             
-                            //Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
-                            
+                            Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());                            
                             if (sheetSide == 2 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
                                 //Log.Error("Current side of camera: Front");
@@ -210,12 +209,12 @@ namespace NAPS2.Scan.Twain
                                     //Debug.WriteLine("BARCODE BARCODE BARCODE : "+image.BarCodeData);
                                 }
                             }
+                            image.RecoveryIndexImage.SheetSide = sheetSide;
+                            image.SheetSide = sheetSide;
 
                             scannedImageHelper.PostProcessStep2(image, result, scanProfile, scanParams, pageNumber);
                             string tempPath = scannedImageHelper.SaveForBackgroundOcr(result, scanParams);
                             runBackgroundOcr(image, scanParams, tempPath);
-                            image.RecoveryIndexImage.SheetSide = image.SheetSide;
-                            image.SheetSide = image.SheetSide;
                             source.Put(image);
                         
                         }
