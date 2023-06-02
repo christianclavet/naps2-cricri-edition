@@ -160,14 +160,11 @@ namespace NAPS2.Scan.Wia
                 //This is only a trick only until a find a better way (wia information on the camera side)
                 if (ScanProfile.PaperSource != ScanSource.Glass)
                 {
-                    if (sheetSide == 0 || sheetSide == 2) 
-                    {
-                        sheetSide = 1;
-                    }
-                    if (sheetSide == 1) 
-                    {
+                    if (pageNumber%2 == 0)
                         sheetSide = 2;
-                    }
+                    else
+                        sheetSide = 1;
+
                     image.SheetSide = sheetSide;
                     image.RecoveryIndexImage.SheetSide = sheetSide;
 

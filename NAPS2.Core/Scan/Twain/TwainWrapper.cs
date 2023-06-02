@@ -164,19 +164,20 @@ namespace NAPS2.Scan.Twain
                             {
                                 return;
                             }
-                            //Temporary hidden to not overload the log file --- debug use
+                           
                             
                             Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());                            
                             if ((sheetSide == 2 || sheetSide==0) && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
                                 //Log.Error("Current side of camera: Front");
-                                sheetSide = 1;
+                                if (pageNumber%2 != 0) sheetSide = 1;
                             }
                             else if (sheetSide == 1 && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
                                 //Log.Error("Current side of camera: Back");
-                                sheetSide = 2;
+                                if (pageNumber%2 == 0) sheetSide = 2;
                             }
+                            //Temporary hidden to not overload the log file --- debug use
                             /*
                             IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
                             Log.Error("Capabilities\n" + support.Count().ToString());
@@ -184,7 +185,7 @@ namespace NAPS2.Scan.Twain
                             {
                                 Log.Error("-> " + result2.ToString()+": ");
                             }*/
-                        
+
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
                                 : ScanBitDepth.C24Bit;
