@@ -181,7 +181,7 @@
     <value>5</value>
   </data>
   <data name="lbl_meta.Text" xml:space="preserve">
-    <value>Exemple</value>
+    <value>Preview</value>
   </data>
   <data name="&gt;&gt;lbl_meta.Name" xml:space="preserve">
     <value>lbl_meta</value>
@@ -211,7 +211,7 @@
     <value>4</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Exemple</value>
+    <value>Preview</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -469,7 +469,7 @@
     <value>9</value>
   </data>
   <data name="BTN_File.Text" xml:space="preserve">
-    <value>File</value>
+    <value>...</value>
   </data>
   <data name="BTN_File.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -505,7 +505,7 @@
     <value>11</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Exemple:</value>
+    <value>Preview:</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -532,7 +532,7 @@
     <value>12</value>
   </data>
   <data name="LBL_Exemple.Text" xml:space="preserve">
-    <value> Example</value>
+    <value>Preview</value>
   </data>
   <data name="&gt;&gt;LBL_Exemple.Name" xml:space="preserve">
     <value>LBL_Exemple</value>
@@ -546,9 +546,9 @@
   <data name="&gt;&gt;LBL_Exemple.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>9, 20</value>
   </data>

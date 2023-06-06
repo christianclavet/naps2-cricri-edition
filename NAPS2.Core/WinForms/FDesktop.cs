@@ -664,8 +664,6 @@ namespace NAPS2.WinForms
 
             if (bitmap != null)
             {
-                //Get the barcode info. Take some time to interpret the barcode data from the image. Will use something else, more on demand.              
-                //img.BarCodeData = ""; //PatchCodeDetector.DetectBarcode(bitmap);
                 Size size = bitmap.Size;
                 img.infoResolution = size.Width + " px X " + size.Height + " px ";
 
@@ -1372,14 +1370,23 @@ namespace NAPS2.WinForms
         { 
             if (thumbnailList1.SelectedItems.Count == 1)
             {
-                String text = ((thumbnailList1.SelectedItems[0].Index)+1).ToString();
+                String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
                 String text4 = "";
                 if (text3 != "" && text3 != null)
                     text4 = "Barcode: " + text3;
                 String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
-                statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format;
+                string side = "";
+                if (imageList.Images[thumbnailList1.SelectedItems[0].Index].SheetSide == 1)
+                    side = "- side: front";
+                else if (imageList.Images[thumbnailList1.SelectedItems[0].Index].SheetSide == 2)
+                    side = "- side: back";
+                else
+                    side = "- side: front only";
+
+                statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format + side;
+
             }
             else
             {
