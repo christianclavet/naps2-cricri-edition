@@ -59,7 +59,7 @@ namespace NAPS2.WinForms
             tb_ExportPath.Text = "$(nnnnnnnn).jpg";
             filename = tb_ExportPath.Text;
             tb_exportFilename.Text = name + ".csv";
-            tb_CSVExpression.Text = "TEST,$(barcode),$(filename)";
+            tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)";
         }
 
         private void BTN_File_Click(object sender, EventArgs e)

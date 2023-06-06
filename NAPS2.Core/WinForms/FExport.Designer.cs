@@ -149,6 +149,7 @@
             // 
             resources.ApplyResources(this.LBL_Exemple, "LBL_Exemple");
             this.LBL_Exemple.Name = "LBL_Exemple";
+            this.LBL_Exemple.UseMnemonic = false;
             // 
             // FExport
             // 
