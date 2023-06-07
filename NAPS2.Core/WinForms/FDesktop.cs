@@ -2609,13 +2609,13 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            SaveExportImages(imagesList.Images);
+            /*SaveExportImages();
 
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
                 UseCSVExport = false,
                 SkipSavePrompt = false,
-            };
+            };*/
         }
 
         //Create a new project.
