@@ -36,6 +36,7 @@ using NAPS2.Update;
 using NAPS2.Util;
 using NAPS2.Worker;
 using ZXing;
+using NAPS2.ImportExport.Images;
 
 #endregion
 
@@ -2608,8 +2609,13 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            //openExportForm();
-            changeProjectName();
+            SaveExportImages(imagesList.Images);
+
+            imageSettingsContainer.ImageSettings = new ImageSettings
+            {
+                UseCSVExport = false,
+                SkipSavePrompt = false,
+            };
         }
 
         //Create a new project.
@@ -2663,6 +2669,19 @@ namespace NAPS2.WinForms
             UserConfigManager.Config.project = projectName;
             UserConfigManager.Save();
         }
+        // Save images and meta data
+        private async void SaveExportImages(List<ScannedImage> images)
+        {
+            if (await exportHelper.SaveImages(images, notify))
+            {
+
+                changeTracker.Made();
+
+            }
+        }
+
+        //Define the imageSettingContainer for export.       
+        public ImageSettingsContainer setImageContainer { get; set; }
 
     }
         #endregion

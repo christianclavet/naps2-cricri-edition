@@ -29,9 +29,9 @@ namespace NAPS2.WinForms
         private readonly FDesktop fdesktop;
         private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
-        private readonly ImageSettingsContainer imageSettingsContainer;
         private string filename;
 
+        public readonly ImageSettingsContainer imageSettingsContainer;
 
 
         public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer)
@@ -143,13 +143,17 @@ namespace NAPS2.WinForms
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
 
-            SaveImages(imagesList.Images);
+            //Return this to the main prg
+            fdesktop.setImageContainer.ImageSettings = imageSettingsContainer.ImageSettings;
 
+            //SaveImages(imagesList.Images);
+            /*
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
                 UseCSVExport = false,
                 SkipSavePrompt = false,
             };
+            */
 
             Close();
         }
