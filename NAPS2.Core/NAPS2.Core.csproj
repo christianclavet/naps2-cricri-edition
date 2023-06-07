@@ -364,11 +364,6 @@
     <Compile Include="WinForms\OperationProgressNotifyWidget.Designer.cs">
       <DependentUpon>OperationProgressNotifyWidget.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\Resource1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
-    </Compile>
     <Compile Include="WinForms\ServerNotifyIcon.cs" />
     <Compile Include="WinForms\UpdateAvailableNotifyWidget.cs">
       <SubType>UserControl</SubType>
@@ -5807,10 +5802,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\NotifyWidget.zh-TW.resx" Condition="'$(Configuration)' != 'Debug'">
       <DependentUpon>NotifyWidget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\ThumbnailList.af.resx" Condition="'$(Configuration)' != 'Debug'">
       <DependentUpon>ThumbnailList.cs</DependentUpon>
