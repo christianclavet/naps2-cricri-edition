@@ -31,7 +31,7 @@ namespace NAPS2.WinForms
         private readonly DialogHelper dialogHelper;
         private string filename;
 
-        public readonly ImageSettingsContainer imageSettingsContainer;
+        public ImageSettingsContainer imageSettingsContainer;
 
 
         public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer)
@@ -50,16 +50,21 @@ namespace NAPS2.WinForms
 
         public NotificationManager notify { get; set; }
 
-        public ScannedImageList imagesList { get; set; }
-
-
         public void setName(string name) 
         {
-            projectName = name;
+            projectName = UserConfigManager.Config.project;
             tb_ExportPath.Text = "$(nnnnnnnn).jpg";
             filename = tb_ExportPath.Text;
             tb_exportFilename.Text = name + ".csv";
-            tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)";
+            cb_CSVEnabler.Checked = fdesktop.useCSVExport;
+            if (fdesktop.CSVExpression == null) 
+            {
+                tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)"; 
+            } else 
+            { 
+                tb_CSVExpression.Text = fdesktop.CSVExpression;
+            }
+            
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -143,17 +148,11 @@ namespace NAPS2.WinForms
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
 
-            //Return this to the main prg
-            fdesktop.setImageContainer.ImageSettings = imageSettingsContainer.ImageSettings;
+            fdesktop.CSVExpression = tb_CSVExpression.Text;
+            fdesktop.useCSVExport = cb_CSVEnabler.Checked;
 
-            //SaveImages(imagesList.Images);
-            /*
-            imageSettingsContainer.ImageSettings = new ImageSettings
-            {
-                UseCSVExport = false,
-                SkipSavePrompt = false,
-            };
-            */
+            //Return this to the main prg
+            fdesktop.imageSettingsContainer = imageSettingsContainer;
 
             Close();
         }

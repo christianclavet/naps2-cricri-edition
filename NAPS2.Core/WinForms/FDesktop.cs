@@ -449,6 +449,7 @@ namespace NAPS2.WinForms
                             bitmap.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+                        
 
                     }
                     else if (result ==DialogResult.Yes)
@@ -500,6 +501,7 @@ namespace NAPS2.WinForms
             Pipes.KillServer();
             //Remove the work folder when closing the application
             imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+            closeWorkspace();
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
@@ -845,7 +847,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private void UpdateToolbar()
+        public void UpdateToolbar()
         {
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
@@ -2463,7 +2465,7 @@ namespace NAPS2.WinForms
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
                     }
-                    this.projectName = di.Name;
+                    projectName = di.Name;
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
@@ -2593,7 +2595,8 @@ namespace NAPS2.WinForms
             //If there is no selection, it will select all images
             if (!SelectedIndices.Any())
             {
-                return;
+                SelectedIndices = Enumerable.Range(0, imageList.Images.Count);
+                //return;
             }
 
             var op = operationFactory.Create<barCodeOperation>();
@@ -2609,9 +2612,9 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            /*SaveExportImages();
+            SaveExportImages(imageList.Images);
 
-            imageSettingsContainer.ImageSettings = new ImageSettings
+           /* imageSettingsContainer.ImageSettings = new ImageSettings
             {
                 UseCSVExport = false,
                 SkipSavePrompt = false,
@@ -2640,20 +2643,6 @@ namespace NAPS2.WinForms
 
         }
 
-        public void openExportForm()
-        {
-            var form = FormFactory.Create<FExport>();
-            form.projectName = projectName;
-            form.setName(projectName);
-            form.notify = notify;
-            form.imagesList = imageList;
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
-
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                projectName = form.projectName;
-            }
-        }
         public void changeProjectName()
         {
             var form = FormFactory.Create<FProjectName>();
@@ -2681,8 +2670,10 @@ namespace NAPS2.WinForms
         }
 
         //Define the imageSettingContainer for export.       
-        public ImageSettingsContainer setImageContainer { get; set; }
-
+        public ImageSettingsContainer imageSettingsContainer { get; set; }
+        public string CSVExpression { get; set; }
+        public string ExportPath { get; set; }
+        public bool useCSVExport { get; set; }
     }
         #endregion
 }

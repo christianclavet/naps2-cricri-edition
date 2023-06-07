@@ -31,20 +31,24 @@ namespace NAPS2.WinForms
         public FConfigurePrj(FDesktop fdesktop)
         {
             this.fdesktop = fdesktop;
+            this.projectName = fdesktop.projectName;
             InitializeComponent();
         }
 
         private void bt_chgProjectName_Click(object sender, EventArgs e)
         {
             //fdesktop.changeProjectName();
+            projectName = UserConfigManager.Config.project;
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            form.setFileName(fdesktop.projectName); // The "old" filename will be set
+            form.setFileName(projectName); // The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 fdesktop.projectName = form.getFileName();
-                //fdesktop.UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
+                UserConfigManager.Config.project = form.getFileName();
+                UserConfigManager.Save();
+                fdesktop.UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
 
         }
@@ -52,11 +56,10 @@ namespace NAPS2.WinForms
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
             //fdesktop.openExportForm();
+            projectName = UserConfigManager.Config.project;
             var form = FormFactory.Create<FExport>();
             form.projectName = fdesktop.projectName;
-            form.setName(fdesktop.projectName);
-            //form.notify = fdesktop.notify;
-            //form.imagesList = imageList;
+            form.setName(projectName);
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)
