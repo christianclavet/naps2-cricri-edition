@@ -84,7 +84,7 @@ namespace NAPS2.WinForms
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
         private string title = Application.ProductName.ToString()+" "+Application.ProductVersion.ToString();
-        private string projectName = string.Format(MiscResources.ProjectName);
+        public string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
 
@@ -2472,22 +2472,6 @@ namespace NAPS2.WinForms
             }         
         }
 
-        private void RenameCurrentProject_TSMI_Click(object sender, EventArgs e)
-        {
-            var form = FormFactory.Create<FProjectName>();
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
-            form.setFileName(projectName); // The "old" filename will be set
-            form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK)
-            {
-                projectName = form.getFileName();
-                UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
-            }
-            //Set the default filename with the new project name
-            UserConfigManager.Config.project = projectName;
-            UserConfigManager.Save();
-        }
-
         private void closeWorkspace()
         {
             //Recovery lock must be removed first to do operations
@@ -2605,6 +2589,7 @@ namespace NAPS2.WinForms
 
         private void tsBarCodeCheck_Click(object sender, EventArgs e)
         {
+            //If there is no selection, it will select all images
             if (!SelectedIndices.Any())
             {
                 return;
@@ -2623,8 +2608,35 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            var form = FormFactory.Create<FExport>();
+            //openExportForm();
+            changeProjectName();
+        }
+
+        //Create a new project.
+        private void tsPrjNew_Click(object sender, EventArgs e)
+        {
+            // Close the current workspace (save if the previous was not)
+            closeWorkspace();
+            // Ask for the project name: TODO: Should also ask for the project type template.
+            changeProjectName();
+            
+        }
+
+        private void tsPrjConfig_Click(object sender, EventArgs e)
+        {
+            var form = FormFactory.Create<FConfigurePrj>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+              
+            }
+
+        }
+
+        public void openExportForm()
+        {
+            var form = FormFactory.Create<FExport>();
             form.projectName = projectName;
             form.setName(projectName);
             form.notify = notify;
@@ -2636,6 +2648,22 @@ namespace NAPS2.WinForms
                 projectName = form.projectName;
             }
         }
+        public void changeProjectName()
+        {
+            var form = FormFactory.Create<FProjectName>();
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
+            form.setFileName(projectName); // The "old" filename will be set
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                projectName = form.getFileName();
+                UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
+            }
+            //Set the default filename with the new project name
+            UserConfigManager.Config.project = projectName;
+            UserConfigManager.Save();
+        }
+
     }
         #endregion
 }
