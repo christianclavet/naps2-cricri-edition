@@ -2605,6 +2605,7 @@ namespace NAPS2.WinForms
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
                 UpdateToolbar();
+                SelectedIndices = Enumerable.Range(0, 0);
             }
 
         }
