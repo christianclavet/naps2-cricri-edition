@@ -51,21 +51,31 @@ namespace NAPS2.WinForms
 
         public NotificationManager notify { get; set; }
 
-        public void setName(string name) 
+        public void SetData(ImageSettings imageSettings)
+        {
+            imageSettingsContainer.ImageSettings = imageSettings;
+        }
+
+        public void SetName(string name) 
         {
             projectName = UserConfigManager.Config.project;
             tb_ExportPath.Text = "$(nnnnnnnn).jpg";
-            filename = tb_ExportPath.Text;
+            //filename = fdesktop.imageSettings.DefaultFileName+tb_ExportPath.Text;
+           /* if (name == null) 
+            {
+                name = fdesktop.imageSettings.CSVFileName;
+            }
+
             tb_exportFilename.Text = name + ".csv";
-            cb_CSVEnabler.Checked = fdesktop.useCSVExport;
+            cb_CSVEnabler.Checked = fdesktop.imageSettings.UseCSVExport;
             if (fdesktop.CSVExpression == null) 
             {
                 tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)"; 
             } else 
             { 
-                tb_CSVExpression.Text = fdesktop.CSVExpression;
+                tb_CSVExpression.Text = fdesktop.imageSettings.CSVExpression;
             }
-            
+            */
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -74,11 +84,6 @@ namespace NAPS2.WinForms
             {
                 tb_ExportPath.Text = newPath;
                 filename = newPath;
-                imageSettingsContainer.ImageSettings = new ImageSettings
-                {
-                    DefaultFileName = newPath,
-                    SkipSavePrompt = true,                               
-                };
             }
 
         }
@@ -89,13 +94,7 @@ namespace NAPS2.WinForms
             form.FileName = tb_ExportPath.Text;
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tb_ExportPath.Text = form.FileName; //fileNamePlaceholders.SubstitutePlaceholders(form.FileName,DateTime.Now,true);
-                imageSettingsContainer.ImageSettings = new ImageSettings
-                {
-                    DefaultFileName = form.FileName,
-                    SkipSavePrompt = true,
-
-                };
+                tb_ExportPath.Text = form.FileName;
             }
         }
 
@@ -139,7 +138,7 @@ namespace NAPS2.WinForms
 
         private void BTN_Export_Click(object sender, EventArgs e)
         {
-            imageSettingsContainer.ImageSettings = new ImageSettings
+            fdesktop.imageSettings = new ImageSettings
             {
                 ProjectName = this.projectName,
                 DefaultFileName = tb_ExportPath.Text,
@@ -148,15 +147,6 @@ namespace NAPS2.WinForms
                 SkipSavePrompt = true,
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
-
-            //Should be returning the new images settings
-            fdesktop.imageSettings = imageSettingsContainer.ImageSettings;
-
-            fdesktop.CSVExpression = tb_CSVExpression.Text;
-            fdesktop.useCSVExport = cb_CSVEnabler.Checked;
-
-            //Return this to the main prg
-            fdesktop.imageSettingsContainer = imageSettingsContainer;
 
             Close();
         }

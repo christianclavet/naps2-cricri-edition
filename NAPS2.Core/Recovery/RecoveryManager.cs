@@ -11,6 +11,7 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
 using NAPS2.WinForms;
+using NAPS2.ImportExport.Images;
 
 namespace NAPS2.Recovery
 {
@@ -20,6 +21,7 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
+        private static ImageSettings imageSettings;
 
 
        
@@ -30,11 +32,17 @@ namespace NAPS2.Recovery
             this.thumbnailRenderer = thumbnailRenderer;
             this.operationProgress = operationProgress;
             this.recoveryIndexManager = null;
+           
         }
         public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
             recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
+        }
+
+        public ImageSettings ReturnData()
+        {
+            return imageSettings;
         }
 
         public void RecoverScannedImages(Action<ScannedImage> imageCallback)
@@ -49,6 +57,7 @@ namespace NAPS2.Recovery
                 operationProgress.ShowProgress(op);
                                   
             }
+            imageSettings = op.ReturnData(); // get back the informations about the project.
         }
         public RecoveryIndexManager recoveryIndexManager { get; set; }
 
@@ -63,10 +72,12 @@ namespace NAPS2.Recovery
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
+            private ImageSettings imageSettings;
 
             public void setFolder(DirectoryInfo info)
             { 
                 folderToRecoverFrom = info;
+        
             }
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
@@ -80,6 +91,7 @@ namespace NAPS2.Recovery
                 AllowBackground = false;
                 cleanup = false;
                 folderToRecoverFrom = null;
+                imageSettings = new ImageSettings();
             }
 
             public bool Start(Action<ScannedImage> imageCallback)
@@ -147,6 +159,9 @@ namespace NAPS2.Recovery
                 Status.MaxProgress = recoveryIndexManager.Index.Images.Count;
                 InvokeStatusChanged();
 
+                //Need this to get the parameter
+                imageSettings = recoveryIndexManager.Index.imageSettings;
+
                 foreach (RecoveryIndexImage indexImage in recoveryIndexManager.Index.Images)
                 {
                     if (CancelToken.IsCancellationRequested)
@@ -182,6 +197,11 @@ namespace NAPS2.Recovery
                     InvokeStatusChanged();
                 }
                 return true;
+            }
+
+            public ImageSettings ReturnData()
+            {
+                return imageSettings;
             }
 
             public void DeleteFolder()

@@ -94,7 +94,7 @@ namespace NAPS2.WinForms
 
         #region Initialization and Culture
 
-        public FDesktop(StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
+        public FDesktop(ImageSettings imageSettings, StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
         {
             this.stringWrapper = stringWrapper;
             this.appConfigManager = appConfigManager;
@@ -116,7 +116,7 @@ namespace NAPS2.WinForms
             this.workerServiceFactory = workerServiceFactory;
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
-            this.imageSettings = null;
+            this.imageSettings = imageSettings;
             
             InitializeComponent();
 
@@ -505,7 +505,6 @@ namespace NAPS2.WinForms
             Pipes.KillServer();
             //Remove the work folder when closing the application
             imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
-            closeWorkspace();
             closed = true;
             renderThumbnailsWaitHandle.Set();
             tiffViewerCtl1.Dispose();
@@ -1119,6 +1118,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SaveImages(images, notify))
             {
+                exportHelper.ImageSettingsContainer.ImageSettings = imageSettings;
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
@@ -2474,7 +2474,7 @@ namespace NAPS2.WinForms
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
-                    recoveryManager.recoveryIndexManager.Load();
+                    imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     UpdateToolbar();
                 }
             }         
@@ -2644,8 +2644,11 @@ namespace NAPS2.WinForms
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                imageSettings = imageSettingsContainer.ImageSettings;
+                
+                recoveryManager.recoveryIndexManager.Index.imageSettings = imageSettings;
                 recoveryManager.recoveryIndexManager.Save();
+                 //imageSettingsContainer.ImageSettings = imageSettings;
+                //recoveryManager.recoveryIndexManager.Save();
                 
             }
 
@@ -2662,13 +2665,16 @@ namespace NAPS2.WinForms
                 projectName = form.getFileName();
                 UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
-            //Set the default filename with the new project name
+            //Set the default filename with the new project name - Need to be changed. 
             UserConfigManager.Config.project = projectName;
             UserConfigManager.Save();
         }
         // Save images and meta data
         private async void SaveExportImages(List<ScannedImage> images)
         {
+            exportHelper.ImageSettingsContainer = new ImageSettingsContainer(UserConfigManager);
+            exportHelper.ImageSettingsContainer.ImageSettings = imageSettings;
+
             if (await exportHelper.SaveImages(images, notify))
             {
 
@@ -2676,9 +2682,7 @@ namespace NAPS2.WinForms
 
             }
         }
-
-        //Define the imageSettingContainer for export.       
-        public ImageSettingsContainer imageSettingsContainer { get; set; }
+// To be removed. Now using a structure to store all this.
         public string CSVExpression { get; set; }
         public string ExportPath { get; set; }
         public bool useCSVExport { get; set; }

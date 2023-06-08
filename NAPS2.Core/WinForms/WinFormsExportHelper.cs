@@ -31,6 +31,7 @@ namespace NAPS2.WinForms
         private readonly IEmailProviderFactory emailProviderFactory;
         private readonly IOperationProgress operationProgress;
         private readonly IUserConfigManager userConfigManager;
+        
 
         public WinFormsExportHelper(PdfSettingsContainer pdfSettingsContainer, ImageSettingsContainer imageSettingsContainer, EmailSettingsContainer emailSettingsContainer, DialogHelper dialogHelper, FileNamePlaceholders fileNamePlaceholders, ChangeTracker changeTracker, IOperationFactory operationFactory, IFormFactory formFactory, OcrManager ocrManager, IEmailProviderFactory emailProviderFactory, IOperationProgress operationProgress, IUserConfigManager userConfigManager)
         {
@@ -47,6 +48,7 @@ namespace NAPS2.WinForms
             this.operationProgress = operationProgress;
             this.userConfigManager = userConfigManager;
         }
+        public ImageSettingsContainer ImageSettingsContainer { get; set; }  
 
         public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify)
         {
@@ -101,6 +103,7 @@ namespace NAPS2.WinForms
                 string savePath;
 
                 var imageSettings = imageSettingsContainer.ImageSettings;
+                //var imageSettings = fdesktop.imageSettings;
                 if (imageSettings.SkipSavePrompt && Path.IsPathRooted(imageSettings.DefaultFileName))
                 {
                     savePath = imageSettings.DefaultFileName;

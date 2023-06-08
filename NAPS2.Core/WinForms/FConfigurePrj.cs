@@ -27,11 +27,13 @@ namespace NAPS2.WinForms
     {
         private readonly FDesktop fdesktop;
         private string projectName;
+        private ImageSettings imageSettings;
 
         public FConfigurePrj(FDesktop fdesktop)
         {
             this.fdesktop = fdesktop;
             this.projectName = fdesktop.projectName;
+            this.imageSettings = fdesktop.imageSettings;
             InitializeComponent();
         }
 
@@ -59,12 +61,14 @@ namespace NAPS2.WinForms
             projectName = UserConfigManager.Config.project;
             var form = FormFactory.Create<FExport>();
             form.projectName = fdesktop.projectName;
-            form.setName(projectName);
+            form.SetName(projectName);
+            form.SetData(imageSettings);
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
                 fdesktop.projectName = form.projectName;
+                fdesktop.imageSettings = form.imageSettingsContainer.ImageSettings;
             }
         }
     }
