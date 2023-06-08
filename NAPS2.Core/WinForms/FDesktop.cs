@@ -88,6 +88,7 @@ namespace NAPS2.WinForms
         public string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
+        public ImageSettings imageSettings;
 
         #endregion
 
@@ -115,6 +116,7 @@ namespace NAPS2.WinForms
             this.workerServiceFactory = workerServiceFactory;
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
+            this.imageSettings = null;
             
             InitializeComponent();
 
@@ -199,6 +201,8 @@ namespace NAPS2.WinForms
            
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
+
+            imageSettings = new ImageSettings();
 
         }
 
@@ -2470,6 +2474,7 @@ namespace NAPS2.WinForms
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+                    recoveryManager.recoveryIndexManager.Load();
                     UpdateToolbar();
                 }
             }         
@@ -2639,7 +2644,9 @@ namespace NAPS2.WinForms
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-              
+                imageSettings = imageSettingsContainer.ImageSettings;
+                recoveryManager.recoveryIndexManager.Save();
+                
             }
 
         }

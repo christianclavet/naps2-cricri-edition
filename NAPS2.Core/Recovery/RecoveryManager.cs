@@ -20,6 +20,8 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
+
+
        
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
@@ -27,10 +29,12 @@ namespace NAPS2.Recovery
             this.formFactory = formFactory;
             this.thumbnailRenderer = thumbnailRenderer;
             this.operationProgress = operationProgress;
+            this.recoveryIndexManager = null;
         }
         public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
+            recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
         }
 
         public void RecoverScannedImages(Action<ScannedImage> imageCallback)
@@ -38,6 +42,7 @@ namespace NAPS2.Recovery
 
             var op = new RecoveryOperation(formFactory, thumbnailRenderer);
             op.setFolder(folderToRecoverFrom);
+            op.recoveryIndexManager = recoveryIndexManager;
 
             if (op.Start(imageCallback))
             {
@@ -45,6 +50,7 @@ namespace NAPS2.Recovery
                                   
             }
         }
+        public RecoveryIndexManager recoveryIndexManager { get; set; }
 
         public class RecoveryOperation : OperationBase
         {
@@ -53,7 +59,7 @@ namespace NAPS2.Recovery
 
             private FileStream lockFile;
             public static DirectoryInfo folderToRecoverFrom;
-            private RecoveryIndexManager recoveryIndexManager;
+            public RecoveryIndexManager recoveryIndexManager;
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
@@ -91,7 +97,7 @@ namespace NAPS2.Recovery
                         folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
                         cleanup = true;
                     }
-                    recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
+
                     imageCount = recoveryIndexManager.Index.Images.Count;
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
                     if (cleanup)

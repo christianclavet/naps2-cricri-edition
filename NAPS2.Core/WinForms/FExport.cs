@@ -17,7 +17,6 @@ using NAPS2;
 using CsvHelper;
 using NAPS2.Util;
 using NAPS2.ImportExport.Images;
-using NTwain.Data;
 using System.IO;
 
 namespace NAPS2.WinForms
@@ -30,11 +29,12 @@ namespace NAPS2.WinForms
         private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
         private string filename;
+        private readonly RecoveryIndex recoveryIndex;
 
         public ImageSettingsContainer imageSettingsContainer;
 
 
-        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer)
+        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer, RecoveryIndex recoveryIndex)
         {
             this.fileNamePlaceholders = fileNamePlaceholders;
             this.exportHelper = exportHelper;
@@ -42,6 +42,7 @@ namespace NAPS2.WinForms
             this.changeTracker = changeTracker;
             this.dialogHelper = dialogHelper;
             this.imageSettingsContainer = imageSettingsContainer;
+            this.recoveryIndex = recoveryIndex;
             InitializeComponent();
             
         }
@@ -147,6 +148,9 @@ namespace NAPS2.WinForms
                 SkipSavePrompt = true,
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
+
+            //Should be returning the new images settings
+            fdesktop.imageSettings = imageSettingsContainer.ImageSettings;
 
             fdesktop.CSVExpression = tb_CSVExpression.Text;
             fdesktop.useCSVExport = cb_CSVEnabler.Checked;
