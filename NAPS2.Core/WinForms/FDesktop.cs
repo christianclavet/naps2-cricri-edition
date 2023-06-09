@@ -88,6 +88,7 @@ namespace NAPS2.WinForms
         public string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
+        public ImageSettingsContainer imageSettingsContainer;
 
         #endregion
 
@@ -449,6 +450,7 @@ namespace NAPS2.WinForms
                             bitmap.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+                        
 
                     }
                     else if (result ==DialogResult.Yes)
@@ -845,7 +847,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private void UpdateToolbar()
+        public void UpdateToolbar()
         {
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
@@ -1113,6 +1115,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SaveImages(images, notify))
             {
+                exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
@@ -2463,12 +2466,13 @@ namespace NAPS2.WinForms
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
                     }
-                    this.projectName = di.Name;
+                    projectName = di.Name;
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
 
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+                    //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     UpdateToolbar();
                 }
             }         
@@ -2594,7 +2598,8 @@ namespace NAPS2.WinForms
             //If there is no selection, it will select all images
             if (!SelectedIndices.Any())
             {
-                return;
+                SelectedIndices = Enumerable.Range(0, imageList.Images.Count);
+                //return;
             }
 
             var op = operationFactory.Create<barCodeOperation>();
@@ -2603,6 +2608,7 @@ namespace NAPS2.WinForms
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
                 UpdateToolbar();
+                SelectedIndices = Enumerable.Range(0, 0);
             }
 
         }
@@ -2610,6 +2616,7 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             SaveExportImages(this.imageList.Images);
 
             //this.imageSettingsContainer.ImageSettings = new ImageSettings
@@ -2617,6 +2624,15 @@ namespace NAPS2.WinForms
             //    UseCSVExport = false,
             //    SkipSavePrompt = false,
             //};
+=======
+            SaveExportImages(imageList.Images);
+
+           /* imageSettingsContainer.ImageSettings = new ImageSettings
+            {
+                UseCSVExport = false,
+                SkipSavePrompt = false,
+            };*/
+>>>>>>> 50491094c8dd15bd32cf61a44879111e7dd764c0
         }
 
         //Create a new project.
@@ -2632,29 +2648,21 @@ namespace NAPS2.WinForms
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FConfigurePrj>();
+            
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-              
+                
+               // recoveryManager.recoveryIndexManager.Index.imageSettings = imageSettings;
+               // recoveryManager.recoveryIndexManager.Save();
+                 //imageSettingsContainer.ImageSettings = imageSettings;
+                //recoveryManager.recoveryIndexManager.Save();
+                
             }
 
         }
 
-        public void openExportForm()
-        {
-            var form = FormFactory.Create<FExport>();
-            form.projectName = projectName;
-            form.setName(projectName);
-            form.notify = notify;
-            form.imagesList = imageList;
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
-
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                projectName = form.projectName;
-            }
-        }
         public void changeProjectName()
         {
             var form = FormFactory.Create<FProjectName>();
@@ -2666,13 +2674,14 @@ namespace NAPS2.WinForms
                 projectName = form.getFileName();
                 UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
-            //Set the default filename with the new project name
+            //Set the default filename with the new project name - Need to be changed. 
             UserConfigManager.Config.project = projectName;
             UserConfigManager.Save();
         }
         // Save images and meta data
         private async void SaveExportImages(List<ScannedImage> images)
         {
+<<<<<<< HEAD
             if (await exportHelper.SaveImages(images, notify))
             {
 
@@ -2683,7 +2692,22 @@ namespace NAPS2.WinForms
 
         //Define the imageSettingContainer for export.       
         public ImageSettingsContainer setImageContainer { get; set; }
+=======
+            //exportHelper.ImageSettingsContainer = new ImageSettingsContainer(UserConfigManager);
+            exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
+>>>>>>> 50491094c8dd15bd32cf61a44879111e7dd764c0
 
+            if (await exportHelper.SaveImages(images, notify))
+            {
+
+                changeTracker.Made();
+
+            }
+        }
+// To be removed. Now using a structure to store all this.
+        public string CSVExpression { get; set; }
+        public string ExportPath { get; set; }
+        public bool useCSVExport { get; set; }
     }
         #endregion
 }
