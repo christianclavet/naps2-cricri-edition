@@ -1114,9 +1114,19 @@ namespace NAPS2.WinForms
 
         private async void SaveImages(List<ScannedImage> images)
         {
+            imageSettingsContainer.ImageSettings = new ImageSettings()
+            {
+                ProjectName = projectName,
+                DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
+                CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
+                CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
+                UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
+                SkipSavePrompt = true,
+            };
+
             if (await exportHelper.SaveImages(images, notify))
             {
-                //exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
+                
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
@@ -2617,9 +2627,7 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-
-            //SaveExportImages(imageList.Images);
-
+            SaveImages(imageList.Images);
         }
 
         //Create a new project.
@@ -2634,18 +2642,32 @@ namespace NAPS2.WinForms
 
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
-            //projectInfo.ProjectName = projectName;
             var form = FormFactory.Create<FConfigurePrj>();
-
-            imageSettingsContainer.ImageSettings = new ImageSettings()
+            if (imageSettingsContainer.ImageSettings.CSVExpression == null)
             {
-                ProjectName = this.projectName,
-                CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
-                CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
-                UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
-                DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
-            };
-            
+                //Nothing is defined, use default values
+                imageSettingsContainer.ImageSettings = new ImageSettings()
+                {
+                    ProjectName = this.projectName,
+                    CSVFileName = projectName+".csv",
+                    CSVExpression = "Project, $(sheetside), $(barcode), $(filename)",
+                    UseCSVExport = true,
+                    DefaultFileName = "$(nnnnnnnn).jpg",
+                };
+
+            }
+            else
+            {
+                // There are some values, update only the project name
+                imageSettingsContainer.ImageSettings = new ImageSettings()
+                {
+                    ProjectName = this.projectName,
+                    CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
+                    CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
+                    UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
+                    DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
+                };
+            }
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             if (form.ShowDialog() == DialogResult.OK)
             {

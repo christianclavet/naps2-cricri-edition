@@ -28,12 +28,13 @@ namespace NAPS2.WinForms
         private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
         private readonly FDesktop fdesktop;
+        private readonly ImageSettingsContainer imageSettingsContainer;
 
         private string filename;
         private string projectName;
       
         private readonly RecoveryIndex recoveryIndex;
-        public ImageSettingsContainer imageSettingsContainer;
+        
         
        
         public FExport(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, RecoveryIndex recoveryIndex)
@@ -48,28 +49,14 @@ namespace NAPS2.WinForms
           
             InitializeComponent();
 
-            filename = imageSettingsContainer.ImageSettings.DefaultFileName;
             projectName = imageSettingsContainer.ImageSettings.ProjectName;
-            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
-            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
             tb_ExportPath.Text = imageSettingsContainer.ImageSettings.DefaultFileName;
+            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
+            tb_exportFilename.Text = imageSettingsContainer.ImageSettings.CSVFileName;
+            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
         }
 
         public NotificationManager notify { get; set; }
-
-        public void SetData()
-        {
-            filename = imageSettingsContainer.ImageSettings.DefaultFileName;
-            tb_ExportPath.Text = imageSettingsContainer.ImageSettings.DefaultFileName;
-            projectName = imageSettingsContainer.ImageSettings.ProjectName;
-            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
-            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
-            
-            if (tb_exportFilename.Text == "")
-            {
-                tb_exportFilename.Text = imageSettingsContainer.ImageSettings.ProjectName+".csv";
-            }
-        }
 
         private void BTN_File_Click(object sender, EventArgs e)
         {

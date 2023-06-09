@@ -63,12 +63,7 @@ namespace NAPS2.WinForms
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FExport>();
-            form.SetData();
-
-            //form.setName(fdesktop.projectName);
-            //form.notify = fdesktop.notify;
-            //form.imagesList = imageList;
-            
+                       
                 
                
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
