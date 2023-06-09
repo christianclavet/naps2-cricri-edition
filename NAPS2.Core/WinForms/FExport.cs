@@ -32,17 +32,13 @@ namespace NAPS2.WinForms
         private readonly RecoveryIndex recoveryIndex;
 
         public ImageSettingsContainer imageSettingsContainer;
-
-        public readonly ImageSettingsContainer imageSettingsContainer;
-
-        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer, RecoveryIndex recoveryIndex)
+        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, RecoveryIndex recoveryIndex)
         {
             this.fileNamePlaceholders = fileNamePlaceholders;
             this.exportHelper = exportHelper;
             this.fdesktop = fdesktop;
             this.changeTracker = changeTracker;
             this.dialogHelper = dialogHelper;
-            this.imageSettingsContainer = imageSettingsContainer;
             this.recoveryIndex = recoveryIndex;
             InitializeComponent();
             
@@ -148,22 +144,6 @@ namespace NAPS2.WinForms
                 SkipSavePrompt = true,
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
-
-<<<<<<< HEAD
-            //Return this to the main prg
-            fdesktop.setImageContainer.ImageSettings = imageSettingsContainer.ImageSettings;
-
-            //SaveImages(imagesList.Images);
-            /*
-            imageSettingsContainer.ImageSettings = new ImageSettings
-            {
-                UseCSVExport = false,
-                SkipSavePrompt = false,
-            };
-            */
-=======
-            fdesktop.imageSettingsContainer = imageSettingsContainer; //Try to push back the content to the desktop class
->>>>>>> 50491094c8dd15bd32cf61a44879111e7dd764c0
 
             Close();
         }

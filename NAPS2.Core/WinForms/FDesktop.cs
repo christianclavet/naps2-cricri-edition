@@ -1115,7 +1115,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SaveImages(images, notify))
             {
-                exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
+                //exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
@@ -2616,23 +2616,9 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            SaveExportImages(this.imageList.Images);
 
-            //this.imageSettingsContainer.ImageSettings = new ImageSettings
-            //{
-            //    UseCSVExport = false,
-            //    SkipSavePrompt = false,
-            //};
-=======
-            SaveExportImages(imageList.Images);
+            //SaveExportImages(imageList.Images);
 
-           /* imageSettingsContainer.ImageSettings = new ImageSettings
-            {
-                UseCSVExport = false,
-                SkipSavePrompt = false,
-            };*/
->>>>>>> 50491094c8dd15bd32cf61a44879111e7dd764c0
         }
 
         //Create a new project.
@@ -2679,35 +2665,8 @@ namespace NAPS2.WinForms
             UserConfigManager.Save();
         }
         // Save images and meta data
-        private async void SaveExportImages(List<ScannedImage> images)
-        {
-<<<<<<< HEAD
-            if (await exportHelper.SaveImages(images, notify))
-            {
 
-                changeTracker.Made();
 
-            }
-        }
-
-        //Define the imageSettingContainer for export.       
-        public ImageSettingsContainer setImageContainer { get; set; }
-=======
-            //exportHelper.ImageSettingsContainer = new ImageSettingsContainer(UserConfigManager);
-            exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
->>>>>>> 50491094c8dd15bd32cf61a44879111e7dd764c0
-
-            if (await exportHelper.SaveImages(images, notify))
-            {
-
-                changeTracker.Made();
-
-            }
-        }
-// To be removed. Now using a structure to store all this.
-        public string CSVExpression { get; set; }
-        public string ExportPath { get; set; }
-        public bool useCSVExport { get; set; }
     }
         #endregion
 }

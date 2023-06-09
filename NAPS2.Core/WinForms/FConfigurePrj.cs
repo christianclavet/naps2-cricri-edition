@@ -54,7 +54,7 @@ namespace NAPS2.WinForms
             //fdesktop.openExportForm();
             var form = FormFactory.Create<FExport>();
             form.projectName = fdesktop.projectName;
-            form.setName(fdesktop.projectName);
+            //form.setName(fdesktop.projectName);
             //form.notify = fdesktop.notify;
             //form.imagesList = imageList;
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
