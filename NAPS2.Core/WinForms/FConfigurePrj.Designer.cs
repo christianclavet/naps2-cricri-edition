@@ -29,49 +29,49 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FConfigurePrj));
-            this.bt_chgProjectName = new System.Windows.Forms.Button();
-            this.bt_OK = new System.Windows.Forms.Button();
-            this.Bt_cancel = new System.Windows.Forms.Button();
-            this.bt_ExportConfig = new System.Windows.Forms.Button();
+            this.BT_chgProjectName = new System.Windows.Forms.Button();
+            this.BT_OK = new System.Windows.Forms.Button();
+            this.BT_cancel = new System.Windows.Forms.Button();
+            this.BT_ExportConfig = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // bt_chgProjectName
+            // BT_chgProjectName
             // 
-            resources.ApplyResources(this.bt_chgProjectName, "bt_chgProjectName");
-            this.bt_chgProjectName.Name = "bt_chgProjectName";
-            this.bt_chgProjectName.UseVisualStyleBackColor = true;
-            this.bt_chgProjectName.Click += new System.EventHandler(this.bt_chgProjectName_Click);
+            resources.ApplyResources(this.BT_chgProjectName, "BT_chgProjectName");
+            this.BT_chgProjectName.Name = "BT_chgProjectName";
+            this.BT_chgProjectName.UseVisualStyleBackColor = true;
+            this.BT_chgProjectName.Click += new System.EventHandler(this.bt_chgProjectName_Click);
             // 
-            // bt_OK
+            // BT_OK
             // 
-            this.bt_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            resources.ApplyResources(this.bt_OK, "bt_OK");
-            this.bt_OK.Name = "bt_OK";
-            this.bt_OK.UseVisualStyleBackColor = true;
+            this.BT_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.BT_OK, "BT_OK");
+            this.BT_OK.Name = "BT_OK";
+            this.BT_OK.UseVisualStyleBackColor = true;
             // 
-            // Bt_cancel
+            // BT_cancel
             // 
-            this.Bt_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.Bt_cancel, "Bt_cancel");
-            this.Bt_cancel.Name = "Bt_cancel";
-            this.Bt_cancel.UseVisualStyleBackColor = true;
+            this.BT_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.BT_cancel, "BT_cancel");
+            this.BT_cancel.Name = "BT_cancel";
+            this.BT_cancel.UseVisualStyleBackColor = true;
             // 
-            // bt_ExportConfig
+            // BT_ExportConfig
             // 
-            resources.ApplyResources(this.bt_ExportConfig, "bt_ExportConfig");
-            this.bt_ExportConfig.Name = "bt_ExportConfig";
-            this.bt_ExportConfig.UseVisualStyleBackColor = true;
-            this.bt_ExportConfig.Click += new System.EventHandler(this.bt_ExportConfig_Click);
+            resources.ApplyResources(this.BT_ExportConfig, "BT_ExportConfig");
+            this.BT_ExportConfig.Name = "BT_ExportConfig";
+            this.BT_ExportConfig.UseVisualStyleBackColor = true;
+            this.BT_ExportConfig.Click += new System.EventHandler(this.bt_ExportConfig_Click);
             // 
             // FConfigurePrj
             // 
-            this.AcceptButton = this.bt_OK;
+            this.AcceptButton = this.BT_OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.bt_ExportConfig);
-            this.Controls.Add(this.Bt_cancel);
-            this.Controls.Add(this.bt_OK);
-            this.Controls.Add(this.bt_chgProjectName);
+            this.Controls.Add(this.BT_ExportConfig);
+            this.Controls.Add(this.BT_cancel);
+            this.Controls.Add(this.BT_OK);
+            this.Controls.Add(this.BT_chgProjectName);
             this.Name = "FConfigurePrj";
             this.ResumeLayout(false);
 
@@ -79,9 +79,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bt_chgProjectName;
-        private System.Windows.Forms.Button bt_OK;
-        private System.Windows.Forms.Button Bt_cancel;
-        private System.Windows.Forms.Button bt_ExportConfig;
+        private System.Windows.Forms.Button BT_chgProjectName;
+        private System.Windows.Forms.Button BT_OK;
+        private System.Windows.Forms.Button BT_cancel;
+        private System.Windows.Forms.Button BT_ExportConfig;
     }
 }

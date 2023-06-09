@@ -119,10 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tb_CSVExpression.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 89</value>
+    <value>13, 58</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tb_CSVExpression.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tb_CSVExpression.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 26</value>
+    <value>387, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tb_CSVExpression.TabIndex" type="System.Int32, mscorlib">
@@ -141,10 +145,13 @@
     <value>5</value>
   </data>
   <data name="btn_Expression.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 129</value>
+    <value>443, 84</value>
+  </data>
+  <data name="btn_Expression.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btn_Expression.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 57</value>
+    <value>75, 37</value>
   </data>
   <data name="btn_Expression.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -164,18 +171,107 @@
   <data name="&gt;&gt;btn_Expression.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="&gt;&gt;lbl_meta.Name" xml:space="preserve">
+    <value>lbl_meta</value>
+  </data>
+  <data name="&gt;&gt;lbl_meta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_meta.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lbl_meta.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lbl_FilenameCSV.Name" xml:space="preserve">
+    <value>lbl_FilenameCSV</value>
+  </data>
+  <data name="&gt;&gt;lbl_FilenameCSV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_FilenameCSV.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lbl_FilenameCSV.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tb_exportFilename.Name" xml:space="preserve">
+    <value>tb_exportFilename</value>
+  </data>
+  <data name="&gt;&gt;tb_exportFilename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tb_exportFilename.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tb_exportFilename.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 160</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>478, 193</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Metadata saving (CSV file)</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="lbl_meta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lbl_meta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 146</value>
-  </data>
-  <data name="lbl_meta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>10, 95</value>
   </data>
   <data name="lbl_meta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 59</value>
+    <value>439, 38</value>
   </data>
   <data name="lbl_meta.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -199,13 +295,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 123</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>10, 80</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>585, 35</value>
+    <value>390, 23</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -226,10 +319,13 @@
     <value>1</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 60</value>
+    <value>19, 39</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>506, 26</value>
+    <value>337, 17</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -250,13 +346,10 @@
     <value>2</value>
   </data>
   <data name="lbl_FilenameCSV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 205</value>
-  </data>
-  <data name="lbl_FilenameCSV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>10, 133</value>
   </data>
   <data name="lbl_FilenameCSV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 35</value>
+    <value>145, 23</value>
   </data>
   <data name="lbl_FilenameCSV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -277,10 +370,13 @@
     <value>3</value>
   </data>
   <data name="tb_exportFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 243</value>
+    <value>11, 158</value>
+  </data>
+  <data name="tb_exportFilename.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tb_exportFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 26</value>
+    <value>387, 20</value>
   </data>
   <data name="tb_exportFilename.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -297,41 +393,17 @@
   <data name="&gt;&gt;tb_exportFilename.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 246</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>717, 297</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Metadata saving (CSV file)</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="cb_CSVEnabler.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="cb_CSVEnabler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 214</value>
+    <value>40, 139</value>
+  </data>
+  <data name="cb_CSVEnabler.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cb_CSVEnabler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 24</value>
+    <value>140, 17</value>
   </data>
   <data name="cb_CSVEnabler.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -352,10 +424,13 @@
     <value>6</value>
   </data>
   <data name="tb_ExportPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 62</value>
+    <value>40, 40</value>
+  </data>
+  <data name="tb_ExportPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tb_ExportPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 26</value>
+    <value>387, 20</value>
   </data>
   <data name="tb_ExportPath.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -379,10 +454,13 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 38</value>
+    <value>37, 25</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 20</value>
+    <value>29, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -402,41 +480,47 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="BTN_Export.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="BTN_OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="BTN_Export.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 586</value>
+  <data name="BTN_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>443, 381</value>
   </data>
-  <data name="BTN_Export.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 57</value>
+  <data name="BTN_OK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="BTN_Export.TabIndex" type="System.Int32, mscorlib">
+  <data name="BTN_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 37</value>
+  </data>
+  <data name="BTN_OK.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="BTN_Export.Text" xml:space="preserve">
-    <value>Export</value>
+  <data name="BTN_OK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="&gt;&gt;BTN_Export.Name" xml:space="preserve">
-    <value>BTN_Export</value>
+  <data name="&gt;&gt;BTN_OK.Name" xml:space="preserve">
+    <value>BTN_OK</value>
   </data>
-  <data name="&gt;&gt;BTN_Export.Type" xml:space="preserve">
+  <data name="&gt;&gt;BTN_OK.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BTN_Export.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BTN_OK.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;BTN_Export.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BTN_OK.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="BTN_Cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="BTN_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>544, 586</value>
+    <value>363, 381</value>
+  </data>
+  <data name="BTN_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="BTN_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 57</value>
+    <value>75, 37</value>
   </data>
   <data name="BTN_Cancel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -460,10 +544,13 @@
     <value>Flat</value>
   </data>
   <data name="BTN_File.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 38</value>
+    <value>443, 25</value>
+  </data>
+  <data name="BTN_File.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="BTN_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 80</value>
+    <value>75, 52</value>
   </data>
   <data name="BTN_File.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -493,13 +580,10 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 112</value>
-  </data>
-  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>41, 73</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+    <value>48, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -520,13 +604,10 @@
     <value>1</value>
   </data>
   <data name="LBL_Exemple.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 132</value>
-  </data>
-  <data name="LBL_Exemple.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>37, 86</value>
   </data>
   <data name="LBL_Exemple.Size" type="System.Drawing.Size, System.Drawing">
-    <value>582, 79</value>
+    <value>388, 51</value>
   </data>
   <data name="LBL_Exemple.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -546,28 +627,25 @@
   <data name="&gt;&gt;LBL_Exemple.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>838, 658</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>559, 428</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Export panel</value>
+    <value>Export configuration panel</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FExport</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.31130, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.19506, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -355,7 +355,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.1.23526, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.1.24695, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -397,7 +397,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.1.23526, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.1.24695, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -522,10 +522,10 @@
   <data name="loadProjectTool_TSMI.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageAboveText</value>
   </data>
-  <data name="tsPrjConfig.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TS_PrjConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 38</value>
   </data>
-  <data name="tsPrjConfig.Text" xml:space="preserve">
+  <data name="TS_PrjConfig.Text" xml:space="preserve">
     <value>Project configuration</value>
   </data>
   <data name="closeCurrentProject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -1363,10 +1363,10 @@
   <data name="&gt;&gt;loadProjectTool_TSMI.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsPrjConfig.Name" xml:space="preserve">
-    <value>tsPrjConfig</value>
+  <data name="&gt;&gt;TS_PrjConfig.Name" xml:space="preserve">
+    <value>TS_PrjConfig</value>
   </data>
-  <data name="&gt;&gt;tsPrjConfig.Type" xml:space="preserve">
+  <data name="&gt;&gt;TS_PrjConfig.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;closeCurrentProject.Name" xml:space="preserve">
@@ -1811,6 +1811,6 @@
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.23526, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.24695, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

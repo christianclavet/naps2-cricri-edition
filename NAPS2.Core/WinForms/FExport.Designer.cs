@@ -40,7 +40,7 @@
             this.cb_CSVEnabler = new System.Windows.Forms.CheckBox();
             this.tb_ExportPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.BTN_Export = new System.Windows.Forms.Button();
+            this.BTN_OK = new System.Windows.Forms.Button();
             this.BTN_Cancel = new System.Windows.Forms.Button();
             this.BTN_File = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -117,12 +117,12 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // BTN_Export
+            // BTN_OK
             // 
-            resources.ApplyResources(this.BTN_Export, "BTN_Export");
-            this.BTN_Export.Name = "BTN_Export";
-            this.BTN_Export.UseVisualStyleBackColor = true;
-            this.BTN_Export.Click += new System.EventHandler(this.BTN_Export_Click);
+            resources.ApplyResources(this.BTN_OK, "BTN_OK");
+            this.BTN_OK.Name = "BTN_OK";
+            this.BTN_OK.UseVisualStyleBackColor = true;
+            this.BTN_OK.Click += new System.EventHandler(this.BTN_Export_Click);
             // 
             // BTN_Cancel
             // 
@@ -153,7 +153,7 @@
             // 
             // FExport
             // 
-            this.AcceptButton = this.BTN_Export;
+            this.AcceptButton = this.BTN_OK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BTN_Cancel;
@@ -161,7 +161,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_File);
             this.Controls.Add(this.BTN_Cancel);
-            this.Controls.Add(this.BTN_Export);
+            this.Controls.Add(this.BTN_OK);
             this.Controls.Add(this.btn_Expression);
             this.Controls.Add(this.cb_CSVEnabler);
             this.Controls.Add(this.label2);
@@ -186,7 +186,7 @@
         private System.Windows.Forms.TextBox tb_ExportPath;
         private System.Windows.Forms.TextBox tb_exportFilename;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BTN_Export;
+        private System.Windows.Forms.Button BTN_OK;
         private System.Windows.Forms.Button BTN_Cancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BTN_File;

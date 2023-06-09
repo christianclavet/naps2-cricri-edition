@@ -55,7 +55,7 @@ namespace NAPS2.WinForms
             this.FileDm = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsPrjNew = new System.Windows.Forms.ToolStripMenuItem();
             this.loadProjectTool_TSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsPrjConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_PrjConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCurrentProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdSavePDF = new System.Windows.Forms.ToolStripMenuItem();
@@ -343,7 +343,7 @@ namespace NAPS2.WinForms
             this.FileDm.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsPrjNew,
             this.loadProjectTool_TSMI,
-            this.tsPrjConfig,
+            this.TS_PrjConfig,
             this.closeCurrentProject,
             this.toolStripSeparator15,
             this.tsdSavePDF,
@@ -374,12 +374,12 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.loadProjectTool_TSMI, "loadProjectTool_TSMI");
             this.loadProjectTool_TSMI.Click += new System.EventHandler(this.loadProjectTool_TSMI_Click_1);
             // 
-            // tsPrjConfig
+            // TS_PrjConfig
             // 
-            this.tsPrjConfig.Image = global::NAPS2.Icons.toolbox;
-            this.tsPrjConfig.Name = "tsPrjConfig";
-            resources.ApplyResources(this.tsPrjConfig, "tsPrjConfig");
-            this.tsPrjConfig.Click += new System.EventHandler(this.tsPrjConfig_Click);
+            this.TS_PrjConfig.Image = global::NAPS2.Icons.toolbox;
+            this.TS_PrjConfig.Name = "TS_PrjConfig";
+            resources.ApplyResources(this.TS_PrjConfig, "TS_PrjConfig");
+            this.TS_PrjConfig.Click += new System.EventHandler(this.tsPrjConfig_Click);
             // 
             // closeCurrentProject
             // 
@@ -1048,7 +1048,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem TSI_ToggleDarkMode;
         private System.Windows.Forms.ToolStripMenuItem tsExport;
         private System.Windows.Forms.ToolStripMenuItem tsPrjNew;
-        private System.Windows.Forms.ToolStripMenuItem tsPrjConfig;
+        private System.Windows.Forms.ToolStripMenuItem TS_PrjConfig;
     }
 }
 

@@ -20,17 +20,21 @@ using NAPS2.ImportExport.Images;
 using NTwain.Data;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Diagnostics.PerformanceData;
 
 namespace NAPS2.WinForms
 {
     public partial class FConfigurePrj : FormBase
     {
+        
         private readonly FDesktop fdesktop;
-        private string projectName;
+        private readonly ImageSettingsContainer imageSettingsContainer;
 
-        public FConfigurePrj(FDesktop fdesktop)
+        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer)
         {
             this.fdesktop = fdesktop;
+            this.imageSettingsContainer = imageSettingsContainer;
+            
             InitializeComponent();
         }
 
@@ -44,6 +48,10 @@ namespace NAPS2.WinForms
             if (form.DialogResult == DialogResult.OK)
             {
                 fdesktop.projectName = form.getFileName();
+                imageSettingsContainer.ImageSettings = new ImageSettings()
+                {
+                    ProjectName = form.getFileName(),
+                };
                 //fdesktop.UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }
 
@@ -51,17 +59,21 @@ namespace NAPS2.WinForms
 
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
-            //fdesktop.openExportForm();
             var form = FormFactory.Create<FExport>();
-            form.projectName = fdesktop.projectName;
+            form.SetData();
+
             //form.setName(fdesktop.projectName);
             //form.notify = fdesktop.notify;
             //form.imagesList = imageList;
+            
+                
+               
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                fdesktop.projectName = form.projectName;
+  
+                
             }
         }
     }

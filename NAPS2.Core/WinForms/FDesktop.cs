@@ -68,6 +68,7 @@ namespace NAPS2.WinForms
         private readonly IWorkerServiceFactory workerServiceFactory;
         private readonly IOperationProgress operationProgress;
         private readonly UpdateChecker updateChecker;
+        private readonly ImageSettingsContainer imageSettingsContainer;
 
         #endregion
 
@@ -88,13 +89,12 @@ namespace NAPS2.WinForms
         public string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
-        public ImageSettingsContainer imageSettingsContainer;
 
         #endregion
 
         #region Initialization and Culture
 
-        public FDesktop(StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
+        public FDesktop(ImageSettingsContainer imageSettingsContainer, StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
         {
             this.stringWrapper = stringWrapper;
             this.appConfigManager = appConfigManager;
@@ -116,7 +116,8 @@ namespace NAPS2.WinForms
             this.workerServiceFactory = workerServiceFactory;
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
-            
+            this.imageSettingsContainer = imageSettingsContainer;
+
             InitializeComponent();
 
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
@@ -2633,10 +2634,15 @@ namespace NAPS2.WinForms
 
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
+            //projectInfo.ProjectName = projectName;
             var form = FormFactory.Create<FConfigurePrj>();
+
+            imageSettingsContainer.ImageSettings = new ImageSettings()
+            {
+                ProjectName = this.projectName,
+            };
             
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
-
             if (form.ShowDialog() == DialogResult.OK)
             {
                 
@@ -2648,6 +2654,8 @@ namespace NAPS2.WinForms
             }
 
         }
+
+         
 
         public void changeProjectName()
         {

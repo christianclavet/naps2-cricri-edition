@@ -118,108 +118,108 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bt_chgProjectName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BT_chgProjectName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 415</value>
   </data>
-  <data name="bt_chgProjectName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BT_chgProjectName.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bt_chgProjectName.TabIndex" type="System.Int32, mscorlib">
+  <data name="BT_chgProjectName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="bt_chgProjectName.Text" xml:space="preserve">
+  <data name="BT_chgProjectName.Text" xml:space="preserve">
     <value>Change project name</value>
   </data>
-  <data name="&gt;&gt;bt_chgProjectName.Name" xml:space="preserve">
-    <value>bt_chgProjectName</value>
+  <data name="&gt;&gt;BT_chgProjectName.Name" xml:space="preserve">
+    <value>BT_chgProjectName</value>
   </data>
-  <data name="&gt;&gt;bt_chgProjectName.Type" xml:space="preserve">
+  <data name="&gt;&gt;BT_chgProjectName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bt_chgProjectName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BT_chgProjectName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bt_chgProjectName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BT_chgProjectName.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="bt_OK.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BT_OK.Location" type="System.Drawing.Point, System.Drawing">
     <value>701, 415</value>
   </data>
-  <data name="bt_OK.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BT_OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="bt_OK.TabIndex" type="System.Int32, mscorlib">
+  <data name="BT_OK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="bt_OK.Text" xml:space="preserve">
+  <data name="BT_OK.Text" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="&gt;&gt;bt_OK.Name" xml:space="preserve">
-    <value>bt_OK</value>
+  <data name="&gt;&gt;BT_OK.Name" xml:space="preserve">
+    <value>BT_OK</value>
   </data>
-  <data name="&gt;&gt;bt_OK.Type" xml:space="preserve">
+  <data name="&gt;&gt;BT_OK.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bt_OK.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BT_OK.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bt_OK.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BT_OK.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Bt_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="BT_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Bt_cancel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BT_cancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>620, 415</value>
   </data>
-  <data name="Bt_cancel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BT_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="Bt_cancel.TabIndex" type="System.Int32, mscorlib">
+  <data name="BT_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="Bt_cancel.Text" xml:space="preserve">
+  <data name="BT_cancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="&gt;&gt;Bt_cancel.Name" xml:space="preserve">
-    <value>Bt_cancel</value>
+  <data name="&gt;&gt;BT_cancel.Name" xml:space="preserve">
+    <value>BT_cancel</value>
   </data>
-  <data name="&gt;&gt;Bt_cancel.Type" xml:space="preserve">
+  <data name="&gt;&gt;BT_cancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Bt_cancel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BT_cancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Bt_cancel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BT_cancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bt_ExportConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="BT_ExportConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="bt_ExportConfig.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BT_ExportConfig.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 377</value>
   </data>
-  <data name="bt_ExportConfig.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BT_ExportConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
   </data>
-  <data name="bt_ExportConfig.TabIndex" type="System.Int32, mscorlib">
+  <data name="BT_ExportConfig.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="bt_ExportConfig.Text" xml:space="preserve">
+  <data name="BT_ExportConfig.Text" xml:space="preserve">
     <value>Export configuration</value>
   </data>
-  <data name="&gt;&gt;bt_ExportConfig.Name" xml:space="preserve">
-    <value>bt_ExportConfig</value>
+  <data name="&gt;&gt;BT_ExportConfig.Name" xml:space="preserve">
+    <value>BT_ExportConfig</value>
   </data>
-  <data name="&gt;&gt;bt_ExportConfig.Type" xml:space="preserve">
+  <data name="&gt;&gt;BT_ExportConfig.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bt_ExportConfig.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BT_ExportConfig.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bt_ExportConfig.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BT_ExportConfig.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -491,6 +491,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.24718, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.24695, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

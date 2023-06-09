@@ -25,54 +25,50 @@ namespace NAPS2.WinForms
     {
         private readonly FileNamePlaceholders fileNamePlaceholders;
         private readonly WinFormsExportHelper exportHelper;
-        private readonly FDesktop fdesktop;
         private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
-        private string filename;
-        private readonly RecoveryIndex recoveryIndex;
+        private readonly FDesktop fdesktop;
 
+        private string filename;
+        private string projectName;
+      
+        private readonly RecoveryIndex recoveryIndex;
         public ImageSettingsContainer imageSettingsContainer;
-        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, RecoveryIndex recoveryIndex)
+        
+       
+        public FExport(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, RecoveryIndex recoveryIndex)
         {
+            this.fdesktop = fdesktop;
             this.fileNamePlaceholders = fileNamePlaceholders;
             this.exportHelper = exportHelper;
-            this.fdesktop = fdesktop;
             this.changeTracker = changeTracker;
             this.dialogHelper = dialogHelper;
             this.recoveryIndex = recoveryIndex;
+            this.imageSettingsContainer = imageSettingsContainer;
+          
             InitializeComponent();
-            
-        }
 
-        public string projectName { get; set; }
+            filename = imageSettingsContainer.ImageSettings.DefaultFileName;
+            projectName = imageSettingsContainer.ImageSettings.ProjectName;
+            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
+            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
+            tb_ExportPath.Text = imageSettingsContainer.ImageSettings.DefaultFileName;
+        }
 
         public NotificationManager notify { get; set; }
 
-        public void SetData(ImageSettings imageSettings)
+        public void SetData()
         {
-            imageSettingsContainer.ImageSettings = imageSettings;
-        }
-
-        public void SetName(string name) 
-        {
-            projectName = UserConfigManager.Config.project;
-            tb_ExportPath.Text = "$(nnnnnnnn).jpg";
-            //filename = fdesktop.imageSettings.DefaultFileName+tb_ExportPath.Text;
-           /* if (name == null) 
+            filename = imageSettingsContainer.ImageSettings.DefaultFileName;
+            tb_ExportPath.Text = imageSettingsContainer.ImageSettings.DefaultFileName;
+            projectName = imageSettingsContainer.ImageSettings.ProjectName;
+            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
+            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
+            
+            if (tb_exportFilename.Text == "")
             {
-                name = fdesktop.imageSettings.CSVFileName;
+                tb_exportFilename.Text = imageSettingsContainer.ImageSettings.ProjectName+".csv";
             }
-
-            tb_exportFilename.Text = name + ".csv";
-            cb_CSVEnabler.Checked = fdesktop.imageSettings.UseCSVExport;
-            if (fdesktop.CSVExpression == null) 
-            {
-                tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)"; 
-            } else 
-            { 
-                tb_CSVExpression.Text = fdesktop.imageSettings.CSVExpression;
-            }
-            */
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -97,6 +93,9 @@ namespace NAPS2.WinForms
 
         private void tb_ExportPath_TextChanged(object sender, EventArgs e)
         {
+            if (projectName == null) 
+                return;
+            
             filename = tb_ExportPath.Text;
             var fileExample = fileNamePlaceholders.SubstitutePlaceholders(tb_ExportPath.Text, DateTime.Now, true);
             var file = Path.GetFileName(fileExample);
@@ -112,6 +111,9 @@ namespace NAPS2.WinForms
 
         private void tb_CSVExpression_TextChanged(object sender, EventArgs e)
         {
+            if (filename == null)
+                return;
+
             string text = tb_CSVExpression.Text.Replace("$(filename)", fileNamePlaceholders.SubstitutePlaceholders(filename, DateTime.Now, true));
             text = text.Replace("$(barcode)", "1234-5678");
             text = text.Replace("$(sheetside)", "1=front-2=back");
@@ -135,19 +137,17 @@ namespace NAPS2.WinForms
 
         private void BTN_Export_Click(object sender, EventArgs e)
         {
-            imageSettingsContainer.ImageSettings = new ImageSettings
+            imageSettingsContainer.ImageSettings = new ImageSettings()
             {
-                ProjectName = this.projectName,
                 DefaultFileName = tb_ExportPath.Text,
                 CSVExpression = tb_CSVExpression.Text,
                 CSVFileName = tb_exportFilename.Text,
-                SkipSavePrompt = true,
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
-
+           
             Close();
+           
         }
-
         private async void SaveImages(List<ScannedImage> images)
         {            
             if (await exportHelper.SaveImages(images, notify))
