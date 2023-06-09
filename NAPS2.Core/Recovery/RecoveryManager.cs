@@ -177,7 +177,6 @@ namespace NAPS2.Recovery
                     }
                     else
                     {
-                        //Retrieve the information to store inside the image data of Naps.
                         using (var bitmap = new Bitmap(imagePath))
                         {
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);

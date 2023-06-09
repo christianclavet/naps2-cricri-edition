@@ -61,7 +61,6 @@ namespace NAPS2.Scan.Images
             recoveryImage.Save();
         }
 
-        //Store the informations inside the image to save to the recovery
         public ScannedImage(RecoveryIndexImage recoveryIndexImage)
         {
             recoveryImage = RecoveryImage.LoadExisting(recoveryIndexImage);
