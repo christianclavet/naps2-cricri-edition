@@ -2466,6 +2466,7 @@ namespace NAPS2.WinForms
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
+
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
                     UpdateToolbar();
                 }
