@@ -138,7 +138,7 @@ namespace NAPS2.WinForms
 
         private void BTN_Export_Click(object sender, EventArgs e)
         {
-            fdesktop.imageSettings = new ImageSettings
+            imageSettingsContainer.ImageSettings = new ImageSettings
             {
                 ProjectName = this.projectName,
                 DefaultFileName = tb_ExportPath.Text,
@@ -147,6 +147,8 @@ namespace NAPS2.WinForms
                 SkipSavePrompt = true,
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
+
+            fdesktop.imageSettingsContainer = imageSettingsContainer; //Try to push back the content to the desktop class
 
             Close();
         }

@@ -88,13 +88,13 @@ namespace NAPS2.WinForms
         public string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
-        public ImageSettings imageSettings;
+        public ImageSettingsContainer imageSettingsContainer;
 
         #endregion
 
         #region Initialization and Culture
 
-        public FDesktop(ImageSettings imageSettings, StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
+        public FDesktop(StringWrapper stringWrapper, AppConfigManager appConfigManager, RecoveryManager recoveryManager, OcrManager ocrManager, IProfileManager profileManager, IScanPerformer scanPerformer, IScannedImagePrinter scannedImagePrinter, ChangeTracker changeTracker, StillImage stillImage, IOperationFactory operationFactory, IUserConfigManager userConfigManager, KeyboardShortcutManager ksm, ThumbnailRenderer thumbnailRenderer, WinFormsExportHelper exportHelper, ScannedImageRenderer scannedImageRenderer, NotificationManager notify, CultureInitializer cultureInitializer, IWorkerServiceFactory workerServiceFactory, IOperationProgress operationProgress, UpdateChecker updateChecker)
         {
             this.stringWrapper = stringWrapper;
             this.appConfigManager = appConfigManager;
@@ -116,7 +116,6 @@ namespace NAPS2.WinForms
             this.workerServiceFactory = workerServiceFactory;
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
-            this.imageSettings = imageSettings;
             
             InitializeComponent();
 
@@ -201,8 +200,6 @@ namespace NAPS2.WinForms
            
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
-
-            imageSettings = new ImageSettings();
 
         }
 
@@ -1118,7 +1115,7 @@ namespace NAPS2.WinForms
         {
             if (await exportHelper.SaveImages(images, notify))
             {
-                exportHelper.ImageSettingsContainer.ImageSettings = imageSettings;
+                exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)
                 {
@@ -2474,7 +2471,7 @@ namespace NAPS2.WinForms
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
-                    imageSettings = recoveryManager.ReturnData(); // get back the project metadata
+                    //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     UpdateToolbar();
                 }
             }         
@@ -2640,13 +2637,14 @@ namespace NAPS2.WinForms
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FConfigurePrj>();
+            
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
                 
-                recoveryManager.recoveryIndexManager.Index.imageSettings = imageSettings;
-                recoveryManager.recoveryIndexManager.Save();
+               // recoveryManager.recoveryIndexManager.Index.imageSettings = imageSettings;
+               // recoveryManager.recoveryIndexManager.Save();
                  //imageSettingsContainer.ImageSettings = imageSettings;
                 //recoveryManager.recoveryIndexManager.Save();
                 
@@ -2672,8 +2670,8 @@ namespace NAPS2.WinForms
         // Save images and meta data
         private async void SaveExportImages(List<ScannedImage> images)
         {
-            exportHelper.ImageSettingsContainer = new ImageSettingsContainer(UserConfigManager);
-            exportHelper.ImageSettingsContainer.ImageSettings = imageSettings;
+            //exportHelper.ImageSettingsContainer = new ImageSettingsContainer(UserConfigManager);
+            exportHelper.ImageSettingsContainer.ImageSettings = imageSettingsContainer.ImageSettings;
 
             if (await exportHelper.SaveImages(images, notify))
             {
