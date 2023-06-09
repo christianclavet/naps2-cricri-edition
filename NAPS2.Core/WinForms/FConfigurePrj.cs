@@ -40,7 +40,6 @@ namespace NAPS2.WinForms
 
         private void bt_chgProjectName_Click(object sender, EventArgs e)
         {
-            //fdesktop.changeProjectName();
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             form.setFileName(fdesktop.projectName); // The "old" filename will be set
@@ -51,6 +50,10 @@ namespace NAPS2.WinForms
                 imageSettingsContainer.ImageSettings = new ImageSettings()
                 {
                     ProjectName = form.getFileName(),
+                    CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
+                    CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
+                    DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
+                    UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
                 };
                 //fdesktop.UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
             }

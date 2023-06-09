@@ -2640,6 +2640,10 @@ namespace NAPS2.WinForms
             imageSettingsContainer.ImageSettings = new ImageSettings()
             {
                 ProjectName = this.projectName,
+                CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
+                CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
+                UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
+                DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
             };
             
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);

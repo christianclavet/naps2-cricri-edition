@@ -143,6 +143,7 @@ namespace NAPS2.WinForms
                 CSVExpression = tb_CSVExpression.Text,
                 CSVFileName = tb_exportFilename.Text,
                 UseCSVExport = cb_CSVEnabler.Checked,
+                ProjectName = this.projectName,
             };
            
             Close();
