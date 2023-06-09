@@ -121,7 +121,7 @@
     <value>Annuler</value>
   </data>
   <data name="BTN_Export.Text" xml:space="preserve">
-    <value>Exporter</value>
+    <value>OK</value>
   </data>
   <data name="btn_Expression.Text" xml:space="preserve">
     <value>Assistant chemin</value>

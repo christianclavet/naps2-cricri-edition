@@ -17,7 +17,6 @@ using NAPS2;
 using CsvHelper;
 using NAPS2.Util;
 using NAPS2.ImportExport.Images;
-using NTwain.Data;
 using System.IO;
 
 namespace NAPS2.WinForms
@@ -29,12 +28,13 @@ namespace NAPS2.WinForms
         private readonly FDesktop fdesktop;
         private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
-        private readonly ImageSettingsContainer imageSettingsContainer;
         private string filename;
+        private readonly RecoveryIndex recoveryIndex;
+
+        public ImageSettingsContainer imageSettingsContainer;
 
 
-
-        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer)
+        public FExport(FDesktop fdesktop, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, ImageSettingsContainer imageSettingsContainer, RecoveryIndex recoveryIndex)
         {
             this.fileNamePlaceholders = fileNamePlaceholders;
             this.exportHelper = exportHelper;
@@ -42,6 +42,7 @@ namespace NAPS2.WinForms
             this.changeTracker = changeTracker;
             this.dialogHelper = dialogHelper;
             this.imageSettingsContainer = imageSettingsContainer;
+            this.recoveryIndex = recoveryIndex;
             InitializeComponent();
             
         }
@@ -50,16 +51,31 @@ namespace NAPS2.WinForms
 
         public NotificationManager notify { get; set; }
 
-        public ScannedImageList imagesList { get; set; }
-
-
-        public void setName(string name) 
+        public void SetData(ImageSettings imageSettings)
         {
-            projectName = name;
+            imageSettingsContainer.ImageSettings = imageSettings;
+        }
+
+        public void SetName(string name) 
+        {
+            projectName = UserConfigManager.Config.project;
             tb_ExportPath.Text = "$(nnnnnnnn).jpg";
-            filename = tb_ExportPath.Text;
+            //filename = fdesktop.imageSettings.DefaultFileName+tb_ExportPath.Text;
+           /* if (name == null) 
+            {
+                name = fdesktop.imageSettings.CSVFileName;
+            }
+
             tb_exportFilename.Text = name + ".csv";
-            tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)";
+            cb_CSVEnabler.Checked = fdesktop.imageSettings.UseCSVExport;
+            if (fdesktop.CSVExpression == null) 
+            {
+                tb_CSVExpression.Text = "TEST,$(barcode),$(sheetside),$(filename)"; 
+            } else 
+            { 
+                tb_CSVExpression.Text = fdesktop.imageSettings.CSVExpression;
+            }
+            */
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -68,11 +84,6 @@ namespace NAPS2.WinForms
             {
                 tb_ExportPath.Text = newPath;
                 filename = newPath;
-                imageSettingsContainer.ImageSettings = new ImageSettings
-                {
-                    DefaultFileName = newPath,
-                    SkipSavePrompt = true,                               
-                };
             }
 
         }
@@ -83,13 +94,7 @@ namespace NAPS2.WinForms
             form.FileName = tb_ExportPath.Text;
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tb_ExportPath.Text = form.FileName; //fileNamePlaceholders.SubstitutePlaceholders(form.FileName,DateTime.Now,true);
-                imageSettingsContainer.ImageSettings = new ImageSettings
-                {
-                    DefaultFileName = form.FileName,
-                    SkipSavePrompt = true,
-
-                };
+                tb_ExportPath.Text = form.FileName;
             }
         }
 
@@ -143,13 +148,7 @@ namespace NAPS2.WinForms
                 UseCSVExport = cb_CSVEnabler.Checked,
             };
 
-            SaveImages(imagesList.Images);
-
-            imageSettingsContainer.ImageSettings = new ImageSettings
-            {
-                UseCSVExport = false,
-                SkipSavePrompt = false,
-            };
+            fdesktop.imageSettingsContainer = imageSettingsContainer; //Try to push back the content to the desktop class
 
             Close();
         }

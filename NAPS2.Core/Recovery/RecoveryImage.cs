@@ -23,7 +23,7 @@ namespace NAPS2.Recovery
         public static DirectoryInfo _recoveryFolder;
         public static FileInfo _recoveryLockFile;
         public static FileStream _recoveryLock;
-        private static RecoveryIndexManager _recoveryIndexManager;
+        public static RecoveryIndexManager _recoveryIndexManager;
 
         private static int _recoveryFileNumber = 1;
         private static readonly object RecoveryFileNumberLock = new object();

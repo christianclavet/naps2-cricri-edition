@@ -11,6 +11,7 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
 using NAPS2.WinForms;
+using NAPS2.ImportExport.Images;
 
 namespace NAPS2.Recovery
 {
@@ -20,6 +21,9 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
+        private static ImageSettings imageSettings;
+
+
        
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
         {
@@ -27,10 +31,18 @@ namespace NAPS2.Recovery
             this.formFactory = formFactory;
             this.thumbnailRenderer = thumbnailRenderer;
             this.operationProgress = operationProgress;
+            this.recoveryIndexManager = null;
+           
         }
         public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
+            recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
+        }
+
+        public ImageSettings ReturnData()
+        {
+            return imageSettings;
         }
 
         public void RecoverScannedImages(Action<ScannedImage> imageCallback)
@@ -38,13 +50,16 @@ namespace NAPS2.Recovery
 
             var op = new RecoveryOperation(formFactory, thumbnailRenderer);
             op.setFolder(folderToRecoverFrom);
+            op.recoveryIndexManager = recoveryIndexManager;
 
             if (op.Start(imageCallback))
             {
                 operationProgress.ShowProgress(op);
                                   
             }
+            imageSettings = op.ReturnData(); // get back the informations about the project.
         }
+        public RecoveryIndexManager recoveryIndexManager { get; set; }
 
         public class RecoveryOperation : OperationBase
         {
@@ -53,14 +68,16 @@ namespace NAPS2.Recovery
 
             private FileStream lockFile;
             public static DirectoryInfo folderToRecoverFrom;
-            private RecoveryIndexManager recoveryIndexManager;
+            public RecoveryIndexManager recoveryIndexManager;
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
+            private ImageSettings imageSettings;
 
             public void setFolder(DirectoryInfo info)
             { 
                 folderToRecoverFrom = info;
+        
             }
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
@@ -74,6 +91,7 @@ namespace NAPS2.Recovery
                 AllowBackground = false;
                 cleanup = false;
                 folderToRecoverFrom = null;
+                imageSettings = new ImageSettings();
             }
 
             public bool Start(Action<ScannedImage> imageCallback)
@@ -91,7 +109,7 @@ namespace NAPS2.Recovery
                         folderToRecoverFrom = FindAndLockFolderToRecoverFrom();
                         cleanup = true;
                     }
-                    recoveryIndexManager = new RecoveryIndexManager(folderToRecoverFrom);
+
                     imageCount = recoveryIndexManager.Index.Images.Count;
                     scannedDateTime = folderToRecoverFrom.LastWriteTime;
                     if (cleanup)
@@ -141,6 +159,9 @@ namespace NAPS2.Recovery
                 Status.MaxProgress = recoveryIndexManager.Index.Images.Count;
                 InvokeStatusChanged();
 
+                //Need this to get the parameter
+                imageSettings = recoveryIndexManager.Index.imageSettings;
+
                 foreach (RecoveryIndexImage indexImage in recoveryIndexManager.Index.Images)
                 {
                     if (CancelToken.IsCancellationRequested)
@@ -156,7 +177,6 @@ namespace NAPS2.Recovery
                     }
                     else
                     {
-                        //Retrieve the information to store inside the image data of Naps.
                         using (var bitmap = new Bitmap(imagePath))
                         {
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
@@ -176,6 +196,11 @@ namespace NAPS2.Recovery
                     InvokeStatusChanged();
                 }
                 return true;
+            }
+
+            public ImageSettings ReturnData()
+            {
+                return imageSettings;
             }
 
             public void DeleteFolder()

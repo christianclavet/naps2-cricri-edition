@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NAPS2.ImportExport.Images;
 
 namespace NAPS2.Recovery
 {
@@ -10,8 +11,11 @@ namespace NAPS2.Recovery
 
         public RecoveryIndex()
         {
+            imageSettings = new ImageSettings();
             Images = new List<RecoveryIndexImage>();
         }
+
+        public ImageSettings imageSettings { get; set; }
 
         public int Version { get; set; }
 
