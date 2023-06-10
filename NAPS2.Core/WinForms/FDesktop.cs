@@ -86,7 +86,7 @@ namespace NAPS2.WinForms
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
         private string title = Application.ProductName.ToString()+" "+Application.ProductVersion.ToString();
-        public string projectName = string.Format(MiscResources.ProjectName);
+        public static string projectName = string.Format(MiscResources.ProjectName);
         private Size Oldsize = Size.Empty;
         public bool darkMode = false;
 
@@ -122,13 +122,12 @@ namespace NAPS2.WinForms
 
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text != null)
-                this.Text = title + " | Current project name: " + projectName;
+                this.Text = title + " | "+ MiscResources.ProjectNameTitle + projectName;
 
             notify.ParentForm = this;
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
-
         }
 
         protected override void OnLoad(object sender, EventArgs eventArgs)
@@ -2477,13 +2476,13 @@ namespace NAPS2.WinForms
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
                     }
-                    projectName = di.Name;
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
 
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
                     //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
+                    projectName = di.Name;
                     UpdateToolbar();
                 }
             }         
@@ -2648,7 +2647,7 @@ namespace NAPS2.WinForms
                 //Nothing is defined, use default values
                 imageSettingsContainer.ImageSettings = new ImageSettings()
                 {
-                    ProjectName = this.projectName,
+                    ProjectName = FDesktop.projectName,
                     CSVFileName = projectName+".csv",
                     CSVExpression = "Project, $(sheetside), $(barcode), $(filename)",
                     UseCSVExport = true,
@@ -2661,22 +2660,18 @@ namespace NAPS2.WinForms
                 // There are some values, update only the project name
                 imageSettingsContainer.ImageSettings = new ImageSettings()
                 {
-                    ProjectName = this.projectName,
+                    ProjectName = FDesktop.projectName,
                     CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
                     CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
                     UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
                     DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
                 };
+                
             }
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                
-               // recoveryManager.recoveryIndexManager.Index.imageSettings = imageSettings;
-               // recoveryManager.recoveryIndexManager.Save();
-                 //imageSettingsContainer.ImageSettings = imageSettings;
-                //recoveryManager.recoveryIndexManager.Save();
-                
+                recoveryManager.Save();
             }
 
         }
@@ -2698,7 +2693,13 @@ namespace NAPS2.WinForms
             UserConfigManager.Config.project = projectName;
             UserConfigManager.Save();
         }
-        // Save images and meta data
+
+        private void TS_SavePrj_Click(object sender, EventArgs e)
+        {// Save images and meta data
+            recoveryManager.Save();
+            changeTracker.Saved(changeTracker.State);
+        }
+        
 
 
     }

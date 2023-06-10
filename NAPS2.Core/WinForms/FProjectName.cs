@@ -15,11 +15,6 @@ namespace NAPS2.WinForms
             CancelButton = btnCancel;
         }
 
-        public void SetData(int imageCount, DateTime scannedDateTime)
-        {
-            
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

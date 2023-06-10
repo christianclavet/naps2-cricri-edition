@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAPS2.ImportExport.Images;
 using NAPS2.Lang.Resources;
 using NAPS2.Logging;
 using NAPS2.Operation;
@@ -20,17 +21,27 @@ namespace NAPS2.Recovery
         private readonly IFormFactory formFactory;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
-       
-        public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress)
+        private readonly ImageSettingsContainer imageSettingsContainer;
+
+        public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress, ImageSettingsContainer imageSettingsContainer)
         {
-            
+
             this.formFactory = formFactory;
             this.thumbnailRenderer = thumbnailRenderer;
             this.operationProgress = operationProgress;
+            this.imageSettingsContainer = imageSettingsContainer;
         }
         public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
+        }
+
+        public void Save()
+        {  // Save the project data from the data in the container.
+            
+            var recoveryIndexManager = new RecoveryIndexManager(RecoveryImage._recoveryFolder);
+            recoveryIndexManager.Index.ImageSettings = imageSettingsContainer.ImageSettings;
+            recoveryIndexManager.Save();
         }
 
         public void RecoverScannedImages(Action<ScannedImage> imageCallback)
@@ -38,6 +49,7 @@ namespace NAPS2.Recovery
 
             var op = new RecoveryOperation(formFactory, thumbnailRenderer);
             op.setFolder(folderToRecoverFrom);
+            op.setContainer(imageSettingsContainer);
 
             if (op.Start(imageCallback))
             {
@@ -50,6 +62,7 @@ namespace NAPS2.Recovery
         {
             private readonly IFormFactory formFactory;
             private readonly ThumbnailRenderer thumbnailRenderer;
+            private ImageSettingsContainer imageSettingsContainer;
 
             private FileStream lockFile;
             public static DirectoryInfo folderToRecoverFrom;
@@ -67,13 +80,18 @@ namespace NAPS2.Recovery
             {
                 this.formFactory = formFactory;
                 this.thumbnailRenderer = thumbnailRenderer;
-
+                
                 ProgressTitle = MiscResources.ImportProgress;
                 
                 AllowCancel = true;
                 AllowBackground = false;
                 cleanup = false;
                 folderToRecoverFrom = null;
+            }
+
+            public void setContainer(ImageSettingsContainer imageSettingsContainer)
+            {
+                this.imageSettingsContainer = imageSettingsContainer;
             }
 
             public bool Start(Action<ScannedImage> imageCallback)
@@ -140,6 +158,13 @@ namespace NAPS2.Recovery
             {
                 Status.MaxProgress = recoveryIndexManager.Index.Images.Count;
                 InvokeStatusChanged();
+
+                //Tries to recover the project data
+                imageSettingsContainer.ImageSettings = new ImageSettings();
+                imageSettingsContainer.ImageSettings.CSVFileName = recoveryIndexManager.Index.ImageSettings.CSVFileName;
+                imageSettingsContainer.ImageSettings.DefaultFileName = recoveryIndexManager.Index.ImageSettings.DefaultFileName;
+                imageSettingsContainer.ImageSettings.UseCSVExport = recoveryIndexManager.Index.ImageSettings.UseCSVExport;
+                imageSettingsContainer.ImageSettings.CSVExpression = recoveryIndexManager.Index.ImageSettings.CSVExpression;
 
                 foreach (RecoveryIndexImage indexImage in recoveryIndexManager.Index.Images)
                 {

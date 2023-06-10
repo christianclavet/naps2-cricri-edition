@@ -29,12 +29,14 @@ namespace NAPS2.WinForms
         
         private readonly FDesktop fdesktop;
         private readonly ImageSettingsContainer imageSettingsContainer;
+        private readonly RecoveryManager recoveryManager;
 
-        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer)
+        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager)
         {
             this.fdesktop = fdesktop;
             this.imageSettingsContainer = imageSettingsContainer;
-            
+            this.recoveryManager = recoveryManager;
+
             InitializeComponent();
         }
 
@@ -42,11 +44,12 @@ namespace NAPS2.WinForms
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            form.setFileName(fdesktop.projectName); // The "old" filename will be set
+            form.setFileName(FDesktop.projectName); // The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
-                fdesktop.projectName = form.getFileName();
+                FDesktop.projectName = form.getFileName();
+                fdesktop.UpdateToolbar();
                 imageSettingsContainer.ImageSettings = new ImageSettings()
                 {
                     ProjectName = form.getFileName(),
@@ -55,7 +58,7 @@ namespace NAPS2.WinForms
                     DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
                     UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
                 };
-                //fdesktop.UpdateToolbar(); // Display the changes TODO: Have to change the way it's saved
+                recoveryManager.Save();               
             }
 
         }

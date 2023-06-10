@@ -57,6 +57,7 @@ namespace NAPS2.WinForms
             this.loadProjectTool_TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_PrjConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCurrentProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_SavePrj = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdSavePDF = new System.Windows.Forms.ToolStripMenuItem();
             this.tsSavePDFAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -345,6 +346,7 @@ namespace NAPS2.WinForms
             this.loadProjectTool_TSMI,
             this.TS_PrjConfig,
             this.closeCurrentProject,
+            this.TS_SavePrj,
             this.toolStripSeparator15,
             this.tsdSavePDF,
             this.tsdSaveImages,
@@ -386,6 +388,13 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.closeCurrentProject, "closeCurrentProject");
             this.closeCurrentProject.Name = "closeCurrentProject";
             this.closeCurrentProject.Click += new System.EventHandler(this.closeCurrentProjectToolStripMenuItem_Click);
+            // 
+            // TS_SavePrj
+            // 
+            this.TS_SavePrj.Image = global::NAPS2.Icons.diskette;
+            this.TS_SavePrj.Name = "TS_SavePrj";
+            resources.ApplyResources(this.TS_SavePrj, "TS_SavePrj");
+            this.TS_SavePrj.Click += new System.EventHandler(this.TS_SavePrj_Click);
             // 
             // toolStripSeparator15
             // 
@@ -1049,6 +1058,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsExport;
         private System.Windows.Forms.ToolStripMenuItem tsPrjNew;
         private System.Windows.Forms.ToolStripMenuItem TS_PrjConfig;
+        private System.Windows.Forms.ToolStripMenuItem TS_SavePrj;
     }
 }
 

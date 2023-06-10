@@ -399,4 +399,16 @@
   <data name="TSI_ToggleDarkMode.ToolTipText" xml:space="preserve">
     <value>Faire basculer le thème de l'interface de sombre à clair</value>
   </data>
+  <data name="tsExport.Text" xml:space="preserve">
+    <value>Exporter les images et les données</value>
+  </data>
+  <data name="tsPrjNew.Text" xml:space="preserve">
+    <value>Créer un nouveau projet</value>
+  </data>
+  <data name="TS_PrjConfig.Text" xml:space="preserve">
+    <value>Configuration de projets</value>
+  </data>
+  <data name="TS_SavePrj.Text" xml:space="preserve">
+    <value>Sauvegarder les changements du projet</value>
+  </data>
 </root>

@@ -24,27 +24,19 @@ namespace NAPS2.WinForms
     public partial class FExport : FormBase
     {
         private readonly FileNamePlaceholders fileNamePlaceholders;
-        private readonly WinFormsExportHelper exportHelper;
-        private readonly ChangeTracker changeTracker;
         private readonly DialogHelper dialogHelper;
-        private readonly FDesktop fdesktop;
+        
         private readonly ImageSettingsContainer imageSettingsContainer;
 
         private string filename;
         private string projectName;
-      
-        private readonly RecoveryIndex recoveryIndex;
         
         
        
-        public FExport(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, FileNamePlaceholders fileNamePlaceholders, WinFormsExportHelper exportHelper, DialogHelper dialogHelper, ChangeTracker changeTracker, RecoveryIndex recoveryIndex)
+        public FExport(ImageSettingsContainer imageSettingsContainer, FileNamePlaceholders fileNamePlaceholders, DialogHelper dialogHelper)
         {
-            this.fdesktop = fdesktop;
             this.fileNamePlaceholders = fileNamePlaceholders;
-            this.exportHelper = exportHelper;
-            this.changeTracker = changeTracker;
             this.dialogHelper = dialogHelper;
-            this.recoveryIndex = recoveryIndex;
             this.imageSettingsContainer = imageSettingsContainer;
           
             InitializeComponent();
@@ -116,7 +108,11 @@ namespace NAPS2.WinForms
         {
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
-                UseCSVExport = false,
+                DefaultFileName = tb_ExportPath.Text,
+                CSVExpression = tb_CSVExpression.Text,
+                CSVFileName = tb_exportFilename.Text,
+                UseCSVExport = cb_CSVEnabler.Checked,
+                ProjectName = this.projectName,
                 SkipSavePrompt = false,
             };
             Close();
@@ -131,19 +127,10 @@ namespace NAPS2.WinForms
                 CSVFileName = tb_exportFilename.Text,
                 UseCSVExport = cb_CSVEnabler.Checked,
                 ProjectName = this.projectName,
+                SkipSavePrompt = true,
             };
-           
+            
             Close();
-           
-        }
-        private async void SaveImages(List<ScannedImage> images)
-        {            
-            if (await exportHelper.SaveImages(images, notify))
-            {
-
-               changeTracker.Made();
-               
-            }
         }
     }
 }
