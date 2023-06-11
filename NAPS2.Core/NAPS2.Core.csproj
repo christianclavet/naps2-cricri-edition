@@ -244,6 +244,7 @@
     <Compile Include="Dependencies\MultiFileExternalComponent.cs" />
     <Compile Include="Dependencies\IExternalComponent.cs" />
     <Compile Include="ImportExport\Email\Mapi\MapiWrapper.cs" />
+    <Compile Include="ImportExport\Images\ProjectSettings.cs" />
     <Compile Include="ImportExport\Pdf\PdfImageSettings.cs" />
     <Compile Include="ImportExport\Pdf\GhostscriptManager.cs" />
     <Compile Include="Logging\Event.cs" />

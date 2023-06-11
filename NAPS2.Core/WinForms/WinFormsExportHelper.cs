@@ -101,17 +101,30 @@ namespace NAPS2.WinForms
                 string savePath;
 
                 var imageSettings = imageSettingsContainer.ImageSettings;
-                if (imageSettings.SkipSavePrompt && Path.IsPathRooted(imageSettings.DefaultFileName))
+                if (imageSettings.SkipSavePrompt && Path.IsPathRooted(imageSettings.DefaultFileName) && ImageSettingsContainer.ProjectSettings.UseCSVExport == false)
                 {
                     savePath = imageSettings.DefaultFileName;
                 }
-                else
+                else if (ImageSettingsContainer.ProjectSettings.UseCSVExport == false)
                 {
                     if (!dialogHelper.PromptToSaveImage(imageSettings.DefaultFileName, out savePath))
                     {
                         return false;
                     }
                 }
+
+                if (ImageSettingsContainer.ProjectSettings.UseCSVExport && Path.IsPathRooted(ImageSettingsContainer.ProjectSettings.DefaultFileName))
+                {
+                    savePath = ImageSettingsContainer.ProjectSettings.DefaultFileName;
+                }
+                else
+                {
+                    if (!dialogHelper.PromptToSaveImage(ImageSettingsContainer.ProjectSettings.DefaultFileName, out savePath))
+                    {
+                        return false;
+                    }
+                }
+
 
                 var op = operationFactory.Create<SaveImagesOperation>();
                 var changeToken = changeTracker.State;

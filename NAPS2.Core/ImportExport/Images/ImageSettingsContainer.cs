@@ -11,6 +11,8 @@ namespace NAPS2.ImportExport.Images
 
         private ImageSettings localImageSettings;
 
+        private static ProjectSettings localProjectSettings;
+
         public ImageSettingsContainer(IUserConfigManager userConfigManager)
         {
             this.userConfigManager = userConfigManager;
@@ -20,6 +22,12 @@ namespace NAPS2.ImportExport.Images
         {
             get => localImageSettings ?? userConfigManager.Config.ImageSettings ?? new ImageSettings();
             set => localImageSettings = value;
+        }
+
+        static public ProjectSettings ProjectSettings 
+        {
+            get => localProjectSettings ?? new ProjectSettings();
+            set => localProjectSettings = value; 
         }
     }
 }

@@ -1,21 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using NAPS2.Config;
 using NAPS2.ImportExport;
-using NAPS2.Operation;
-using NAPS2.Recovery;
-using NAPS2.Scan.Images;
-using NAPS2.WinForms;
-using NAPS2;
-using CsvHelper;
-using NAPS2.Util;
 using NAPS2.ImportExport.Images;
 using System.IO;
 
@@ -24,9 +9,8 @@ namespace NAPS2.WinForms
     public partial class FExport : FormBase
     {
         private readonly FileNamePlaceholders fileNamePlaceholders;
-        private readonly DialogHelper dialogHelper;
-        
         private readonly ImageSettingsContainer imageSettingsContainer;
+        private readonly DialogHelper dialogHelper;
 
         private string filename;
         private string projectName;
@@ -36,19 +20,17 @@ namespace NAPS2.WinForms
         public FExport(ImageSettingsContainer imageSettingsContainer, FileNamePlaceholders fileNamePlaceholders, DialogHelper dialogHelper)
         {
             this.fileNamePlaceholders = fileNamePlaceholders;
-            this.dialogHelper = dialogHelper;
             this.imageSettingsContainer = imageSettingsContainer;
+            this.dialogHelper = dialogHelper;
           
             InitializeComponent();
 
-            projectName = imageSettingsContainer.ImageSettings.ProjectName;
-            tb_ExportPath.Text = imageSettingsContainer.ImageSettings.DefaultFileName;
-            tb_CSVExpression.Text = imageSettingsContainer.ImageSettings.CSVExpression;
-            tb_exportFilename.Text = imageSettingsContainer.ImageSettings.CSVFileName;
-            cb_CSVEnabler.Checked = imageSettingsContainer.ImageSettings.UseCSVExport;
+            projectName = ImageSettingsContainer.ProjectSettings.ProjectName;
+            tb_ExportPath.Text = ImageSettingsContainer.ProjectSettings.DefaultFileName;
+            tb_CSVExpression.Text = ImageSettingsContainer.ProjectSettings.CSVExpression;
+            tb_exportFilename.Text = ImageSettingsContainer.ProjectSettings.CSVFileName;
+            cb_CSVEnabler.Checked = ImageSettingsContainer.ProjectSettings.UseCSVExport;
         }
-
-        public NotificationManager notify { get; set; }
 
         private void BTN_File_Click(object sender, EventArgs e)
         {
@@ -79,7 +61,7 @@ namespace NAPS2.WinForms
             var fileExample = fileNamePlaceholders.SubstitutePlaceholders(tb_ExportPath.Text, DateTime.Now, true);
             var file = Path.GetFileName(fileExample);
             fileExample = Path.Combine(Path.GetDirectoryName(fileExample), projectName);
-            fileExample = Path.Combine(fileExample,file);
+            fileExample = Path.Combine(fileExample, file);
             LBL_Exemple.Text = fileExample;
         }
 
@@ -93,7 +75,7 @@ namespace NAPS2.WinForms
             if (filename == null)
                 return;
 
-            string text = tb_CSVExpression.Text.Replace("$(filename)", fileNamePlaceholders.SubstitutePlaceholders(filename, DateTime.Now, true));
+            string text = tb_CSVExpression.Text.Replace("$(filename)", Path.GetFileName(fileNamePlaceholders.SubstitutePlaceholders(filename, DateTime.Now, true)));
             text = text.Replace("$(barcode)", "1234-5678");
             text = text.Replace("$(sheetside)", "1=front-2=back");
             lbl_meta.Text = text;
@@ -105,31 +87,33 @@ namespace NAPS2.WinForms
         }
 
         private void BTN_Cancel_Click(object sender, EventArgs e)
-        {
+        {     
+            //Force back the prompt to normal
             imageSettingsContainer.ImageSettings = new ImageSettings
             {
-                DefaultFileName = tb_ExportPath.Text,
-                CSVExpression = tb_CSVExpression.Text,
-                CSVFileName = tb_exportFilename.Text,
-                UseCSVExport = cb_CSVEnabler.Checked,
-                ProjectName = this.projectName,
                 SkipSavePrompt = false,
+                TiffCompression = imageSettingsContainer.ImageSettings.TiffCompression,
+                JpegQuality = imageSettingsContainer.ImageSettings.JpegQuality,
             };
             Close();
         }
 
         private void BTN_Export_Click(object sender, EventArgs e)
         {
-            imageSettingsContainer.ImageSettings = new ImageSettings()
-            {
-                DefaultFileName = tb_ExportPath.Text,
-                CSVExpression = tb_CSVExpression.Text,
-                CSVFileName = tb_exportFilename.Text,
-                UseCSVExport = cb_CSVEnabler.Checked,
-                ProjectName = this.projectName,
-                SkipSavePrompt = true,
-            };
+            ImageSettingsContainer.ProjectSettings.DefaultFileName = tb_ExportPath.Text;
+            ImageSettingsContainer.ProjectSettings.CSVExpression = tb_CSVExpression.Text;
+            ImageSettingsContainer.ProjectSettings.CSVFileName = tb_exportFilename.Text;
+            ImageSettingsContainer.ProjectSettings.UseCSVExport = cb_CSVEnabler.Checked;
+            ImageSettingsContainer.ProjectSettings.ProjectName = this.projectName;
             
+            //Force the save prompt to be skipped
+            imageSettingsContainer.ImageSettings = new ImageSettings
+            {
+                SkipSavePrompt = true,
+                TiffCompression = imageSettingsContainer.ImageSettings.TiffCompression,
+                JpegQuality = imageSettingsContainer.ImageSettings.JpegQuality,
+            };
+
             Close();
         }
     }

@@ -50,14 +50,9 @@ namespace NAPS2.WinForms
             {
                 FDesktop.projectName = form.getFileName();
                 fdesktop.UpdateToolbar();
-                imageSettingsContainer.ImageSettings = new ImageSettings()
-                {
-                    ProjectName = form.getFileName(),
-                    CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
-                    CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
-                    DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
-                    UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
-                };
+
+                ImageSettingsContainer.ProjectSettings.ProjectName = form.getFileName();
+                   
                 recoveryManager.Save();               
             }
 

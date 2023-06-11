@@ -67,7 +67,7 @@ namespace NAPS2.ImportExport.Images
                 {
                     string path = "";
                     //NEW: Add support to export .CSV files with metadata along the images when using the EXPORT interface.
-                    if (imageSettings.UseCSVExport == true)
+                    if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                     {
                         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
                         {
@@ -75,9 +75,9 @@ namespace NAPS2.ImportExport.Images
                             HasHeaderRecord = false,
                         };
                         // Create a new folder, in the path using the project name and put  the file there
-                        Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName));
-                        path = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName);
-                        path = Path.Combine(path, imageSettings.CSVFileName);
+                        Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName));
+                        path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
+                        path = Path.Combine(path, ImageSettingsContainer.ProjectSettings.CSVFileName);
 
                         //Create the CSV file
                         using (var writer = new StreamWriter(path)) 
@@ -89,10 +89,10 @@ namespace NAPS2.ImportExport.Images
 
                     var subFileName = fileNamePlaceholders.SubstitutePlaceholders(fileName, dateTime, batch);
                     // Change the path to be in the Folder export (CSV only)
-                    if (imageSettings.UseCSVExport == true)
+                    if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                     {
                         var file = Path.GetFileName(subFileName);
-                        subFileName = Path.Combine(Path.GetDirectoryName(subFileName), imageSettings.ProjectName);
+                        subFileName = Path.Combine(Path.GetDirectoryName(subFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
                         subFileName = Path.Combine(subFileName, file);
                     }
 
@@ -155,10 +155,10 @@ namespace NAPS2.ImportExport.Images
                                 digits);
 
                             // Change the path to be in the Folder export (CSV only)
-                            if (imageSettings.UseCSVExport == true)
+                            if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                             {
                                 var file = Path.GetFileName(fileNameN);
-                                fileNameN = Path.Combine(Path.GetDirectoryName(imageSettings.DefaultFileName), imageSettings.ProjectName);
+                                fileNameN = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
                                 fileNameN = Path.Combine(fileNameN, file);
                                 //Log.Error("FilenameN is: " + fileNameN, this);
                             }
@@ -166,7 +166,7 @@ namespace NAPS2.ImportExport.Images
                             Status.StatusText = string.Format(MiscResources.SavingFormat, Path.GetFileName(fileNameN));
                             InvokeStatusChanged();
                             
-                            if (imageSettings.UseCSVExport == true)
+                            if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                             {
 
                                 var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -178,7 +178,7 @@ namespace NAPS2.ImportExport.Images
                                 //Log.Error("Here is the info:" + path, this);
 
                                 //Parse the CSV expression and extract based on the ","
-                                string phrase = imageSettings.CSVExpression;
+                                string phrase = ImageSettingsContainer.ProjectSettings.CSVExpression;
                                 phrase = phrase.Replace("$(filename)", Path.GetFileName(fileNameN));
                                 phrase = phrase.Replace("$(barcode)", images[i].BarCodeData);
                                 if (images[i].SheetSide==0)

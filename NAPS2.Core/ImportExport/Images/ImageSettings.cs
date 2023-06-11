@@ -23,12 +23,5 @@ namespace NAPS2.ImportExport.Images
 
         public bool SinglePageTiff { get; set; }
 
-        public bool UseCSVExport { get; set; }
-
-        public string CSVFileName { get; set; }
-
-        public string CSVExpression { get; set; }
-
-        public string ProjectName { get; set; } 
     }
 }

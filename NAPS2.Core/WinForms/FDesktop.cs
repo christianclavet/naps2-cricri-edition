@@ -1113,16 +1113,7 @@ namespace NAPS2.WinForms
 
         private async void SaveImages(List<ScannedImage> images)
         {
-            imageSettingsContainer.ImageSettings = new ImageSettings()
-            {
-                ProjectName = projectName,
-                DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
-                CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
-                CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
-                UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
-                SkipSavePrompt = true,
-            };
-
+            ImageSettingsContainer.ProjectSettings.ProjectName = projectName;
             if (await exportHelper.SaveImages(images, notify))
             {
                 
@@ -1729,7 +1720,7 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-
+            ImageSettingsContainer.ProjectSettings.UseCSVExport = false;
             SaveImages(SelectedImages.ToList());
         }
 
@@ -2626,6 +2617,7 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
+            ImageSettingsContainer.ProjectSettings.UseCSVExport = true;
             SaveImages(imageList.Images);
         }
 
@@ -2642,10 +2634,10 @@ namespace NAPS2.WinForms
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FConfigurePrj>();
-            if (imageSettingsContainer.ImageSettings.CSVExpression == null)
+            if (ImageSettingsContainer.ProjectSettings.CSVExpression == null)
             {
                 //Nothing is defined, use default values
-                imageSettingsContainer.ImageSettings = new ImageSettings()
+                ImageSettingsContainer.ProjectSettings = new ProjectSettings()
                 {
                     ProjectName = FDesktop.projectName,
                     CSVFileName = projectName+".csv",
@@ -2658,14 +2650,7 @@ namespace NAPS2.WinForms
             else
             {
                 // There are some values, update only the project name
-                imageSettingsContainer.ImageSettings = new ImageSettings()
-                {
-                    ProjectName = FDesktop.projectName,
-                    CSVFileName = imageSettingsContainer.ImageSettings.CSVFileName,
-                    CSVExpression = imageSettingsContainer.ImageSettings.CSVExpression,
-                    UseCSVExport = imageSettingsContainer.ImageSettings.UseCSVExport,
-                    DefaultFileName = imageSettingsContainer.ImageSettings.DefaultFileName,
-                };
+                ImageSettingsContainer.ProjectSettings.ProjectName = FDesktop.projectName;
                 
             }
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);

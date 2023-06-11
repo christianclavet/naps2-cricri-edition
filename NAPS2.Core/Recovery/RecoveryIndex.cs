@@ -11,14 +11,14 @@ namespace NAPS2.Recovery
 
         public RecoveryIndex()
         {
-            ImageSettings = new ImageSettings();
+            ProjectSettings = new ProjectSettings();
             Images = new List<RecoveryIndexImage>();
         }
 
         public int Version { get; set; }
-
+        public ProjectSettings ProjectSettings { get; set; }
         public List<RecoveryIndexImage> Images { get; set; }
 
-        public ImageSettings ImageSettings { get; set; }
+         
     }
 }
