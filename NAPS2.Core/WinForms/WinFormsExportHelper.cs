@@ -94,7 +94,7 @@ namespace NAPS2.WinForms
             return await op.Success ? op.FirstFileSaved : null;
         }
 
-        public async Task<bool> SaveImages(List<ScannedImage> images, ISaveNotify notify, bool bypassprompt)
+        public async Task<bool> SaveImages(List<ScannedImage> images, ISaveNotify notify, bool bypassprompt = false)
         {
             if (images.Any())
             {

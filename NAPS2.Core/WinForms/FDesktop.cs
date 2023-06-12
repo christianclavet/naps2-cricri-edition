@@ -1111,7 +1111,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async void SaveImages(List<ScannedImage> images, bool bypassprompt)
+        private async void SaveImages(List<ScannedImage> images, bool bypassprompt = false)
         {
             ImageSettingsContainer.ProjectSettings.ProjectName = projectName;
             if (await exportHelper.SaveImages(images, notify, bypassprompt))
@@ -1600,11 +1600,11 @@ namespace NAPS2.WinForms
             }
             else if (action == SaveButtonDefaultAction.SaveSelected && SelectedIndices.Any())
             {
-                SaveImages(SelectedImages.ToList(), false);
+                SaveImages(SelectedImages.ToList());
             }
             else
             {
-                SaveImages(imageList.Images,false);
+                SaveImages(imageList.Images);
             }
         }
 
@@ -1711,7 +1711,7 @@ namespace NAPS2.WinForms
                 return;
             }
 
-            SaveImages(imageList.Images, false);
+            SaveImages(imageList.Images);
 
         }
         private void tsSaveImagesSelected_Click_1(object sender, EventArgs e)
@@ -1720,8 +1720,7 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-            ImageSettingsContainer.ProjectSettings.UseCSVExport = false;
-            SaveImages(SelectedImages.ToList(), false);
+            SaveImages(SelectedImages.ToList());
         }
 
         private void tsImageSettings_Click_1(object sender, EventArgs e)
@@ -2617,7 +2616,6 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            ImageSettingsContainer.ProjectSettings.UseCSVExport = true;
             SaveImages(imageList.Images, true);
         }
 
