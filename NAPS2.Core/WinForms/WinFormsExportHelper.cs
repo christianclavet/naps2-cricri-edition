@@ -94,7 +94,7 @@ namespace NAPS2.WinForms
             return await op.Success ? op.FirstFileSaved : null;
         }
 
-        public async Task<bool> SaveImages(List<ScannedImage> images, ISaveNotify notify)
+        public async Task<bool> SaveImages(List<ScannedImage> images, ISaveNotify notify, bool bypassprompt)
         {
             if (images.Any())
             {
@@ -105,7 +105,7 @@ namespace NAPS2.WinForms
                 {
                     savePath = imageSettings.DefaultFileName;
                 }
-                else if (ImageSettingsContainer.ProjectSettings.UseCSVExport == false)
+                else if (bypassprompt == false)
                 {
                     if (!dialogHelper.PromptToSaveImage(imageSettings.DefaultFileName, out savePath))
                     {
@@ -113,7 +113,7 @@ namespace NAPS2.WinForms
                     }
                 }
 
-                if (ImageSettingsContainer.ProjectSettings.UseCSVExport && Path.IsPathRooted(ImageSettingsContainer.ProjectSettings.DefaultFileName))
+                if (bypassprompt && Path.IsPathRooted(ImageSettingsContainer.ProjectSettings.DefaultFileName))
                 {
                     savePath = ImageSettingsContainer.ProjectSettings.DefaultFileName;
                 }

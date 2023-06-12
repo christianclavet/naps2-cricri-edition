@@ -1111,10 +1111,10 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async void SaveImages(List<ScannedImage> images)
+        private async void SaveImages(List<ScannedImage> images, bool bypassprompt)
         {
             ImageSettingsContainer.ProjectSettings.ProjectName = projectName;
-            if (await exportHelper.SaveImages(images, notify))
+            if (await exportHelper.SaveImages(images, notify, bypassprompt))
             {
                 
                 changeTracker.Made();
@@ -1600,11 +1600,11 @@ namespace NAPS2.WinForms
             }
             else if (action == SaveButtonDefaultAction.SaveSelected && SelectedIndices.Any())
             {
-                SaveImages(SelectedImages.ToList());
+                SaveImages(SelectedImages.ToList(), false);
             }
             else
             {
-                SaveImages(imageList.Images);
+                SaveImages(imageList.Images,false);
             }
         }
 
@@ -1711,7 +1711,7 @@ namespace NAPS2.WinForms
                 return;
             }
 
-            SaveImages(imageList.Images);
+            SaveImages(imageList.Images, false);
 
         }
         private void tsSaveImagesSelected_Click_1(object sender, EventArgs e)
@@ -1721,7 +1721,7 @@ namespace NAPS2.WinForms
                 return;
             }
             ImageSettingsContainer.ProjectSettings.UseCSVExport = false;
-            SaveImages(SelectedImages.ToList());
+            SaveImages(SelectedImages.ToList(), false);
         }
 
         private void tsImageSettings_Click_1(object sender, EventArgs e)
@@ -2618,7 +2618,7 @@ namespace NAPS2.WinForms
         private void tsExport_Click(object sender, EventArgs e)
         {
             ImageSettingsContainer.ProjectSettings.UseCSVExport = true;
-            SaveImages(imageList.Images);
+            SaveImages(imageList.Images, true);
         }
 
         //Create a new project.
