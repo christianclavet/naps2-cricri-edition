@@ -92,7 +92,7 @@ namespace NAPS2.WinForms
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
-        public static List<ProjectSettings> projectsConfig;
+        public static List<ProjectSettings> projectsConfig = new List<ProjectSettings>();
 
         #endregion
 
@@ -132,6 +132,9 @@ namespace NAPS2.WinForms
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+
+            ImageSettingsContainer.ProjectSettings.Name = "TEST";
+            projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
         }
 
         protected override void OnLoad(object sender, EventArgs eventArgs)

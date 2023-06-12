@@ -21,6 +21,7 @@ using NTwain.Data;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Diagnostics.PerformanceData;
+using System.Collections;
 
 namespace NAPS2.WinForms
 {
@@ -36,8 +37,14 @@ namespace NAPS2.WinForms
             this.fdesktop = fdesktop;
             this.imageSettingsContainer = imageSettingsContainer;
             this.recoveryManager = recoveryManager;
-
+           
             InitializeComponent();
+
+            foreach (var value in FDesktop.projectsConfig)
+            {
+                if (value.Name != null)
+                    LB_ConfigList.Items.Add(new ListViewItem().Name = value.Name);
+            }
         }
 
         private void bt_chgProjectName_Click(object sender, EventArgs e)
@@ -82,7 +89,7 @@ namespace NAPS2.WinForms
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
+            //form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
