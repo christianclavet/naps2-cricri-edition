@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BT_chgProjectName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
   <data name="BT_chgProjectName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 415</value>
   </data>
   <data name="BT_chgProjectName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 23</value>
+    <value>274, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BT_chgProjectName.TabIndex" type="System.Int32, mscorlib">
@@ -141,10 +144,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BT_chgProjectName.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="BT_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>701, 415</value>
+    <value>435, 415</value>
   </data>
   <data name="BT_OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -165,14 +168,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BT_OK.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BT_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="BT_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 415</value>
+    <value>354, 415</value>
   </data>
   <data name="BT_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -193,22 +196,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BT_cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="BT_ExportConfig.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="BT_ExportConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="BT_ExportConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 377</value>
+    <value>12, 386</value>
   </data>
   <data name="BT_ExportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 23</value>
+    <value>274, 23</value>
   </data>
   <data name="BT_ExportConfig.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="BT_ExportConfig.Text" xml:space="preserve">
-    <value>Export configuration</value>
+    <value>Change active configuration</value>
   </data>
   <data name="&gt;&gt;BT_ExportConfig.Name" xml:space="preserve">
     <value>BT_ExportConfig</value>
@@ -220,13 +226,175 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BT_ExportConfig.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LB_ConfigList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LB_ConfigList.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="LB_ConfigList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 19</value>
+  </data>
+  <data name="LB_ConfigList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 340</value>
+  </data>
+  <data name="LB_ConfigList.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;LB_ConfigList.Name" xml:space="preserve">
+    <value>LB_ConfigList</value>
+  </data>
+  <data name="&gt;&gt;LB_ConfigList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LB_ConfigList.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;LB_ConfigList.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Bt_New.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="Bt_New.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 19</value>
+  </data>
+  <data name="Bt_New.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 23</value>
+  </data>
+  <data name="Bt_New.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Bt_New.Text" xml:space="preserve">
+    <value>Create new from active</value>
+  </data>
+  <data name="&gt;&gt;Bt_New.Name" xml:space="preserve">
+    <value>Bt_New</value>
+  </data>
+  <data name="&gt;&gt;Bt_New.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Bt_New.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;Bt_New.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BT_Apply.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="BT_Apply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 336</value>
+  </data>
+  <data name="BT_Apply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 23</value>
+  </data>
+  <data name="BT_Apply.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="BT_Apply.Text" xml:space="preserve">
+    <value>Apply to active</value>
+  </data>
+  <data name="&gt;&gt;BT_Apply.Name" xml:space="preserve">
+    <value>BT_Apply</value>
+  </data>
+  <data name="&gt;&gt;BT_Apply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Apply.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;BT_Apply.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="BT_Remove.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="BT_Remove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 48</value>
+  </data>
+  <data name="BT_Remove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 23</value>
+  </data>
+  <data name="BT_Remove.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="BT_Remove.Text" xml:space="preserve">
+    <value>Remove selected</value>
+  </data>
+  <data name="&gt;&gt;BT_Remove.Name" xml:space="preserve">
+    <value>BT_Remove</value>
+  </data>
+  <data name="&gt;&gt;BT_Remove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Remove.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;BT_Remove.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TB_Rename.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="TB_Rename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 81</value>
+  </data>
+  <data name="TB_Rename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 23</value>
+  </data>
+  <data name="TB_Rename.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="TB_Rename.Text" xml:space="preserve">
+    <value>Rename config</value>
+  </data>
+  <data name="&gt;&gt;TB_Rename.Name" xml:space="preserve">
+    <value>TB_Rename</value>
+  </data>
+  <data name="&gt;&gt;TB_Rename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TB_Rename.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;TB_Rename.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 1</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 370</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Management of export config</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
+    <value>522, 450</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -491,6 +659,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.24695, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.17488, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

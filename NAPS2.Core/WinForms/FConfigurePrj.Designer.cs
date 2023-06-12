@@ -33,6 +33,13 @@
             this.BT_OK = new System.Windows.Forms.Button();
             this.BT_cancel = new System.Windows.Forms.Button();
             this.BT_ExportConfig = new System.Windows.Forms.Button();
+            this.LB_ConfigList = new System.Windows.Forms.ListBox();
+            this.Bt_New = new System.Windows.Forms.Button();
+            this.BT_Apply = new System.Windows.Forms.Button();
+            this.BT_Remove = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TB_Rename = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BT_chgProjectName
@@ -48,6 +55,7 @@
             resources.ApplyResources(this.BT_OK, "BT_OK");
             this.BT_OK.Name = "BT_OK";
             this.BT_OK.UseVisualStyleBackColor = true;
+            this.BT_OK.Click += new System.EventHandler(this.BT_OK_Click);
             // 
             // BT_cancel
             // 
@@ -63,16 +71,70 @@
             this.BT_ExportConfig.UseVisualStyleBackColor = true;
             this.BT_ExportConfig.Click += new System.EventHandler(this.bt_ExportConfig_Click);
             // 
+            // LB_ConfigList
+            // 
+            resources.ApplyResources(this.LB_ConfigList, "LB_ConfigList");
+            this.LB_ConfigList.FormattingEnabled = true;
+            this.LB_ConfigList.MultiColumn = true;
+            this.LB_ConfigList.Name = "LB_ConfigList";
+            this.LB_ConfigList.Sorted = true;
+            this.LB_ConfigList.SelectedIndexChanged += new System.EventHandler(this.LB_ConfigList_SelectedIndexChanged);
+            // 
+            // Bt_New
+            // 
+            resources.ApplyResources(this.Bt_New, "Bt_New");
+            this.Bt_New.Name = "Bt_New";
+            this.Bt_New.UseVisualStyleBackColor = true;
+            this.Bt_New.Click += new System.EventHandler(this.Bt_New_Click);
+            // 
+            // BT_Apply
+            // 
+            resources.ApplyResources(this.BT_Apply, "BT_Apply");
+            this.BT_Apply.Name = "BT_Apply";
+            this.BT_Apply.UseVisualStyleBackColor = true;
+            this.BT_Apply.Click += new System.EventHandler(this.BT_Apply_Click);
+            // 
+            // BT_Remove
+            // 
+            resources.ApplyResources(this.BT_Remove, "BT_Remove");
+            this.BT_Remove.Name = "BT_Remove";
+            this.BT_Remove.UseVisualStyleBackColor = true;
+            this.BT_Remove.Click += new System.EventHandler(this.BT_Remove_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.TB_Rename);
+            this.groupBox1.Controls.Add(this.LB_ConfigList);
+            this.groupBox1.Controls.Add(this.BT_Remove);
+            this.groupBox1.Controls.Add(this.Bt_New);
+            this.groupBox1.Controls.Add(this.BT_Apply);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // TB_Rename
+            // 
+            resources.ApplyResources(this.TB_Rename, "TB_Rename");
+            this.TB_Rename.Name = "TB_Rename";
+            this.TB_Rename.UseVisualStyleBackColor = true;
+            this.TB_Rename.Click += new System.EventHandler(this.TB_Rename_Click);
+            // 
             // FConfigurePrj
             // 
             this.AcceptButton = this.BT_OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.CancelButton = this.BT_cancel;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BT_ExportConfig);
             this.Controls.Add(this.BT_cancel);
             this.Controls.Add(this.BT_OK);
             this.Controls.Add(this.BT_chgProjectName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FConfigurePrj";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,5 +145,11 @@
         private System.Windows.Forms.Button BT_OK;
         private System.Windows.Forms.Button BT_cancel;
         private System.Windows.Forms.Button BT_ExportConfig;
+        private System.Windows.Forms.ListBox LB_ConfigList;
+        private System.Windows.Forms.Button Bt_New;
+        private System.Windows.Forms.Button BT_Apply;
+        private System.Windows.Forms.Button BT_Remove;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button TB_Rename;
     }
 }

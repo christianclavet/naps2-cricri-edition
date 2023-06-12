@@ -9,8 +9,10 @@ namespace NAPS2.ImportExport.Images
 
         public ProjectSettings()
         {
-            
+
         }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public string DefaultFileName { get; set; }
 

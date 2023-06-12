@@ -85,10 +85,14 @@ namespace NAPS2.WinForms
         private bool splitter1 = false; // Used for the splitter GUI state of display
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
         private int insertCounter = 0; //Used to count the offset of images to insert
-        private string title = Application.ProductName.ToString()+" "+Application.ProductVersion.ToString();
-        public static string projectName = string.Format(MiscResources.ProjectName);
+        private string title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
         private Size Oldsize = Size.Empty;
+
         public bool darkMode = false;
+
+        // Variables as static
+        public static string projectName = string.Format(MiscResources.ProjectName);
+        public static List<ProjectSettings> projectsConfig;
 
         #endregion
 
