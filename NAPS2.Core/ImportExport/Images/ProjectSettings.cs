@@ -9,7 +9,7 @@ namespace NAPS2.ImportExport.Images
 
         public ProjectSettings()
         {
-
+     
         }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -23,5 +23,10 @@ namespace NAPS2.ImportExport.Images
         public string CSVExpression { get; set; }
 
         public string ProjectName { get; set; }
+
+        public ProjectSettings ShallowCopy()
+        {
+            return (ProjectSettings)this.MemberwiseClone();
+        }
     }
 }

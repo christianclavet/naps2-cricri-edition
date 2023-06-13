@@ -22,6 +22,7 @@ using System.IO;
 using System.Drawing.Drawing2D;
 using System.Diagnostics.PerformanceData;
 using System.Collections;
+using System.Diagnostics;
 
 namespace NAPS2.WinForms
 {
@@ -31,6 +32,7 @@ namespace NAPS2.WinForms
         private readonly FDesktop fdesktop;
         private readonly ImageSettingsContainer imageSettingsContainer;
         private readonly RecoveryManager recoveryManager;
+        private List<ProjectSettings> settingList;
 
         public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager)
         {
@@ -39,11 +41,14 @@ namespace NAPS2.WinForms
             this.recoveryManager = recoveryManager;
            
             InitializeComponent();
-
-            foreach (var value in FDesktop.projectsConfig)
-            {
-                if (value.Name != null)
+            settingList = imageSettingsContainer.ProjectConfigs.ToList();
+           
+            if (settingList != null ) 
+            { 
+                foreach (var value in settingList)
+                {
                     LB_ConfigList.Items.Add(new ListViewItem().Name = value.Name);
+                }
             }
         }
 
@@ -56,8 +61,6 @@ namespace NAPS2.WinForms
             if (form.DialogResult == DialogResult.OK)
             {
                 FDesktop.projectName = form.getFileName();
-                fdesktop.UpdateToolbar();
-
                 ImageSettingsContainer.ProjectSettings.ProjectName = form.getFileName();
                    
                 recoveryManager.Save();               
@@ -88,20 +91,23 @@ namespace NAPS2.WinForms
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
+            var activeConf = new ProjectSettings();
+            activeConf = ImageSettingsContainer.ProjectSettings.ShallowCopy();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             //form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
-                ImageSettingsContainer.ProjectSettings.Name = form.getFileName();
-                FDesktop.projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
+                activeConf.Name = form.getFileName();
+                imageSettingsContainer.ProjectConfigs.Add(activeConf);
+
             }
         }
 
         private void BT_Apply_Click(object sender, EventArgs e)
         {
-            ImageSettingsContainer.ProjectSettings = FDesktop.projectsConfig[LB_ConfigList.SelectedIndex];
+            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex];
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)
@@ -109,7 +115,7 @@ namespace NAPS2.WinForms
             if (LB_ConfigList.Items.Count > 0)
             {
                 LB_ConfigList.Items.RemoveAt(LB_ConfigList.SelectedIndex);
-                FDesktop.projectsConfig.RemoveAt(LB_ConfigList.SelectedIndex);
+                   imageSettingsContainer.ProjectConfigs.RemoveAt(LB_ConfigList.SelectedIndex);
             }
         }
 
@@ -122,12 +128,12 @@ namespace NAPS2.WinForms
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
+            form.setFileName(imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex].Name); //The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items[LB_ConfigList.SelectedIndex] = form.getFileName();
-                ImageSettingsContainer.ProjectSettings.Name = form.getFileName();
+                imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex].Name = form.getFileName();
             }
 
         }

@@ -79,7 +79,7 @@ namespace NAPS2.WinForms
         private bool closed = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
-        
+
 
         private Bitmap bitmap; // Used for the preview window
         private bool splitter1 = false; // Used for the splitter GUI state of display
@@ -92,8 +92,7 @@ namespace NAPS2.WinForms
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
-        public static List<ProjectSettings> projectsConfig = new List<ProjectSettings>();
-
+        public List<ProjectSettings> projectsConfig;
         #endregion
 
         #region Initialization and Culture
@@ -126,15 +125,26 @@ namespace NAPS2.WinForms
 
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text != null)
-                this.Text = title + " | "+ MiscResources.ProjectNameTitle + projectName;
+                this.Text = title + " | " + MiscResources.ProjectNameTitle + projectName;
 
             notify.ParentForm = this;
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+            if (ImageSettingsContainer.ProjectSettings.Name == "")
+                ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.ProjectName;
 
-            ImageSettingsContainer.ProjectSettings.Name = "TEST";
-            projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
+            //projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
+        }
+        public void SetProjectConfigs(List<ProjectSettings> theList)
+        {
+            List<ProjectSettings> projectsConfig = new List<ProjectSettings>(theList);
+        }
+
+        public List<ProjectSettings> GetProjectConfigs()
+        {
+            
+            return projectsConfig;
         }
 
         protected override void OnLoad(object sender, EventArgs eventArgs)
@@ -856,10 +866,12 @@ namespace NAPS2.WinForms
 
         public void UpdateToolbar()
         {
+            
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text!=null)
                 this.Text = title + " | " + MiscResources.ProjectNameTitle + projectName;
+            this.Update();
 
             // Update Images description -- CC -- BARCODE
             if (thumbnailList1.Items.Count > 0)
@@ -2663,6 +2675,7 @@ namespace NAPS2.WinForms
             {
                 recoveryManager.Save();
             }
+            UpdateToolbar();
 
         }
 
