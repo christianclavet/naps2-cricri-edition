@@ -32,16 +32,18 @@ namespace NAPS2.WinForms
         private readonly FDesktop fdesktop;
         private readonly ImageSettingsContainer imageSettingsContainer;
         private readonly RecoveryManager recoveryManager;
+        private readonly ProjectConfigManager projectConfigManager;
         private List<ProjectSettings> settingList;
 
-        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager)
+        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager)
         {
             this.fdesktop = fdesktop;
             this.imageSettingsContainer = imageSettingsContainer;
             this.recoveryManager = recoveryManager;
+            this.projectConfigManager = projectConfigManager;
            
             InitializeComponent();
-            settingList = imageSettingsContainer.ProjectConfigs.ToList();
+            settingList = projectConfigManager.Settings;
            
             if (settingList != null ) 
             { 
@@ -63,7 +65,8 @@ namespace NAPS2.WinForms
                 FDesktop.projectName = form.getFileName();
                 ImageSettingsContainer.ProjectSettings.ProjectName = form.getFileName();
                    
-                recoveryManager.Save();               
+                recoveryManager.Save();
+                projectConfigManager.Save();
             }
 
         }
@@ -78,7 +81,7 @@ namespace NAPS2.WinForms
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-  
+                projectConfigManager.Save();
                 
             }
         }
@@ -91,8 +94,7 @@ namespace NAPS2.WinForms
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
-            var activeConf = new ProjectSettings();
-            activeConf = ImageSettingsContainer.ProjectSettings.Clone();
+            var activeConf = ImageSettingsContainer.ProjectSettings.Clone();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             //form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
             form.ShowDialog();
@@ -100,8 +102,8 @@ namespace NAPS2.WinForms
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
                 activeConf.Name = form.getFileName();
-                imageSettingsContainer.ProjectConfigs.Add(activeConf);
-
+                projectConfigManager.Settings.Add(activeConf.Clone());
+                projectConfigManager.Save();
             }
         }
 
@@ -115,7 +117,8 @@ namespace NAPS2.WinForms
             if (LB_ConfigList.Items.Count > 0)
             {
                 LB_ConfigList.Items.RemoveAt(LB_ConfigList.SelectedIndex);
-                   imageSettingsContainer.ProjectConfigs.RemoveAt(LB_ConfigList.SelectedIndex);
+                projectConfigManager.Settings.RemoveAt(LB_ConfigList.SelectedIndex);
+                projectConfigManager.Save();
             }
         }
 
@@ -133,7 +136,7 @@ namespace NAPS2.WinForms
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items[LB_ConfigList.SelectedIndex] = form.getFileName();
-                imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex].Name = form.getFileName();
+                projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Name = form.getFileName();
             }
 
         }
