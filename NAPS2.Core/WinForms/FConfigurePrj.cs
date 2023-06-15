@@ -92,7 +92,7 @@ namespace NAPS2.WinForms
         {
             var form = FormFactory.Create<FProjectName>();
             var activeConf = new ProjectSettings();
-            activeConf = ImageSettingsContainer.ProjectSettings.ShallowCopy();
+            activeConf = ImageSettingsContainer.ProjectSettings.Clone();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             //form.setFileName(ImageSettingsContainer.ProjectSettings.Name); //The "old" filename will be set
             form.ShowDialog();
