@@ -75,8 +75,8 @@ namespace NAPS2.ImportExport.Images
                             HasHeaderRecord = false,
                         };
                         // Create a new folder, in the path using the project name and put  the file there
-                        Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName));
-                        path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
+                        Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName));
+                        path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName);
                         path = Path.Combine(path, ImageSettingsContainer.ProjectSettings.CSVFileName);
 
                         //Create the CSV file
@@ -92,7 +92,7 @@ namespace NAPS2.ImportExport.Images
                     if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                     {
                         var file = Path.GetFileName(subFileName);
-                        subFileName = Path.Combine(Path.GetDirectoryName(subFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
+                        subFileName = Path.Combine(Path.GetDirectoryName(subFileName), ImageSettingsContainer.ProjectSettings.BatchName);
                         subFileName = Path.Combine(subFileName, file);
                     }
 
@@ -158,7 +158,7 @@ namespace NAPS2.ImportExport.Images
                             if (ImageSettingsContainer.ProjectSettings.UseCSVExport == true)
                             {
                                 var file = Path.GetFileName(fileNameN);
-                                fileNameN = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.ProjectName);
+                                fileNameN = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName);
                                 fileNameN = Path.Combine(fileNameN, file);
                                 //Log.Error("FilenameN is: " + fileNameN, this);
                             }

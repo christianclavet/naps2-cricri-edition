@@ -133,10 +133,10 @@
     <value>Supprimer</value>
   </data>
   <data name="loadProjectTool_TSMI.Text" xml:space="preserve">
-    <value>Charger un projet</value>
+    <value>Charger un lot</value>
   </data>
   <data name="renameCurrentProject_TSMI.Text" xml:space="preserve">
-    <value>Nommer le projet actuel</value>
+    <value>Nommer le lot actuel</value>
   </data>
   <data name="closeCurrentProject.Text" xml:space="preserve">
     <value>Fermer le projet actuel</value>
@@ -403,7 +403,7 @@
     <value>Exporter les images et les données</value>
   </data>
   <data name="tsPrjNew.Text" xml:space="preserve">
-    <value>Créer un nouveau projet</value>
+    <value>Créer un nouveau lot</value>
   </data>
   <data name="TS_PrjConfig.Text" xml:space="preserve">
     <value>Configuration de projets</value>

@@ -17,15 +17,9 @@ namespace NAPS2.ImportExport.Images
             DefaultFileName = string.Empty;
             UseCSVExport = false;
             CSVExpression = string.Empty;
-            ProjectName = string.Empty;
+            BatchName = string.Empty;
 
         }
-
-        [XmlIgnore]
-        public bool IsLocked { get; set; }
-
-        [XmlIgnore]
-        public bool IsDeviceLocked { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -38,7 +32,7 @@ namespace NAPS2.ImportExport.Images
 
         public string CSVExpression { get; set; }
 
-        public string ProjectName { get; set; }
+        public string BatchName { get; set; }
 
         public ProjectSettings Clone()
         {

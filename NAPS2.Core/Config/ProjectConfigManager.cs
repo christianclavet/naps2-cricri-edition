@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using NAPS2.ImportExport.Images;
-using NAPS2.Scan;
-using NAPS2.Scan.Twain;
-using NAPS2.Scan.Wia;
+
 
 namespace NAPS2.Config
 {
@@ -15,7 +13,7 @@ namespace NAPS2.Config
         private readonly AppConfigManager appConfigManager;
 
         public ProjectConfigManager(AppConfigManager appConfigManager)
-            : base("projectConfigs.xml", Paths.AppData, Paths.Executable, () => new List<ProjectSettings>())
+            : base("projectConfigs.xml", Paths.Executable, Paths.AppData, () => new List<ProjectSettings>())
         {
             this.appConfigManager = appConfigManager;
         }

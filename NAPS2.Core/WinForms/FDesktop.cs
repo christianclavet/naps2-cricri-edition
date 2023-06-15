@@ -132,7 +132,7 @@ namespace NAPS2.WinForms
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
             if (ImageSettingsContainer.ProjectSettings.Name == "")
-                ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.ProjectName;
+                ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.BatchName;
 
             //projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
         }
@@ -1132,7 +1132,7 @@ namespace NAPS2.WinForms
 
         private async void SaveImages(List<ScannedImage> images, bool bypassprompt = false)
         {
-            ImageSettingsContainer.ProjectSettings.ProjectName = projectName;
+            ImageSettingsContainer.ProjectSettings.BatchName = projectName;
             if (await exportHelper.SaveImages(images, notify, bypassprompt))
             {
                 
@@ -2656,7 +2656,7 @@ namespace NAPS2.WinForms
                 //Nothing is defined, use default values
                 ImageSettingsContainer.ProjectSettings = new ProjectSettings()
                 {
-                    ProjectName = FDesktop.projectName,
+                    BatchName = FDesktop.projectName,
                     CSVFileName = projectName+".csv",
                     CSVExpression = "Project, $(sheetside), $(barcode), $(filename)",
                     UseCSVExport = true,
@@ -2667,7 +2667,7 @@ namespace NAPS2.WinForms
             else
             {
                 // There are some values, update only the project name
-                ImageSettingsContainer.ProjectSettings.ProjectName = FDesktop.projectName;
+                ImageSettingsContainer.ProjectSettings.BatchName = FDesktop.projectName;
                 
             }
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);

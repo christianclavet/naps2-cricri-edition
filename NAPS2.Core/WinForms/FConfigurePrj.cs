@@ -63,10 +63,9 @@ namespace NAPS2.WinForms
             if (form.DialogResult == DialogResult.OK)
             {
                 FDesktop.projectName = form.getFileName();
-                ImageSettingsContainer.ProjectSettings.ProjectName = form.getFileName();
+                ImageSettingsContainer.ProjectSettings.BatchName = form.getFileName();
                    
                 recoveryManager.Save();
-                projectConfigManager.Save();
             }
 
         }
@@ -102,14 +101,18 @@ namespace NAPS2.WinForms
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
                 activeConf.Name = form.getFileName();
-                projectConfigManager.Settings.Add(activeConf.Clone());
+                var toSave = activeConf.Clone();
+                toSave.BatchName = "";
+                projectConfigManager.Settings.Add(toSave);
                 projectConfigManager.Save();
             }
         }
 
         private void BT_Apply_Click(object sender, EventArgs e)
         {
-            ImageSettingsContainer.ProjectSettings = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
+            var savedConfig = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
+            savedConfig.BatchName = FDesktop.projectName;
+            ImageSettingsContainer.ProjectSettings = savedConfig.Clone();
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)

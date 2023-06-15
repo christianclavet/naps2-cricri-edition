@@ -25,7 +25,7 @@ namespace NAPS2.WinForms
           
             InitializeComponent();
 
-            projectName = ImageSettingsContainer.ProjectSettings.ProjectName;
+            projectName = ImageSettingsContainer.ProjectSettings.BatchName;
             tb_ExportPath.Text = ImageSettingsContainer.ProjectSettings.DefaultFileName;
             tb_CSVExpression.Text = ImageSettingsContainer.ProjectSettings.CSVExpression;
             tb_exportFilename.Text = ImageSettingsContainer.ProjectSettings.CSVFileName;
@@ -104,7 +104,7 @@ namespace NAPS2.WinForms
             ImageSettingsContainer.ProjectSettings.CSVExpression = tb_CSVExpression.Text;
             ImageSettingsContainer.ProjectSettings.CSVFileName = tb_exportFilename.Text;
             ImageSettingsContainer.ProjectSettings.UseCSVExport = cb_CSVEnabler.Checked;
-            ImageSettingsContainer.ProjectSettings.ProjectName = this.projectName;
+            ImageSettingsContainer.ProjectSettings.BatchName = this.projectName;
             
             //Force the save prompt to be skipped
             imageSettingsContainer.ImageSettings = new ImageSettings
