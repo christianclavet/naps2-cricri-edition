@@ -109,15 +109,19 @@ namespace NAPS2.WinForms
 
         private void BT_Apply_Click(object sender, EventArgs e)
         {
-            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex];
+            ImageSettingsContainer.ProjectSettings = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)
         {
             if (LB_ConfigList.Items.Count > 0)
             {
-                LB_ConfigList.Items.RemoveAt(LB_ConfigList.SelectedIndex);
-                projectConfigManager.Settings.RemoveAt(LB_ConfigList.SelectedIndex);
+                var index = LB_ConfigList.SelectedIndex;
+                if (index < 0)
+                    return;
+
+                LB_ConfigList.Items.RemoveAt(index);
+                projectConfigManager.Settings.RemoveAt(index);
                 projectConfigManager.Save();
             }
         }
