@@ -122,21 +122,17 @@
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="lblPrompt_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 9</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblPrompt_filename.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>9, 6</value>
   </data>
   <data name="lblPrompt_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>558, 32</value>
+    <value>372, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblPrompt_filename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblPrompt_filename.Text" xml:space="preserve">
-    <value>Please, type in the new project name</value>
+    <value>Please, type in the new  name</value>
   </data>
   <data name="&gt;&gt;lblPrompt_filename.Name" xml:space="preserve">
     <value>lblPrompt_filename</value>
@@ -148,16 +144,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPrompt_filename.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btnAccept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 92</value>
-  </data>
-  <data name="btnAccept.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>12, 138</value>
   </data>
   <data name="btnAccept.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 46</value>
+    <value>120, 31</value>
   </data>
   <data name="btnAccept.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -175,16 +168,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAccept.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 92</value>
-  </data>
-  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>264, 138</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 46</value>
+    <value>120, 31</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -202,16 +192,20 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="inputTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="inputTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 44</value>
+    <value>11, 29</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="inputTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="inputTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>559, 19</value>
+    <value>373, 13</value>
   </data>
   <data name="inputTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -229,19 +223,130 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;inputTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CB_ProjectType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="CB_ProjectType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>361, 21</value>
+  </data>
+  <data name="CB_ProjectType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CB_ProjectType.Name" xml:space="preserve">
+    <value>CB_ProjectType</value>
+  </data>
+  <data name="&gt;&gt;CB_ProjectType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_ProjectType.Parent" xml:space="preserve">
+    <value>GB_Project</value>
+  </data>
+  <data name="&gt;&gt;CB_ProjectType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GB_Project.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 85</value>
+  </data>
+  <data name="GB_Project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 47</value>
+  </data>
+  <data name="GB_Project.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="GB_Project.Text" xml:space="preserve">
+    <value>Select project type</value>
+  </data>
+  <data name="GB_Project.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;GB_Project.Name" xml:space="preserve">
+    <value>GB_Project</value>
+  </data>
+  <data name="&gt;&gt;GB_Project.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GB_Project.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GB_Project.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LBL_desc.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="LBL_desc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LBL_desc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 44</value>
+  </data>
+  <data name="LBL_desc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 21</value>
+  </data>
+  <data name="LBL_desc.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="LBL_desc.Text" xml:space="preserve">
+    <value>Please, type in the new  description</value>
+  </data>
+  <data name="LBL_desc.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LBL_desc.Name" xml:space="preserve">
+    <value>LBL_desc</value>
+  </data>
+  <data name="&gt;&gt;LBL_desc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LBL_desc.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LBL_desc.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Description.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="Description.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 67</value>
+  </data>
+  <data name="Description.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="Description.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 13</value>
+  </data>
+  <data name="Description.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="Description.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Description.Name" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="&gt;&gt;Description.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Description.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Description.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>144, 144</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>594, 156</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>396, 180</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -253,6 +358,6 @@
     <value>FProjectName</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=7.0.0.22073, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.23172, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

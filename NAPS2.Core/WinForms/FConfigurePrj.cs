@@ -138,12 +138,14 @@ namespace NAPS2.WinForms
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            form.setFileName(imageSettingsContainer.ProjectConfigs[LB_ConfigList.SelectedIndex].Name); //The "old" filename will be set
+
+            form.setFileName(projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Name); //The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items[LB_ConfigList.SelectedIndex] = form.getFileName();
                 projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Name = form.getFileName();
+                projectConfigManager.Save();
             }
 
         }

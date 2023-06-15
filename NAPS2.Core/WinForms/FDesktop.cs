@@ -2686,6 +2686,7 @@ namespace NAPS2.WinForms
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             form.setFileName(projectName); // The "old" filename will be set
+            form.ShowProjects(true);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {

@@ -25,10 +25,18 @@ namespace NAPS2.WinForms
           
             InitializeComponent();
 
+            bool forceCSVName = true;
+            string tempstring = Path.GetExtension(ImageSettingsContainer.ProjectSettings.CSVFileName);
+
             projectName = ImageSettingsContainer.ProjectSettings.BatchName;
             tb_ExportPath.Text = ImageSettingsContainer.ProjectSettings.DefaultFileName;
             tb_CSVExpression.Text = ImageSettingsContainer.ProjectSettings.CSVExpression;
-            tb_exportFilename.Text = ImageSettingsContainer.ProjectSettings.CSVFileName;
+            
+            if (forceCSVName)
+                tb_exportFilename.Text = projectName+tempstring;
+            else
+                tb_exportFilename.Text = ImageSettingsContainer.ProjectSettings.CSVFileName;
+
             cb_CSVEnabler.Checked = ImageSettingsContainer.ProjectSettings.UseCSVExport;
         }
 
