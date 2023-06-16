@@ -741,9 +741,11 @@ namespace NAPS2.WinForms
                         }
                         if (SelectedIndices.Any() && !this.insert) // rescan will replace image only not add anything
                         {
+                            var origSide = imageList.Images[SelectedIndices.First()].SheetSide; //The face of the page on the sheet must be preserved
                             imageList.Delete(Enumerable.Range(SelectedIndices.First(), 1));
                             imageList.Images.Insert(SelectedIndices.First(), scannedImage);
                             scannedImage.MovedTo(SelectedIndices.First());
+                            scannedImage.SheetSide = origSide;
                             UpdateThumbnails(Enumerable.Range(SelectedIndices.First(),1), true,true);
                         } else
                         {
