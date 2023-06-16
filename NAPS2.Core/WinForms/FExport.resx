@@ -122,12 +122,15 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="tb_CSVExpression.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 89</value>
-  </data>
-  <data name="tb_CSVExpression.Size" type="System.Drawing.Size, System.Drawing">
-    <value>780, 30</value>
+    <value>16, 52</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tb_CSVExpression.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tb_CSVExpression.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 69</value>
+  </data>
   <data name="tb_CSVExpression.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -147,10 +150,10 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="btn_Expression.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 129</value>
+    <value>581, 104</value>
   </data>
   <data name="btn_Expression.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 57</value>
+    <value>104, 57</value>
   </data>
   <data name="btn_Expression.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -240,7 +243,7 @@
     <value>12, 246</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>814, 297</value>
+    <value>677, 297</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -271,7 +274,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="lbl_meta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>658, 58</value>
+    <value>643, 58</value>
   </data>
   <data name="lbl_meta.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -322,10 +325,10 @@
     <value>1</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 60</value>
+    <value>11, 21</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>506, 26</value>
+    <value>506, 30</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -349,13 +352,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="lbl_FilenameCSV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 205</value>
+    <value>12, 210</value>
   </data>
   <data name="lbl_FilenameCSV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
   <data name="lbl_FilenameCSV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 35</value>
+    <value>218, 30</value>
   </data>
   <data name="lbl_FilenameCSV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -381,8 +384,11 @@
   <data name="tb_exportFilename.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 243</value>
   </data>
+  <data name="tb_exportFilename.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="tb_exportFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>780, 30</value>
+    <value>655, 30</value>
   </data>
   <data name="tb_exportFilename.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -406,10 +412,10 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="cb_CSVEnabler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 211</value>
+    <value>12, 226</value>
   </data>
   <data name="cb_CSVEnabler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 32</value>
+    <value>173, 23</value>
   </data>
   <data name="cb_CSVEnabler.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -433,10 +439,13 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="tb_ExportPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 62</value>
+    <value>24, 38</value>
+  </data>
+  <data name="tb_ExportPath.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="tb_ExportPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 30</value>
+    <value>550, 60</value>
   </data>
   <data name="tb_ExportPath.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -463,10 +472,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 34</value>
+    <value>19, 10</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 28</value>
+    <value>37, 19</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -493,10 +502,10 @@
     <value>NoControl</value>
   </data>
   <data name="BTN_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>714, 589</value>
+    <value>618, 549</value>
   </data>
   <data name="BTN_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 57</value>
+    <value>70, 30</value>
   </data>
   <data name="BTN_OK.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -523,10 +532,10 @@
     <value>NoControl</value>
   </data>
   <data name="BTN_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 589</value>
+    <value>542, 549</value>
   </data>
   <data name="BTN_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 57</value>
+    <value>70, 30</value>
   </data>
   <data name="BTN_Cancel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -553,10 +562,10 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BTN_File.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 38</value>
+    <value>581, 38</value>
   </data>
   <data name="BTN_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 80</value>
+    <value>103, 60</value>
   </data>
   <data name="BTN_File.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -589,13 +598,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 107</value>
+    <value>23, 104</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 28</value>
+    <value>59, 19</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -619,13 +628,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="LBL_Exemple.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 129</value>
+    <value>20, 124</value>
   </data>
   <data name="LBL_Exemple.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
   <data name="LBL_Exemple.Size" type="System.Drawing.Size, System.Drawing">
-    <value>582, 78</value>
+    <value>554, 59</value>
   </data>
   <data name="LBL_Exemple.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -648,11 +657,8 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>838, 658</value>
+    <value>704, 591</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8pt</value>
@@ -667,6 +673,6 @@
     <value>FExport</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.36290, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.13500, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

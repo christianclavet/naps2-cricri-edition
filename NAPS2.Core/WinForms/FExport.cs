@@ -39,23 +39,6 @@ namespace NAPS2.WinForms
 
             cb_CSVEnabler.Checked = ImageSettingsContainer.ProjectSettings.UseCSVExport;
 
-            //in case there is no info
-            if (projectName == "")
-                projectName = FDesktop.projectName;
-
-            if (tb_CSVExpression.Text == "")
-                tb_CSVExpression.Text = "$(sheetside), $(barcode), $(filename)";
-
-            if (tb_ExportPath.Text == "")
-            {
-                tb_ExportPath.Text = "$(nnnnnnnn)";
-                filename = tb_ExportPath.Text;
-
-                tb_exportFilename.Text = projectName + ".csv";
-                
-            }
-
-
         }
 
         private void BTN_File_Click(object sender, EventArgs e)

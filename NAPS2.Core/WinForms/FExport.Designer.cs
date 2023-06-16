@@ -155,8 +155,9 @@
             // 
             this.AcceptButton = this.BTN_OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            resources.ApplyResources(this, "$this");
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.BTN_Cancel;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.LBL_Exemple);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_File);
@@ -167,6 +168,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tb_ExportPath);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FExport";
             this.ShowInTaskbar = false;
             this.groupBox1.ResumeLayout(false);

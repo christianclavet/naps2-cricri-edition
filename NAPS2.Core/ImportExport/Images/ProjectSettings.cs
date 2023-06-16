@@ -12,11 +12,11 @@ namespace NAPS2.ImportExport.Images
 
         public ProjectSettings()
         {
-            Name = string.Empty;
+            Name = "Default";
             Description = string.Empty;
-            DefaultFileName = string.Empty;
-            UseCSVExport = false;
-            CSVExpression = string.Empty;
+            DefaultFileName = "$(nnnnnnnn)";
+            UseCSVExport = true;
+            CSVExpression = "$(sheetside), $(barcode), $(filename) ";
             BatchName = string.Empty;
 
         }

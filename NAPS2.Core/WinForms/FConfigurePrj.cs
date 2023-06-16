@@ -163,5 +163,10 @@ namespace NAPS2.WinForms
 
 
         }
+
+        private void LBL_Name_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -144,6 +144,7 @@
             // 
             resources.ApplyResources(this.LBL_Name, "LBL_Name");
             this.LBL_Name.Name = "LBL_Name";
+            this.LBL_Name.Click += new System.EventHandler(this.LBL_Name_Click);
             // 
             // FConfigurePrj
             // 
@@ -158,9 +159,11 @@
             this.Controls.Add(this.BT_cancel);
             this.Controls.Add(this.BT_OK);
             this.Controls.Add(this.BT_chgProjectName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FConfigurePrj";
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

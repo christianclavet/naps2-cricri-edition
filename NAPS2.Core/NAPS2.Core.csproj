@@ -857,6 +857,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\FConfigurePrj.FR.resx">
+      <DependentUpon>FConfigurePrj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForms\FConfigurePrj.resx">
       <DependentUpon>FConfigurePrj.cs</DependentUpon>
     </EmbeddedResource>
@@ -6263,6 +6266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\wireless16.png" />
+    <None Include="Resources\export.png" />
     <None Include="Resources\DarkMode.png" />
     <None Include="Resources\barcodePetit.png" />
     <None Include="Resources\diskette.png" />
