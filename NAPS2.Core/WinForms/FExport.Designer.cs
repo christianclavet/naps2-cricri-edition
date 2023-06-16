@@ -154,8 +154,8 @@
             // FExport
             // 
             this.AcceptButton = this.BTN_OK;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BTN_Cancel;
             this.Controls.Add(this.LBL_Exemple);
             this.Controls.Add(this.label4);

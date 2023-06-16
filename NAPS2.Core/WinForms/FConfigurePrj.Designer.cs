@@ -38,7 +38,10 @@
             this.BT_Apply = new System.Windows.Forms.Button();
             this.BT_Remove = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BTN_Update = new System.Windows.Forms.Button();
             this.TB_Rename = new System.Windows.Forms.Button();
+            this.TB_ConfigName = new System.Windows.Forms.TextBox();
+            this.LBL_Name = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +106,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BTN_Update);
             this.groupBox1.Controls.Add(this.TB_Rename);
             this.groupBox1.Controls.Add(this.LB_ConfigList);
             this.groupBox1.Controls.Add(this.BT_Remove);
@@ -112,6 +116,13 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // BTN_Update
+            // 
+            resources.ApplyResources(this.BTN_Update, "BTN_Update");
+            this.BTN_Update.Name = "BTN_Update";
+            this.BTN_Update.UseVisualStyleBackColor = true;
+            this.BTN_Update.Click += new System.EventHandler(this.BTN_Update_Click);
+            // 
             // TB_Rename
             // 
             resources.ApplyResources(this.TB_Rename, "TB_Rename");
@@ -119,12 +130,29 @@
             this.TB_Rename.UseVisualStyleBackColor = true;
             this.TB_Rename.Click += new System.EventHandler(this.TB_Rename_Click);
             // 
+            // TB_ConfigName
+            // 
+            this.TB_ConfigName.AllowDrop = true;
+            this.TB_ConfigName.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.TB_ConfigName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.TB_ConfigName, "TB_ConfigName");
+            this.TB_ConfigName.ForeColor = System.Drawing.SystemColors.Info;
+            this.TB_ConfigName.Name = "TB_ConfigName";
+            this.TB_ConfigName.ReadOnly = true;
+            // 
+            // LBL_Name
+            // 
+            resources.ApplyResources(this.LBL_Name, "LBL_Name");
+            this.LBL_Name.Name = "LBL_Name";
+            // 
             // FConfigurePrj
             // 
             this.AcceptButton = this.BT_OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.BT_cancel;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.LBL_Name);
+            this.Controls.Add(this.TB_ConfigName);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BT_ExportConfig);
             this.Controls.Add(this.BT_cancel);
@@ -136,6 +164,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,5 +180,8 @@
         private System.Windows.Forms.Button BT_Remove;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button TB_Rename;
+        private System.Windows.Forms.Button BTN_Update;
+        private System.Windows.Forms.TextBox TB_ConfigName;
+        private System.Windows.Forms.Label LBL_Name;
     }
 }

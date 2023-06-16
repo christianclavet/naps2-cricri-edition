@@ -38,6 +38,24 @@ namespace NAPS2.WinForms
                 tb_exportFilename.Text = ImageSettingsContainer.ProjectSettings.CSVFileName;
 
             cb_CSVEnabler.Checked = ImageSettingsContainer.ProjectSettings.UseCSVExport;
+
+            //in case there is no info
+            if (projectName == "")
+                projectName = FDesktop.projectName;
+
+            if (tb_CSVExpression.Text == "")
+                tb_CSVExpression.Text = "$(sheetside), $(barcode), $(filename)";
+
+            if (tb_ExportPath.Text == "")
+            {
+                tb_ExportPath.Text = "$(nnnnnnnn)";
+                filename = tb_ExportPath.Text;
+
+                tb_exportFilename.Text = projectName + ".csv";
+                
+            }
+
+
         }
 
         private void BTN_File_Click(object sender, EventArgs e)
@@ -62,9 +80,6 @@ namespace NAPS2.WinForms
 
         private void tb_ExportPath_TextChanged(object sender, EventArgs e)
         {
-            if (projectName == null) 
-                return;
-            
             filename = tb_ExportPath.Text;
             var fileExample = fileNamePlaceholders.SubstitutePlaceholders(tb_ExportPath.Text, DateTime.Now, true);
             var file = Path.GetFileName(fileExample);
@@ -80,8 +95,6 @@ namespace NAPS2.WinForms
 
         private void tb_CSVExpression_TextChanged(object sender, EventArgs e)
         {
-            if (filename == null)
-                return;
 
             string text = tb_CSVExpression.Text.Replace("$(filename)", Path.GetFileName(fileNamePlaceholders.SubstitutePlaceholders(filename, DateTime.Now, true)));
             text = text.Replace("$(barcode)", "1234-5678");

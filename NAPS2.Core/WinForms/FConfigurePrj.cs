@@ -87,7 +87,7 @@ namespace NAPS2.WinForms
 
         private void LB_ConfigList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           TB_ConfigName.Text = ImageSettingsContainer.ProjectSettings.Name;
         }
 
         private void Bt_New_Click(object sender, EventArgs e)
@@ -147,6 +147,20 @@ namespace NAPS2.WinForms
                 projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Name = form.getFileName();
                 projectConfigManager.Save();
             }
+
+        }
+
+        private void BTN_Update_Click(object sender, EventArgs e)
+        {
+            var index = LB_ConfigList.SelectedIndex;
+            if (index < 0)
+                return;
+
+            string title = (string)LB_ConfigList.Items[index];
+            projectConfigManager.Settings[index] = ImageSettingsContainer.ProjectSettings.Clone();
+            projectConfigManager.Settings[index].Name = title;
+            projectConfigManager.Save();
+
 
         }
     }

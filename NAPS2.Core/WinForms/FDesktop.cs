@@ -2554,6 +2554,7 @@ namespace NAPS2.WinForms
                 // Status strip
                 statusStrip1.BackColor = Color.FromArgb(24, 24, 24);
                 // File menu
+                FileDm.BackColor = Color.FromArgb(24, 24, 24);
                 FileDm.DropDown.BackColor = Color.FromArgb(24, 24, 24);
                 FileDm.DropDown.ForeColor = Color.White;
                 // Scan menu

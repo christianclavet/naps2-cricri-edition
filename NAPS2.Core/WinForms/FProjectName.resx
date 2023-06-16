@@ -119,13 +119,17 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblPrompt_filename.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="lblPrompt_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 6</value>
+    <value>14, 9</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPrompt_filename.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="lblPrompt_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 21</value>
+    <value>558, 32</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblPrompt_filename.TabIndex" type="System.Int32, mscorlib">
@@ -146,11 +150,17 @@
   <data name="&gt;&gt;lblPrompt_filename.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="btnAccept.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnAccept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 138</value>
+    <value>396, 211</value>
+  </data>
+  <data name="btnAccept.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="btnAccept.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 31</value>
+    <value>180, 46</value>
   </data>
   <data name="btnAccept.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -170,11 +180,17 @@
   <data name="&gt;&gt;btnAccept.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 138</value>
+    <value>16, 211</value>
+  </data>
+  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 31</value>
+    <value>180, 46</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -195,17 +211,13 @@
     <value>4</value>
   </data>
   <data name="inputTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="inputTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 29</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="inputTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>16, 44</value>
   </data>
   <data name="inputTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 13</value>
+    <value>560, 24</value>
   </data>
   <data name="inputTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -226,10 +238,13 @@
     <value>3</value>
   </data>
   <data name="CB_ProjectType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>9, 28</value>
+  </data>
+  <data name="CB_ProjectType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="CB_ProjectType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 21</value>
+    <value>540, 33</value>
   </data>
   <data name="CB_ProjectType.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -246,11 +261,20 @@
   <data name="&gt;&gt;CB_ProjectType.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="GB_Project.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="GB_Project.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 85</value>
+    <value>16, 128</value>
+  </data>
+  <data name="GB_Project.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="GB_Project.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="GB_Project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 47</value>
+    <value>560, 70</value>
   </data>
   <data name="GB_Project.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -274,16 +298,19 @@
     <value>2</value>
   </data>
   <data name="LBL_desc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="LBL_desc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LBL_desc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 44</value>
+    <value>12, 66</value>
+  </data>
+  <data name="LBL_desc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="LBL_desc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 21</value>
+    <value>558, 32</value>
   </data>
   <data name="LBL_desc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -307,16 +334,13 @@
     <value>1</value>
   </data>
   <data name="Description.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Description.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 67</value>
-  </data>
-  <data name="Description.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>16, 100</value>
   </data>
   <data name="Description.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 13</value>
+    <value>560, 24</value>
   </data>
   <data name="Description.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -343,10 +367,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
+    <value>144, 144</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>396, 180</value>
+    <value>594, 270</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -358,6 +385,6 @@
     <value>FProjectName</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.23172, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.36290, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
