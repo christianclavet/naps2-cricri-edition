@@ -38,10 +38,10 @@
             this.BT_Apply = new System.Windows.Forms.Button();
             this.BT_Remove = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BTN_Update = new System.Windows.Forms.Button();
             this.TB_Rename = new System.Windows.Forms.Button();
             this.TB_ConfigName = new System.Windows.Forms.TextBox();
             this.LBL_Name = new System.Windows.Forms.Label();
-            this.BTN_Update = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,9 +69,10 @@
             // 
             // BT_ExportConfig
             // 
+            this.BT_ExportConfig.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.BT_ExportConfig, "BT_ExportConfig");
             this.BT_ExportConfig.Name = "BT_ExportConfig";
-            this.BT_ExportConfig.UseVisualStyleBackColor = true;
+            this.BT_ExportConfig.UseVisualStyleBackColor = false;
             this.BT_ExportConfig.Click += new System.EventHandler(this.bt_ExportConfig_Click);
             // 
             // LB_ConfigList
@@ -99,9 +100,10 @@
             // 
             // BT_Remove
             // 
+            this.BT_Remove.BackColor = System.Drawing.SystemColors.ControlLightLight;
             resources.ApplyResources(this.BT_Remove, "BT_Remove");
             this.BT_Remove.Name = "BT_Remove";
-            this.BT_Remove.UseVisualStyleBackColor = true;
+            this.BT_Remove.UseVisualStyleBackColor = false;
             this.BT_Remove.Click += new System.EventHandler(this.BT_Remove_Click);
             // 
             // groupBox1
@@ -115,6 +117,13 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // BTN_Update
+            // 
+            resources.ApplyResources(this.BTN_Update, "BTN_Update");
+            this.BTN_Update.Name = "BTN_Update";
+            this.BTN_Update.UseVisualStyleBackColor = true;
+            this.BTN_Update.Click += new System.EventHandler(this.BTN_Update_Click);
             // 
             // TB_Rename
             // 
@@ -137,13 +146,6 @@
             // 
             resources.ApplyResources(this.LBL_Name, "LBL_Name");
             this.LBL_Name.Name = "LBL_Name";
-            // 
-            // BTN_Update
-            // 
-            resources.ApplyResources(this.BTN_Update, "BTN_Update");
-            this.BTN_Update.Name = "BTN_Update";
-            this.BTN_Update.UseVisualStyleBackColor = true;
-            this.BTN_Update.Click += new System.EventHandler(this.BTN_Update_Click);
             // 
             // FConfigurePrj
             // 

@@ -310,7 +310,7 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_Apply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 282</value>
+    <value>290, 226</value>
   </data>
   <data name="BT_Apply.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -340,7 +340,7 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_Remove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 228</value>
+    <value>290, 279</value>
   </data>
   <data name="BT_Remove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -803,6 +803,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.28568, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.30498, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

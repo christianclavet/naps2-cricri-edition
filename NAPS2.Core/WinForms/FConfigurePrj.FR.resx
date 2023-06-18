@@ -120,6 +120,9 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Configuration des sorties de projet</value>
   </data>
+  <data name="BTN_Update.Text" xml:space="preserve">
+    <value>Mise à jours du réglage</value>
+  </data>
   <data name="BT_Apply.Text" xml:space="preserve">
     <value>Utiliser le réglage sélectionné</value>
   </data>
@@ -130,7 +133,7 @@
     <value>Changer le nom du lot</value>
   </data>
   <data name="BT_ExportConfig.Text" xml:space="preserve">
-    <value>Modifier les réglages actifs</value>
+    <value>Modifier le réglage actuel</value>
   </data>
   <data name="Bt_New.Text" xml:space="preserve">
     <value>Créer une nouvelle configuration</value>
@@ -145,7 +148,7 @@
     <value>Gestion des configuration d'exportation</value>
   </data>
   <data name="LBL_Name.Text" xml:space="preserve">
-    <value>Nom des réglages courant</value>
+    <value>Nom du réglage actuel</value>
   </data>
   <data name="TB_Rename.Text" xml:space="preserve">
     <value>Changer le nom du réglage</value>
