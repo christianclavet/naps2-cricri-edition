@@ -99,7 +99,7 @@ namespace NAPS2.WinForms
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
 
-            form.setFileName(ImageSettingsContainer.ProjectSettings.Name);
+            form.setFileName(imageSettingsContainer.Project_Settings.Name);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
