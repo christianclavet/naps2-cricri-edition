@@ -40,7 +40,7 @@ namespace NAPS2.Recovery
         {  // Save the project data from the data in the container.
             
             var recoveryIndexManager = new RecoveryIndexManager(RecoveryImage._recoveryFolder);
-            recoveryIndexManager.Index.ProjectSettings = ImageSettingsContainer.ProjectSettings;
+            recoveryIndexManager.Index.ProjectSettings = imageSettingsContainer.Project_Settings;
             recoveryIndexManager.Save();
         }
 
@@ -165,6 +165,9 @@ namespace NAPS2.Recovery
                 ImageSettingsContainer.ProjectSettings.DefaultFileName = recoveryIndexManager.Index.ProjectSettings.DefaultFileName;
                 ImageSettingsContainer.ProjectSettings.UseCSVExport = recoveryIndexManager.Index.ProjectSettings.UseCSVExport;
                 ImageSettingsContainer.ProjectSettings.CSVExpression = recoveryIndexManager.Index.ProjectSettings.CSVExpression;
+                ImageSettingsContainer.ProjectSettings.Name = recoveryIndexManager.Index.ProjectSettings.Name;
+
+                imageSettingsContainer.Project_Settings = ImageSettingsContainer.ProjectSettings;
 
                 foreach (RecoveryIndexImage indexImage in recoveryIndexManager.Index.Images)
                 {
