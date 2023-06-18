@@ -254,6 +254,8 @@ namespace NAPS2.WinForms
                 Name = imageSettingsContainer.Project_Settings.Name,
             };
 
+            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
+
             //Force the save prompt to be skipped
             imageSettingsContainer.ImageSettings = new ImageSettings
             {

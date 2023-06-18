@@ -122,6 +122,7 @@ namespace NAPS2.WinForms
             ImageSettingsContainer.ProjectSettings = savedConfig.Clone();
             imageSettingsContainer.Project_Settings = savedConfig.Clone();
             TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
+            projectConfigManager.Save();
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)
@@ -165,11 +166,11 @@ namespace NAPS2.WinForms
             if (index < 0)
                 return;
 
-            for (int i = 0; i < LB_ConfigList.Items.Count; i++)
+            /*for (int i = 0; i < LB_ConfigList.Items.Count; i++)
             {
                 if (LB_ConfigList.Items[i].ToString() == (string)imageSettingsContainer.Project_Settings.Name)
                     index = i;
-            }
+            }*/
 
             string title = (string)LB_ConfigList.Items[index];
             projectConfigManager.Settings[index] = imageSettingsContainer.Project_Settings.Clone();
@@ -179,9 +180,9 @@ namespace NAPS2.WinForms
 
         }
 
-        private void LBL_Name_Click(object sender, EventArgs e)
+        private void BTN_Update_Click(object sender, EventArgs e)
         {
-
+            UpdateConfig();
         }
     }
 }

@@ -274,7 +274,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;LB_ConfigList.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="Bt_New.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
@@ -304,7 +304,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;Bt_New.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="BT_Apply.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
@@ -334,7 +334,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BT_Apply.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="BT_Remove.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
@@ -364,7 +364,40 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;BT_Remove.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="BTN_Update.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="BTN_Update.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BTN_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 175</value>
+  </data>
+  <data name="BTN_Update.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="BTN_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 45</value>
+  </data>
+  <data name="BTN_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="BTN_Update.Text" xml:space="preserve">
+    <value>Update selected configuration</value>
+  </data>
+  <data name="&gt;&gt;BTN_Update.Name" xml:space="preserve">
+    <value>BTN_Update</value>
+  </data>
+  <data name="&gt;&gt;BTN_Update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BTN_Update.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;BTN_Update.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="TB_Rename.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
@@ -394,7 +427,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;TB_Rename.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -770,6 +803,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.28205, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.28568, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
