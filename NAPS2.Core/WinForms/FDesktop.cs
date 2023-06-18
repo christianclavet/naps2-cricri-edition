@@ -2552,13 +2552,17 @@ namespace NAPS2.WinForms
                 this.BackColor = Color.FromArgb(24, 24, 24);
                 this.ForeColor = Color.White;
 
-                // Don't like for the moment until it's all as true dark mode
-                /*
+               
+                
                 // Toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);               
                 tStrip.BackColor = Color.FromArgb(24, 24, 24);
+                
                 // Status strip
                 statusStrip1.BackColor = Color.FromArgb(24, 24, 24);
+
+                // Don't like for the moment until it's all as true dark mode
+                /*
                 // File menu
                 FileDm.BackColor = Color.FromArgb(24, 24, 24);
                 FileDm.DropDown.BackColor = Color.FromArgb(24, 24, 24);
