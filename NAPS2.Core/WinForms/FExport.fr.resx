@@ -127,7 +127,7 @@
     <value>Assistant chemin</value>
   </data>
   <data name="BTN_File.Text" xml:space="preserve">
-    <value>...</value>
+    <value>Parcourir</value>
   </data>
   <data name="cb_CSVEnabler.Text" xml:space="preserve">
     <value>Activer la sauvegarde des métadonnées CSV</value>

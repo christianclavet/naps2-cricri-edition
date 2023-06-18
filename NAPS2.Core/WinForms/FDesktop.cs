@@ -131,6 +131,7 @@ namespace NAPS2.WinForms
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+            ImageSettingsContainer.ProjectSettings = new ProjectSettings();
             if (ImageSettingsContainer.ProjectSettings.Name == "")
                 ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.BatchName;
 
