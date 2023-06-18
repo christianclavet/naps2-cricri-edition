@@ -2655,25 +2655,7 @@ namespace NAPS2.WinForms
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FConfigurePrj>();
-            if (ImageSettingsContainer.ProjectSettings.CSVExpression == null)
-            {
-                //Nothing is defined, use default values
-                ImageSettingsContainer.ProjectSettings = new ProjectSettings()
-                {
-                    BatchName = FDesktop.projectName,
-                    CSVFileName = projectName+".csv",
-                    CSVExpression = "Project, $(sheetside), $(barcode), $(filename)",
-                    UseCSVExport = true,
-                    DefaultFileName = "$(nnnnnnnn).jpg",
-                };
-
-            }
-            else
-            {
-                // There are some values, update only the project name
-                ImageSettingsContainer.ProjectSettings.BatchName = FDesktop.projectName;
-                
-            }
+            
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             if (form.ShowDialog() == DialogResult.OK)
             {

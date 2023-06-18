@@ -64,9 +64,10 @@
             // 
             // btn_Expression
             // 
+            this.btn_Expression.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.btn_Expression, "btn_Expression");
             this.btn_Expression.Name = "btn_Expression";
-            this.btn_Expression.UseVisualStyleBackColor = true;
+            this.btn_Expression.UseVisualStyleBackColor = false;
             this.btn_Expression.Click += new System.EventHandler(this.btn_Expression_Click);
             // 
             // groupBox1

@@ -122,17 +122,17 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_chgProjectName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 481</value>
+    <value>245, 270</value>
   </data>
   <data name="BT_chgProjectName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>208, 30</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BT_chgProjectName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="BT_chgProjectName.Text" xml:space="preserve">
-    <value>Change project name</value>
+    <value>Change batch name</value>
   </data>
   <data name="&gt;&gt;BT_chgProjectName.Name" xml:space="preserve">
     <value>BT_chgProjectName</value>
@@ -150,13 +150,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>634, 540</value>
+    <value>383, 306</value>
   </data>
   <data name="BT_OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 30</value>
   </data>
   <data name="BT_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="BT_OK.Text" xml:space="preserve">
     <value>OK</value>
@@ -181,13 +181,13 @@
     <value>NoControl</value>
   </data>
   <data name="BT_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>558, 540</value>
+    <value>307, 306</value>
   </data>
   <data name="BT_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 30</value>
   </data>
   <data name="BT_cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="BT_cancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -211,13 +211,13 @@
     <value>NoControl</value>
   </data>
   <data name="BT_ExportConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 445</value>
+    <value>12, 270</value>
   </data>
   <data name="BT_ExportConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>208, 30</value>
   </data>
   <data name="BT_ExportConfig.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="BT_ExportConfig.Text" xml:space="preserve">
     <value>Change active configuration</value>
@@ -244,10 +244,10 @@
     <value>15, 27</value>
   </data>
   <data name="LB_ConfigList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 361</value>
+    <value>172, 191</value>
   </data>
   <data name="LB_ConfigList.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;LB_ConfigList.Name" xml:space="preserve">
     <value>LB_ConfigList</value>
@@ -265,13 +265,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="Bt_New.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 19</value>
+    <value>193, 27</value>
   </data>
   <data name="Bt_New.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>226, 30</value>
   </data>
   <data name="Bt_New.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="Bt_New.Text" xml:space="preserve">
     <value>Create from active configuration</value>
@@ -292,13 +292,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_Apply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 358</value>
+    <value>193, 188</value>
   </data>
   <data name="BT_Apply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>226, 30</value>
   </data>
   <data name="BT_Apply.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="BT_Apply.Text" xml:space="preserve">
     <value>Apply to active</value>
@@ -319,13 +319,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_Remove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 127</value>
+    <value>193, 135</value>
   </data>
   <data name="BT_Remove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>226, 30</value>
   </data>
   <data name="BT_Remove.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="BT_Remove.Text" xml:space="preserve">
     <value>Remove selected configuration</value>
@@ -349,13 +349,13 @@
     <value>NoControl</value>
   </data>
   <data name="BTN_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 91</value>
+    <value>193, 99</value>
   </data>
   <data name="BTN_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>226, 30</value>
   </data>
   <data name="BTN_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="BTN_Update.Text" xml:space="preserve">
     <value>Update selected configuration</value>
@@ -376,13 +376,13 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="TB_Rename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 55</value>
+    <value>193, 63</value>
   </data>
   <data name="TB_Rename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 30</value>
+    <value>226, 30</value>
   </data>
   <data name="TB_Rename.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="TB_Rename.Text" xml:space="preserve">
     <value>Change configuration name</value>
@@ -403,10 +403,10 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>12, 34</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>692, 416</value>
+    <value>439, 230</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -430,10 +430,10 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="TB_ConfigName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 481</value>
+    <value>252, 8</value>
   </data>
   <data name="TB_ConfigName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 25</value>
+    <value>198, 25</value>
   </data>
   <data name="TB_ConfigName.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -460,7 +460,7 @@
     <value>NoControl</value>
   </data>
   <data name="LBL_Name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 454</value>
+    <value>18, 12</value>
   </data>
   <data name="LBL_Name.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 15</value>
@@ -487,7 +487,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>716, 582</value>
+    <value>465, 348</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -755,6 +755,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.13255, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.20861, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

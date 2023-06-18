@@ -23,6 +23,7 @@ using System.Drawing.Drawing2D;
 using System.Diagnostics.PerformanceData;
 using System.Collections;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace NAPS2.WinForms
 {
@@ -30,21 +31,19 @@ namespace NAPS2.WinForms
     {
         
         private readonly FDesktop fdesktop;
-        private readonly ImageSettingsContainer imageSettingsContainer;
         private readonly RecoveryManager recoveryManager;
         private readonly ProjectConfigManager projectConfigManager;
         private List<ProjectSettings> settingList;
 
-        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager)
+        public FConfigurePrj(FDesktop fdesktop, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager)
         {
             this.fdesktop = fdesktop;
-            this.imageSettingsContainer = imageSettingsContainer;
             this.recoveryManager = recoveryManager;
             this.projectConfigManager = projectConfigManager;
            
             InitializeComponent();
             settingList = projectConfigManager.Settings;
-           
+
             if (settingList != null ) 
             { 
                 foreach (var value in settingList)
@@ -56,6 +55,7 @@ namespace NAPS2.WinForms
 
         private void bt_chgProjectName_Click(object sender, EventArgs e)
         {
+            //rename the current batch
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             form.setFileName(FDesktop.projectName); // The "old" filename will be set
@@ -72,13 +72,10 @@ namespace NAPS2.WinForms
 
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
-            var form = FormFactory.Create<FExport>();
-                       
-                
-               
+            var form = FormFactory.Create<FExport>();                
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-
-            if (form.ShowDialog() == DialogResult.OK)
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
                 projectConfigManager.Save();
                 
@@ -93,17 +90,15 @@ namespace NAPS2.WinForms
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
-            var activeConf = ImageSettingsContainer.ProjectSettings.Clone();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
-                activeConf.Name = form.getFileName();
-                var toSave = activeConf.Clone();
-                toSave.BatchName = "";
-                projectConfigManager.Settings.Add(toSave);
+                ImageSettingsContainer.ProjectSettings.Name = form.getFileName();
+                ImageSettingsContainer.ProjectSettings.BatchName = "";
+                projectConfigManager.Settings.Add(ImageSettingsContainer.ProjectSettings.Clone());
                 projectConfigManager.Save();
             }
         }
