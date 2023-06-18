@@ -108,6 +108,7 @@ namespace NAPS2.WinForms
             var savedConfig = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
             savedConfig.BatchName = FDesktop.projectName;
             ImageSettingsContainer.ProjectSettings = savedConfig.Clone();
+            TB_ConfigName.Text = ImageSettingsContainer.ProjectSettings.Name;
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)
