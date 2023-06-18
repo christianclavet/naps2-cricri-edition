@@ -23,6 +23,8 @@ namespace NAPS2.WinForms
             this.imageSettingsContainer = imageSettingsContainer;
             this.dialogHelper = dialogHelper;
 
+            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
+
             InitializeComponent();
 
             //Set values in the GUI
@@ -242,6 +244,15 @@ namespace NAPS2.WinForms
         private void BTN_Export_Click(object sender, EventArgs e)
         {
             ImageSettingsContainer.ProjectSettings = new ProjectSettings
+            {
+                DefaultFileName = final_filename,
+                CSVExpression = tb_CSVExpression.Text,
+                CSVFileName = tb_exportFilename.Text,
+                UseCSVExport = cb_CSVEnabler.Checked,
+                BatchName = this.projectName,
+            };
+
+            imageSettingsContainer.Project_Settings = new ProjectSettings
             {
                 DefaultFileName = final_filename,
                 CSVExpression = tb_CSVExpression.Text,

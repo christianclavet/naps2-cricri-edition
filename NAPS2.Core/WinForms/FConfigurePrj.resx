@@ -274,7 +274,7 @@
     <value>3</value>
   </data>
   <data name="Bt_New.Text" xml:space="preserve">
-    <value>Create from active configuration</value>
+    <value>Create new configuration</value>
   </data>
   <data name="&gt;&gt;Bt_New.Name" xml:space="preserve">
     <value>Bt_New</value>
@@ -319,7 +319,7 @@
     <value>Segoe UI, 10pt</value>
   </data>
   <data name="BT_Remove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 135</value>
+    <value>193, 152</value>
   </data>
   <data name="BT_Remove.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 30</value>
@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="BTN_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 99</value>
+    <value>193, 116</value>
   </data>
   <data name="BTN_Update.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 30</value>
@@ -486,6 +486,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>465, 348</value>
   </data>
@@ -755,6 +758,6 @@
     <value>FConfigurePrj</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.20861, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.25461, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

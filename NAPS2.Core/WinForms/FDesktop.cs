@@ -2551,6 +2551,9 @@ namespace NAPS2.WinForms
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = Color.FromArgb(24, 24, 24);
                 this.ForeColor = Color.White;
+
+                // Don't like for the moment until it's all as true dark mode
+                /*
                 // Toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);               
                 tStrip.BackColor = Color.FromArgb(24, 24, 24);
@@ -2574,7 +2577,7 @@ namespace NAPS2.WinForms
                 tsdRotate.DropDown.ForeColor = Color.White;
                 // Reorder menu
                 tsdReorder.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsdReorder.DropDown.ForeColor = Color.White;
+                tsdReorder.DropDown.ForeColor = Color.White;*/
             }
             else
             {
@@ -2660,6 +2663,7 @@ namespace NAPS2.WinForms
             if (form.ShowDialog() == DialogResult.OK)
             {
                 recoveryManager.Save();
+                imageSettingsContainer.Project_Settings = ImageSettingsContainer.ProjectSettings.Clone();
             }
             UpdateToolbar();
 

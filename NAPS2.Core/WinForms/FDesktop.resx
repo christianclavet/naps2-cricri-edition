@@ -355,7 +355,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.1.23819, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.1.25461, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -397,7 +397,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.1.23819, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.1.25461, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -508,13 +508,13 @@
     <value>Magenta</value>
   </data>
   <data name="tsPrjNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsPrjNew.Text" xml:space="preserve">
     <value>Create new batch</value>
   </data>
   <data name="loadProjectTool_TSMI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="loadProjectTool_TSMI.Text" xml:space="preserve">
     <value>Load saved batch</value>
@@ -523,7 +523,7 @@
     <value>ImageAboveText</value>
   </data>
   <data name="TS_PrjConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="TS_PrjConfig.Text" xml:space="preserve">
     <value>Project configuration</value>
@@ -561,19 +561,19 @@
 </value>
   </data>
   <data name="closeCurrentProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="closeCurrentProject.Text" xml:space="preserve">
     <value>Close and save current batch</value>
   </data>
   <data name="TS_SavePrj.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="TS_SavePrj.Text" xml:space="preserve">
     <value>Save batch infos</value>
   </data>
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+    <value>242, 6</value>
   </data>
   <data name="tsSavePDFAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -609,7 +609,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsdSavePDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsdSavePDF.Text" xml:space="preserve">
     <value>Save PDF</value>
@@ -651,7 +651,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsdSaveImages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsdSaveImages.Text" xml:space="preserve">
     <value>Save Images</value>
@@ -690,7 +690,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsdEmailPDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsdEmailPDF.Text" xml:space="preserve">
     <value>Email PDF</value>
@@ -699,13 +699,13 @@
     <value>ImageAboveText</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+    <value>242, 6</value>
   </data>
   <data name="tsImport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 36</value>
+    <value>265, 20</value>
   </data>
   <data name="tsImport.Text" xml:space="preserve">
     <value>Import</value>
@@ -714,13 +714,13 @@
     <value>ImageAboveText</value>
   </data>
   <data name="tsExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsExport.Text" xml:space="preserve">
     <value>Export Images and data</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+    <value>242, 6</value>
   </data>
   <data name="TSI_ToggleDarkMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 38</value>
@@ -780,7 +780,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsTools.Text" xml:space="preserve">
     <value>Settings and tools</value>
@@ -789,10 +789,10 @@
     <value>ImageAboveText</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
+    <value>242, 6</value>
   </data>
   <data name="tsAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 38</value>
+    <value>245, 22</value>
   </data>
   <data name="tsAbout.Text" xml:space="preserve">
     <value>About</value>
@@ -822,16 +822,16 @@
     <value>6, 56</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 6</value>
+    <value>141, 6</value>
   </data>
   <data name="tsNewProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>144, 22</value>
   </data>
   <data name="tsNewProfile.Text" xml:space="preserve">
     <value>&amp;New profile</value>
   </data>
   <data name="tsProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>144, 22</value>
   </data>
   <data name="tsProfiles.Text" xml:space="preserve">
     <value>Pro&amp;files</value>
@@ -855,7 +855,7 @@
     <value>None</value>
   </data>
   <data name="tsBatchScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="tsBatchScan.Text" xml:space="preserve">
     <value>&amp;Batch Scan</value>
@@ -1028,7 +1028,7 @@
     <value>None</value>
   </data>
   <data name="tsRotateLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>189, 38</value>
   </data>
   <data name="tsRotateLeft.Text" xml:space="preserve">
     <value>Rotate &amp;Left</value>
@@ -1040,7 +1040,7 @@
     <value>None</value>
   </data>
   <data name="tsRotateRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>189, 38</value>
   </data>
   <data name="tsRotateRight.Text" xml:space="preserve">
     <value>Rotate &amp;Right</value>
@@ -1052,7 +1052,7 @@
     <value>None</value>
   </data>
   <data name="tsFlip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>189, 38</value>
   </data>
   <data name="tsFlip.Text" xml:space="preserve">
     <value>&amp;Flip</value>
@@ -1064,7 +1064,7 @@
     <value>None</value>
   </data>
   <data name="tsDeskew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>189, 38</value>
   </data>
   <data name="tsDeskew.Text" xml:space="preserve">
     <value>&amp;Deskew</value>
@@ -1073,7 +1073,7 @@
     <value>Deskew the image</value>
   </data>
   <data name="tsCustomRotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>189, 38</value>
   </data>
   <data name="tsCustomRotation.Text" xml:space="preserve">
     <value>&amp;Custom Rotation</value>
@@ -1294,6 +1294,9 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>111</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1098, 685</value>
   </data>
@@ -1850,6 +1853,6 @@
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.23819, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.1.25461, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

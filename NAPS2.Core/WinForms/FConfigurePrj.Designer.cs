@@ -149,9 +149,9 @@
             // FConfigurePrj
             // 
             this.AcceptButton = this.BT_OK;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.CancelButton = this.BT_cancel;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.CancelButton = this.BT_cancel;
             this.Controls.Add(this.LBL_Name);
             this.Controls.Add(this.TB_ConfigName);
             this.Controls.Add(this.groupBox1);
@@ -159,7 +159,7 @@
             this.Controls.Add(this.BT_cancel);
             this.Controls.Add(this.BT_OK);
             this.Controls.Add(this.BT_chgProjectName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FConfigurePrj";

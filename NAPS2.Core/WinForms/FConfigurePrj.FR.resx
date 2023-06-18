@@ -136,7 +136,7 @@
     <value>Modifier les réglages actifs</value>
   </data>
   <data name="Bt_New.Text" xml:space="preserve">
-    <value>Créer à partir des réglages actuel</value>
+    <value>Créer une nouvelle configuration</value>
   </data>
   <data name="BT_OK.Text" xml:space="preserve">
     <value>OK</value>

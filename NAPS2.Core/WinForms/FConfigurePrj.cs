@@ -33,16 +33,19 @@ namespace NAPS2.WinForms
         private readonly FDesktop fdesktop;
         private readonly RecoveryManager recoveryManager;
         private readonly ProjectConfigManager projectConfigManager;
+        private readonly ImageSettingsContainer imageSettingsContainer;
         private List<ProjectSettings> settingList;
 
-        public FConfigurePrj(FDesktop fdesktop, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager)
+        public FConfigurePrj(FDesktop fdesktop, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager, ImageSettingsContainer imageSettingsContainer)
         {
             this.fdesktop = fdesktop;
             this.recoveryManager = recoveryManager;
             this.projectConfigManager = projectConfigManager;
+            this.imageSettingsContainer = imageSettingsContainer;
            
             InitializeComponent();
             settingList = projectConfigManager.Settings;
+            TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
 
             if (settingList != null ) 
             { 
@@ -64,6 +67,7 @@ namespace NAPS2.WinForms
             {
                 FDesktop.projectName = form.getFileName();
                 ImageSettingsContainer.ProjectSettings.BatchName = form.getFileName();
+                imageSettingsContainer.Project_Settings.BatchName = form.getFileName();
                    
                 recoveryManager.Save();
             }
@@ -78,28 +82,34 @@ namespace NAPS2.WinForms
             if (form.DialogResult == DialogResult.OK)
             {
                 projectConfigManager.Save();
+                ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
                 
             }
         }
 
         private void LB_ConfigList_SelectedIndexChanged(object sender, EventArgs e)
         {
-           TB_ConfigName.Text = ImageSettingsContainer.ProjectSettings.Name;
+           TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
         }
 
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            
+
+            form.setFileName(ImageSettingsContainer.ProjectSettings.Name);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
-                ImageSettingsContainer.ProjectSettings.Name = form.getFileName();
-                ImageSettingsContainer.ProjectSettings.BatchName = "";
-                projectConfigManager.Settings.Add(ImageSettingsContainer.ProjectSettings.Clone());
+
+                var currentConfig = imageSettingsContainer.Project_Settings;
+                currentConfig.Name = form.getFileName();
+                currentConfig.BatchName = "";
+                projectConfigManager.Settings.Add(currentConfig.Clone());
                 projectConfigManager.Save();
+
+                TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
             }
         }
 
@@ -108,7 +118,8 @@ namespace NAPS2.WinForms
             var savedConfig = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
             savedConfig.BatchName = FDesktop.projectName;
             ImageSettingsContainer.ProjectSettings = savedConfig.Clone();
-            TB_ConfigName.Text = ImageSettingsContainer.ProjectSettings.Name;
+            imageSettingsContainer.Project_Settings = savedConfig.Clone();
+            TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)

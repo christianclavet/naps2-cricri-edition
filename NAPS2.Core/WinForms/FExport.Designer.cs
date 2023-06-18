@@ -218,16 +218,16 @@
             // FExport
             // 
             this.AcceptButton = this.BTN_OK;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.BTN_Cancel;
-            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_OK);
             this.Controls.Add(this.cb_CSVEnabler);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FExport";
             this.ShowInTaskbar = false;
             this.groupBox1.ResumeLayout(false);
