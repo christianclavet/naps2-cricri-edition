@@ -120,11 +120,8 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Configuration des sorties de projet</value>
   </data>
-  <data name="BTN_Update.Text" xml:space="preserve">
-    <value>Met à jour les réglages</value>
-  </data>
   <data name="BT_Apply.Text" xml:space="preserve">
-    <value>Appliquer sur la configuration</value>
+    <value>Utiliser le réglage sélectionné</value>
   </data>
   <data name="BT_cancel.Text" xml:space="preserve">
     <value>Annuler</value>

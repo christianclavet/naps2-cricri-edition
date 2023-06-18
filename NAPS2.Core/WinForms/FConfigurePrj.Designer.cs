@@ -38,7 +38,6 @@
             this.BT_Apply = new System.Windows.Forms.Button();
             this.BT_Remove = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTN_Update = new System.Windows.Forms.Button();
             this.TB_Rename = new System.Windows.Forms.Button();
             this.TB_ConfigName = new System.Windows.Forms.TextBox();
             this.LBL_Name = new System.Windows.Forms.Label();
@@ -106,7 +105,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTN_Update);
             this.groupBox1.Controls.Add(this.TB_Rename);
             this.groupBox1.Controls.Add(this.LB_ConfigList);
             this.groupBox1.Controls.Add(this.BT_Remove);
@@ -115,13 +113,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // BTN_Update
-            // 
-            resources.ApplyResources(this.BTN_Update, "BTN_Update");
-            this.BTN_Update.Name = "BTN_Update";
-            this.BTN_Update.UseVisualStyleBackColor = true;
-            this.BTN_Update.Click += new System.EventHandler(this.BTN_Update_Click);
             // 
             // TB_Rename
             // 
@@ -183,7 +174,6 @@
         private System.Windows.Forms.Button BT_Remove;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button TB_Rename;
-        private System.Windows.Forms.Button BTN_Update;
         private System.Windows.Forms.TextBox TB_ConfigName;
         private System.Windows.Forms.Label LBL_Name;
     }

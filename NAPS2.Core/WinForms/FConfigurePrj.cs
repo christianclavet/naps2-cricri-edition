@@ -45,6 +45,7 @@ namespace NAPS2.WinForms
            
             InitializeComponent();
             settingList = projectConfigManager.Settings;
+            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
             TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
 
             if (settingList != null ) 
@@ -81,6 +82,7 @@ namespace NAPS2.WinForms
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
+                UpdateConfig();
                 projectConfigManager.Save();
                 ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
                 
@@ -157,14 +159,20 @@ namespace NAPS2.WinForms
 
         }
 
-        private void BTN_Update_Click(object sender, EventArgs e)
+        private void UpdateConfig()
         {
             var index = LB_ConfigList.SelectedIndex;
             if (index < 0)
                 return;
 
+            for (int i = 0; i < LB_ConfigList.Items.Count; i++)
+            {
+                if (LB_ConfigList.Items[i].ToString() == (string)imageSettingsContainer.Project_Settings.Name)
+                    index = i;
+            }
+
             string title = (string)LB_ConfigList.Items[index];
-            projectConfigManager.Settings[index] = ImageSettingsContainer.ProjectSettings.Clone();
+            projectConfigManager.Settings[index] = imageSettingsContainer.Project_Settings.Clone();
             projectConfigManager.Settings[index].Name = title;
             projectConfigManager.Save();
 
