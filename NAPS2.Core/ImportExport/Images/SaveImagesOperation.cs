@@ -74,10 +74,13 @@ namespace NAPS2.ImportExport.Images
                             // Don't write the header again.
                             HasHeaderRecord = false,
                         };
+
+                        var name = ImageSettingsContainer.ProjectSettings.CSVFileName;
+                        name = ImageSettingsContainer.ProjectSettings.BatchName + Path.GetExtension(name);
                         // Create a new folder, in the path using the project name and put  the file there
                         Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName));
                         path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName);
-                        path = Path.Combine(path, ImageSettingsContainer.ProjectSettings.CSVFileName);
+                        path = Path.Combine(path, name);
 
                         //Create the CSV file
                         using (var writer = new StreamWriter(path)) 
