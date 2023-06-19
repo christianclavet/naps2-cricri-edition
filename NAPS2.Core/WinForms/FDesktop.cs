@@ -2492,7 +2492,9 @@ namespace NAPS2.WinForms
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
 
+                    recoveryManager.recoveryActive(true);
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+                    recoveryManager.recoveryActive(false);
                     //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     projectName = di.Name;
                     UpdateToolbar();
