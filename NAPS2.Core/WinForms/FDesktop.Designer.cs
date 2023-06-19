@@ -358,8 +358,8 @@ namespace NAPS2.WinForms
             this.tsTools,
             this.toolStripSeparator17,
             this.tsAbout});
-            this.FileDm.Image = global::NAPS2.Icons.folder_picture;
             resources.ApplyResources(this.FileDm, "FileDm");
+            this.FileDm.Image = global::NAPS2.Icons.folder_picture;
             this.FileDm.Name = "FileDm";
             // 
             // tsPrjNew
@@ -616,8 +616,8 @@ namespace NAPS2.WinForms
             this.toolStripSeparator13,
             this.tsNewProfile,
             this.tsProfiles});
-            this.tsCombo_Profiles.Image = global::NAPS2.Icons.accept;
             resources.ApplyResources(this.tsCombo_Profiles, "tsCombo_Profiles");
+            this.tsCombo_Profiles.Image = global::NAPS2.Icons.accept;
             this.tsCombo_Profiles.Name = "tsCombo_Profiles";
             // 
             // toolStripSeparator13
@@ -644,8 +644,8 @@ namespace NAPS2.WinForms
             this.tsScan.AutoToolTip = false;
             this.tsScan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsBatchScan});
-            this.tsScan.Image = global::NAPS2.Icons.control_play_blue;
             resources.ApplyResources(this.tsScan, "tsScan");
+            this.tsScan.Image = global::NAPS2.Icons.control_play_blue;
             this.tsScan.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.tsScan.Name = "tsScan";
             this.tsScan.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
@@ -683,8 +683,8 @@ namespace NAPS2.WinForms
             this.tsSharpen,
             this.toolStripSeparator7,
             this.tsReset});
-            this.tsdImage.Image = global::NAPS2.Icons.picture_edit;
             resources.ApplyResources(this.tsdImage, "tsdImage");
+            this.tsdImage.Image = global::NAPS2.Icons.picture_edit;
             this.tsdImage.Name = "tsdImage";
             this.tsdImage.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             // 
@@ -767,8 +767,8 @@ namespace NAPS2.WinForms
             this.tsFlip,
             this.tsDeskew,
             this.tsCustomRotation});
-            this.tsdRotate.Image = global::NAPS2.Icons.arrow_rotate_anticlockwise;
             resources.ApplyResources(this.tsdRotate, "tsdRotate");
+            this.tsdRotate.Image = global::NAPS2.Icons.arrow_rotate_anticlockwise;
             this.tsdRotate.Name = "tsdRotate";
             this.tsdRotate.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             // 
@@ -817,8 +817,8 @@ namespace NAPS2.WinForms
             this.tsAltDeinterleave,
             this.toolStripSeparator1,
             this.tsReverse});
-            this.tsdReorder.Image = global::NAPS2.Icons.arrow_refresh;
             resources.ApplyResources(this.tsdReorder, "tsdReorder");
+            this.tsdReorder.Image = global::NAPS2.Icons.arrow_refresh;
             this.tsdReorder.Name = "tsdReorder";
             this.tsdReorder.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tsdReorder.ShowDropDownArrow = false;
@@ -884,8 +884,8 @@ namespace NAPS2.WinForms
             // 
             // tsDelete
             // 
-            this.tsDelete.Image = global::NAPS2.Icons.cross;
             resources.ApplyResources(this.tsDelete, "tsDelete");
+            this.tsDelete.Image = global::NAPS2.Icons.cross;
             this.tsDelete.Name = "tsDelete";
             this.tsDelete.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
@@ -930,8 +930,8 @@ namespace NAPS2.WinForms
             // 
             // FDesktop
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Name = "FDesktop";

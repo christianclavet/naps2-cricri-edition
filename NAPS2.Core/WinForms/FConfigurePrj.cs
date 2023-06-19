@@ -23,6 +23,7 @@ using System.Drawing.Drawing2D;
 using System.Diagnostics.PerformanceData;
 using System.Collections;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace NAPS2.WinForms
 {
@@ -30,21 +31,23 @@ namespace NAPS2.WinForms
     {
         
         private readonly FDesktop fdesktop;
-        private readonly ImageSettingsContainer imageSettingsContainer;
         private readonly RecoveryManager recoveryManager;
         private readonly ProjectConfigManager projectConfigManager;
+        private readonly ImageSettingsContainer imageSettingsContainer;
         private List<ProjectSettings> settingList;
 
-        public FConfigurePrj(FDesktop fdesktop, ImageSettingsContainer imageSettingsContainer, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager)
+        public FConfigurePrj(FDesktop fdesktop, RecoveryManager recoveryManager, ProjectConfigManager projectConfigManager, ImageSettingsContainer imageSettingsContainer)
         {
             this.fdesktop = fdesktop;
-            this.imageSettingsContainer = imageSettingsContainer;
             this.recoveryManager = recoveryManager;
             this.projectConfigManager = projectConfigManager;
+            this.imageSettingsContainer = imageSettingsContainer;
            
             InitializeComponent();
             settingList = projectConfigManager.Settings;
-           
+            ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
+            TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
+
             if (settingList != null ) 
             { 
                 foreach (var value in settingList)
@@ -56,6 +59,7 @@ namespace NAPS2.WinForms
 
         private void bt_chgProjectName_Click(object sender, EventArgs e)
         {
+            //rename the current batch
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
             form.setFileName(FDesktop.projectName); // The "old" filename will be set
@@ -64,6 +68,7 @@ namespace NAPS2.WinForms
             {
                 FDesktop.projectName = form.getFileName();
                 ImageSettingsContainer.ProjectSettings.BatchName = form.getFileName();
+                imageSettingsContainer.Project_Settings.BatchName = form.getFileName();
                    
                 recoveryManager.Save();
             }
@@ -72,39 +77,41 @@ namespace NAPS2.WinForms
 
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
-            var form = FormFactory.Create<FExport>();
-                       
-                
-               
+            var form = FormFactory.Create<FExport>();                
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-
-            if (form.ShowDialog() == DialogResult.OK)
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
+                UpdateConfig();
                 projectConfigManager.Save();
+                ImageSettingsContainer.ProjectSettings = imageSettingsContainer.Project_Settings.Clone();
                 
             }
         }
 
         private void LB_ConfigList_SelectedIndexChanged(object sender, EventArgs e)
         {
-           TB_ConfigName.Text = ImageSettingsContainer.ProjectSettings.Name;
+           TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
         }
 
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
-            var activeConf = ImageSettingsContainer.ProjectSettings.Clone();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
-            
+
+            form.setFileName(imageSettingsContainer.Project_Settings.Name);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
                 LB_ConfigList.Items.Add(new ListViewItem().Name = form.getFileName());
-                activeConf.Name = form.getFileName();
-                var toSave = activeConf.Clone();
-                toSave.BatchName = "";
-                projectConfigManager.Settings.Add(toSave);
+
+                var currentConfig = imageSettingsContainer.Project_Settings;
+                currentConfig.Name = form.getFileName();
+                currentConfig.BatchName = "";
+                projectConfigManager.Settings.Add(currentConfig.Clone());
                 projectConfigManager.Save();
+
+                TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
             }
         }
 
@@ -113,6 +120,9 @@ namespace NAPS2.WinForms
             var savedConfig = projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Clone();
             savedConfig.BatchName = FDesktop.projectName;
             ImageSettingsContainer.ProjectSettings = savedConfig.Clone();
+            imageSettingsContainer.Project_Settings = savedConfig.Clone();
+            TB_ConfigName.Text = imageSettingsContainer.Project_Settings.Name;
+            projectConfigManager.Save();
         }
 
         private void BT_Remove_Click(object sender, EventArgs e)
@@ -150,23 +160,29 @@ namespace NAPS2.WinForms
 
         }
 
-        private void BTN_Update_Click(object sender, EventArgs e)
+        private void UpdateConfig()
         {
             var index = LB_ConfigList.SelectedIndex;
             if (index < 0)
                 return;
 
+            /*for (int i = 0; i < LB_ConfigList.Items.Count; i++)
+            {
+                if (LB_ConfigList.Items[i].ToString() == (string)imageSettingsContainer.Project_Settings.Name)
+                    index = i;
+            }*/
+
             string title = (string)LB_ConfigList.Items[index];
-            projectConfigManager.Settings[index] = ImageSettingsContainer.ProjectSettings.Clone();
+            projectConfigManager.Settings[index] = imageSettingsContainer.Project_Settings.Clone();
             projectConfigManager.Settings[index].Name = title;
             projectConfigManager.Save();
 
 
         }
 
-        private void LBL_Name_Click(object sender, EventArgs e)
+        private void BTN_Update_Click(object sender, EventArgs e)
         {
-
+            UpdateConfig();
         }
     }
 }

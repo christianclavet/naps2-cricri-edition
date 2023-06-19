@@ -69,9 +69,10 @@
             // 
             // BT_ExportConfig
             // 
+            this.BT_ExportConfig.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.BT_ExportConfig, "BT_ExportConfig");
             this.BT_ExportConfig.Name = "BT_ExportConfig";
-            this.BT_ExportConfig.UseVisualStyleBackColor = true;
+            this.BT_ExportConfig.UseVisualStyleBackColor = false;
             this.BT_ExportConfig.Click += new System.EventHandler(this.bt_ExportConfig_Click);
             // 
             // LB_ConfigList
@@ -99,9 +100,10 @@
             // 
             // BT_Remove
             // 
+            this.BT_Remove.BackColor = System.Drawing.SystemColors.ControlLightLight;
             resources.ApplyResources(this.BT_Remove, "BT_Remove");
             this.BT_Remove.Name = "BT_Remove";
-            this.BT_Remove.UseVisualStyleBackColor = true;
+            this.BT_Remove.UseVisualStyleBackColor = false;
             this.BT_Remove.Click += new System.EventHandler(this.BT_Remove_Click);
             // 
             // groupBox1
@@ -144,14 +146,13 @@
             // 
             resources.ApplyResources(this.LBL_Name, "LBL_Name");
             this.LBL_Name.Name = "LBL_Name";
-            this.LBL_Name.Click += new System.EventHandler(this.LBL_Name_Click);
             // 
             // FConfigurePrj
             // 
             this.AcceptButton = this.BT_OK;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.CancelButton = this.BT_cancel;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.CancelButton = this.BT_cancel;
             this.Controls.Add(this.LBL_Name);
             this.Controls.Add(this.TB_ConfigName);
             this.Controls.Add(this.groupBox1);
@@ -159,7 +160,7 @@
             this.Controls.Add(this.BT_cancel);
             this.Controls.Add(this.BT_OK);
             this.Controls.Add(this.BT_chgProjectName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FConfigurePrj";
@@ -183,8 +184,8 @@
         private System.Windows.Forms.Button BT_Remove;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button TB_Rename;
-        private System.Windows.Forms.Button BTN_Update;
         private System.Windows.Forms.TextBox TB_ConfigName;
         private System.Windows.Forms.Label LBL_Name;
+        private System.Windows.Forms.Button BTN_Update;
     }
 }

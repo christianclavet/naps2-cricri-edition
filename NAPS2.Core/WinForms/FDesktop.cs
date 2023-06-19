@@ -131,6 +131,7 @@ namespace NAPS2.WinForms
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+            ImageSettingsContainer.ProjectSettings = new ProjectSettings();
             if (ImageSettingsContainer.ProjectSettings.Name == "")
                 ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.BatchName;
 
@@ -741,9 +742,11 @@ namespace NAPS2.WinForms
                         }
                         if (SelectedIndices.Any() && !this.insert) // rescan will replace image only not add anything
                         {
+                            var origSide = imageList.Images[SelectedIndices.First()].SheetSide; //The face of the page on the sheet must be preserved
                             imageList.Delete(Enumerable.Range(SelectedIndices.First(), 1));
                             imageList.Images.Insert(SelectedIndices.First(), scannedImage);
                             scannedImage.MovedTo(SelectedIndices.First());
+                            scannedImage.SheetSide = origSide;
                             UpdateThumbnails(Enumerable.Range(SelectedIndices.First(),1), true,true);
                         } else
                         {
@@ -2548,11 +2551,18 @@ namespace NAPS2.WinForms
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = Color.FromArgb(24, 24, 24);
                 this.ForeColor = Color.White;
+
+               
+                
                 // Toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);               
                 tStrip.BackColor = Color.FromArgb(24, 24, 24);
+                
                 // Status strip
                 statusStrip1.BackColor = Color.FromArgb(24, 24, 24);
+
+                // Don't like for the moment until it's all as true dark mode
+                /*
                 // File menu
                 FileDm.BackColor = Color.FromArgb(24, 24, 24);
                 FileDm.DropDown.BackColor = Color.FromArgb(24, 24, 24);
@@ -2571,7 +2581,7 @@ namespace NAPS2.WinForms
                 tsdRotate.DropDown.ForeColor = Color.White;
                 // Reorder menu
                 tsdReorder.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsdReorder.DropDown.ForeColor = Color.White;
+                tsdReorder.DropDown.ForeColor = Color.White;*/
             }
             else
             {
@@ -2652,29 +2662,12 @@ namespace NAPS2.WinForms
         private void tsPrjConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FConfigurePrj>();
-            if (ImageSettingsContainer.ProjectSettings.CSVExpression == null)
-            {
-                //Nothing is defined, use default values
-                ImageSettingsContainer.ProjectSettings = new ProjectSettings()
-                {
-                    BatchName = FDesktop.projectName,
-                    CSVFileName = projectName+".csv",
-                    CSVExpression = "Project, $(sheetside), $(barcode), $(filename)",
-                    UseCSVExport = true,
-                    DefaultFileName = "$(nnnnnnnn).jpg",
-                };
-
-            }
-            else
-            {
-                // There are some values, update only the project name
-                ImageSettingsContainer.ProjectSettings.BatchName = FDesktop.projectName;
-                
-            }
+            
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 recoveryManager.Save();
+                imageSettingsContainer.Project_Settings = ImageSettingsContainer.ProjectSettings.Clone();
             }
             UpdateToolbar();
 
