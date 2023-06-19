@@ -53,6 +53,9 @@ Name: "Ukrainian";            MessagesFile: "C:\Program Files (x86)\Inno Setup 5
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
+[Dirs]
+Name: "{app}\"; Permissions: users-modify;
+
 [Files]                              
 #include "setup.languagefiles.iss"                                                          
 Source: "..\bin\InstallerEXE\NAPS2 CriCri Edition.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -77,7 +80,8 @@ Source: "..\bin\InstallerEXE\System.Numerics.Vectors.dll"; DestDir: "{app}\lib";
 Source: "..\bin\InstallerEXE\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\zxing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
-Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: ignoreversion           
+Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: ignoreversion 
+Source: "..\projectConfigs.xml"; DestDir: "{app}"; Flags: ignoreversion           
 Source: "..\..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Flags: ignoreversion
 Source: "..\..\CONTRIBUTORS"; DestDir: "{app}"; DestName: "contributors.txt"; Flags: ignoreversion
 Source: "..\..\NAPS2.Console\bin\InstallerEXE\NAPS2.Console.exe"; DestDir: "{app}"; Flags: ignoreversion

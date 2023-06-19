@@ -76,7 +76,7 @@ namespace NAPS2.ImportExport.Images
                         };
 
                         var name = ImageSettingsContainer.ProjectSettings.CSVFileName;
-                        name = ImageSettingsContainer.ProjectSettings.BatchName + Path.GetExtension(name);
+                        name = ImageSettingsContainer.ProjectSettings.BatchName + Path.GetExtension(name) + ".tmp";
                         // Create a new folder, in the path using the project name and put  the file there
                         Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName));
                         path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName);
@@ -210,6 +210,16 @@ namespace NAPS2.ImportExport.Images
                         }
                         i++;
                     }
+                    // Rename the CSV once the process is complete
+                    var name1 = ImageSettingsContainer.ProjectSettings.CSVFileName;
+                    name1 = ImageSettingsContainer.ProjectSettings.BatchName + Path.GetExtension(name1);
+                    path = Path.Combine(Path.GetDirectoryName(ImageSettingsContainer.ProjectSettings.DefaultFileName), ImageSettingsContainer.ProjectSettings.BatchName);
+                    path = Path.Combine(path, name1);
+
+                    FileInfo fi = new FileInfo(path + ".tmp");
+                    if (fi.Exists)
+                        fi.MoveTo(path);
+
                     return FirstFileSaved != null;
                 }
                 catch (UnauthorizedAccessException ex)
