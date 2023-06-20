@@ -12,8 +12,8 @@ namespace NAPS2.WinForms
     {
         private readonly Container components = null;
         private Image image;
-        private ToolStrip tStrip;
-        private TiffViewer tiffviewer1;
+        public ToolStrip tStrip;
+        public TiffViewer tiffviewer1;
         private ToolStripContainer toolStripContainer1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
@@ -187,7 +187,7 @@ namespace NAPS2.WinForms
             // tiffviewer1
             // 
             resources.ApplyResources(this.tiffviewer1, "tiffviewer1");
-            this.tiffviewer1.BackColor = System.Drawing.Color.White;
+            //this.tiffviewer1.BackColor = System.Drawing.Color.White;
             this.tiffviewer1.Name = "tiffviewer1";
             this.tiffviewer1.Zoom = 0D;
             this.tiffviewer1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tiffviewer1_KeyDown);

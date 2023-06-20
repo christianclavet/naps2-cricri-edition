@@ -165,7 +165,7 @@ namespace NAPS2.WinForms
             // TiffViewer
             // 
             resources.ApplyResources(this, "$this");
-            this.BackColor = System.Drawing.Color.LightGray;
+            //this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.pbox);
             this.Name = "TiffViewer";
             ((System.ComponentModel.ISupportInitialize)(this.pbox)).EndInit();

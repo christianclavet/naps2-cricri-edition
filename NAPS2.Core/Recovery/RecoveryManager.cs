@@ -23,7 +23,6 @@ namespace NAPS2.Recovery
         private readonly IOperationProgress operationProgress;
         private readonly ImageSettingsContainer imageSettingsContainer;
 
-        private bool recover;
 
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress, ImageSettingsContainer imageSettingsContainer)
         {
@@ -33,16 +32,10 @@ namespace NAPS2.Recovery
             this.operationProgress = operationProgress;
             this.imageSettingsContainer = imageSettingsContainer;
 
-            recover = false;
         }
         public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
-        }
-
-        public void recoveryActive(bool active)
-        {
-            recover = active;
         }
 
         public void Save()
@@ -79,16 +72,10 @@ namespace NAPS2.Recovery
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
-            private bool recover;
 
             public void setFolder(DirectoryInfo info)
             { 
                 folderToRecoverFrom = info;
-            }
-
-            public void Recover(bool recover)
-            {
-                this.recover = recover;
             }
 
             public RecoveryOperation(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer)
@@ -211,7 +198,7 @@ namespace NAPS2.Recovery
                     {
                         scannedImage.AddTransform(transform);
                     }
-                    if (!recover) scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
+                    scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
                     imageCallback(scannedImage);
                     Status.StatusText = string.Format(MiscResources.ActiveOperations, Path.GetFileName(indexImage.FileName));
                     Status.CurrentProgress++;

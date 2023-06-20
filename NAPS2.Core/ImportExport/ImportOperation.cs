@@ -20,7 +20,7 @@ namespace NAPS2.ImportExport
 
             ProgressTitle = MiscResources.ImportProgress;
             AllowCancel = true;
-            AllowBackground = false; // Original was true, but disable it for debugging new features.
+            AllowBackground = true; // Original was true, but disable it for debugging new features.
         }
 
         public bool Start(List<string> filesToImport, Action<ScannedImage> imageCallback)

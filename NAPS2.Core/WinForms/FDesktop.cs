@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Runtime.InteropServices;
 
 using NAPS2.Config;
@@ -77,6 +78,7 @@ namespace NAPS2.WinForms
         private readonly ScannedImageList imageList = new ScannedImageList();
         private readonly AutoResetEvent renderThumbnailsWaitHandle = new AutoResetEvent(false);
         private bool closed = false;
+        private bool recover = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
 
@@ -766,14 +768,19 @@ namespace NAPS2.WinForms
 
                     }
                     // Get the preview image while scanning
-                    GetPreviewImage(scannedImage, true);
+                    if (recover)
+                        GetPreviewImage(scannedImage, true);
+  
                     changeTracker.Made();
                 });
+                recover = false;
 
-                
                 // Trigger thumbnail rendering just in case the received image is out of date
-                renderThumbnailsWaitHandle.Set();
+               
+                    renderThumbnailsWaitHandle.Set();
+                
                 //UpdateThumbnailList1Descriptions(); // This cause an exception from another thread. Need to investigate.
+
                 
             };
         }
@@ -2491,10 +2498,10 @@ namespace NAPS2.WinForms
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
-
-                    recoveryManager.recoveryActive(true);
+                    //recover mode activated (will not update the gui of the image preview while loading)
+                    recover = true;
+                                                  
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
-                    recoveryManager.recoveryActive(false);
                     //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     projectName = di.Name;
                     UpdateToolbar();
@@ -2552,16 +2559,22 @@ namespace NAPS2.WinForms
             {
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, true);
                 this.BackColor = Color.FromArgb(24, 24, 24);
-                this.ForeColor = Color.White;
+                this.ForeColor = SystemColors.ControlLightLight;
 
                
                 
                 // Toolstrip
-                toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);               
-                tStrip.BackColor = Color.FromArgb(24, 24, 24);
-                
+                toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24); ;
+                //tStrip.BackColor = Color.FromArgb(24, 24, 24);
+                tStrip.BackColor = SystemColors.ControlDarkDark;
+
                 // Status strip
-                statusStrip1.BackColor = Color.FromArgb(24, 24, 24);
+                statusStrip1.BackColor = SystemColors.ControlDarkDark;
+                thumbnailList1.BackColor = SystemColors.ControlDark;
+                tiffViewerCtl1.BackColor = SystemColors.ControlDark;
+                //tiffViewerCtl1.tiffviewer1.BackColor = SystemColors.ControlDarkDark;
+                //tiffViewerCtl1.tStrip.BackColor = Color.FromArgb(60, 60, 60);
+
 
                 // Don't like for the moment until it's all as true dark mode
                 /*
@@ -2590,6 +2603,11 @@ namespace NAPS2.WinForms
                 BackgroundForm.UseImmersiveDarkMode(this.Handle, false);
                 this.BackColor = Color.White;
                 this.ForeColor = Color.FromArgb(24, 24, 24);
+
+                thumbnailList1.BackColor = Color.White;
+                tiffViewerCtl1.BackColor = Color.White;
+                tiffViewerCtl1.tiffviewer1.BackColor = Color.White;
+
                 //toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.White;
                 tStrip.BackColor = Color.White;
@@ -2627,20 +2645,19 @@ namespace NAPS2.WinForms
 
         private void tsBarCodeCheck_Click(object sender, EventArgs e)
         {
+            var list = SelectedImages.ToList();
             //If there is no selection, it will select all images
             if (!SelectedIndices.Any())
             {
-                SelectedIndices = Enumerable.Range(0, imageList.Images.Count);
-                //return;
+                list = imageList.Images.ToList();
             }
 
             var op = operationFactory.Create<barCodeOperation>();
-            if (op.Start(SelectedImages.ToList()))
+            if (op.Start(list))
             {
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
                 UpdateToolbar();
-                SelectedIndices = Enumerable.Range(0, 0);
             }
 
         }
