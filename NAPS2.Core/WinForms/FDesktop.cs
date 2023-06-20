@@ -744,6 +744,7 @@ namespace NAPS2.WinForms
                         }
                         if (SelectedIndices.Any() && !this.insert) // rescan will replace image only not add anything
                         {
+                            //Rescan mode
                             var origSide = imageList.Images[SelectedIndices.First()].SheetSide; //The face of the page on the sheet must be preserved
                             imageList.Delete(Enumerable.Range(SelectedIndices.First(), 1));
                             imageList.Images.Insert(SelectedIndices.First(), scannedImage);
@@ -752,6 +753,7 @@ namespace NAPS2.WinForms
                             UpdateThumbnails(Enumerable.Range(SelectedIndices.First(),1), true,true);
                         } else
                         {
+                            // Insert Mode
                             if (this.insert) //Try to insert
                             {
                                 index = SelectedIndices.First() + this.insertCounter;
@@ -869,7 +871,11 @@ namespace NAPS2.WinForms
             {
                 for (int i = 0; i < thumbnailList1.Items.Count; i++)
                 {
-                        thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString(); 
+                        thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString();
+                        if (darkMode)
+                            thumbnailList1.Items[i].ForeColor = Color.White;
+                        else
+                            thumbnailList1.Items[i].ForeColor = Color.Black;
                 }
             }
         }
@@ -2502,9 +2508,11 @@ namespace NAPS2.WinForms
                     recover = true;
                                                   
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+                    
                     //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
                     projectName = di.Name;
                     UpdateToolbar();
+                    recover = false;
                 }
             }         
         }
@@ -2566,12 +2574,12 @@ namespace NAPS2.WinForms
                 // Toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24); ;
                 //tStrip.BackColor = Color.FromArgb(24, 24, 24);
-                tStrip.BackColor = SystemColors.ControlDarkDark;
+                tStrip.BackColor = Color.FromArgb(46, 46, 46);
 
                 // Status strip
                 statusStrip1.BackColor = SystemColors.ControlDarkDark;
-                thumbnailList1.BackColor = SystemColors.ControlDark;
-                tiffViewerCtl1.BackColor = SystemColors.ControlDark;
+                thumbnailList1.BackColor = Color.FromArgb(36, 36, 36);
+                tiffViewerCtl1.BackColor = Color.FromArgb(36, 36, 36);
                 //tiffViewerCtl1.tiffviewer1.BackColor = SystemColors.ControlDarkDark;
                 //tiffViewerCtl1.tStrip.BackColor = Color.FromArgb(60, 60, 60);
 
