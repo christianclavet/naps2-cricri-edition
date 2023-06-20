@@ -198,7 +198,10 @@ namespace NAPS2.Recovery
                     {
                         scannedImage.AddTransform(transform);
                     }
-                    scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
+
+                    //Temporary commented off to see if it increase performance.
+                    //scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
+                    
                     imageCallback(scannedImage);
                     Status.StatusText = string.Format(MiscResources.ActiveOperations, Path.GetFileName(indexImage.FileName));
                     Status.CurrentProgress++;
