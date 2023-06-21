@@ -672,6 +672,9 @@ namespace NAPS2.WinForms
         
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
+            if (updateGUI == false)
+                return;
+
             // Try something to stop the file lock
             Bitmap bit = await scannedImageRenderer.Render(img);
             bitmap = new Bitmap(bit);
@@ -742,7 +745,7 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-                        if (SelectedIndices.Any() && !this.insert) // rescan will replace image only not add anything
+                        if (SelectedIndices.Any() && !this.insert && recover) // rescan will replace image only not add anything
                         {
                             //Rescan mode
                             var origSide = imageList.Images[SelectedIndices.First()].SheetSide; //The face of the page on the sheet must be preserved
@@ -770,8 +773,7 @@ namespace NAPS2.WinForms
 
                     }
                     // Get the preview image while scanning
-                    if (recover)
-                        GetPreviewImage(scannedImage, true);
+                    GetPreviewImage(scannedImage, recover);
   
                     changeTracker.Made();
                 });
@@ -780,10 +782,7 @@ namespace NAPS2.WinForms
                 // Trigger thumbnail rendering just in case the received image is out of date
                
                     renderThumbnailsWaitHandle.Set();
-                
-                //UpdateThumbnailList1Descriptions(); // This cause an exception from another thread. Need to investigate.
-
-                
+                                
             };
         }
 
@@ -793,10 +792,11 @@ namespace NAPS2.WinForms
 
             //Scroll the list so that every new item that get added can be viewed. -CC
             //Should not do it if a selection is active.
-            if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any())
-             thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
+            if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && recover)
+                    thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
-            UpdateToolbar();
+            if (recover) 
+                UpdateToolbar();
         }
 
         private void DeleteThumbnails()

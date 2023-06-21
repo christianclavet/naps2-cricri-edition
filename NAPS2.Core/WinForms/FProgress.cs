@@ -20,12 +20,23 @@ namespace NAPS2.WinForms
         public FProgress(IErrorOutput errorOutput, IOperationProgress operationProgress)
         {
             this.errorOutput = errorOutput;
-            this.operationProgress = operationProgress;
+            this.operationProgress = operationProgress;        
             InitializeComponent();
 
             RestoreFormState = false;
         }
 
+        public Button GetButton1()
+        {
+            
+            return btnCancel;
+        }
+
+        public Button GetButton2()
+        {
+            
+            return btnRunInBG;
+        }
         public IOperation Operation
         {
             get => operation;

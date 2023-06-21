@@ -86,7 +86,7 @@ namespace NAPS2.Recovery
                 ProgressTitle = MiscResources.ImportProgress;
                 
                 AllowCancel = true;
-                AllowBackground = false;
+                AllowBackground = true;
                 cleanup = false;
                 folderToRecoverFrom = null;
             }
@@ -199,7 +199,7 @@ namespace NAPS2.Recovery
                         scannedImage.AddTransform(transform);
                     }
 
-                    //Temporary commented off to see if it increase performance.
+                    //Temporary commented off to see if it increase performance. Update: This really increase performance.
                     //scannedImage.SetThumbnail(await thumbnailRenderer.RenderThumbnail(scannedImage));
                     
                     imageCallback(scannedImage);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NAPS2.Config;
@@ -13,7 +14,7 @@ namespace NAPS2.WinForms
         private readonly IFormFactory formFactory;
         private readonly NotificationManager notificationManager;
         private readonly IUserConfigManager userConfigManager;
-
+       
         private readonly HashSet<IOperation> activeOperations = new HashSet<IOperation>();
 
         public WinFormsOperationProgress(IFormFactory formFactory, NotificationManager notificationManager, IUserConfigManager userConfigManager)
@@ -60,7 +61,18 @@ namespace NAPS2.WinForms
             {
                 var form = formFactory.Create<FProgress>();
                 form.Operation = op;
-                form.ShowDialog();
+                // DArkmode interface change. TODO: Find a way to get the info about
+                {
+                    BackgroundForm.UseImmersiveDarkMode(form.Handle, true);
+                    
+                    form.BackColor = Color.FromArgb(24, 24, 24);
+                    form.ForeColor = Color.White;
+                    var button1 = form.GetButton1();
+                    button1.BackColor = Color.FromArgb(46, 46, 46);
+                    var button2 = form.GetButton2();
+                    button2.BackColor = Color.FromArgb(46, 46, 46);   
+                }
+                form.ShowDialog();             
             }
 
             if (!op.IsFinished)
