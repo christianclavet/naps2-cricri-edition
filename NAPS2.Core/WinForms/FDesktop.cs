@@ -773,11 +773,10 @@ namespace NAPS2.WinForms
 
                     }
                     // Get the preview image while scanning
-                    GetPreviewImage(scannedImage, recover);
+                    GetPreviewImage(scannedImage, !recover);
   
                     changeTracker.Made();
                 });
-                recover = false;
 
                 // Trigger thumbnail rendering just in case the received image is out of date
                
@@ -792,10 +791,10 @@ namespace NAPS2.WinForms
 
             //Scroll the list so that every new item that get added can be viewed. -CC
             //Should not do it if a selection is active.
-            if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && recover)
+            if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
-            if (recover) 
+            if (!recover) 
                 UpdateToolbar();
         }
 

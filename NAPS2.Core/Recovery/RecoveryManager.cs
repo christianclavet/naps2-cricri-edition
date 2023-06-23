@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -125,12 +126,12 @@ namespace NAPS2.Recovery
                         }
                         return false;
                     }
-                    RunAsync(async () =>
+                    RunAsync( () =>
                     {
                         try
                         {
 
-                            if (await DoRecover(imageCallback))
+                            if (DoRecover(imageCallback))
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete
                                 ReleaseFolderLock();
@@ -155,8 +156,9 @@ namespace NAPS2.Recovery
                 }
                
             }
-
-            private async Task<bool> DoRecover(Action<ScannedImage> imageCallback)
+            //Older method. Async was removed since there is no async stuff in there
+            //private async Task<bool> DoRecover(Action<ScannedImage> imageCallback)
+            private bool DoRecover(Action<ScannedImage> imageCallback)
             {
                 Status.MaxProgress = recoveryIndexManager.Index.Images.Count;
                 InvokeStatusChanged();
@@ -175,7 +177,7 @@ namespace NAPS2.Recovery
                 {
                     if (CancelToken.IsCancellationRequested)
                     {
-                        return false;
+                        return true;
                     }
 
                     string imagePath = Path.Combine(folderToRecoverFrom.FullName, indexImage.FileName);
@@ -192,6 +194,25 @@ namespace NAPS2.Recovery
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
                             scannedImage.BarCodeData = indexImage.BarCode;
                             scannedImage.SheetSide = indexImage.SheetSide;
+                            if (bitmap != null)
+                            {
+                                Size size = bitmap.Size;
+                                scannedImage.infoResolution = size.Width + " px X " + size.Height + " px ";
+
+                                //
+                                string dpi = Math.Round(bitmap.HorizontalResolution).ToString();
+
+                                string format = "Format: ";
+                                format = bitmap.PixelFormat switch
+                                {
+                                    PixelFormat.Format24bppRgb => format + "Color 24bit, DPI: " + dpi,
+                                    PixelFormat.Format32bppArgb => format + "Color 32bit, DPI: " + dpi,
+                                    PixelFormat.Format8bppIndexed => format + "Indexed Color 8bit, DPI: " + dpi,
+                                    PixelFormat.Format1bppIndexed => format + "Bitonal, DPI: " + dpi,
+                                    _ => "DPI: " + dpi,
+                                };
+                                scannedImage.infoFormat = format;
+                            }
                         }
                     }
                     foreach (var transform in indexImage.TransformList)
