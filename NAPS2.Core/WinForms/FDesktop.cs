@@ -799,15 +799,15 @@ namespace NAPS2.WinForms
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
-            if (!recover) 
-                UpdateToolbar();
+            if (!recover)
+                UpdateThumbnailList1Descriptions();
         }
 
         private void DeleteThumbnails()
         {
             thumbnailList1.DeletedImages(imageList.Images);
-           
-            UpdateToolbar();
+
+            UpdateThumbnailList1Descriptions();
         }
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
@@ -815,9 +815,7 @@ namespace NAPS2.WinForms
             thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null);
             SelectedIndices = selection;
 
-            UpdateToolbar();
-
-            if (scrollToSelection)
+             if (scrollToSelection)
             {
                 // Scroll to selection
                 // If selection is empty (e.g. after interleave), this scrolls to top
@@ -871,6 +869,9 @@ namespace NAPS2.WinForms
 
         private void UpdateThumbnailList1Descriptions()
         {
+            return;
+
+            //Note: This call is expensive and take a long time to refresh if you have lots of images currently disabled.
             if (thumbnailList1.Items.Count > 0)
             {
                 for (int i = 0; i < thumbnailList1.Items.Count; i++)
@@ -886,24 +887,12 @@ namespace NAPS2.WinForms
 
         public void UpdateToolbar()
         {
-            
+           
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text!=null)
                 this.Text = title + " | " + MiscResources.ProjectNameTitle + projectName;
-            this.Update();
-
-            // Update Images description -- CC -- BARCODE
-            if (thumbnailList1.Items.Count > 0)
-            {
-                UpdateThumbnailList1Descriptions();    
-            }
-
-            // put the image inside the preview
-            if (thumbnailList1.SelectedItems.Count == 1 && thumbnailList1.SelectedItems[0].Index >= 0)
-                {
-                   GetPreviewImage(imageList.Images[thumbnailList1.SelectedItems[0].Index], true);
-                }
+            //this.Update();
 
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
@@ -975,7 +964,6 @@ namespace NAPS2.WinForms
                     DeleteThumbnails();
                     changeTracker.Clear();
                     projectName = string.Format(MiscResources.ProjectName);
-                    UpdateToolbar();
                 }
             }
         }
@@ -1041,7 +1029,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate270FlipNone);
             changeTracker.Made();
-            UpdateToolbar();
+            
         }
 
         private async Task RotateRight()
@@ -1053,7 +1041,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate90FlipNone);
             changeTracker.Made();
-            UpdateToolbar();
+            
         }
 
         private async Task Flip()
@@ -1065,7 +1053,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.RotateNoneFlipXY);
             changeTracker.Made();
-            UpdateToolbar();
+           
         }
 
         private void Deskew()
@@ -1080,7 +1068,6 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
-                UpdateToolbar();
             }
         }
 
@@ -1125,7 +1112,6 @@ namespace NAPS2.WinForms
                 {
                     imageList.ResetTransforms(SelectedIndices);
                     changeTracker.Made();
-                    UpdateToolbar();
                 }
             }
         }
@@ -1430,6 +1416,9 @@ namespace NAPS2.WinForms
                     side = "- side: front only";
 
                 statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format + side;
+                var pos = thumbnailList1.SelectedItems[0].index;
+                var img = imageList.Images[pos];
+                GetPreviewImage(img,true);
 
             }
             else
@@ -1442,7 +1431,8 @@ namespace NAPS2.WinForms
             }
                 if (!disableSelectedIndexChangedEvent)
             {
-                UpdateToolbar();
+                //UpdateThumbnailList1Descriptions();
+                
             }
         }
 
