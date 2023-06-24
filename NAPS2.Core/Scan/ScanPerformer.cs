@@ -11,6 +11,7 @@ using NAPS2.Logging;
 using NAPS2.Scan.Exceptions;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
+using NAPS2.WinForms;
 
 namespace NAPS2.Scan
 {
@@ -36,14 +37,16 @@ namespace NAPS2.Scan
             this.appConfigManager = appConfigManager;
             this.profileManager = profileManager;
             this.scannedImageHelper = scannedImageHelper;
+            
         }
+
 
         public void SetScanMode(bool scanmode) 
         { 
             this.scanMode = scanmode;
         }
         public async Task PerformScan(ScanProfile scanProfile, ScanParams scanParams, IWin32Window dialogParent, ISaveNotify notify,
-            Action<ScannedImage> imageCallback, CancellationToken cancelToken = default)
+            Action<ScannedImage> imageCallback, CancellationToken cancelToken = default, FDesktop fDesktop = null)
         {
             var driver = driverFactory.Create(scanProfile.DriverName);
             driver.DialogParent = dialogParent;
@@ -77,6 +80,7 @@ namespace NAPS2.Scan
                 // Start the scan
                 int imageCount = 0;
                 var source = driver.Scan().Then(img => imageCount++);
+
                 bool doAutoSave = !scanParams.NoAutoSave && !appConfigManager.Config.DisableAutoSave && scanProfile.EnableAutoSave && scanProfile.AutoSaveSettings != null;
                 if (doAutoSave)
                 {
@@ -117,7 +121,14 @@ namespace NAPS2.Scan
                     // No auto save, so just pipe images back as we get them
                     await source.ForEach(imageCallback);
                 }
-                Log.Error("Image count is:" + imageCount.ToString(), this);
+
+                if (fDesktop != null) 
+                { 
+                    fDesktop.RegenIconsList();
+                }
+                
+
+                //Log.Error("Image count is:" + imageCount.ToString(), this);
                 if (imageCount > 0)
                 {
                     Log.Event(EventType.Scan, new Event
@@ -130,6 +141,7 @@ namespace NAPS2.Scan
                     });
                 }
             }
+            
             catch (ScanDriverException e)
             {
                 if (e is ScanDriverUnknownException)

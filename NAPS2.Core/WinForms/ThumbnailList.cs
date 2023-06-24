@@ -178,9 +178,10 @@ namespace NAPS2.WinForms
         {
             lock (this)
             {
-                BeginUpdate();
+                
                 if (!onlyText)
                 {
+                    BeginUpdate();
                     if (ilThumbnailList.Images.Count > 0)
                     {
                         ilThumbnailList.Images.Clear();
@@ -193,6 +194,7 @@ namespace NAPS2.WinForms
                     }
 
                     ilThumbnailList.Images.AddRange(list.ToArray());
+                    EndUpdate();
                 }
 
                 foreach (ListViewItem item in Items)
@@ -203,7 +205,7 @@ namespace NAPS2.WinForms
                 }
 
                 
-                EndUpdate();
+                
             }
         }
 

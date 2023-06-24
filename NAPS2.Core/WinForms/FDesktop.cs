@@ -38,6 +38,7 @@ using NAPS2.Util;
 using NAPS2.Worker;
 using ZXing;
 using NAPS2.ImportExport.Images;
+using Org.BouncyCastle.Tsp;
 
 #endregion
 
@@ -79,6 +80,7 @@ namespace NAPS2.WinForms
         private readonly AutoResetEvent renderThumbnailsWaitHandle = new AutoResetEvent(false);
         private bool closed = false;
         private bool recover = false;
+        private bool oldRecover = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
 
@@ -157,7 +159,14 @@ namespace NAPS2.WinForms
 
         public void setRecover(bool recovery)
         {
-            recover = recovery;            
+            oldRecover = recover;
+            recover = recovery;
+            
+            if (oldRecover == true && recover == false) 
+            {
+                //Should draw the list of number on the list of icons once recover is done
+                RegenIconsList();
+            }
         }
 
         /// <summary>
@@ -649,6 +658,7 @@ namespace NAPS2.WinForms
             updateProfileButton();
 
             await scanPerformer.PerformScan(editSettingsForm.ScanProfile, new ScanParams(), this, notify, ReceiveScannedImage());
+       
             Activate();
         }
 
@@ -787,8 +797,11 @@ namespace NAPS2.WinForms
 
                 // Trigger thumbnail rendering just in case the received image is out of date
                
-                    renderThumbnailsWaitHandle.Set();
-                                
+                renderThumbnailsWaitHandle.Set();
+                //Regen the icon list numbers when scanning
+                if (!recover) 
+                    RegenIconsList();
+
             };
         }
 
@@ -809,7 +822,11 @@ namespace NAPS2.WinForms
         private void DeleteThumbnails()
         {
             thumbnailList1.DeletedImages(imageList.Images);
-            thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
+            thumbnailList1.Invoke(new MethodInvoker(delegate
+            {
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
+            }));
+            
         }
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
@@ -2557,12 +2574,22 @@ namespace NAPS2.WinForms
                                                   
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
-                    thumbnailList1.RegenerateThumbnailList(imageList.Images);
+                   
                     projectName = di.Name;
                     UpdateToolbar();
-                    recover = false;
+                    
                 }
             }         
+        }
+
+        public void RegenIconsList()
+        {
+            //regenerate the icon text numbering
+            thumbnailList1.Invoke(new MethodInvoker(delegate
+            {
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
+            }));
+            
         }
 
         private void closeWorkspace()

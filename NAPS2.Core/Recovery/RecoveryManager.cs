@@ -129,12 +129,11 @@ namespace NAPS2.Recovery
                         }
                         return false;
                     }
-                    RunAsync(async () =>
+                    RunAsync(() =>
                     {
                         try
                         {
-
-                            if (await DoRecover(imageCallback))
+                            if (DoRecover(imageCallback))
                             {
                                 // Theses are not recovered but used as loading a previous projet, so no delete
                                 ReleaseFolderLock();
@@ -161,7 +160,7 @@ namespace NAPS2.Recovery
             }
             //Older method. Async was removed since there is no async stuff in there
             //private async Task<bool> DoRecover(Action<ScannedImage> imageCallback)
-            private async Task<bool> DoRecover(Action<ScannedImage> imageCallback)
+            private bool DoRecover(Action<ScannedImage> imageCallback)
             {
                 Status.MaxProgress = recoveryIndexManager.Index.Images.Count;
                 InvokeStatusChanged();
@@ -232,8 +231,12 @@ namespace NAPS2.Recovery
                     Status.CurrentProgress++;
                     this.OnProgress(Status.CurrentProgress, Status.MaxProgress);
                     InvokeStatusChanged();
-                    fDesktop.setRecover(false);
+                   
+                    
                 }
+                fDesktop.setRecover(false);
+                // Not thread safe and cause exception
+                //fDesktop.RegenIconsList();
                 return true;
             }
 
