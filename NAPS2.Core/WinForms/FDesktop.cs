@@ -1415,7 +1415,7 @@ namespace NAPS2.WinForms
                 else
                     side = "- side: front only";
 
-                statusStrip1.Items[0].Text = "Image: " + text + " - Size: " + text2 + " - " + text4 + " - " + format + side;
+                statusStrip1.Items[0].Text = "Image: " + text + "/"+imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
 
                 var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
                 GetPreviewImage(img,true);
