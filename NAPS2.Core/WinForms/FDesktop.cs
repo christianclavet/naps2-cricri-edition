@@ -2497,7 +2497,24 @@ namespace NAPS2.WinForms
         #region new stuff
         private void loadProjectTool_TSMI_Click_1(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
+
+            bool skipSave = false;
+            if (imageList.Images.Count() > 0)
+            {
+                var result1 = MessageBox.Show(MiscResources.ExitWithUnsavedChanges, MiscResources.UnsavedChanges,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result1 == DialogResult.No)
+                {
+                    skipSave = false;
+                }
+                if (result1 == DialogResult.Yes)
+                {
+                    skipSave = true;
+                }
+            }
+
+
+                var openFileDialog = new OpenFileDialog();
             openFileDialog.CheckFileExists = false;
             openFileDialog.AutoUpgradeEnabled = true;
             openFileDialog.InitialDirectory = Paths.Recovery;
@@ -2514,9 +2531,13 @@ namespace NAPS2.WinForms
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
                 if (File.Exists(Path.Combine(di.FullName, ".lock")))
                 {
-                    if (imageList.Images.Count > 0) 
+                    if (imageList.Images.Count > 0 && !skipSave) 
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
+                    }
+                    else
+                    {
+                        imageList.Images.Clear();
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
