@@ -1231,6 +1231,15 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Do you want to back-up the current batch?.
+        /// </summary>
+        internal static string UnsavedChangesAction {
+            get {
+                return ResourceManager.GetString("UnsavedChangesAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An update is available..
         /// </summary>
         internal static string UpdateAvailable {

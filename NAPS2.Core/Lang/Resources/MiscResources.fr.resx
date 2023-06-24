@@ -522,4 +522,7 @@
   <data name="Selection" xml:space="preserve">
     <value>Items sélectionnés: </value>
   </data>
+  <data name="UnsavedChangesAction" xml:space="preserve">
+    <value>Voulez-vous garder les changements du lot actuel?</value>
+  </data>
 </root>

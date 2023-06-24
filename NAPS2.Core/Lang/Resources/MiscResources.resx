@@ -525,4 +525,7 @@
   <data name="Selection" xml:space="preserve">
     <value>Selected items: </value>
   </data>
+  <data name="UnsavedChangesAction" xml:space="preserve">
+    <value>Do you want to back-up the current batch?</value>
+  </data>
 </root>

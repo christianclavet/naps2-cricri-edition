@@ -953,11 +953,22 @@ namespace NAPS2.WinForms
 
         #region Actions
 
-        private void Clear()
+        private void Clear(bool skiprequest = false)
         {
             if (imageList.Images.Count > 0)
             {
-                if (MessageBox.Show(string.Format(MiscResources.ConfirmClearItems, imageList.Images.Count), MiscResources.Clear, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (skiprequest) 
+                {
+                    tiffViewerCtl1.Image = null;
+
+                    imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
+                    DeleteThumbnails();
+                    changeTracker.Clear();
+                    projectName = string.Format(MiscResources.ProjectName);
+                    return;
+                }
+                var box = MessageBox.Show(string.Format(MiscResources.ConfirmClearItems, imageList.Images.Count), MiscResources.Clear, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (box == DialogResult.OK)
                 {
                     tiffViewerCtl1.Image = null;
 
@@ -2501,7 +2512,7 @@ namespace NAPS2.WinForms
             bool skipSave = false;
             if (imageList.Images.Count() > 0)
             {
-                var result1 = MessageBox.Show(MiscResources.ExitWithUnsavedChanges, MiscResources.UnsavedChanges,
+                var result1 = MessageBox.Show(MiscResources.UnsavedChangesAction, MiscResources.UnsavedChanges,
                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 if (result1 == DialogResult.No)
                 {
@@ -2531,13 +2542,13 @@ namespace NAPS2.WinForms
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(openFileDialog.FileName));
                 if (File.Exists(Path.Combine(di.FullName, ".lock")))
                 {
-                    if (imageList.Images.Count > 0 && !skipSave) 
+                    if (imageList.Images.Count > 0 && skipSave) 
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
                     }
                     else
                     {
-                        imageList.Images.Clear();
+                        Clear(true);
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
@@ -2717,8 +2728,21 @@ namespace NAPS2.WinForms
         //Create a new project.
         private void tsPrjNew_Click(object sender, EventArgs e)
         {
+            if (imageList.Images.Count() > 0)
+            {
+                var result1 = MessageBox.Show(MiscResources.UnsavedChangesAction, MiscResources.UnsavedChanges,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result1 == DialogResult.No)
+                {
+                    Clear(true);
+                }
+                if (result1 == DialogResult.Yes)
+                {
+                    closeWorkspace();
+                }
+            }
             // Close the current workspace (save if the previous was not)
-            closeWorkspace();
+           
             // Ask for the project name: 
             changeProjectName();
             
