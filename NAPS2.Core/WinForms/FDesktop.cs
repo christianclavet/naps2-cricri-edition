@@ -799,15 +799,16 @@ namespace NAPS2.WinForms
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
-            if (!recover)
-                UpdateThumbnailList1Descriptions();
+            //if (!recover)
+            
+            //UpdateThumbnailList1Descriptions();
         }
 
         private void DeleteThumbnails()
         {
             thumbnailList1.DeletedImages(imageList.Images);
 
-            UpdateThumbnailList1Descriptions();
+            //UpdateThumbnailList1Descriptions();
         }
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
@@ -869,8 +870,6 @@ namespace NAPS2.WinForms
 
         private void UpdateThumbnailList1Descriptions()
         {
-            return;
-
             //Note: This call is expensive and take a long time to refresh if you have lots of images currently disabled.
             if (thumbnailList1.Items.Count > 0)
             {
@@ -1018,6 +1017,7 @@ namespace NAPS2.WinForms
             }
             UpdateThumbnails(imageList.MoveUp(SelectedIndices), true, true);
             changeTracker.Made();
+
         }
 
         private async Task RotateLeft()
@@ -1029,7 +1029,12 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate270FlipNone);
             changeTracker.Made();
-            
+
+            if (SelectedIndices.Count() > 0)
+            {
+                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
+            }
+
         }
 
         private async Task RotateRight()
@@ -1041,6 +1046,10 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate90FlipNone);
             changeTracker.Made();
+            if (SelectedIndices.Count() > 0) 
+            {
+                GetPreviewImage(imageList.Images[SelectedIndices.First()],true);
+            }
             
         }
 
@@ -1053,7 +1062,12 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.RotateNoneFlipXY);
             changeTracker.Made();
-           
+
+            if (SelectedIndices.Count() > 0)
+            {
+                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
+            }
+
         }
 
         private void Deskew()
@@ -1068,6 +1082,11 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
+            }
+
+            if (SelectedIndices.Count() > 0)
+            {
+                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
             }
         }
 
@@ -1188,7 +1207,7 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
             }
-            UpdateThumbnailList1Descriptions();
+            //UpdateThumbnailList1Descriptions();
         }
 
         private List<string> OrderFiles(IEnumerable<string> files)
@@ -1346,6 +1365,7 @@ namespace NAPS2.WinForms
             {
                 thumbnailList1.Items[count].Selected = true;
                 thumbnailList1.Items[count - 1].Selected = false;
+                thumbnailList1.EnsureVisible(thumbnailList1.Items[count].Index);
             }
         }
         private void pageUp()
@@ -1357,6 +1377,7 @@ namespace NAPS2.WinForms
                 {
                     thumbnailList1.Items[count].Selected = true;
                     thumbnailList1.Items[count + 1].Selected = false;
+                    thumbnailList1.EnsureVisible(thumbnailList1.Items[count].Index);
                 }
             }
         }
@@ -1661,7 +1682,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private async void printToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private async void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (appConfigManager.Config.HidePrintButton)
             {
@@ -2675,7 +2696,7 @@ namespace NAPS2.WinForms
         {
             // Close the current workspace (save if the previous was not)
             closeWorkspace();
-            // Ask for the project name: TODO: Should also ask for the project type template.
+            // Ask for the project name: 
             changeProjectName();
             
         }
@@ -2714,11 +2735,9 @@ namespace NAPS2.WinForms
         }
 
         private void TS_SavePrj_Click(object sender, EventArgs e)
-        {// Save images and meta data
-            recoveryManager.Save();
-            changeTracker.Saved(changeTracker.State);
+        {
+            changeProjectName();
         }
-        
 
 
     }

@@ -136,10 +136,10 @@
     <value>Charger un lot</value>
   </data>
   <data name="renameCurrentProject_TSMI.Text" xml:space="preserve">
-    <value>Nommer le lot actuel</value>
+    <value>Renommer le lot actuel</value>
   </data>
   <data name="closeCurrentProject.Text" xml:space="preserve">
-    <value>Fermer le projet actuel</value>
+    <value>Fermer le lot actuel</value>
   </data>
   <data name="tsSavePDFAll.Text" xml:space="preserve">
     <value>&amp;Tout ({0})</value>
@@ -207,10 +207,10 @@
   <data name="tsLanguage.ToolTipText" xml:space="preserve">
     <value>Change la langue de l'application</value>
   </data>
-  <data name="tsShowHideView.Text" xml:space="preserve">
+  <data name="tsShowHideView2.Text" xml:space="preserve">
     <value>Montre|Cache la visionneuse d'image</value>
   </data>
-  <data name="tsShowHideView.ToolTipText" xml:space="preserve">
+  <data name="tsShowHideView2.ToolTipText" xml:space="preserve">
     <value>Montre ou cache la visionneuse d'image intégrée</value>
   </data>
   <data name="tsOCR.Text" xml:space="preserve">
@@ -226,7 +226,7 @@
     <value>Imprimer les images sélectionnées</value>
   </data>
   <data name="tsTools.Text" xml:space="preserve">
-    <value>Ajustements et outils</value>
+    <value>Outils et langues</value>
   </data>
   <data name="tsAbout.Text" xml:space="preserve">
     <value>À propos</value>
@@ -238,7 +238,7 @@
     <value>Fichiers</value>
   </data>
   <data name="FileDm.ToolTipText" xml:space="preserve">
-    <value>Menu des fichiers</value>
+    <value>Fichiers et lots</value>
   </data>
   <data name="tsNewProfile.Text" xml:space="preserve">
     <value>&amp;Nouveau profil</value>
@@ -295,7 +295,7 @@
     <value>&amp;Accentuation</value>
   </data>
   <data name="tsSharpen.ToolTipText" xml:space="preserve">
-    <value>Sharpen the selected image(s)</value>
+    <value>Éclaircir l'image(s)</value>
   </data>
   <data name="tsReset.Text" xml:space="preserve">
     <value>&amp;Réinitialiser…</value>
@@ -400,15 +400,27 @@
     <value>Faire basculer le thème de l'interface de sombre à clair</value>
   </data>
   <data name="tsExport.Text" xml:space="preserve">
-    <value>Exporter les images et les données</value>
+    <value>Sortir le lot</value>
   </data>
   <data name="tsPrjNew.Text" xml:space="preserve">
     <value>Créer un nouveau lot</value>
   </data>
   <data name="TS_PrjConfig.Text" xml:space="preserve">
-    <value>Configuration de projets</value>
+    <value>Configuration de lots</value>
   </data>
   <data name="TS_SavePrj.Text" xml:space="preserve">
-    <value>Sauvegarder les changements du projet</value>
+    <value>Sauvegarder les changements du lot</value>
+  </data>
+  <data name="TSI_ToggleDarkMode1.Text" xml:space="preserve">
+    <value>Bascule entre le mode sombre - clair</value>
+  </data>
+  <data name="TS_RenBatch.Text" xml:space="preserve">
+    <value>Renommer le lot actuel</value>
+  </data>
+  <data name="TS_View.Text" xml:space="preserve">
+    <value>Affichage</value>
+  </data>
+  <data name="TS_View.ToolTipText" xml:space="preserve">
+    <value>Ajustements de l'affichage</value>
   </data>
 </root>

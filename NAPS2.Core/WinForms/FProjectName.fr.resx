@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblPrompt.Text" xml:space="preserve">
-    <value>S'il vous plaît, entrez le nom du projet</value>
+    <value>S'il vous plaît, entrez le nom du lot</value>
   </data>
   <data name="btnRecover.Text" xml:space="preserve">
     <value>&amp;Récupérer</value>
@@ -130,9 +130,12 @@
     <value>&amp;Pas maintenant</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nommez le projet actuel</value>
+    <value>Nommez le lot actuel</value>
   </data>
   <data name="lblPrompt_filename.Text" xml:space="preserve">
-    <value>S'il vous plaît, entrez le nom du projet</value>
+    <value>S'il vous plaît, entrez le nom du lot</value>
+  </data>
+  <data name="GB_Project.Text" xml:space="preserve">
+    <value>Basé sur ce type de lot</value>
   </data>
 </root>
