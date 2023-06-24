@@ -912,7 +912,7 @@ namespace NAPS2.WinForms
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
 
             // Context-menu actions
-            ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
+            ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = true;//SelectedIndices.Any();
             ctxSelectAll.Enabled = imageList.Images.Any();
 
             // Other
@@ -1242,15 +1242,10 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+O", tsImport);
             ksm.Assign("Ctrl+S", tsdSavePDF);
             ksm.Assign("Ctrl+P", printToolStripMenuItem);
-            //ksm.Assign("Ctrl+Up", MoveUp);
-            //ksm.Assign("Ctrl+Left", MoveUp);
-            //ksm.Assign("Ctrl+Down", MoveDown);
-            //ksm.Assign("Ctrl+Right", MoveDown);
-            //ksm.Assign("Ctrl+Shift+Del", tsClear);
             ksm.Assign("Ctrl+L", loadProjectTool_TSMI);
             ksm.Assign("Ctrl+OemMinus", btnZoomOut);
             ksm.Assign("Ctrl+Oemplus", btnZoomIn);
-            ksm.Assign("Del", ctxDelete);
+            ksm.Assign("Del", Delete);
             ksm.Assign("Ctrl+A", ctxSelectAll);
             ksm.Assign("Ctrl+C", ctxCopy);
             ksm.Assign("Ctrl+V", ctxPaste);
@@ -1265,9 +1260,14 @@ namespace NAPS2.WinForms
             ksm.Assign("B", tsBrightnessContrast);
             ksm.Assign("H", tsHueSaturation);
             ksm.Assign("D", tsDeskew);
-            
+            //ksm.Assign("Ctrl+Up", MoveUp);
+            //ksm.Assign("Ctrl+Left", MoveUp);
+            //ksm.Assign("Ctrl+Down", MoveDown);
+            //ksm.Assign("Ctrl+Right", MoveDown);
+            //ksm.Assign("Ctrl+Shift+Del", tsClear);
+
             // Configured
-          
+
             var ks = userConfigManager.Config.KeyboardShortcuts ?? appConfigManager.Config.KeyboardShortcuts ?? new KeyboardShortcuts();
 
             //ksm.Assign(ks.About, tsAbout);
