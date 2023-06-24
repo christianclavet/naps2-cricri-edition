@@ -155,6 +155,11 @@ namespace NAPS2.WinForms
             PostInitializeComponent();
         }
 
+        public void setRecover(bool recovery)
+        {
+            recover = recovery;            
+        }
+
         /// <summary>
         /// Runs when the form is first loaded and every time the language is changed.
         /// </summary>
@@ -745,7 +750,7 @@ namespace NAPS2.WinForms
                                 index = lastIndex + 1;
                             }
                         }
-                        if (SelectedIndices.Any() && !this.insert && recover) // rescan will replace image only not add anything
+                        if (SelectedIndices.Any() && !this.insert && !recover) // rescan will replace image only not add anything
                         {
                             //Rescan mode
                             var origSide = imageList.Images[SelectedIndices.First()].SheetSide; //The face of the page on the sheet must be preserved
@@ -2502,7 +2507,7 @@ namespace NAPS2.WinForms
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
-                    recoveryManager.setFolder(di); //Set to a folder other than the last used one.
+                    recoveryManager.setFolder(di, this); //Set to a folder other than the last used one.
                     //recover mode activated (will not update the gui of the image preview while loading)
                     recover = true;
                                                   
