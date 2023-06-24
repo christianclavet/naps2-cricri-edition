@@ -80,8 +80,8 @@ Source: "..\bin\InstallerEXE\System.Numerics.Vectors.dll"; DestDir: "{app}\lib";
 Source: "..\bin\InstallerEXE\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\zxing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
-Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: ignoreversion 
-Source: "..\projectConfigs.xml"; DestDir: "{app}"; Flags: ignoreversion           
+Source: "..\appsettings.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist
+Source: "..\projectConfigs.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist
 Source: "..\..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Flags: ignoreversion
 Source: "..\..\CONTRIBUTORS"; DestDir: "{app}"; DestName: "contributors.txt"; Flags: ignoreversion
 Source: "..\..\NAPS2.Console\bin\InstallerEXE\NAPS2.Console.exe"; DestDir: "{app}"; Flags: ignoreversion
