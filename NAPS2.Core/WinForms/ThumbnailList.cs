@@ -4,9 +4,11 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using NAPS2.Platform;
 using NAPS2.Scan.Images;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NAPS2.WinForms
 {
@@ -17,6 +19,7 @@ namespace NAPS2.WinForms
 
         static ThumbnailList()
         {
+         
             // Try to enable larger thumbnails via a reflection hack
             if (PlatformCompat.Runtime.SetImageListSizeOnImageCollection)
             {
@@ -33,6 +36,7 @@ namespace NAPS2.WinForms
             {
                 // No joy, just be happy enough with 256
                 ThumbnailRenderer.MAX_SIZE = 256;
+               
             }
         }
 
@@ -94,6 +98,8 @@ namespace NAPS2.WinForms
                 {
                     ilThumbnailList.Images.Add(GetThumbnail(allImages[i]));
                     Items.Add(ItemText, i).Tag = allImages[i];
+                    Items[i].Text = (i+1).ToString();
+                    Items[i].ForeColor = Color.White;
                 }
                 EndUpdate();
             }
@@ -145,6 +151,8 @@ namespace NAPS2.WinForms
                     int imageIndex = Items[i].ImageIndex;
                     ilThumbnailList.Images[imageIndex] = GetThumbnail(images[i]);
                     Items[i].Tag = images[i];
+                    Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString();
+                    Items[i].ForeColor = Color.White;
                 }
                 EndUpdate();
             }
@@ -166,28 +174,35 @@ namespace NAPS2.WinForms
             }
         }
 
-        public void RegenerateThumbnailList(List<ScannedImage> images)
+        public void RegenerateThumbnailList(List<ScannedImage> images, bool onlyText = false)
         {
             lock (this)
             {
                 BeginUpdate();
-                if (ilThumbnailList.Images.Count > 0)
+                if (!onlyText)
                 {
-                    ilThumbnailList.Images.Clear();
-                }
+                    if (ilThumbnailList.Images.Count > 0)
+                    {
+                        ilThumbnailList.Images.Clear();
+                    }
 
-                var list = new List<Image>();
-                foreach (var image in images)
-                {
-                    list.Add(GetThumbnail(image));
+                    var list = new List<Image>();
+                    foreach (var image in images)
+                    {
+                        list.Add(GetThumbnail(image));
+                    }
+
+                    ilThumbnailList.Images.AddRange(list.ToArray());
                 }
 
                 foreach (ListViewItem item in Items)
                 {
                     item.ImageIndex = item.Index;
+                    item.Text = (item.Index+1).ToString() + "/" + Items.Count.ToString();
+                    item.ForeColor = Color.White;
                 }
 
-                ilThumbnailList.Images.AddRange(list.ToArray());
+                
                 EndUpdate();
             }
         }

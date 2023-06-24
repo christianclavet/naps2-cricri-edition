@@ -809,8 +809,7 @@ namespace NAPS2.WinForms
         private void DeleteThumbnails()
         {
             thumbnailList1.DeletedImages(imageList.Images);
-
-            //UpdateThumbnailList1Descriptions();
+            thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
         }
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
@@ -2557,8 +2556,8 @@ namespace NAPS2.WinForms
                     recover = true;
                                                   
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
-                    
-                    //imageSettings = recoveryManager.ReturnData(); // get back the project metadata
+
+                    thumbnailList1.RegenerateThumbnailList(imageList.Images);
                     projectName = di.Name;
                     UpdateToolbar();
                     recover = false;
