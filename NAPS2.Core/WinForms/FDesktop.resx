@@ -307,7 +307,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.21913, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.22960, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -349,7 +349,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.21913, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.22960, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -474,14 +474,38 @@
   <data name="FileDm.ToolTipText" xml:space="preserve">
     <value>File menu</value>
   </data>
+  <data name="tsShowHideView2.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsShowHideView2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 42</value>
+  </data>
+  <data name="tsShowHideView2.Text" xml:space="preserve">
+    <value>Show|Hide image viewer</value>
+  </data>
+  <data name="tsShowHideView2.ToolTipText" xml:space="preserve">
+    <value>Display or hide the integrated image viewer</value>
+  </data>
+  <data name="TSI_ToggleDarkMode1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 42</value>
+  </data>
+  <data name="TSI_ToggleDarkMode1.Text" xml:space="preserve">
+    <value>Toggle DarkMode | Standard mode</value>
+  </data>
+  <data name="TSI_ToggleDarkMode1.ToolTipText" xml:space="preserve">
+    <value>Switch the interface to dark mode theme or back to standard</value>
+  </data>
+  <data name="TS_View.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
   <data name="TS_View.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="TS_View.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 64</value>
+    <value>94, 64</value>
   </data>
   <data name="TS_View.Text" xml:space="preserve">
-    <value>View</value>
+    <value>Display</value>
   </data>
   <data name="TS_View.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageAboveText</value>
@@ -563,108 +587,6 @@
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 69</value>
   </data>
-  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="printToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Print</value>
-  </data>
-  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>Print the selected images</value>
-  </data>
-  <data name="tsView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsView.Text" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="tsView.ToolTipText" xml:space="preserve">
-    <value>Open viewer</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 6</value>
-  </data>
-  <data name="tsBarCodeCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsBarCodeCheck.Text" xml:space="preserve">
-    <value>Check for barcode data</value>
-  </data>
-  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 6</value>
-  </data>
-  <data name="tsCrop.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsCrop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsCrop.Text" xml:space="preserve">
-    <value>&amp;Crop</value>
-  </data>
-  <data name="tsCrop.ToolTipText" xml:space="preserve">
-    <value>Crop the selected image(s)</value>
-  </data>
-  <data name="tsBrightnessContrast.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsBrightnessContrast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsBrightnessContrast.Text" xml:space="preserve">
-    <value>&amp;Brightness / Contrast</value>
-  </data>
-  <data name="tsBrightnessContrast.ToolTipText" xml:space="preserve">
-    <value>Ajust the brightness and contrast of the selected image(s)</value>
-  </data>
-  <data name="tsHueSaturation.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsHueSaturation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsHueSaturation.Text" xml:space="preserve">
-    <value>&amp;Hue / Saturation</value>
-  </data>
-  <data name="tsHueSaturation.ToolTipText" xml:space="preserve">
-    <value>Adjust the hue and saturation of the selected image(s)</value>
-  </data>
-  <data name="tsBlackWhite.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsBlackWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsBlackWhite.Text" xml:space="preserve">
-    <value>Black and &amp;White</value>
-  </data>
-  <data name="tsBlackWhite.ToolTipText" xml:space="preserve">
-    <value>Convert the selected image to bitonal</value>
-  </data>
-  <data name="tsSharpen.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsSharpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsSharpen.Text" xml:space="preserve">
-    <value>&amp;Sharpen</value>
-  </data>
-  <data name="tsSharpen.ToolTipText" xml:space="preserve">
-    <value>Sharpen the selected image(s)</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 6</value>
-  </data>
-  <data name="tsReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 42</value>
-  </data>
-  <data name="tsReset.Text" xml:space="preserve">
-    <value>&amp;Reset</value>
-  </data>
-  <data name="tsReset.ToolTipText" xml:space="preserve">
-    <value>Reset all transformations on the images</value>
-  </data>
   <data name="tsdImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -738,7 +660,7 @@
     <value>4, 0</value>
   </data>
   <data name="tStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 69</value>
+    <value>1011, 69</value>
   </data>
   <data name="tStrip.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1061,10 +983,10 @@
     <value>ImageAboveText</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
+    <value>196, 6</value>
   </data>
   <data name="tsOCR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 42</value>
+    <value>199, 36</value>
   </data>
   <data name="tsOCR.Text" xml:space="preserve">
     <value>OCR</value>
@@ -1073,10 +995,10 @@
     <value>Set the OCR parameters</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
+    <value>196, 6</value>
   </data>
   <data name="tsLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 42</value>
+    <value>199, 36</value>
   </data>
   <data name="tsLanguage.Text" xml:space="preserve">
     <value>Language</value>
@@ -1095,27 +1017,6 @@
   </data>
   <data name="tsAbout.ToolTipText" xml:space="preserve">
     <value>Display informations about Naps 2</value>
-  </data>
-  <data name="tsShowHideView2.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tsShowHideView2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 42</value>
-  </data>
-  <data name="tsShowHideView2.Text" xml:space="preserve">
-    <value>Show|Hide image viewer</value>
-  </data>
-  <data name="tsShowHideView2.ToolTipText" xml:space="preserve">
-    <value>Display or hide the integrated image viewer</value>
-  </data>
-  <data name="TSI_ToggleDarkMode1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 42</value>
-  </data>
-  <data name="TSI_ToggleDarkMode1.Text" xml:space="preserve">
-    <value>Toggle DarkMode | Standard mode</value>
-  </data>
-  <data name="TSI_ToggleDarkMode1.ToolTipText" xml:space="preserve">
-    <value>Switch the interface to dark mode theme or back to standard</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 6</value>
@@ -1140,6 +1041,108 @@
   </data>
   <data name="tsBatchScan.Text" xml:space="preserve">
     <value>&amp;Batch Scan</value>
+  </data>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Print</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Print the selected images</value>
+  </data>
+  <data name="tsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsView.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="tsView.ToolTipText" xml:space="preserve">
+    <value>Open viewer</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 6</value>
+  </data>
+  <data name="tsBarCodeCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsBarCodeCheck.Text" xml:space="preserve">
+    <value>Check for barcode data</value>
+  </data>
+  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 6</value>
+  </data>
+  <data name="tsCrop.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsCrop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsCrop.Text" xml:space="preserve">
+    <value>&amp;Crop</value>
+  </data>
+  <data name="tsCrop.ToolTipText" xml:space="preserve">
+    <value>Crop the selected image(s)</value>
+  </data>
+  <data name="tsBrightnessContrast.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsBrightnessContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsBrightnessContrast.Text" xml:space="preserve">
+    <value>&amp;Brightness / Contrast</value>
+  </data>
+  <data name="tsBrightnessContrast.ToolTipText" xml:space="preserve">
+    <value>Ajust the brightness and contrast of the selected image(s)</value>
+  </data>
+  <data name="tsHueSaturation.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsHueSaturation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsHueSaturation.Text" xml:space="preserve">
+    <value>&amp;Hue / Saturation</value>
+  </data>
+  <data name="tsHueSaturation.ToolTipText" xml:space="preserve">
+    <value>Adjust the hue and saturation of the selected image(s)</value>
+  </data>
+  <data name="tsBlackWhite.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsBlackWhite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsBlackWhite.Text" xml:space="preserve">
+    <value>Black and &amp;White</value>
+  </data>
+  <data name="tsBlackWhite.ToolTipText" xml:space="preserve">
+    <value>Convert the selected image to bitonal</value>
+  </data>
+  <data name="tsSharpen.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tsSharpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsSharpen.Text" xml:space="preserve">
+    <value>&amp;Sharpen</value>
+  </data>
+  <data name="tsSharpen.ToolTipText" xml:space="preserve">
+    <value>Sharpen the selected image(s)</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 6</value>
+  </data>
+  <data name="tsReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 42</value>
+  </data>
+  <data name="tsReset.Text" xml:space="preserve">
+    <value>&amp;Reset</value>
+  </data>
+  <data name="tsReset.ToolTipText" xml:space="preserve">
+    <value>Reset all transformations on the images</value>
   </data>
   <data name="tsRotateLeft.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
@@ -1681,6 +1684,12 @@
   <data name="&gt;&gt;tsdImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
+    <value>printToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tsView.Name" xml:space="preserve">
     <value>tsView</value>
   </data>
@@ -1867,16 +1876,10 @@
   <data name="&gt;&gt;tt_FDesktop.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
-    <value>printToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.21913, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.22960, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -99,6 +99,7 @@ namespace NAPS2.WinForms
             this.tsInsert = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBarCodeCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +136,6 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -588,8 +588,8 @@ namespace NAPS2.WinForms
             this.TS_View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsShowHideView2,
             this.TSI_ToggleDarkMode1});
-            this.TS_View.Image = global::NAPS2.Icons.pictures;
             resources.ApplyResources(this.TS_View, "TS_View");
+            this.TS_View.Image = global::NAPS2.Icons.pictures;
             this.TS_View.Name = "TS_View";
             // 
             // tsShowHideView2
@@ -689,6 +689,13 @@ namespace NAPS2.WinForms
             this.tsdImage.Image = global::NAPS2.Icons.picture_edit;
             this.tsdImage.Name = "tsdImage";
             this.tsdImage.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = global::NAPS2.Icons.printer;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // tsView
             // 
@@ -929,13 +936,6 @@ namespace NAPS2.WinForms
             // ContentPanel
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Image = global::NAPS2.Icons.printer;
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // FDesktop
             // 
