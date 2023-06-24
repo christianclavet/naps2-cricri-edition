@@ -174,7 +174,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        public void RegenerateThumbnailList(List<ScannedImage> images, bool onlyText = false)
+        public void RegenerateThumbnailList(List<ScannedImage> images, Color color, bool onlyText = false)
         {
             lock (this)
             {
@@ -201,7 +201,7 @@ namespace NAPS2.WinForms
                 {
                     item.ImageIndex = item.Index;
                     item.Text = (item.Index+1).ToString() + "/" + Items.Count.ToString();
-                    item.ForeColor = Color.White;
+                    item.ForeColor = color;
                 }
 
                 

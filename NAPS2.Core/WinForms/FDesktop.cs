@@ -824,7 +824,10 @@ namespace NAPS2.WinForms
             thumbnailList1.DeletedImages(imageList.Images);
             thumbnailList1.Invoke(new MethodInvoker(delegate
             {
-                thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
+                var color = Color.Black;
+                if (darkMode)
+                    color = Color.White;
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
             }));
             
         }
@@ -2216,7 +2219,10 @@ namespace NAPS2.WinForms
             lock (thumbnailList1)
             {
                 thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
-                thumbnailList1.RegenerateThumbnailList(imageList.Images);
+                var color = Color.Black;
+                if (darkMode)
+                    color = Color.White;
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, color);
             }
 
             SetThumbnailSpacing(thumbnailSize);
@@ -2587,7 +2593,10 @@ namespace NAPS2.WinForms
             //regenerate the icon text numbering
             thumbnailList1.Invoke(new MethodInvoker(delegate
             {
-                thumbnailList1.RegenerateThumbnailList(imageList.Images, true);
+                var color = Color.Black;
+                if (darkMode)
+                    color = Color.White;
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
             }));
             
         }
@@ -2680,6 +2689,7 @@ namespace NAPS2.WinForms
                 // Reorder menu
                 tsdReorder.DropDown.BackColor = Color.FromArgb(24, 24, 24);
                 tsdReorder.DropDown.ForeColor = Color.White;*/
+                RegenIconsList();
             }
             else
             {
@@ -2714,6 +2724,7 @@ namespace NAPS2.WinForms
                 // Reorder menu
                 tsdReorder.DropDown.BackColor = Color.White;
                 tsdReorder.DropDown.ForeColor = Color.Black;
+                RegenIconsList();
 
             }
             return input;
