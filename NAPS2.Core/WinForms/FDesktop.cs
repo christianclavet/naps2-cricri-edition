@@ -346,6 +346,8 @@ namespace NAPS2.WinForms
             WindowState = FormWindowState.Normal;
             DoRestoreFormState();
             SaveFormState = true;
+
+            UpdateToolbar();
         }
 
         private async void FDesktop_Shown(object sender, EventArgs e)
@@ -779,7 +781,7 @@ namespace NAPS2.WinForms
                     }
                     // Get the preview image while scanning
                     GetPreviewImage(scannedImage, !recover);
-  
+                    UpdateToolbar();
                     changeTracker.Made();
                 });
 
