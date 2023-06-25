@@ -80,7 +80,6 @@ namespace NAPS2.WinForms
         private readonly AutoResetEvent renderThumbnailsWaitHandle = new AutoResetEvent(false);
         private bool closed = false;
         private bool recover = false;
-        private bool oldRecover = false;
         private LayoutManager layoutManager;
         private bool disableSelectedIndexChangedEvent;
 
@@ -93,6 +92,7 @@ namespace NAPS2.WinForms
         private Size Oldsize = Size.Empty;
 
         public bool darkMode = false;
+        public static FDesktop instance = null;
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
@@ -124,8 +124,12 @@ namespace NAPS2.WinForms
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
             this.imageSettingsContainer = imageSettingsContainer;
-
+            
+            
             InitializeComponent();
+
+            // Creating a static pointer to this, so we can refer (test)
+            instance = this;
 
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text != null)
@@ -135,11 +139,18 @@ namespace NAPS2.WinForms
             Shown += FDesktop_Shown;
             FormClosing += FDesktop_FormClosing;
             Closed += FDesktop_Closed;
+
             ImageSettingsContainer.ProjectSettings = new ProjectSettings();
             if (ImageSettingsContainer.ProjectSettings.Name == "")
                 ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.BatchName;
 
-            //projectsConfig.Add(ImageSettingsContainer.ProjectSettings);
+        }
+
+        public static FDesktop getInstance()
+        {
+            //this will get the instance to this class and be able to call functions like a manager class
+            //MSVC will Reference where it was required
+            return instance;
         }
         public void SetProjectConfigs(List<ProjectSettings> theList)
         {
@@ -159,14 +170,10 @@ namespace NAPS2.WinForms
 
         public void setRecover(bool recovery)
         {
-            oldRecover = recover;
+            //This is used the tell this class that it's in recovery mode.
+            //Once the recovery is completed, it will be put to false
+            //Selecting an item, while recovering was perceived like a rescan from file. It's not allowed now using this method.
             recover = recovery;
-            
-            if (oldRecover == true && recover == false) 
-            {
-                //Should draw the list of number on the list of icons once recover is done
-                RegenIconsList();
-            }
         }
 
         /// <summary>
@@ -268,7 +275,7 @@ namespace NAPS2.WinForms
                 {
                     if (PlatformCompat.Runtime.SetToolbarFont)
                     {
-                        btn.Font = new Font("Segoe UI", 9);
+                        btn.Font = new Font("Segoe UI", 10);
                     }
                     btn.Text = stringWrapper.Wrap(btn.Text ?? "", 80, g, btn.Font);
                 }
@@ -789,18 +796,12 @@ namespace NAPS2.WinForms
                         last = scannedImage;
 
                     }
-                    // Get the preview image while scanning
-                    GetPreviewImage(scannedImage, !recover);
                     UpdateToolbar();
                     changeTracker.Made();
                 });
 
                 // Trigger thumbnail rendering just in case the received image is out of date
-               
                 renderThumbnailsWaitHandle.Set();
-                //Regen the icon list numbers when scanning
-                if (!recover) 
-                    RegenIconsList();
 
             };
         }
@@ -859,6 +860,8 @@ namespace NAPS2.WinForms
                         if (index != -1)
                         {
                             thumbnailList1.ReplaceThumbnail(index, image);
+                            if (SelectedIndices.FirstOrDefault() == index)  
+                                    GetPreviewImage(imageList.Images[index],true);
                         }
                     }
                 }
@@ -1062,11 +1065,6 @@ namespace NAPS2.WinForms
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate270FlipNone);
             changeTracker.Made();
 
-            if (SelectedIndices.Count() > 0)
-            {
-                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
-            }
-
         }
 
         private async Task RotateRight()
@@ -1078,11 +1076,7 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.Rotate90FlipNone);
             changeTracker.Made();
-            if (SelectedIndices.Count() > 0) 
-            {
-                GetPreviewImage(imageList.Images[SelectedIndices.First()],true);
-            }
-            
+           
         }
 
         private async Task Flip()
@@ -1094,11 +1088,6 @@ namespace NAPS2.WinForms
             changeTracker.Made();
             await imageList.RotateFlip(SelectedIndices, RotateFlipType.RotateNoneFlipXY);
             changeTracker.Made();
-
-            if (SelectedIndices.Count() > 0)
-            {
-                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
-            }
 
         }
 
@@ -1114,11 +1103,6 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
                 changeTracker.Made();
-            }
-
-            if (SelectedIndices.Count() > 0)
-            {
-                GetPreviewImage(imageList.Images[SelectedIndices.First()], true);
             }
         }
 
@@ -1478,15 +1462,12 @@ namespace NAPS2.WinForms
             {
                 statusStrip1.Items[0].Text = MiscResources.No_selection;
             }
+
             if (thumbnailList1.SelectedItems.Count > 1)
             {
                 statusStrip1.Items[0].Text = MiscResources.Selection + thumbnailList1.SelectedItems.Count.ToString();
             }
-                if (!disableSelectedIndexChangedEvent)
-            {
-                //UpdateThumbnailList1Descriptions();
-                
-            }
+               
         }
 
         private void thumbnailList1_MouseMove(object sender, MouseEventArgs e)
@@ -2547,7 +2528,7 @@ namespace NAPS2.WinForms
             }
 
 
-                var openFileDialog = new OpenFileDialog();
+            var openFileDialog = new OpenFileDialog();
             openFileDialog.CheckFileExists = false;
             openFileDialog.AutoUpgradeEnabled = true;
             openFileDialog.InitialDirectory = Paths.Recovery;
@@ -2576,11 +2557,8 @@ namespace NAPS2.WinForms
                     userConfigManager.Save();
                     recoveryManager.setFolder(di, this); //Set to a folder other than the last used one.
                     //recover mode activated (will not update the gui of the image preview while loading)
-                    recover = true;
-                                                  
+                    recover = true;                                  
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
-
-                   
                     projectName = di.Name;
                     UpdateToolbar();
                     

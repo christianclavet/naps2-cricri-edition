@@ -46,7 +46,7 @@ namespace NAPS2.Scan
             this.scanMode = scanmode;
         }
         public async Task PerformScan(ScanProfile scanProfile, ScanParams scanParams, IWin32Window dialogParent, ISaveNotify notify,
-            Action<ScannedImage> imageCallback, CancellationToken cancelToken = default, FDesktop fDesktop = null)
+            Action<ScannedImage> imageCallback, CancellationToken cancelToken = default)
         {
             var driver = driverFactory.Create(scanProfile.DriverName);
             driver.DialogParent = dialogParent;
@@ -121,12 +121,7 @@ namespace NAPS2.Scan
                     // No auto save, so just pipe images back as we get them
                     await source.ForEach(imageCallback);
                 }
-
-                if (fDesktop != null) 
-                { 
-                    fDesktop.RegenIconsList();
-                }
-                
+              
 
                 //Log.Error("Image count is:" + imageCount.ToString(), this);
                 if (imageCount > 0)

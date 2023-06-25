@@ -17,6 +17,6 @@ namespace NAPS2.Scan
     public interface IScanPerformer
     {
         Task PerformScan(ScanProfile scanProfile, ScanParams scanParams, IWin32Window dialogParent, ISaveNotify notify, Action<ScannedImage> imageCallback,
-            CancellationToken cancelToken = default, FDesktop fDesktop = null);
+            CancellationToken cancelToken = default);
     }
 }

@@ -234,9 +234,10 @@ namespace NAPS2.Recovery
                    
                     
                 }
-                fDesktop.setRecover(false);
-                // Not thread safe and cause exception
-                //fDesktop.RegenIconsList();
+
+                // Tell the Desktop class that recovery is completed and ask to redraw the numbers of the items
+                FDesktop.getInstance().setRecover(false);
+                FDesktop.getInstance().RegenIconsList();
                 return true;
             }
 
