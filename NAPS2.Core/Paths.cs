@@ -16,7 +16,7 @@ namespace NAPS2
 #if STANDALONE
         private static readonly string AppDataPath = Path.Combine(ExecutablePath, "..", "Data");
 #else
-        private static readonly string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NAPS2");
+        private static readonly string AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NAPS2 CriCri Edition");
 #endif
 
         private static readonly string TempPath = Path.Combine(AppDataPath, "temp");

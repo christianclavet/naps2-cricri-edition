@@ -81,9 +81,7 @@ namespace NAPS2.WinForms
         private bool closed = false;
         private bool recover = false;
         private LayoutManager layoutManager;
-        private bool disableSelectedIndexChangedEvent;
-
-
+    
         private Bitmap bitmap; // Used for the preview window
         private bool splitter1 = false; // Used for the splitter GUI state of display
         private bool insert = false; //Used to determine if the scanning will insert images or append them a the end
@@ -678,13 +676,11 @@ namespace NAPS2.WinForms
             get => thumbnailList1.SelectedIndices.Cast<int>();
             set
             {
-                disableSelectedIndexChangedEvent = true;
                 thumbnailList1.SelectedIndices.Clear();
                 foreach (int i in value)
                 {
                     thumbnailList1.SelectedIndices.Add(i);
                 }
-                disableSelectedIndexChangedEvent = false;
                 thumbnailList1_SelectedIndexChanged(thumbnailList1, new EventArgs());
             }
         }
@@ -815,9 +811,6 @@ namespace NAPS2.WinForms
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
 
-            //if (!recover)
-            
-            //UpdateThumbnailList1Descriptions();
         }
 
         private void DeleteThumbnails()
@@ -2555,7 +2548,7 @@ namespace NAPS2.WinForms
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
-                    recoveryManager.setFolder(di, this); //Set to a folder other than the last used one.
+                    recoveryManager.setFolder(di); //Set to a folder other than the last used one.
                     //recover mode activated (will not update the gui of the image preview while loading)
                     recover = true;                                  
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());

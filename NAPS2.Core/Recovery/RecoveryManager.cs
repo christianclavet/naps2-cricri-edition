@@ -23,8 +23,6 @@ namespace NAPS2.Recovery
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly IOperationProgress operationProgress;
         private readonly ImageSettingsContainer imageSettingsContainer;
-        private FDesktop fDesktop;
-
 
         public RecoveryManager(IFormFactory formFactory, ThumbnailRenderer thumbnailRenderer, IOperationProgress operationProgress, ImageSettingsContainer imageSettingsContainer)
         {
@@ -34,10 +32,9 @@ namespace NAPS2.Recovery
             this.imageSettingsContainer = imageSettingsContainer;
 
         }
-        public void setFolder(DirectoryInfo info, FDesktop fDesktop)
+        public void setFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
-            this.fDesktop = fDesktop;
         }
 
         public void Save()
@@ -55,7 +52,7 @@ namespace NAPS2.Recovery
             op.setFolder(folderToRecoverFrom);
             op.setContainer(imageSettingsContainer);
 
-            if (op.Start(imageCallback, fDesktop))
+            if (op.Start(imageCallback))
             {
                 operationProgress.ShowProgress(op);
                                   
@@ -74,7 +71,6 @@ namespace NAPS2.Recovery
             public int imageCount;
             private DateTime scannedDateTime;
             private bool cleanup;
-            private FDesktop fDesktop;
 
             public void setFolder(DirectoryInfo info)
             { 
@@ -99,9 +95,8 @@ namespace NAPS2.Recovery
                 this.imageSettingsContainer = imageSettingsContainer;
             }
 
-            public bool Start(Action<ScannedImage> imageCallback, FDesktop fDesktop = null)
+            public bool Start(Action<ScannedImage> imageCallback)
             {
-                this.fDesktop = fDesktop;
                 Status = new OperationStatus();
                 if (Status != null)
                 {
@@ -181,6 +176,7 @@ namespace NAPS2.Recovery
                     {
                         return true;
                     }
+                    FDesktop.getInstance().setRecover(true); //Set the application FLAG that it is in recovery
 
                     string imagePath = Path.Combine(folderToRecoverFrom.FullName, indexImage.FileName);
                     ScannedImage scannedImage;
@@ -193,7 +189,6 @@ namespace NAPS2.Recovery
                         //Retrieve the information to store inside the image data of Naps.
                         using (var bitmap = new Bitmap(imagePath))
                         {
-                            fDesktop.setRecover(true);
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
                             scannedImage.BarCodeData = indexImage.BarCode;
                             scannedImage.SheetSide = indexImage.SheetSide;

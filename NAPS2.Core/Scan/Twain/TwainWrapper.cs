@@ -166,7 +166,16 @@ namespace NAPS2.Scan.Twain
                             }
                            
                             
-                            Log.Error("Camera:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());                            
+                            Log.Error("Cameras:" + ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString());
+                            Log.Error("Barcode enabled?" + ds.Capabilities.ICapBarcodeDetectionEnabled.GetCurrent().ConvertToString());
+
+
+                            IEnumerable<BarcodeType> barTypes = ds.Capabilities.ICapSupportedBarcodeTypes.GetValues();
+                            foreach (var result1 in barTypes)
+                            {
+                                Log.Error("-> " + result1.ToString() + ": ");
+                            }
+
                             if ((sheetSide == 2 || sheetSide==0) && ds.Capabilities.CapCameraSide.GetCurrent().ConvertToString() == "Both")
                             {
                                 //Log.Error("Current side of camera: Front");
@@ -178,13 +187,13 @@ namespace NAPS2.Scan.Twain
                                 if (pageNumber%2 == 0) sheetSide = 2;
                             }
                             //Temporary hidden to not overload the log file --- debug use
-                            /*
+                            
                             IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
                             Log.Error("Capabilities\n" + support.Count().ToString());
                             foreach (var result2 in support)
                             {
                                 Log.Error("-> " + result2.ToString()+": ");
-                            }*/
+                            }
 
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
@@ -199,15 +208,23 @@ namespace NAPS2.Scan.Twain
                                     {
                                         image.PatchCode = GetPatchCode(patchCodeInfo);
                                         image.BarCodeData = GetBarCode();
+                                        Debug.WriteLine("\n\nBARCODE BARCODE BARCODE : " + image.PatchCode + "\n\n");
                                     }
                                 }
                             }
+
+                            //Barcode reading not working directly from twain. Only from the lib.
                             foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.BarcodeText))
                             {
+                                
                                 if (barCodeInfo.ReturnCode == ReturnCode.Success)
                                 {
+                                    foreach (var result2 in barCodeInfo.ReadValues())
+                                    {
+                                        Log.Error("Barcode info: " + result2.ToString() + ": ");
+                                    }
                                     image.BarCodeData = barCodeInfo.ReadValues().FirstOrDefault().ToString();
-                                    //Debug.WriteLine("BARCODE BARCODE BARCODE : "+image.BarCodeData);
+                                    Debug.WriteLine("\n\nBARCODE BARCODE BARCODE : "+image.BarCodeData+"\n\n");
                                 }
                             }
                             image.RecoveryIndexImage.SheetSide = sheetSide;
