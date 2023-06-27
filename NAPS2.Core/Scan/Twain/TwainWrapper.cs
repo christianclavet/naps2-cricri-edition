@@ -214,17 +214,17 @@ namespace NAPS2.Scan.Twain
                             }
 
                             //Barcode reading not working directly from twain. Only from the lib.
-                            foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.BarcodeText))
+                            foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.PageSide))
                             {
                                 
                                 if (barCodeInfo.ReturnCode == ReturnCode.Success)
                                 {
                                     foreach (var result2 in barCodeInfo.ReadValues())
                                     {
-                                        Log.Error("Barcode info: " + result2.ToString() + ": ");
+                                        Log.Error("Page side info: " + result2.ToString() + ": ");
                                     }
                                     image.BarCodeData = barCodeInfo.ReadValues().FirstOrDefault().ToString();
-                                    Debug.WriteLine("\n\nBARCODE BARCODE BARCODE : "+image.BarCodeData+"\n\n");
+                                    Debug.WriteLine("\n\n Page Side: "+image.BarCodeData+"\n\n");
                                 }
                             }
                             image.RecoveryIndexImage.SheetSide = sheetSide;
