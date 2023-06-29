@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using NAPS2.Platform;
 using NAPS2.Scan.Images;
+using NTwain.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NAPS2.WinForms
@@ -41,6 +42,11 @@ namespace NAPS2.WinForms
         }
 
         private Bitmap placeholder;
+
+        public ListViewGroupCollection GetGroups()
+        {
+            return Groups;
+        }
 
         public ThumbnailList()
         {
@@ -239,6 +245,11 @@ namespace NAPS2.WinForms
                 placeholder = DrawHourglass(placeholder);
                 return placeholder;
             }
+        }
+
+        public void addGroup(string text)
+        {
+            this.Groups.Add(new ListViewGroup(text, HorizontalAlignment.Left));            
         }
 
         private Bitmap DrawHourglass(Image image)
