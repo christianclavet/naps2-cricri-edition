@@ -817,7 +817,7 @@ namespace NAPS2.WinForms
                 thumbnailList1.addGroup("Document 3");
                 var group = thumbnailList1.GetGroups();
 
-                group[0].Items.RemoveAll;
+          
                 group[0].Items.Add(thumbnailList1.Items[0]);
                 group[0].Items.Add(thumbnailList1.Items[1]);
                 group[1].Items.Add(thumbnailList1.Items[2]);
