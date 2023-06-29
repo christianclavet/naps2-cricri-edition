@@ -1562,10 +1562,16 @@ namespace NAPS2.WinForms
                 tsCombo_Profiles.DropDownItems.RemoveAt(0);
             }
 
+            //there is no profile at all.
+            if (profileManager.Profiles.Count == 0)
+                return;
+
             // Populate the dropdown
             var defaultProfile = profileManager.DefaultProfile;
             tsCombo_Profiles.Text = defaultProfile.DisplayName;
             tsCombo_Profiles.Image = Icons.scanner_48;
+
+
             int i = 1;
             foreach (var profile in profileManager.Profiles)
             {
