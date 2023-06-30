@@ -810,23 +810,15 @@ namespace NAPS2.WinForms
             //Should not do it if a selection is active.
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
-            if (thumbnailList1.Items.Count == 6)
-            {
-                thumbnailList1.addGroup("Document");
-                thumbnailList1.addGroup("Document 2");
-                thumbnailList1.addGroup("Document 3");
-                var group = thumbnailList1.GetGroups();
+ 
+            //Check the groups features of the listview.
+            thumbnailList1.addGroup("Document 1");
+                
+            var group = thumbnailList1.GetGroups();
 
-          
-                group[0].Items.Add(thumbnailList1.Items[0]);
-                thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
-                group[0].Items.Add(thumbnailList1.Items[1]);
-                group[1].Items.Add(thumbnailList1.Items[2]);
-                group[1].Items.Add(thumbnailList1.Items[3]);
-                group[2].Items.Add(thumbnailList1.Items[4]);
-                thumbnailList1.SetGroupFooter(group[0], "2 images(s) in this document");
-
-            }
+            thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
+            group[0].Items.Add(thumbnailList1.Items[thumbnailList1.Items.Count-1]);
+            thumbnailList1.SetGroupFooter(group[0], (group[0].Items.Count).ToString()+" Pages(s) in this document");
         }
 
         private void DeleteThumbnails()

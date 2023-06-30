@@ -17,6 +17,17 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms;
+using NAPS2.Logging;
+using Newtonsoft.Json.Linq;
+using NTwain.Data;
+using Org.BouncyCastle.Utilities.Collections;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using System.Drawing;
+using System.Runtime.Remoting.Contexts;
+using System.Windows.Forms.VisualStyles;
+using System.Xml.Linq;
+using ZXing.QrCode.Internal;
+using ZXing;
 
 namespace NAPS2.WinForms;
 //From: https://www.codeproject.com/Articles/36775/Collapsible-ListViewGroup
@@ -460,3 +471,5 @@ public enum ListViewGroupState
     /// </summary>
     SubSetLinkFocused = 128,
 }
+
+
