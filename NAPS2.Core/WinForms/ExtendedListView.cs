@@ -19,6 +19,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms;
 
 namespace NAPS2.WinForms;
+//From: https://www.codeproject.com/Articles/36775/Collapsible-ListViewGroup
 public class ListViewExtended : System.Windows.Forms.ListView
 {
     private const int LVM_FIRST = 0x1000;                    // ListView messages
