@@ -819,6 +819,7 @@ namespace NAPS2.WinForms
 
           
                 group[0].Items.Add(thumbnailList1.Items[0]);
+                thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
                 group[0].Items.Add(thumbnailList1.Items[1]);
                 group[1].Items.Add(thumbnailList1.Items[2]);
                 group[1].Items.Add(thumbnailList1.Items[3]);

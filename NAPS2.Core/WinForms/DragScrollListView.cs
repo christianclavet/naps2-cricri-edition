@@ -7,7 +7,7 @@ using NAPS2.Util;
 
 namespace NAPS2.WinForms
 {
-    public class DragScrollListView : ListView
+    public class DragScrollListView : ListViewExtended
     {
         // From http://stackoverflow.com/questions/660663/c-sharp-implementing-auto-scroll-in-a-listview-while-drag-dropping
 

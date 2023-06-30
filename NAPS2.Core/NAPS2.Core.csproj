@@ -333,6 +333,9 @@
     <Compile Include="Util\WebClientExtensions.cs" />
     <Compile Include="Util\Win32Window.cs" />
     <Compile Include="Logging\WindowsEventLogger.cs" />
+    <Compile Include="WinForms\ExtendedListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinForms\FConfigurePrj.cs">
       <SubType>Form</SubType>
     </Compile>
