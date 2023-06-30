@@ -824,7 +824,7 @@ namespace NAPS2.WinForms
                 group[1].Items.Add(thumbnailList1.Items[2]);
                 group[1].Items.Add(thumbnailList1.Items[3]);
                 group[2].Items.Add(thumbnailList1.Items[4]);
-                thumbnailList1.SetGroupFooter(group[0], "2 file(s) in this document");
+                thumbnailList1.SetGroupFooter(group[0], "2 images(s) in this document");
 
             }
         }
