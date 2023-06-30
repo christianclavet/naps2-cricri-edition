@@ -2813,7 +2813,14 @@ namespace NAPS2.WinForms
             changeProjectName();
         }
 
-
+        private void tsiDocumentAdd_Click(object sender, EventArgs e)
+        {
+            //Define a selected image as the start of a new document
+            if (SelectedImages.Any()) 
+            {
+                imageList.Images[SelectedIndices.First()].IsSeparator = true;
+            }
+        }
     }
         #endregion
 }

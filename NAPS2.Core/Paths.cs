@@ -58,7 +58,7 @@ namespace NAPS2
             }
         }
 
-        private static string EnsureFolderExists(string folderPath)
+        public static string EnsureFolderExists(string folderPath)
         {
             if (!Directory.Exists(folderPath))
             {

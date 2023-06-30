@@ -98,6 +98,8 @@ namespace NAPS2.WinForms
             this.tsBatchScan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsInsert = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsdDocument = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsiDocumentAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
@@ -329,6 +331,7 @@ namespace NAPS2.WinForms
             this.tsScan,
             this.tsInsert,
             this.toolStripSeparator4,
+            this.tsdDocument,
             this.tsdImage,
             this.tsdRotate,
             this.tsdReorder,
@@ -669,6 +672,21 @@ namespace NAPS2.WinForms
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // tsdDocument
+            // 
+            this.tsdDocument.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiDocumentAdd});
+            this.tsdDocument.Image = global::NAPS2.Icons.folder_directory_files_icon;
+            resources.ApplyResources(this.tsdDocument, "tsdDocument");
+            this.tsdDocument.Name = "tsdDocument";
+            // 
+            // tsiDocumentAdd
+            // 
+            this.tsiDocumentAdd.Image = global::NAPS2.Icons.folder_directory_files_icon_add;
+            this.tsiDocumentAdd.Name = "tsiDocumentAdd";
+            resources.ApplyResources(this.tsiDocumentAdd, "tsiDocumentAdd");
+            this.tsiDocumentAdd.Click += new System.EventHandler(this.tsiDocumentAdd_Click);
             // 
             // tsdImage
             // 
@@ -1069,6 +1087,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsShowHideView2;
         private System.Windows.Forms.ToolStripMenuItem TSI_ToggleDarkMode1;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton tsdDocument;
+        private System.Windows.Forms.ToolStripMenuItem tsiDocumentAdd;
     }
 }
 
