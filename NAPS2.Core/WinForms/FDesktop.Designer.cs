@@ -100,6 +100,7 @@ namespace NAPS2.WinForms
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsdDocument = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsiDocumentAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiDocumentRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
@@ -239,6 +240,9 @@ namespace NAPS2.WinForms
             this.thumbnailList1.ContextMenuStrip = this.contextMenuStrip;
             resources.ApplyResources(this.thumbnailList1, "thumbnailList1");
             this.thumbnailList1.GridLines = true;
+            this.thumbnailList1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups1")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.ShowItemToolTips = true;
@@ -676,7 +680,8 @@ namespace NAPS2.WinForms
             // tsdDocument
             // 
             this.tsdDocument.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiDocumentAdd});
+            this.tsiDocumentAdd,
+            this.tsiDocumentRemove});
             this.tsdDocument.Image = global::NAPS2.Icons.folder_directory_files_icon;
             resources.ApplyResources(this.tsdDocument, "tsdDocument");
             this.tsdDocument.Name = "tsdDocument";
@@ -687,6 +692,13 @@ namespace NAPS2.WinForms
             this.tsiDocumentAdd.Name = "tsiDocumentAdd";
             resources.ApplyResources(this.tsiDocumentAdd, "tsiDocumentAdd");
             this.tsiDocumentAdd.Click += new System.EventHandler(this.tsiDocumentAdd_Click);
+            // 
+            // tsiDocumentRemove
+            // 
+            this.tsiDocumentRemove.Image = global::NAPS2.Icons.folder_directory_files_icon_remove;
+            this.tsiDocumentRemove.Name = "tsiDocumentRemove";
+            resources.ApplyResources(this.tsiDocumentRemove, "tsiDocumentRemove");
+            this.tsiDocumentRemove.Click += new System.EventHandler(this.tsiDocumentRemove_Click);
             // 
             // tsdImage
             // 
@@ -1089,6 +1101,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton tsdDocument;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentAdd;
+        private System.Windows.Forms.ToolStripMenuItem tsiDocumentRemove;
     }
 }
 

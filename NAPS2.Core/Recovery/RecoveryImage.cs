@@ -147,6 +147,7 @@ namespace NAPS2.Recovery
                 HighQuality = highQuality,
                 TransformList = transformList,
                 SheetSide = SheetSide,
+                isSeparator = IsSeparator,
             };
         }
 
@@ -164,6 +165,7 @@ namespace NAPS2.Recovery
             FileName = recoveryIndexImage.FileName;
             barCode = recoveryIndexImage.BarCode;
             SheetSide = recoveryIndexImage.SheetSide;
+            IsSeparator = recoveryIndexImage.isSeparator;            
             
             FilePath = Path.Combine(RecoveryFolder.FullName, FileName);
             IndexImage = recoveryIndexImage;
@@ -179,7 +181,7 @@ namespace NAPS2.Recovery
         public string barCode { get; set; }
 
         public int SheetSide { get; set; }
-
+        public bool IsSeparator { get; set; }  
         public RecoveryIndexImage IndexImage { get; }
 
         public void Save()

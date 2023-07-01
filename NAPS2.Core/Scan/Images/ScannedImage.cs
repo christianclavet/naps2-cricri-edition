@@ -34,6 +34,7 @@ namespace NAPS2.Scan.Images
         public string infoResolution;
         public string infoFormat;
         public string barCodeData;
+        public bool isSeparator;
 
         private bool disposed;
         private int snapshotCount;
@@ -68,6 +69,7 @@ namespace NAPS2.Scan.Images
             transformList = recoveryImage.IndexImage.TransformList;
             barCodeData = recoveryImage.IndexImage.BarCode;
             SheetSide = recoveryImage.IndexImage.SheetSide;
+            isSeparator = recoveryImage.IndexImage.isSeparator;
             
         }
 

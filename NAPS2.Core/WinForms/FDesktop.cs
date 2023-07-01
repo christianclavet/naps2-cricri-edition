@@ -810,15 +810,6 @@ namespace NAPS2.WinForms
             //Should not do it if a selection is active.
             if (thumbnailList1.Items.Count>5 && !SelectedIndices.Any() && !recover)
                     thumbnailList1.EnsureVisible(thumbnailList1.Items.Count-1);
- 
-            //Check the groups features of the listview.
-            thumbnailList1.addGroup("Document 1");
-                
-            var group = thumbnailList1.GetGroups();
-
-            thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
-            group[0].Items.Add(thumbnailList1.Items[thumbnailList1.Items.Count-1]);
-            thumbnailList1.SetGroupFooter(group[0], (group[0].Items.Count).ToString()+" Pages(s) in this document");
         }
 
         private void DeleteThumbnails()
@@ -2813,8 +2804,25 @@ namespace NAPS2.WinForms
             //Define a selected image as the start of a new document
             if (SelectedImages.Any()) 
             {
+                var sel = Enumerable.Range(0, imageList.Images.Count);
+                          
                 imageList.Images[SelectedIndices.First()].IsSeparator = true;
+                recoveryManager.Save();
+                thumbnailList1.GroupRefresh(imageList.Images);
             }
+        }
+
+        private void tsiDocumentRemove_Click(object sender, EventArgs e)
+        {
+            if (SelectedImages.Any())
+            {
+                var sel = Enumerable.Range(0, imageList.Images.Count);
+
+                imageList.Images[SelectedIndices.First()].IsSeparator = false;
+                recoveryManager.Save();
+                thumbnailList1.GroupRefresh(imageList.Images);
+            }
+
         }
     }
         #endregion

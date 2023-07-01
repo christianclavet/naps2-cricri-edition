@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using NAPS2.Platform;
 using NAPS2.Scan.Images;
@@ -17,10 +18,11 @@ namespace NAPS2.WinForms
     {
         private static readonly FieldInfo imageSizeField;
         private static readonly MethodInfo performRecreateHandleMethod;
+        private static int documentCount;
 
         static ThumbnailList()
         {
-         
+            documentCount = 1;
             // Try to enable larger thumbnails via a reflection hack
             if (PlatformCompat.Runtime.SetImageListSizeOnImageCollection)
             {
@@ -53,6 +55,8 @@ namespace NAPS2.WinForms
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
+            addGroup("Document "+documentCount.ToString());
+           
         }
 
         public ThumbnailRenderer ThumbnailRenderer { get; set; }
@@ -108,6 +112,7 @@ namespace NAPS2.WinForms
                     Items[i].ForeColor = Color.White;
                 }
                 EndUpdate();
+                GroupRefresh(allImages);
             }
             Invalidate();
         }
@@ -140,6 +145,7 @@ namespace NAPS2.WinForms
                     }
                 }
                 EndUpdate();
+                GroupRefresh(allImages);
             }
             Invalidate();
         }
@@ -150,7 +156,7 @@ namespace NAPS2.WinForms
             {
                 BeginUpdate();
                 int min = selection == null || !selection.Any() ? 0 : selection.Min();
-                int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;
+                int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;         
 
                 for (int i = min; i < max; i++)
                 {
@@ -161,8 +167,33 @@ namespace NAPS2.WinForms
                     Items[i].ForeColor = Color.White;
                 }
                 EndUpdate();
+                GroupRefresh(images);
             }
             Invalidate();
+        }
+
+        public void GroupRefresh(List<ScannedImage> images)
+        {
+            var max = images.Count;
+            Groups.Clear();
+            documentCount = 1;
+            addGroup("Document " + documentCount.ToString());
+            BeginUpdate();
+            for (int i = 0; i < max; i++)
+            {
+                // Group define.
+                if (images[i].IsSeparator)
+                {
+                    documentCount++;
+                    addGroup("Document " + documentCount.ToString());
+
+                }
+                Groups[documentCount - 1].Items.Add(Items[i]);
+                SetGroupState(ListViewGroupState.Collapsible);
+                SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
+            }
+            EndUpdate(); 
+
         }
 
         public void ReplaceThumbnail(int index, ScannedImage img)

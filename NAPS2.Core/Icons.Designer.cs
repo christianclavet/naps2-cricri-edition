@@ -603,6 +603,16 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_directory_files_icon_remove {
+            get {
+                object obj = ResourceManager.GetObject("folder-directory-files-icon_remove", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder_picture {
             get {
                 object obj = ResourceManager.GetObject("folder_picture", resourceCulture);

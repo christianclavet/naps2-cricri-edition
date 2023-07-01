@@ -22,6 +22,8 @@ namespace NAPS2.Recovery
 
         public int SheetSide { get; set; }
 
+        public bool isSeparator { get; set; }
+
         public ScanBitDepth BitDepth { get; set; }
 
         public bool HighQuality { get; set; }
