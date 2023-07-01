@@ -192,6 +192,7 @@ namespace NAPS2.Recovery
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
                             scannedImage.BarCodeData = indexImage.BarCode;
                             scannedImage.SheetSide = indexImage.SheetSide;
+                            scannedImage.isSeparator = indexImage.isSeparator;
                             if (bitmap != null)
                             {
                                 Size size = bitmap.Size;

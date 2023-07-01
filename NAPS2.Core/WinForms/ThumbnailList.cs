@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using NAPS2.Platform;
 using NAPS2.Scan.Images;
 using NTwain.Data;
+using ZXing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NAPS2.WinForms
@@ -107,9 +108,15 @@ namespace NAPS2.WinForms
                 for (int i = ilThumbnailList.Images.Count; i < allImages.Count; i++)
                 {
                     ilThumbnailList.Images.Add(GetThumbnail(allImages[i]));
-                    Items.Add(ItemText, i).Tag = allImages[i];
-                    Items[i].Text = (i+1).ToString();
-                    Items[i].ForeColor = Color.White;
+                    Items.Add(ItemText, i).Tag = allImages[i];           
+                    if (allImages[i].IsSeparator)
+                    {
+                        Items[i].Text = (i + 1).ToString() + " Separator";
+                    } else 
+                    {
+                        Items[i].Text = (i + 1).ToString();
+                    }
+                    //Items[i].ForeColor = color;
                 }
                 EndUpdate();
                 GroupRefresh(allImages);
@@ -163,7 +170,15 @@ namespace NAPS2.WinForms
                     int imageIndex = Items[i].ImageIndex;
                     ilThumbnailList.Images[imageIndex] = GetThumbnail(images[i]);
                     Items[i].Tag = images[i];
-                    Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString();
+
+                    if (images[i].IsSeparator)
+                    {
+                        Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
+                    }
+                    else
+                    {
+                        Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " ";
+                    }
                     Items[i].ForeColor = Color.White;
                 }
                 EndUpdate();
@@ -236,9 +251,17 @@ namespace NAPS2.WinForms
 
                 foreach (ListViewItem item in Items)
                 {
+                    if (images[item.Index].IsSeparator)
+                    {
+                        item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
+                    } else
+                    {
+                        item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString();
+                    }
                     item.ImageIndex = item.Index;
-                    item.Text = (item.Index+1).ToString() + "/" + Items.Count.ToString();
                     item.ForeColor = color;
+
+
                 }
 
                 
