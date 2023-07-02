@@ -804,7 +804,12 @@ namespace NAPS2.WinForms
 
         private void AddThumbnails()
         {
-            thumbnailList1.AddedImages(imageList.Images);
+            Color fore = Color.Black;
+            if (darkMode) 
+            {
+                fore = Color.White;
+            }
+            thumbnailList1.AddedImages(imageList.Images, fore);
 
             //Scroll the list so that every new item that get added can be viewed. -CC
             //Should not do it if a selection is active.
@@ -827,7 +832,14 @@ namespace NAPS2.WinForms
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
         {
-            thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null);
+
+            Color fore = Color.Black;
+            if (darkMode)
+            {
+                fore = Color.White;
+            }
+
+            thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null, fore);
             SelectedIndices = selection;
 
              if (scrollToSelection)
@@ -2338,6 +2350,11 @@ namespace NAPS2.WinForms
 
         private async void thumbnailList1_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            //Must remove the groups while dragging picture as the insertion mark will not be displayes (Microsoft restriction)
+            //Ensuring that the icon doesnt move too much since the space used by the groups will be freed.
+            thumbnailList1.Groups.Clear();
+            thumbnailList1.EnsureVisible(SelectedIndices.First());
+
             // Provide drag data
             if (SelectedIndices.Any())
             {
@@ -2425,6 +2442,7 @@ namespace NAPS2.WinForms
         {
             if (e.Effect == DragDropEffects.Move)
             {
+               
                 var index = GetDragIndex(e);
                 if (index == imageList.Images.Count)
                 {
@@ -2436,6 +2454,7 @@ namespace NAPS2.WinForms
                     thumbnailList1.InsertionMark.Index = index;
                     thumbnailList1.InsertionMark.AppearsAfterItem = false;
                 }
+                
             }
         }
 
@@ -2808,7 +2827,14 @@ namespace NAPS2.WinForms
                           
                 imageList.Images[SelectedIndices.First()].IsSeparator = true;
                 recoveryManager.Save();
+
+                Color fore = Color.Black;
+                if (darkMode)
+                {
+                    fore = Color.White;
+                }
                 thumbnailList1.GroupRefresh(imageList.Images);
+                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
             }
         }
 
@@ -2820,7 +2846,13 @@ namespace NAPS2.WinForms
 
                 imageList.Images[SelectedIndices.First()].IsSeparator = false;
                 recoveryManager.Save();
+                Color fore = Color.Black;
+                if (darkMode)
+                {
+                    fore = Color.White;
+                }
                 thumbnailList1.GroupRefresh(imageList.Images);
+                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
             }
 
         }

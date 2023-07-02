@@ -57,7 +57,6 @@ namespace NAPS2.WinForms
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
             addGroup("Document "+documentCount.ToString());
-           
         }
 
         public ThumbnailRenderer ThumbnailRenderer { get; set; }
@@ -92,7 +91,7 @@ namespace NAPS2.WinForms
 
         private List<ScannedImage> CurrentImages => Items.Cast<ListViewItem>().Select(x => (ScannedImage)x.Tag).ToList();
 
-        public void AddedImages(List<ScannedImage> allImages)
+        public void AddedImages(List<ScannedImage> allImages, Color color)
         {
             lock (this)
             {
@@ -116,10 +115,10 @@ namespace NAPS2.WinForms
                     {
                         Items[i].Text = (i + 1).ToString();
                     }
-                    //Items[i].ForeColor = color;
+                    Items[i].ForeColor = color;
                 }
-                EndUpdate();
                 GroupRefresh(allImages);
+                EndUpdate();
             }
             Invalidate();
         }
@@ -128,6 +127,7 @@ namespace NAPS2.WinForms
         {
             lock (this)
             {
+                GroupRefresh(allImages);
                 BeginUpdate();
                 if (allImages.Count == 0)
                 {
@@ -152,15 +152,15 @@ namespace NAPS2.WinForms
                     }
                 }
                 EndUpdate();
-                GroupRefresh(allImages);
             }
             Invalidate();
         }
 
-        public void UpdatedImages(List<ScannedImage> images, List<int> selection)
+        public void UpdatedImages(List<ScannedImage> images, List<int> selection, Color color)
         {
             lock (this)
             {
+                GroupRefresh(images);
                 BeginUpdate();
                 int min = selection == null || !selection.Any() ? 0 : selection.Min();
                 int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;         
@@ -179,12 +179,40 @@ namespace NAPS2.WinForms
                     {
                         Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " ";
                     }
-                    Items[i].ForeColor = Color.White;
+                    
+                    Items[i].ForeColor = color;
                 }
                 EndUpdate();
-                GroupRefresh(images);
+               
             }
             Invalidate();
+        }
+
+        public void UpdateDescriptions(List<ScannedImage> allImages, Color color)
+        {
+            lock (this)
+            {
+                BeginUpdate();
+                for (int i = 0; i < allImages.Count; i++)
+                {
+                    int imageIndex = Items[i].ImageIndex;
+                    ilThumbnailList.Images[imageIndex] = GetThumbnail(allImages[i]);
+                    Items[i].Tag = allImages[i];
+
+                    if (allImages[i].IsSeparator)
+                    {
+                        Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
+                    }
+                    else
+                    {
+                        Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " ";
+                    }
+
+                    Items[i].ForeColor = color;
+                }
+                EndUpdate();
+            }
+
         }
 
         public void GroupRefresh(List<ScannedImage> images)
@@ -204,6 +232,7 @@ namespace NAPS2.WinForms
 
                 }
                 Groups[documentCount - 1].Items.Add(Items[i]);
+                
                 SetGroupState(ListViewGroupState.Collapsible);
                 SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
             }

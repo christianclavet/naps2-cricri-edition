@@ -359,11 +359,21 @@
         dmFsdWVfXwAIAgAAAAAAAAAKCw==
 </value>
   </data>
+  <data name="thumbnailList1.Groups2" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwAwAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwEEAihTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAGAwAAAApE
+        b2N1bWVudCAxBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
+        dmFsdWVfXwAIAgAAAAAAAAAKCw==
+</value>
+  </data>
   <data name="thumbnailList1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="thumbnailList1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>12, 12, 12, 12</value>
   </data>
   <data name="thumbnailList1.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 937</value>
@@ -375,7 +385,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.36669, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.24999, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -417,7 +427,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.36669, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.24999, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -946,13 +956,13 @@
     <value>6, 69</value>
   </data>
   <data name="tsiDocumentAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 42</value>
+    <value>266, 42</value>
   </data>
   <data name="tsiDocumentAdd.Text" xml:space="preserve">
     <value>Add separator</value>
   </data>
   <data name="tsiDocumentRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 42</value>
+    <value>266, 42</value>
   </data>
   <data name="tsiDocumentRemove.Text" xml:space="preserve">
     <value>Remove separator</value>
@@ -1249,7 +1259,7 @@
     <value>4, 0</value>
   </data>
   <data name="tStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1124, 69</value>
+    <value>1078, 69</value>
   </data>
   <data name="tStrip.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1939,6 +1949,6 @@
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.36669, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.24999, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
