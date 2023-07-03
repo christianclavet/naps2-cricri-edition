@@ -39,6 +39,8 @@ using NAPS2.Worker;
 using ZXing;
 using NAPS2.ImportExport.Images;
 using Org.BouncyCastle.Tsp;
+using BrightIdeasSoftware;
+
 
 #endregion
 
@@ -122,8 +124,7 @@ namespace NAPS2.WinForms
             this.operationProgress = operationProgress;
             this.updateChecker = updateChecker;
             this.imageSettingsContainer = imageSettingsContainer;
-            
-            
+
             InitializeComponent();
 
             // Creating a static pointer to this, so we can refer (test)
@@ -193,6 +194,7 @@ namespace NAPS2.WinForms
 
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
+
 
             darkMode = SetDarkMode(UserConfigManager.Config.DarkMode);
 

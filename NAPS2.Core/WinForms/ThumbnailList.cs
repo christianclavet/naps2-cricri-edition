@@ -12,10 +12,12 @@ using NAPS2.Scan.Images;
 using NTwain.Data;
 using ZXing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using BrightIdeasSoftware;
 
 namespace NAPS2.WinForms
 {
-    public partial class ThumbnailList : DragScrollListView
+    public partial class ThumbnailList : ObjectListView
+        // public partial class ThumbnailList : DragScrollListView
     {
         private static readonly FieldInfo imageSizeField;
         private static readonly MethodInfo performRecreateHandleMethod;
@@ -56,7 +58,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
-            addGroup("Document "+documentCount.ToString());
+            //addGroup("Document "+documentCount.ToString());
         }
 
         public ThumbnailRenderer ThumbnailRenderer { get; set; }
@@ -228,7 +230,7 @@ namespace NAPS2.WinForms
           
                 Groups.Clear();
                 documentCount = 1;
-                addGroup("Document " + documentCount.ToString());
+                //addGroup("Document " + documentCount.ToString());
             
                 for (int i = 0; i < images.Count; i++)
                 {
@@ -239,10 +241,10 @@ namespace NAPS2.WinForms
                         addGroup("Document " + documentCount.ToString());
 
                     }
-                    Groups[documentCount - 1].Items.Add(Items[i]);
+                    //Groups[documentCount - 1].Items.Add(Items[i]);
                 
-                    SetGroupState(ListViewGroupState.Collapsible);
-                    SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
+                    //SetGroupState(ListViewGroupState.Collapsible);
+                    //SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
                 }
                 EndUpdate();
             }
