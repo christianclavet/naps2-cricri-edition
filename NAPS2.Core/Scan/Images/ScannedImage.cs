@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using NAPS2.ImportExport;
 using NAPS2.Logging;
 using NAPS2.Recovery;
 using NAPS2.Scan.Images.Transforms;
@@ -34,7 +35,6 @@ namespace NAPS2.Scan.Images
         public string infoResolution;
         public string infoFormat;
         public string barCodeData;
-        public bool isSeparator;
 
         private bool disposed;
         private int snapshotCount;
@@ -47,6 +47,11 @@ namespace NAPS2.Scan.Images
         public void Update(string barCodeData)
         {
             recoveryImage.barCode = barCodeData;
+            recoveryImage.Save();
+        }
+
+        public void SaveSeparators()
+        {
             recoveryImage.Save();
         }
 
@@ -69,8 +74,8 @@ namespace NAPS2.Scan.Images
             transformList = recoveryImage.IndexImage.TransformList;
             barCodeData = recoveryImage.IndexImage.BarCode;
             SheetSide = recoveryImage.IndexImage.SheetSide;
-            isSeparator = recoveryImage.IndexImage.isSeparator;
-            
+            Separator = recoveryImage.IsSeparator;
+
         }
 
         private ScannedImage(string pdfPath, bool copy)
@@ -97,10 +102,9 @@ namespace NAPS2.Scan.Images
         public string BarCodeData { get; set; }
         //public string BarCodeData => recoveryImage.barCode;
 
-        public ImageFormat FileFormat => recoveryImage.FileFormat;
+        public bool Separator { get; set; }
 
-        //Future use, an image could have a separator flag, to split in multiple documents
-        public bool IsSeparator { get; set; }
+        public ImageFormat FileFormat => recoveryImage.FileFormat;
 
         public RecoveryIndexImage RecoveryIndexImage => recoveryImage.IndexImage;
 
@@ -217,6 +221,8 @@ namespace NAPS2.Scan.Images
                     TransformState = source.transformState;
                     BarCodeData = source.barCodeData;
                     SheetSide = source.SheetSide;
+                    Separator = source.Separator;
+                    
                 }
             }
 
@@ -225,6 +231,8 @@ namespace NAPS2.Scan.Images
             public string BarCodeData { get; set; }
 
             public int SheetSide { get; set; }
+
+            public bool Separator { get; set; }
 
             public List<Transform> TransformList { get; }
 

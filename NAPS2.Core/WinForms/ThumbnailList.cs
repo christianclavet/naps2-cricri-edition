@@ -107,9 +107,12 @@ namespace NAPS2.WinForms
                 for (int i = ilThumbnailList.Images.Count; i < allImages.Count; i++)
                 {
                     ilThumbnailList.Images.Add(GetThumbnail(allImages[i]));
-                    Items.Add(ItemText, i).Tag = allImages[i];           
-                    if (allImages[i].IsSeparator)
+                    Items.Add(ItemText, i).Tag = allImages[i];
+                    var sep = allImages[i].Separator;
+                    if (sep)
                     {
+                        documentCount++;
+                        addGroup("Document " + documentCount.ToString());
                         Items[i].Text = (i + 1).ToString() + " Separator";
                     } else 
                     {
@@ -117,7 +120,7 @@ namespace NAPS2.WinForms
                     }
                     Items[i].ForeColor = color;
                 }
-                GroupRefresh(allImages);
+                //GroupRefresh(allImages);
                 EndUpdate();
             }
             Invalidate();
@@ -171,7 +174,7 @@ namespace NAPS2.WinForms
                     ilThumbnailList.Images[imageIndex] = GetThumbnail(images[i]);
                     Items[i].Tag = images[i];
 
-                    if (images[i].IsSeparator)
+                    if (images[i].RecoveryIndexImage.isSeparator)
                     {
                         Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
                     }
@@ -199,7 +202,7 @@ namespace NAPS2.WinForms
                     ilThumbnailList.Images[imageIndex] = GetThumbnail(allImages[i]);
                     Items[i].Tag = allImages[i];
 
-                    if (allImages[i].IsSeparator)
+                    if (allImages[i].RecoveryIndexImage.isSeparator)
                     {
                         Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
                     }
@@ -217,26 +220,33 @@ namespace NAPS2.WinForms
 
         public void GroupRefresh(List<ScannedImage> images)
         {
-            var max = images.Count;
-            Groups.Clear();
-            documentCount = 1;
-            addGroup("Document " + documentCount.ToString());
-            BeginUpdate();
-            for (int i = 0; i < max; i++)
+            lock (this)
             {
-                // Group define.
-                if (images[i].IsSeparator)
-                {
-                    documentCount++;
-                    addGroup("Document " + documentCount.ToString());
 
-                }
-                Groups[documentCount - 1].Items.Add(Items[i]);
+            
+                BeginUpdate();
+          
+                Groups.Clear();
+                documentCount = 1;
+                addGroup("Document " + documentCount.ToString());
+            
+                for (int i = 0; i < images.Count; i++)
+                {
+                    // Group define from separator
+                    if (images[i].RecoveryIndexImage.isSeparator == true)
+                    {
+                        documentCount++;
+                        addGroup("Document " + documentCount.ToString());
+
+                    }
+                    Groups[documentCount - 1].Items.Add(Items[i]);
                 
-                SetGroupState(ListViewGroupState.Collapsible);
-                SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
+                    SetGroupState(ListViewGroupState.Collapsible);
+                    SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
+                }
+                EndUpdate();
             }
-            EndUpdate(); 
+
 
         }
 
@@ -280,7 +290,7 @@ namespace NAPS2.WinForms
 
                 foreach (ListViewItem item in Items)
                 {
-                    if (images[item.Index].IsSeparator)
+                    if (images[item.Index].RecoveryIndexImage.isSeparator)
                     {
                         item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
                     } else

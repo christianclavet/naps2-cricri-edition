@@ -798,8 +798,9 @@ namespace NAPS2.WinForms
 
                 // Trigger thumbnail rendering just in case the received image is out of date
                 renderThumbnailsWaitHandle.Set();
-
+               
             };
+            
         }
 
         private void AddThumbnails()
@@ -895,22 +896,6 @@ namespace NAPS2.WinForms
         #endregion
 
         #region Toolbar
-
-        private void UpdateThumbnailList1Descriptions()
-        {
-            //Note: This call is expensive and take a long time to refresh if you have lots of images currently disabled.
-            if (thumbnailList1.Items.Count > 0)
-            {
-                for (int i = 0; i < thumbnailList1.Items.Count; i++)
-                {
-                        thumbnailList1.Items[i].Text = (i + 1).ToString() + "/" + thumbnailList1.Items.Count.ToString();
-                        if (darkMode)
-                            thumbnailList1.Items[i].ForeColor = Color.White;
-                        else
-                            thumbnailList1.Items[i].ForeColor = Color.Black;
-                }
-            }
-        }
 
         public void UpdateToolbar()
         {
@@ -2592,6 +2577,7 @@ namespace NAPS2.WinForms
                 if (darkMode)
                     color = Color.White;
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
+                thumbnailList1.GroupRefresh(imageList.Images);
             }));
             
         }
@@ -2825,8 +2811,8 @@ namespace NAPS2.WinForms
             {
                 var sel = Enumerable.Range(0, imageList.Images.Count);
                           
-                imageList.Images[SelectedIndices.First()].IsSeparator = true;
-                recoveryManager.Save();
+                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = true;
+                imageList.Images[SelectedIndices.First()].SaveSeparators();
 
                 Color fore = Color.Black;
                 if (darkMode)
@@ -2844,8 +2830,10 @@ namespace NAPS2.WinForms
             {
                 var sel = Enumerable.Range(0, imageList.Images.Count);
 
-                imageList.Images[SelectedIndices.First()].IsSeparator = false;
-                recoveryManager.Save();
+                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = false;
+                imageList.Images[SelectedIndices.First()].SaveSeparators();
+
+
                 Color fore = Color.Black;
                 if (darkMode)
                 {
