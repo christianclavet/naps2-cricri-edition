@@ -141,6 +141,7 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
+            this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -197,11 +198,11 @@ namespace NAPS2.WinForms
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.splitContainer1.Panel1.Controls.Add(this.listView1);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomOut);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomMouseCatcher);
             this.splitContainer1.Panel1.Controls.Add(this.thumbnailList1);
+            this.splitContainer1.Panel1.Controls.Add(this.listView1);
             // 
             // splitContainer1.Panel2
             // 
@@ -212,13 +213,18 @@ namespace NAPS2.WinForms
             // 
             // listView1
             // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.AllColumns.Add(this.olvColumn1);
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.CellEditUseWholeCell = false;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvColumn1});
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.listView1, "listView1");
             this.listView1.HideSelection = false;
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.View = System.Windows.Forms.View.LargeIcon;
             // 
             // btnZoomOut
             // 
@@ -981,6 +987,10 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
+            // olvColumn1
+            // 
+            this.olvColumn1.WordWrap = true;
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -1118,6 +1128,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentAdd;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentRemove;
         private ObjectListView listView1;
+        private OLVColumn olvColumn1;
     }
 }
 
