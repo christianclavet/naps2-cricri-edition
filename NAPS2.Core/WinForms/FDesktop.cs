@@ -242,6 +242,9 @@ namespace NAPS2.WinForms
             thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
 
+            
+            
+
         }
 
         private void InitLanguageDropdown()

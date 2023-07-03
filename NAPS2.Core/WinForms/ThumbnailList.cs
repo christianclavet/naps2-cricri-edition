@@ -16,7 +16,7 @@ using BrightIdeasSoftware;
 
 namespace NAPS2.WinForms
 {
-    public partial class ThumbnailList : ObjectListView
+    public partial class ThumbnailList : ListViewExtended
         // public partial class ThumbnailList : DragScrollListView
     {
         private static readonly FieldInfo imageSizeField;

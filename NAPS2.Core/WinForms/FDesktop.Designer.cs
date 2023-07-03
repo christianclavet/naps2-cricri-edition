@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BrightIdeasSoftware;
 
 namespace NAPS2.WinForms
 {
@@ -38,6 +39,7 @@ namespace NAPS2.WinForms
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listView1 = new BrightIdeasSoftware.ObjectListView();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomMouseCatcher = new System.Windows.Forms.Button();
@@ -148,6 +150,7 @@ namespace NAPS2.WinForms
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.tStrip.SuspendLayout();
             this.SuspendLayout();
@@ -194,6 +197,7 @@ namespace NAPS2.WinForms
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.splitContainer1.Panel1.Controls.Add(this.listView1);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomOut);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomIn);
             this.splitContainer1.Panel1.Controls.Add(this.btnZoomMouseCatcher);
@@ -205,6 +209,16 @@ namespace NAPS2.WinForms
             this.splitContainer1.Panel2.Controls.Add(this.tiffViewerCtl1);
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // listView1
+            // 
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.CellEditUseWholeCell = false;
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.HideSelection = false;
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // btnZoomOut
             // 
@@ -989,6 +1003,7 @@ namespace NAPS2.WinForms
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listView1)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.tStrip.ResumeLayout(false);
             this.tStrip.PerformLayout();
@@ -1102,6 +1117,7 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripDropDownButton tsdDocument;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentAdd;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentRemove;
+        private ObjectListView listView1;
     }
 }
 
