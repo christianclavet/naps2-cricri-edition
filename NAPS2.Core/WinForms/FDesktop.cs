@@ -39,8 +39,6 @@ using NAPS2.Worker;
 using ZXing;
 using NAPS2.ImportExport.Images;
 using Org.BouncyCastle.Tsp;
-using BrightIdeasSoftware;
-
 
 #endregion
 
@@ -2342,8 +2340,10 @@ namespace NAPS2.WinForms
         {
             //Must remove the groups while dragging picture as the insertion mark will not be displayes (Microsoft restriction)
             //Ensuring that the icon doesnt move too much since the space used by the groups will be freed.
-            thumbnailList1.Groups.Clear();
-            thumbnailList1.EnsureVisible(SelectedIndices.First());
+           
+            //Disabled for now. Not that good. I prefer not having the InsertionMark for the moment. Maybe in Ownerdraw?
+            // thumbnailList1.Groups.Clear();
+           // thumbnailList1.EnsureVisible(SelectedIndices.First());
 
             // Provide drag data
             if (SelectedIndices.Any())
