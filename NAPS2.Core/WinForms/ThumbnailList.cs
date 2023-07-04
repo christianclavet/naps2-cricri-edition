@@ -242,7 +242,7 @@ namespace NAPS2.WinForms
                         addGroup("Document " + documentCount.ToString());
 
                     }
-                    //Groups[documentCount - 1].Items.Add(Items[i]);
+                    Groups[documentCount - 1].Items.Add(Items[i]);
                 
                     SetGroupState(ListViewGroupState.Collapsible);
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");

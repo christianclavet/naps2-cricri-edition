@@ -242,10 +242,10 @@ namespace NAPS2.WinForms
             this.thumbnailList1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups1"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups2")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups2"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups3")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
-            this.thumbnailList1.OwnerDraw = true;
             this.thumbnailList1.ShowItemToolTips = true;
             this.thumbnailList1.ThumbnailRenderer = null;
             this.thumbnailList1.ThumbnailSize = new System.Drawing.Size(128, 128);
