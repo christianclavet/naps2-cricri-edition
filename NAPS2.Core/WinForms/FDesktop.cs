@@ -89,7 +89,7 @@ namespace NAPS2.WinForms
         private string title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
         private Size Oldsize = Size.Empty;
 
-        public bool darkMode = false;
+        public static bool darkMode = false;
         public static FDesktop instance = null;
 
         // Variables as static
@@ -811,7 +811,7 @@ namespace NAPS2.WinForms
             Color fore = Color.Black;
             if (darkMode) 
             {
-                fore = Color.White;
+                fore = Color.Black;
             }
             thumbnailList1.AddedImages(imageList.Images, fore);
 
@@ -828,7 +828,7 @@ namespace NAPS2.WinForms
             {
                 var color = Color.Black;
                 if (darkMode)
-                    color = Color.White;
+                    color = Color.Black;
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
             }));
             
@@ -840,7 +840,7 @@ namespace NAPS2.WinForms
             Color fore = Color.Black;
             if (darkMode)
             {
-                fore = Color.White;
+                fore = Color.Black;
             }
 
             thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null, fore);
@@ -2200,7 +2200,7 @@ namespace NAPS2.WinForms
                 thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
                 var color = Color.Black;
                 if (darkMode)
-                    color = Color.White;
+                    color = Color.Black;
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color);
             }
 
@@ -2580,7 +2580,7 @@ namespace NAPS2.WinForms
             {
                 var color = Color.Black;
                 if (darkMode)
-                    color = Color.White;
+                    color = Color.Black;
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
                 thumbnailList1.GroupRefresh(imageList.Images);
             }));
@@ -2648,7 +2648,7 @@ namespace NAPS2.WinForms
 
                 // Status strip
                 statusStrip1.BackColor = SystemColors.ControlDarkDark;
-                thumbnailList1.BackColor = Color.FromArgb(36, 36, 36);
+                thumbnailList1.BackColor = Color.FromArgb(220, 220, 220);  //Color.FromArgb(36, 36, 36);
                 tiffViewerCtl1.BackColor = Color.FromArgb(36, 36, 36);
                 //tiffViewerCtl1.tiffviewer1.BackColor = SystemColors.ControlDarkDark;
                 //tiffViewerCtl1.tStrip.BackColor = Color.FromArgb(60, 60, 60);
@@ -2822,7 +2822,7 @@ namespace NAPS2.WinForms
                 Color fore = Color.Black;
                 if (darkMode)
                 {
-                    fore = Color.White;
+                    fore = Color.Black;
                 }
                 thumbnailList1.GroupRefresh(imageList.Images);
                 thumbnailList1.UpdateDescriptions(imageList.Images, fore);
@@ -2842,7 +2842,7 @@ namespace NAPS2.WinForms
                 Color fore = Color.Black;
                 if (darkMode)
                 {
-                    fore = Color.White;
+                    fore = Color.Black;
                 }
                 thumbnailList1.GroupRefresh(imageList.Images);
                 thumbnailList1.UpdateDescriptions(imageList.Images, fore);

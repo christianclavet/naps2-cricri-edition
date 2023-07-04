@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using CsvHelper;
 using NAPS2.Util;
 
 namespace NAPS2.WinForms
@@ -28,6 +29,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
             tiffviewer1.ZoomChanged += Tiffviewer1OnZoomChanged;
             tsStretch_Click(null, null);
+            
         }
 
         private void Tiffviewer1OnZoomChanged(object sender, EventArgs eventArgs)
@@ -182,12 +184,12 @@ namespace NAPS2.WinForms
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tStrip);
             // 
             // tiffviewer1
             // 
             resources.ApplyResources(this.tiffviewer1, "tiffviewer1");
-            //this.tiffviewer1.BackColor = System.Drawing.Color.White;
             this.tiffviewer1.Name = "tiffviewer1";
             this.tiffviewer1.Zoom = 0D;
             this.tiffviewer1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tiffviewer1_KeyDown);
@@ -195,6 +197,7 @@ namespace NAPS2.WinForms
             // 
             // tStrip
             // 
+            this.tStrip.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             resources.ApplyResources(this.tStrip, "tStrip");
             this.tStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsStretch,

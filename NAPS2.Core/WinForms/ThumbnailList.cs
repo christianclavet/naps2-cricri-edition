@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
@@ -58,6 +59,7 @@ namespace NAPS2.WinForms
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
             addGroup("Document "+documentCount.ToString());
+            OwnerDraw = true;
         }
 
         public ThumbnailRenderer ThumbnailRenderer { get; set; }
@@ -218,6 +220,16 @@ namespace NAPS2.WinForms
             }
 
         }
+
+        protected override void OnDrawItem(DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            //Using microsoft example to start my own owner draw list. Trying to create my own insertion mark with the groups enabled.
+            //ListViewInsertionMark test;
+            
+            
+        }
+
         public void addGroup(string text)
         {
             this.Groups.Add(new ListViewGroup(text, HorizontalAlignment.Left));
@@ -243,7 +255,7 @@ namespace NAPS2.WinForms
 
                     }
                     Groups[documentCount - 1].Items.Add(Items[i]);
-                
+
                     SetGroupState(ListViewGroupState.Collapsible);
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
                 }

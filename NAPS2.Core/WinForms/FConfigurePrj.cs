@@ -61,7 +61,7 @@ namespace NAPS2.WinForms
         {
             //rename the current batch
             var form = FormFactory.Create<FProjectName>();
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, FDesktop.darkMode);
             form.setFileName(FDesktop.projectName); // The "old" filename will be set
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
@@ -78,7 +78,7 @@ namespace NAPS2.WinForms
         private void bt_ExportConfig_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FExport>();                
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, FDesktop.darkMode);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
@@ -97,7 +97,7 @@ namespace NAPS2.WinForms
         private void Bt_New_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, FDesktop.darkMode);
 
             form.setFileName(imageSettingsContainer.Project_Settings.Name);
             form.ShowDialog();
@@ -147,7 +147,7 @@ namespace NAPS2.WinForms
         private void TB_Rename_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FProjectName>();
-            BackgroundForm.UseImmersiveDarkMode(form.Handle, fdesktop.darkMode);
+            BackgroundForm.UseImmersiveDarkMode(form.Handle, FDesktop.darkMode);
 
             form.setFileName(projectConfigManager.Settings[LB_ConfigList.SelectedIndex].Name); //The "old" filename will be set
             form.ShowDialog();
