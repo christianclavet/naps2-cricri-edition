@@ -39,6 +39,7 @@ using NAPS2.Worker;
 using ZXing;
 using NAPS2.ImportExport.Images;
 using Org.BouncyCastle.Tsp;
+using Castle.Core.Internal;
 
 #endregion
 
@@ -369,7 +370,7 @@ namespace NAPS2.WinForms
 
         private async void FDesktop_Shown(object sender, EventArgs e)
         {
-            //UpdateToolbar();
+            UpdateToolbar();
 
             // Receive messages from other processes
             Pipes.StartServer(msg =>
@@ -924,6 +925,7 @@ namespace NAPS2.WinForms
             // Top-level toolbar actions
             //tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
+            tsdDocument.Enabled = SelectedIndices.Any();
 
             // Context-menu actions
             ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = true;//SelectedIndices.Any();
