@@ -2432,16 +2432,15 @@ namespace NAPS2.WinForms
         {
             if (e.Effect == DragDropEffects.Move)
             {
-               
+               thumbnailList1.Refresh();
                 var index = GetDragIndex(e);
+                thumbnailList1.InsertionMark.Index = index - 1;
                 if (index == imageList.Images.Count)
                 {
-                    thumbnailList1.InsertionMark.Index = index - 1;
                     thumbnailList1.InsertionMark.AppearsAfterItem = true;
                 }
                 else
                 {
-                    thumbnailList1.InsertionMark.Index = index;
                     thumbnailList1.InsertionMark.AppearsAfterItem = false;
                 }
                 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -60,6 +61,7 @@ namespace NAPS2.WinForms
             LargeImageList = ilThumbnailList;
             addGroup("Document "+documentCount.ToString());
             OwnerDraw = true;
+            InsertionMark.Index = -1;
         }
 
         public ThumbnailRenderer ThumbnailRenderer { get; set; }
@@ -226,6 +228,26 @@ namespace NAPS2.WinForms
             e.DrawDefault = true;
             //Using microsoft example to start my own owner draw list. Trying to create my own insertion mark with the groups enabled.
             //ListViewInsertionMark test;
+            
+            if (InsertionMark.Index > -1)
+            {
+                
+                Pen pen = new Pen(ForeColor, 1);
+                var pos = InsertionMark.Index;
+                
+                Rectangle rec = Items[pos].Bounds;
+                if (!InsertionMark.AppearsAfterItem)
+                {
+                    rec.X = rec.Right + 2;
+                }
+                else
+                {
+                    rec.X = rec.Right + 2;
+                }
+                rec.Width = 4;
+                Brush br = new SolidBrush(ForeColor);
+                e.Graphics.FillRectangle(br , rec);
+            }
             
             
         }
