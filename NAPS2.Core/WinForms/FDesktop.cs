@@ -2582,6 +2582,7 @@ namespace NAPS2.WinForms
                 if (darkMode)
                     color = Color.Black;
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
+                //thumbnailList1.Refresh();
                 thumbnailList1.GroupRefresh(imageList.Images);
             }));
             
@@ -2817,6 +2818,7 @@ namespace NAPS2.WinForms
                 var sel = Enumerable.Range(0, imageList.Images.Count);
                           
                 imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = true;
+                imageList.Images[SelectedIndices.First()].Separator = true;
                 imageList.Images[SelectedIndices.First()].SaveSeparators();
 
                 Color fore = Color.Black;
@@ -2836,6 +2838,7 @@ namespace NAPS2.WinForms
                 var sel = Enumerable.Range(0, imageList.Images.Count);
 
                 imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = false;
+                imageList.Images[SelectedIndices.First()].Separator = false;
                 imageList.Images[SelectedIndices.First()].SaveSeparators();
 
 

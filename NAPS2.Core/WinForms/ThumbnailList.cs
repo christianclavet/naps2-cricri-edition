@@ -106,13 +106,15 @@ namespace NAPS2.WinForms
                     if (Items[i].Tag != allImages[i])
                     {
                         ilThumbnailList.Images[i] = GetThumbnail(allImages[i]);
-                        Items[i].Tag = allImages[i];
+                        Items[i].Tag = allImages[i].ToString();
                     }
                 }
+                EndUpdate();
+
                 for (int i = ilThumbnailList.Images.Count; i < allImages.Count; i++)
                 {
                     ilThumbnailList.Images.Add(GetThumbnail(allImages[i]));
-                    Items.Add(ItemText, i).Tag = allImages[i];
+                    Items.Add(ItemText, i).Tag = allImages[i].ToString();
                     var sep = allImages[i].Separator;
                     if (sep)
                     {
@@ -125,8 +127,7 @@ namespace NAPS2.WinForms
                     }
                     Items[i].ForeColor = color;
                 }
-                //GroupRefresh(allImages);
-                EndUpdate();
+
             }
             Invalidate();
         }
@@ -207,7 +208,7 @@ namespace NAPS2.WinForms
                     ilThumbnailList.Images[imageIndex] = GetThumbnail(allImages[i]);
                     Items[i].Tag = allImages[i];
 
-                    if (allImages[i].RecoveryIndexImage.isSeparator)
+                    if (allImages[i].Separator)
                     {
                         Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
                     }
@@ -220,7 +221,7 @@ namespace NAPS2.WinForms
                 }
                 EndUpdate();
             }
-
+         
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
@@ -275,7 +276,7 @@ namespace NAPS2.WinForms
                 for (int i = 0; i < images.Count; i++)
                 {
                     // Group define from separator
-                    if (images[i].RecoveryIndexImage.isSeparator == true)
+                    if (images[i].Separator == true)
                     {
                         documentCount++;
                         addGroup("Document " + documentCount.ToString());
@@ -309,8 +310,8 @@ namespace NAPS2.WinForms
 
         public void RegenerateThumbnailList(List<ScannedImage> images, Color color, bool onlyText = false)
         {
-            lock (this)
-            {
+            
+            lock (this) { 
                 
                 if (!onlyText)
                 {
@@ -329,10 +330,10 @@ namespace NAPS2.WinForms
                     ilThumbnailList.Images.AddRange(list.ToArray());
                     EndUpdate();
                 }
-
+                
                 foreach (ListViewItem item in Items)
                 {
-                    if (images[item.Index].RecoveryIndexImage.isSeparator)
+                    if (images[item.Index].Separator == true)
                     {
                         item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
                     } else
@@ -341,13 +342,12 @@ namespace NAPS2.WinForms
                     }
                     item.ImageIndex = item.Index;
                     item.ForeColor = color;
-
+                
 
                 }
 
-                
-                
             }
+
         }
 
         private Bitmap GetThumbnail(ScannedImage img)
