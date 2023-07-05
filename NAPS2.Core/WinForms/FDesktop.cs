@@ -903,7 +903,7 @@ namespace NAPS2.WinForms
 
         public void UpdateToolbar()
         {
-           
+            if (SelectedIndices.Any()) { }
             //Rename the title to include the name of the current project.
             title = Application.ProductName.ToString() + " " + Application.ProductVersion.ToString();
             if (Text!=null)
@@ -913,22 +913,24 @@ namespace NAPS2.WinForms
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
-            tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled =
+            tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled = tsBarCodeCheck.Enabled = tsExport.Enabled =
                 imageList.Images.Any();
 
             // "Selected" dropdown items
             tsSavePDFSelected.Text = tsSaveImagesSelected.Text = tsEmailPDFSelected.Text = tsReverseSelected.Text =
                 string.Format(MiscResources.SelectedCount, SelectedIndices.Count());
-            tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled =
+            tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled = 
+                tsBlackWhite.Enabled = tsBrightnessContrast.Enabled = tsCrop.Enabled = tsHueSaturation.Enabled = 
+                printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled =
                 SelectedIndices.Any();
 
             // Top-level toolbar actions
-            //tsdImage.Enabled = tsdRotate.Enabled = tsMove.Enabled = tsDelete.Enabled = SelectedIndices.Any();
+            tsdRotate.Enabled = tsDelete.Enabled = SelectedIndices.Any();
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
             tsdDocument.Enabled = SelectedIndices.Any();
 
             // Context-menu actions
-            ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = true;//SelectedIndices.Any();
+            ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
             ctxSelectAll.Enabled = imageList.Images.Any();
 
             // Other
@@ -1429,7 +1431,7 @@ namespace NAPS2.WinForms
         // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
         private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
         { 
-            if (thumbnailList1.SelectedItems.Count == 1)
+            if (SelectedIndices.Count() == 1)
             {
                 String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
@@ -1450,16 +1452,19 @@ namespace NAPS2.WinForms
 
                 var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
                 GetPreviewImage(img,true);
+                UpdateToolbar();
 
             }
             else
             {
                 statusStrip1.Items[0].Text = MiscResources.No_selection;
+                UpdateToolbar();
             }
 
             if (thumbnailList1.SelectedItems.Count > 1)
             {
                 statusStrip1.Items[0].Text = MiscResources.Selection + thumbnailList1.SelectedItems.Count.ToString();
+                UpdateToolbar();
             }
                
         }
