@@ -924,6 +924,10 @@ namespace NAPS2.WinForms
                 printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled =
                 SelectedIndices.Any();
 
+            if (!imageList.Images.Any() && !SelectedIndices.Any())
+                tsdImage.Enabled = false;
+            else tsdImage.Enabled = true;
+
             // Top-level toolbar actions
             tsdRotate.Enabled = tsDelete.Enabled = SelectedIndices.Any();
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
@@ -2826,7 +2830,7 @@ namespace NAPS2.WinForms
                           
                 imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = true;
                 imageList.Images[SelectedIndices.First()].Separator = true;
-                imageList.Images[SelectedIndices.First()].SaveSeparators();
+                imageList.Images[SelectedIndices.First()].Save();
 
                 Color fore = Color.Black;
                 if (darkMode)
@@ -2846,7 +2850,7 @@ namespace NAPS2.WinForms
 
                 imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = false;
                 imageList.Images[SelectedIndices.First()].Separator = false;
-                imageList.Images[SelectedIndices.First()].SaveSeparators();
+                imageList.Images[SelectedIndices.First()].Save();
 
 
                 Color fore = Color.Black;

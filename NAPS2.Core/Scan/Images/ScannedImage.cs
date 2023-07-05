@@ -50,7 +50,7 @@ namespace NAPS2.Scan.Images
             recoveryImage.Save();
         }
 
-        public void SaveSeparators()
+        public void Save()
         {
             recoveryImage.Save();
         }
@@ -72,9 +72,10 @@ namespace NAPS2.Scan.Images
         {
             recoveryImage = RecoveryImage.LoadExisting(recoveryIndexImage);
             transformList = recoveryImage.IndexImage.TransformList;
-            barCodeData = recoveryImage.IndexImage.BarCode;
-            SheetSide = recoveryImage.IndexImage.SheetSide;
-            Separator = recoveryImage.IsSeparator;
+            barCodeData = recoveryImage.barCode = recoveryIndexImage.BarCode;
+            SheetSide = recoveryImage.SheetSide = recoveryIndexImage.SheetSide;
+            Separator = recoveryImage.IsSeparator = recoveryIndexImage.isSeparator;
+            recoveryImage.Save();
 
         }
 
@@ -82,6 +83,9 @@ namespace NAPS2.Scan.Images
         {
             transformList = new List<Transform>();
             recoveryImage = RecoveryImage.CreateNew(null, ScanBitDepth.C24Bit, false, transformList);
+            recoveryImage.barCode = barCodeData;
+            recoveryImage.IsSeparator = Separator;
+            recoveryImage.SheetSide = SheetSide;
 
             if (copy)
             {

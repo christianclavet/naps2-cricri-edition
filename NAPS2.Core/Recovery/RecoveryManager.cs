@@ -130,8 +130,8 @@ namespace NAPS2.Recovery
                         {
                             if (DoRecover(imageCallback))
                             {
-                                // Theses are not recovered but used as loading a previous projet, so no delete
-                                ReleaseFolderLock();
+                                    // Theses are not recovered but used as loading a previous projet, so no delete
+                                    ReleaseFolderLock();
                                 GC.Collect();
                                 //DeleteFolder();
                                 return true;
@@ -190,9 +190,9 @@ namespace NAPS2.Recovery
                         using (var bitmap = new Bitmap(imagePath))
                         {
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
-                            scannedImage.BarCodeData = indexImage.BarCode;
-                            scannedImage.SheetSide = indexImage.SheetSide;
-                            scannedImage.Separator = indexImage.isSeparator;
+                            scannedImage.RecoveryIndexImage.BarCode = scannedImage.BarCodeData = indexImage.BarCode;
+                            scannedImage.RecoveryIndexImage.SheetSide = scannedImage.SheetSide = indexImage.SheetSide;
+                            scannedImage.RecoveryIndexImage.isSeparator = scannedImage.Separator = indexImage.isSeparator;
                             
                             if (bitmap != null)
                             {
