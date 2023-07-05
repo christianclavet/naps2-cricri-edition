@@ -233,12 +233,17 @@ namespace NAPS2.WinForms
             {
                 
                 Pen pen = new Pen(ForeColor, 1);
+                
                 var pos = InsertionMark.Index;
                 
                 Rectangle rec = Items[pos].Bounds;
-                if (!InsertionMark.AppearsAfterItem)
+                
+                if (MousePosition.X - rec.Left > MousePosition.X - rec.Right)
+                //
                 {
-                    rec.X = rec.Right + 2;
+                    rec.X = rec.Left - 2;
+                    if (InsertionMark.AppearsAfterItem)
+                        rec.X = rec.Right + 2;
                 }
                 else
                 {

@@ -2434,9 +2434,10 @@ namespace NAPS2.WinForms
             {
                thumbnailList1.Refresh();
                 var index = GetDragIndex(e);
-                thumbnailList1.InsertionMark.Index = index - 1;
-                if (index == imageList.Images.Count)
+                thumbnailList1.InsertionMark.Index = index;
+                if (index > imageList.Images.Count-1)
                 {
+                    thumbnailList1.InsertionMark.Index = imageList.Images.Count-1;
                     thumbnailList1.InsertionMark.AppearsAfterItem = true;
                 }
                 else
