@@ -269,8 +269,6 @@ namespace NAPS2.WinForms
                 if (InsertionMark.AppearsAfterItem)
                 {
                     rec.X = rec.Left - 2;
-                    Console.WriteLine("Condition met!\n");
-
                 }
 
 
