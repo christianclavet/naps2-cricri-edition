@@ -100,6 +100,9 @@ namespace NAPS2.WinForms
         {
             lock (this)
             {
+                if (documentCount < 1)
+                    GroupRefresh(allImages);
+
                 BeginUpdate();
                 for (int i = 0; i < ilThumbnailList.Images.Count; i++)
                 {
@@ -236,23 +239,42 @@ namespace NAPS2.WinForms
                 Pen pen = new Pen(ForeColor, 1);
                 
                 var pos = InsertionMark.Index;
-                
+               
+
+                var mpos = this.PointToClient(MousePosition);
                 Rectangle rec = Items[pos].Bounds;
                 
-                if (MousePosition.X - rec.Left > MousePosition.X - rec.Right)
-                //
-                {
-                    rec.X = rec.Left - 2;
-                    if (InsertionMark.AppearsAfterItem)
-                        rec.X = rec.Right + 2;
-                }
-                else
-                {
-                    rec.X = rec.Right + 2;
-                }
+                if (pos == 0)
+                    pos = 1;
+
+                Rectangle rec2 = Items[pos - 1].Bounds;
+
                 rec.Width = 4;
+                rec.X = rec.Left - 2;
+
+                if (Math.Abs(mpos.X - rec.Left) > Math.Abs(mpos.X - rec.Right))
+                {
+                    rec.X = rec.Right - 2;
+                    var com1 = Math.Abs(mpos.X - rec.Right);
+                    var com2 = Math.Abs(mpos.X - rec2.Right);
+
+                    if (com1 > com2)
+                    {
+                        rec.X = rec2.Right - 2;
+                        rec.Y = rec2.Y;
+                    }
+  
+                }
+
+                if (InsertionMark.AppearsAfterItem)
+                    rec.X = rec.Right - 2;
+                                
+                
                 Brush br = new SolidBrush(ForeColor);
                 e.Graphics.FillRectangle(br , rec);
+                
+                //For debug uses
+                //e.Graphics.DrawRectangle(pen,Items[InsertionMark.Index].Bounds);
             }
             
             
@@ -345,6 +367,8 @@ namespace NAPS2.WinForms
                 
 
                 }
+
+                GroupRefresh(images);
 
             }
 

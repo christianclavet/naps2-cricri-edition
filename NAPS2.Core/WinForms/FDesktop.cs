@@ -1223,7 +1223,8 @@ namespace NAPS2.WinForms
             {
                 operationProgress.ShowProgress(op);
             }
-            //UpdateThumbnailList1Descriptions();
+            thumbnailList1.GroupRefresh(imageList.Images);
+            
         }
 
         private List<string> OrderFiles(IEnumerable<string> files)
@@ -1452,7 +1453,7 @@ namespace NAPS2.WinForms
                 else
                     side = "- side: front only";
 
-                statusStrip1.Items[0].Text = "Image: " + text + "/"+imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
+                statusStrip1.Items[0].Text = "Document(s): " +thumbnailList1.GetGroups().Count.ToString() + " | Image(s): " + text + "/"+imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
 
                 var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
                 GetPreviewImage(img,true);
@@ -2589,12 +2590,8 @@ namespace NAPS2.WinForms
             //regenerate the icon text numbering
             thumbnailList1.Invoke(new MethodInvoker(delegate
             {
-                var color = Color.Black;
-                if (darkMode)
-                    color = Color.Black;
-                thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
-                //thumbnailList1.Refresh();
-                thumbnailList1.GroupRefresh(imageList.Images);
+               
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, Color.Black, true);
             }));
             
         }
