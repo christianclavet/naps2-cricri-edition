@@ -2350,13 +2350,6 @@ namespace NAPS2.WinForms
 
         private async void thumbnailList1_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            //Must remove the groups while dragging picture as the insertion mark will not be displayes (Microsoft restriction)
-            //Ensuring that the icon doesnt move too much since the space used by the groups will be freed.
-           
-            //Disabled for now. Not that good. I prefer not having the InsertionMark for the moment. Maybe in Ownerdraw?
-            // thumbnailList1.Groups.Clear();
-           // thumbnailList1.EnsureVisible(SelectedIndices.First());
-
             // Provide drag data
             if (SelectedIndices.Any())
             {
@@ -2447,7 +2440,7 @@ namespace NAPS2.WinForms
                thumbnailList1.Refresh();
                 var index = GetDragIndex(e);
                 thumbnailList1.InsertionMark.Index = index;
-                if (index > imageList.Images.Count-1)
+                if (index == imageList.Images.Count)
                 {
                     thumbnailList1.InsertionMark.Index = imageList.Images.Count-1;
                     thumbnailList1.InsertionMark.AppearsAfterItem = true;

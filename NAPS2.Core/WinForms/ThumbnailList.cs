@@ -249,7 +249,7 @@ namespace NAPS2.WinForms
 
                 Rectangle rec2 = Items[pos - 1].Bounds;
 
-                rec.Width = 4;
+                
                 rec.X = rec.Left - 2;
 
                 if (Math.Abs(mpos.X - rec.Left) > Math.Abs(mpos.X - rec.Right))
@@ -267,9 +267,14 @@ namespace NAPS2.WinForms
                 }
 
                 if (InsertionMark.AppearsAfterItem)
-                    rec.X = rec.Right - 2;
-                                
-                
+                {
+                    rec.X = rec.Left - 2;
+                    Console.WriteLine("Condition met!\n");
+
+                }
+
+
+                rec.Width = 4;
                 Brush br = new SolidBrush(ForeColor);
                 e.Graphics.FillRectangle(br , rec);
                 
