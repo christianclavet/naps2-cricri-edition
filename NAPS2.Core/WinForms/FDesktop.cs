@@ -1438,6 +1438,9 @@ namespace NAPS2.WinForms
         { 
             if (SelectedIndices.Count() == 1)
             {
+                if (thumbnailList1.SelectedItems[0].Index > thumbnailList1.Items.Count-1)
+                    return;
+                
                 String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
@@ -2580,12 +2583,14 @@ namespace NAPS2.WinForms
 
         public void RegenIconsList()
         {
-            //regenerate the icon text numbering
-            thumbnailList1.Invoke(new MethodInvoker(delegate
+            lock (this)
             {
-               
-                thumbnailList1.RegenerateThumbnailList(imageList.Images, Color.Black, true);
-            }));
+                //regenerate the icon text numbering
+                thumbnailList1.Invoke(new MethodInvoker(delegate
+                {
+                    thumbnailList1.RegenerateThumbnailList(imageList.Images, Color.Black, true);
+                }));
+            }
             
         }
 

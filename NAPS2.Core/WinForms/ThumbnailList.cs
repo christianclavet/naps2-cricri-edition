@@ -96,12 +96,18 @@ namespace NAPS2.WinForms
 
         private List<ScannedImage> CurrentImages => Items.Cast<ListViewItem>().Select(x => (ScannedImage)x.Tag).ToList();
 
+        
+
         public void AddedImages(List<ScannedImage> allImages, Color color)
         {
+      
             lock (this)
             {
-                if (documentCount < 1)
+                if (Groups.Count < 1)
+                {
+                    addGroup("Document 1");
                     GroupRefresh(allImages);
+                }
 
                 BeginUpdate();
                 for (int i = 0; i < ilThumbnailList.Images.Count; i++)
@@ -109,7 +115,7 @@ namespace NAPS2.WinForms
                     if (Items[i].Tag != allImages[i])
                     {
                         ilThumbnailList.Images[i] = GetThumbnail(allImages[i]);
-                        Items[i].Tag = allImages[i].ToString();
+                        Items[i].Tag = allImages[i];
                     }
                 }
                 EndUpdate();
@@ -117,18 +123,19 @@ namespace NAPS2.WinForms
                 for (int i = ilThumbnailList.Images.Count; i < allImages.Count; i++)
                 {
                     ilThumbnailList.Images.Add(GetThumbnail(allImages[i]));
-                    Items.Add(ItemText, i).Tag = allImages[i].ToString();
+                    Items.Add(ItemText, i).Tag = allImages[i];
                     var sep = allImages[i].Separator;
                     if (sep)
                     {
-                        documentCount++;
-                        addGroup("Document " + documentCount.ToString());
+                        addGroup("Document " + (Groups.Count+1).ToString());
                         Items[i].Text = (i + 1).ToString() + " Separator";
                     } else 
                     {
                         Items[i].Text = (i + 1).ToString();
                     }
                     Items[i].ForeColor = color;
+                    Groups[Groups.Count-1].Items.Add(Items[i]);
+                    GroupRefresh(allImages);
                 }
 
             }
@@ -139,7 +146,6 @@ namespace NAPS2.WinForms
         {
             lock (this)
             {
-                GroupRefresh(allImages);
                 BeginUpdate();
                 if (allImages.Count == 0)
                 {
@@ -148,6 +154,7 @@ namespace NAPS2.WinForms
                 }
                 else
                 {
+                    var a = CurrentImages.Except(allImages).Count();
                     foreach (var oldImg in CurrentImages.Except(allImages))
                     {
                         var item = Items.Cast<ListViewItem>().First(x => x.Tag == oldImg);
@@ -164,6 +171,7 @@ namespace NAPS2.WinForms
                     }
                 }
                 EndUpdate();
+                GroupRefresh(allImages);
             }
             Invalidate();
         }
@@ -172,7 +180,6 @@ namespace NAPS2.WinForms
         {
             lock (this)
             {
-                GroupRefresh(images);
                 BeginUpdate();
                 int min = selection == null || !selection.Any() ? 0 : selection.Min();
                 int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;         
@@ -195,7 +202,6 @@ namespace NAPS2.WinForms
                     Items[i].ForeColor = color;
                 }
                 EndUpdate();
-               
             }
             Invalidate();
         }
@@ -303,12 +309,10 @@ namespace NAPS2.WinForms
                     // Group define from separator
                     if (images[i].Separator == true)
                     {
-                        documentCount++;
+                        documentCount = Groups.Count + 1;
                         addGroup("Document " + documentCount.ToString());
-
                     }
                     Groups[documentCount - 1].Items.Add(Items[i]);
-
                     SetGroupState(ListViewGroupState.Collapsible);
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
                 }
