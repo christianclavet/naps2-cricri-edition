@@ -815,6 +815,8 @@ namespace NAPS2.WinForms
                 fore = Color.Black;
             }
             thumbnailList1.AddedImages(imageList.Images, fore);
+            if (!recover)
+                GetPreviewImage(imageList.Images[imageList.Images.Count-1], true);
 
             //Scroll the list so that every new item that get added can be viewed. -CC
             //Should not do it if a selection is active.
@@ -921,7 +923,7 @@ namespace NAPS2.WinForms
                 string.Format(MiscResources.SelectedCount, SelectedIndices.Count());
             tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled = 
                 tsBlackWhite.Enabled = tsBrightnessContrast.Enabled = tsCrop.Enabled = tsHueSaturation.Enabled = 
-                printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled =
+                printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled = tsInsert.Enabled =
                 SelectedIndices.Any();
 
             if (!imageList.Images.Any() && !SelectedIndices.Any())
@@ -1435,10 +1437,13 @@ namespace NAPS2.WinForms
 
         // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
         private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
+            if (SelectedIndices == null)
+                return;
+         
             if (SelectedIndices.Count() == 1)
             {
-                if (thumbnailList1.SelectedItems[0].Index > thumbnailList1.Items.Count-1)
+                if (thumbnailList1.SelectedItems[0].Index+2 > thumbnailList1.Items.Count)
                     return;
                 
                 String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
@@ -2583,15 +2588,18 @@ namespace NAPS2.WinForms
 
         public void RegenIconsList()
         {
-            lock (this)
+            SafeInvokeAsync(() =>
             {
-                //regenerate the icon text numbering
-                thumbnailList1.Invoke(new MethodInvoker(delegate
+
+                thumbnailList1.RegenerateThumbnailList(imageList.Images, Color.Black, true);
+                thumbnailList1.GroupRefresh(imageList.Images);
+            });
+
+              /*  thumbnailList1.Invoke(new MethodInvoker(delegate
                 {
                     thumbnailList1.RegenerateThumbnailList(imageList.Images, Color.Black, true);
-                }));
-            }
-            
+                    thumbnailList1.GroupRefresh(imageList.Images);
+                }));*/
         }
 
         private void closeWorkspace()

@@ -209,13 +209,13 @@ namespace NAPS2.Scan.Twain
                                     {
                                         image.PatchCode = GetPatchCode(patchCodeInfo);
                                         image.BarCodeData = GetBarCode();
-                                        Debug.WriteLine("\n\nBARCODE BARCODE BARCODE : " + image.PatchCode + "\n\n");
+                                       // Debug.WriteLine("\n\nBARCODE BARCODE BARCODE : " + image.PatchCode + "\n\n");
                                     }
                                 }
                             }
 
                             //Barcode reading not working directly from twain. Only from the lib.
-                            foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.PageSide))
+                            /*foreach (var barCodeInfo in eventArgs.GetExtImageInfo(ExtendedImageInfo.PageSide))
                             {
                                 
                                 if (barCodeInfo.ReturnCode == ReturnCode.Success)
@@ -227,7 +227,7 @@ namespace NAPS2.Scan.Twain
                                     image.BarCodeData = barCodeInfo.ReadValues().FirstOrDefault().ToString();
                                     Debug.WriteLine("\n\n Page Side: "+image.BarCodeData+"\n\n");
                                 }
-                            }
+                            }*/
                             image.RecoveryIndexImage.SheetSide = sheetSide;
                             image.SheetSide = sheetSide;
 
