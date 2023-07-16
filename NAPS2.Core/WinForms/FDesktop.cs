@@ -785,10 +785,15 @@ namespace NAPS2.WinForms
                             {
                                 index = SelectedIndices.First() + this.insertCounter;
                                 insertCounter++;
+                                imageList.Images.Insert(index, scannedImage);
+                                scannedImage.MovedTo(index);
+                            }
+                            else
+                            {
+                                imageList.Images.Add(scannedImage);
                             }
 
-                            imageList.Images.Insert(index, scannedImage);
-                            scannedImage.MovedTo(index);
+                            
                             AddThumbnails();
                         }
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
@@ -1503,7 +1508,6 @@ namespace NAPS2.WinForms
 
         private async void tsScan_ButtonClick(object sender, EventArgs e)
         {
-            this.insert = false; // disable insert mode
             await ScanDefault();
             changeTracker.Made();
         }
@@ -1518,7 +1522,7 @@ namespace NAPS2.WinForms
             this.insert = true; // enable insert mode
             await ScanDefault();
             changeTracker.Made();
-
+            this.insert = false;
         }
 
         private void tsBatchScan_Click(object sender, EventArgs e)
@@ -1628,16 +1632,6 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-            // New feature insert when a icon is selected in the list, else, will append in the list
-            if (SelectedIndices.Any())
-            {
-                this.insert = true; //import will insert the pages at the selected position
-            }
-            else
-            {
-                this.insert = false; //Since we are importing and there is no selection, no import function should occur -> append.
-            }
-
             Import();
         }
 
@@ -2427,6 +2421,7 @@ namespace NAPS2.WinForms
             if (index != -1)
             {
                 UpdateThumbnails(imageList.MoveTo(SelectedIndices, index), true, true);
+                thumbnailList1.GroupRefresh(imageList.Images);
                 changeTracker.Made();
             }
         }
@@ -2865,6 +2860,16 @@ namespace NAPS2.WinForms
                 thumbnailList1.UpdateDescriptions(imageList.Images, fore);
             }
 
+        }
+
+        private void TSMI_expandAll_Click(object sender, EventArgs e)
+        {
+            thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
+        }
+
+        private void TSMI_contractall_Click(object sender, EventArgs e)
+        {
+            thumbnailList1.SetGroupState(ListViewGroupState.Collapsed | ListViewGroupState.Collapsible);
         }
     }
         #endregion

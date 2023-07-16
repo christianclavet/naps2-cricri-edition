@@ -101,6 +101,7 @@ namespace NAPS2.WinForms
             this.tsdDocument = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsiDocumentAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiDocumentRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_expandAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,6 +140,7 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
+            this.TSMI_contractall = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -244,7 +246,9 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups1"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups2"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups3"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups4")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups4"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups5"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups6")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -684,7 +688,9 @@ namespace NAPS2.WinForms
             // 
             this.tsdDocument.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsiDocumentAdd,
-            this.tsiDocumentRemove});
+            this.tsiDocumentRemove,
+            this.TSMI_expandAll,
+            this.TSMI_contractall});
             this.tsdDocument.Image = global::NAPS2.Icons.folder_directory_files_icon;
             resources.ApplyResources(this.tsdDocument, "tsdDocument");
             this.tsdDocument.Name = "tsdDocument";
@@ -702,6 +708,12 @@ namespace NAPS2.WinForms
             this.tsiDocumentRemove.Name = "tsiDocumentRemove";
             resources.ApplyResources(this.tsiDocumentRemove, "tsiDocumentRemove");
             this.tsiDocumentRemove.Click += new System.EventHandler(this.tsiDocumentRemove_Click);
+            // 
+            // TSMI_expandAll
+            // 
+            this.TSMI_expandAll.Name = "TSMI_expandAll";
+            resources.ApplyResources(this.TSMI_expandAll, "TSMI_expandAll");
+            this.TSMI_expandAll.Click += new System.EventHandler(this.TSMI_expandAll_Click);
             // 
             // tsdImage
             // 
@@ -970,6 +982,12 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
+            // TSMI_contractall
+            // 
+            this.TSMI_contractall.Name = "TSMI_contractall";
+            resources.ApplyResources(this.TSMI_contractall, "TSMI_contractall");
+            this.TSMI_contractall.Click += new System.EventHandler(this.TSMI_contractall_Click);
+            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -1105,6 +1123,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripDropDownButton tsdDocument;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentAdd;
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentRemove;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_expandAll;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_contractall;
     }
 }
 
