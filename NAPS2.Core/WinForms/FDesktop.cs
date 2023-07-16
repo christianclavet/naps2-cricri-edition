@@ -920,8 +920,7 @@ namespace NAPS2.WinForms
             // "All" dropdown items
             tsSavePDFAll.Text = tsSaveImagesAll.Text = tsEmailPDFAll.Text = tsReverseAll.Text =
                 string.Format(MiscResources.AllCount, imageList.Images.Count);
-            tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled = tsBarCodeCheck.Enabled = tsExport.Enabled =
-                imageList.Images.Any();
+            tsSavePDFAll.Enabled = tsSaveImagesAll.Enabled = tsEmailPDFAll.Enabled = tsReverseAll.Enabled = tsBarCodeCheck.Enabled = tsExport.Enabled = tsdDocument.Enabled = imageList.Images.Any();
 
             // "Selected" dropdown items
             tsSavePDFSelected.Text = tsSaveImagesSelected.Text = tsEmailPDFSelected.Text = tsReverseSelected.Text =
@@ -929,6 +928,7 @@ namespace NAPS2.WinForms
             tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled = 
                 tsBlackWhite.Enabled = tsBrightnessContrast.Enabled = tsCrop.Enabled = tsHueSaturation.Enabled = 
                 printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled = tsInsert.Enabled =
+                tsiDocumentAdd.Enabled = tsiDocumentRemove.Enabled =
                 SelectedIndices.Any();
 
             if (!imageList.Images.Any() && !SelectedIndices.Any())
@@ -938,7 +938,7 @@ namespace NAPS2.WinForms
             // Top-level toolbar actions
             tsdRotate.Enabled = tsDelete.Enabled = SelectedIndices.Any();
             tsdReorder.Enabled = tsdSavePDF.Enabled = tsdSaveImages.Enabled = tsdEmailPDF.Enabled = printToolStripMenuItem.Enabled = imageList.Images.Any();
-            tsdDocument.Enabled = SelectedIndices.Any();
+            
 
             // Context-menu actions
             ctxView.Visible = ctxCopy.Visible = ctxDelete.Visible = ctxSeparator1.Visible = ctxSeparator2.Visible = SelectedIndices.Any();
@@ -2489,10 +2489,67 @@ namespace NAPS2.WinForms
         }
 
         #endregion
-                        
-        #region QuickView
-        // Quickview use the panel 2, Thumbnails use panel 1
-        private void tsShowHideView_Click(object sender, EventArgs e)
+
+        #region Documents
+        private void tsiDocumentAdd_Click(object sender, EventArgs e)
+        {
+            //Define a selected image as the start of a new document
+            if (SelectedImages.Any())
+            {
+                var sel = Enumerable.Range(0, imageList.Images.Count);
+
+                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = true;
+                imageList.Images[SelectedIndices.First()].Separator = true;
+                imageList.Images[SelectedIndices.First()].Save();
+
+                Color fore = Color.Black;
+                if (darkMode)
+                {
+                    fore = Color.Black;
+                }
+                thumbnailList1.GroupRefresh(imageList.Images);
+                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
+            }
+        }
+
+        private void tsiDocumentRemove_Click(object sender, EventArgs e)
+        {
+            if (SelectedImages.Any())
+            {
+                var sel = Enumerable.Range(0, imageList.Images.Count);
+
+                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = false;
+                imageList.Images[SelectedIndices.First()].Separator = false;
+                imageList.Images[SelectedIndices.First()].Save();
+
+
+                Color fore = Color.Black;
+                if (darkMode)
+                {
+                    fore = Color.Black;
+                }
+                thumbnailList1.GroupRefresh(imageList.Images);
+                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
+            }
+
+        }
+
+        private void TSMI_expandAll_Click(object sender, EventArgs e)
+        {
+            thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
+        }
+
+        private void TSMI_contractall_Click(object sender, EventArgs e)
+        {
+            thumbnailList1.SetGroupState(ListViewGroupState.Collapsed | ListViewGroupState.Collapsible);
+        }
+    
+    #endregion
+
+
+    #region QuickView
+    // Quickview use the panel 2, Thumbnails use panel 1
+    private void tsShowHideView_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
 
@@ -2818,59 +2875,8 @@ namespace NAPS2.WinForms
         {
             changeProjectName();
         }
-
-        private void tsiDocumentAdd_Click(object sender, EventArgs e)
-        {
-            //Define a selected image as the start of a new document
-            if (SelectedImages.Any()) 
-            {
-                var sel = Enumerable.Range(0, imageList.Images.Count);
-                          
-                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = true;
-                imageList.Images[SelectedIndices.First()].Separator = true;
-                imageList.Images[SelectedIndices.First()].Save();
-
-                Color fore = Color.Black;
-                if (darkMode)
-                {
-                    fore = Color.Black;
-                }
-                thumbnailList1.GroupRefresh(imageList.Images);
-                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
-            }
-        }
-
-        private void tsiDocumentRemove_Click(object sender, EventArgs e)
-        {
-            if (SelectedImages.Any())
-            {
-                var sel = Enumerable.Range(0, imageList.Images.Count);
-
-                imageList.Images[SelectedIndices.First()].RecoveryIndexImage.isSeparator = false;
-                imageList.Images[SelectedIndices.First()].Separator = false;
-                imageList.Images[SelectedIndices.First()].Save();
-
-
-                Color fore = Color.Black;
-                if (darkMode)
-                {
-                    fore = Color.Black;
-                }
-                thumbnailList1.GroupRefresh(imageList.Images);
-                thumbnailList1.UpdateDescriptions(imageList.Images, fore);
-            }
-
-        }
-
-        private void TSMI_expandAll_Click(object sender, EventArgs e)
-        {
-            thumbnailList1.SetGroupState(ListViewGroupState.Collapsible);
-        }
-
-        private void TSMI_contractall_Click(object sender, EventArgs e)
-        {
-            thumbnailList1.SetGroupState(ListViewGroupState.Collapsed | ListViewGroupState.Collapsible);
-        }
-    }
         #endregion
+    }
+
+
 }
