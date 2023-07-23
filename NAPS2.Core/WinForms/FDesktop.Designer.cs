@@ -45,6 +45,8 @@ namespace NAPS2.WinForms
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxView = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxScanBarCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxPaste = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,11 +104,13 @@ namespace NAPS2.WinForms
             this.tsiDocumentAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiDocumentRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_expandAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_contractall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBarCodeCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.ts_BarCode_define = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.tsCrop = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBrightnessContrast = new System.Windows.Forms.ToolStripMenuItem();
@@ -140,7 +144,6 @@ namespace NAPS2.WinForms
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.tt_FDesktop = new System.Windows.Forms.ToolTip(this.components);
-            this.TSMI_contractall = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -248,7 +251,9 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups3"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups4"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups5"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups6")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups6"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups7"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups8")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -273,6 +278,8 @@ namespace NAPS2.WinForms
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ctxView,
             this.ctxSeparator1,
+            this.ctxScanBarCode,
+            this.toolStripSeparator20,
             this.ctxSelectAll,
             this.ctxCopy,
             this.ctxPaste,
@@ -292,6 +299,17 @@ namespace NAPS2.WinForms
             // 
             this.ctxSeparator1.Name = "ctxSeparator1";
             resources.ApplyResources(this.ctxSeparator1, "ctxSeparator1");
+            // 
+            // ctxScanBarCode
+            // 
+            this.ctxScanBarCode.Name = "ctxScanBarCode";
+            resources.ApplyResources(this.ctxScanBarCode, "ctxScanBarCode");
+            this.ctxScanBarCode.Click += new System.EventHandler(this.ctxScanBarCode_Click);
+            // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            resources.ApplyResources(this.toolStripSeparator20, "toolStripSeparator20");
             // 
             // ctxSelectAll
             // 
@@ -715,6 +733,12 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.TSMI_expandAll, "TSMI_expandAll");
             this.TSMI_expandAll.Click += new System.EventHandler(this.TSMI_expandAll_Click);
             // 
+            // TSMI_contractall
+            // 
+            this.TSMI_contractall.Name = "TSMI_contractall";
+            resources.ApplyResources(this.TSMI_contractall, "TSMI_contractall");
+            this.TSMI_contractall.Click += new System.EventHandler(this.TSMI_contractall_Click);
+            // 
             // tsdImage
             // 
             this.tsdImage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -722,6 +746,7 @@ namespace NAPS2.WinForms
             this.tsView,
             this.toolStripSeparator6,
             this.tsBarCodeCheck,
+            this.ts_BarCode_define,
             this.toolStripSeparator19,
             this.tsCrop,
             this.tsBrightnessContrast,
@@ -760,6 +785,12 @@ namespace NAPS2.WinForms
             this.tsBarCodeCheck.Name = "tsBarCodeCheck";
             resources.ApplyResources(this.tsBarCodeCheck, "tsBarCodeCheck");
             this.tsBarCodeCheck.Click += new System.EventHandler(this.tsBarCodeCheck_Click);
+            // 
+            // ts_BarCode_define
+            // 
+            this.ts_BarCode_define.Name = "ts_BarCode_define";
+            resources.ApplyResources(this.ts_BarCode_define, "ts_BarCode_define");
+            this.ts_BarCode_define.Click += new System.EventHandler(this.ts_BarCode_define_Click);
             // 
             // toolStripSeparator19
             // 
@@ -982,12 +1013,6 @@ namespace NAPS2.WinForms
             // 
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             // 
-            // TSMI_contractall
-            // 
-            this.TSMI_contractall.Name = "TSMI_contractall";
-            resources.ApplyResources(this.TSMI_contractall, "TSMI_contractall");
-            this.TSMI_contractall.Click += new System.EventHandler(this.TSMI_contractall_Click);
-            // 
             // FDesktop
             // 
             resources.ApplyResources(this, "$this");
@@ -1125,6 +1150,9 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripMenuItem tsiDocumentRemove;
         private System.Windows.Forms.ToolStripMenuItem TSMI_expandAll;
         private System.Windows.Forms.ToolStripMenuItem TSMI_contractall;
+        private System.Windows.Forms.ToolStripMenuItem ts_BarCode_define;
+        private System.Windows.Forms.ToolStripMenuItem ctxScanBarCode;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
     }
 }
 

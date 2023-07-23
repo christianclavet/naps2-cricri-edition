@@ -1440,17 +1440,17 @@ namespace NAPS2.WinForms
             PreviewImage();
         }
 
-        // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
-        private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void DisplaySelectedItem_info()
         {
             if (SelectedIndices == null)
                 return;
-         
+
             if (SelectedIndices.Count() == 1)
             {
-                if (thumbnailList1.SelectedItems[0].Index+2 > thumbnailList1.Items.Count)
+                if (thumbnailList1.SelectedItems[0].Index + 1 > thumbnailList1.Items.Count)
                     return;
-                
+
                 String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
                 String text2 = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoResolution;
                 String text3 = imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData;
@@ -1466,10 +1466,10 @@ namespace NAPS2.WinForms
                 else
                     side = "- side: front only";
 
-                statusStrip1.Items[0].Text = "Document(s): " +thumbnailList1.GetGroups().Count.ToString() + " | Image(s): " + text + "/"+imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
+                statusStrip1.Items[0].Text = "Document(s): " + thumbnailList1.GetGroups().Count.ToString() + " | Image(s): " + text + "/" + imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
 
                 var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
-                GetPreviewImage(img,true);
+                GetPreviewImage(img, true);
                 UpdateToolbar();
 
             }
@@ -1484,7 +1484,13 @@ namespace NAPS2.WinForms
                 statusStrip1.Items[0].Text = MiscResources.Selection + thumbnailList1.SelectedItems.Count.ToString();
                 UpdateToolbar();
             }
-               
+
+
+        }
+        // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
+        private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplaySelectedItem_info();
         }
 
         private void thumbnailList1_MouseMove(object sender, MouseEventArgs e)
@@ -2790,7 +2796,7 @@ namespace NAPS2.WinForms
             UserConfigManager.Save();
         }
 
-        private void tsBarCodeCheck_Click(object sender, EventArgs e)
+        private void BarCodeCheck()
         {
             var list = SelectedImages.ToList();
             //If there is no selection, it will select all images
@@ -2807,6 +2813,24 @@ namespace NAPS2.WinForms
                 UpdateToolbar();
             }
 
+        }
+
+        private void tsBarCodeCheck_Click(object sender, EventArgs e)
+        {
+            BarCodeCheck();
+            DisplaySelectedItem_info();
+
+        }
+
+        private void ctxScanBarCode_Click(object sender, EventArgs e)
+        {
+            BarCodeCheck();
+            DisplaySelectedItem_info();
+        }
+
+        private void ts_BarCode_define_Click(object sender, EventArgs e)
+        {
+            DisplaySelectedItem_info();
         }
 
         //New export panel
@@ -2876,6 +2900,7 @@ namespace NAPS2.WinForms
             changeProjectName();
         }
         #endregion
+
     }
 
 
