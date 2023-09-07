@@ -105,7 +105,7 @@ Type: filesandordirs; Name: "{app}\??-??"
 [Icons]
 Name: "{group}\NAPS2 CriCri Edition {#AppVersion}\NAPS2 CriCri Edition {#AppVersion}"; Filename: "{app}\NAPS2 CriCri Edition.exe"
 Name: "{group}\NAPS2 CriCri Edition {#AppVersion}\NAPS2 Server"; Filename: "{app}\NAPS2.Server.exe"
-Name: "{commondesktop}\NAPS2 CriCri Edition {#AppVersion}"; Filename: "{app}\NAPS2 CriCri Edition.exe"; Tasks: desktopicon
+Name: "{commondesktop}\NAPS2 CriCri Edition"; Filename: "{app}\NAPS2 CriCri Edition.exe"; Tasks: desktopicon
 
 [Registry]
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\WIA_{{1c3a7177-f3a7-439e-be47-e304a185f932}"; Flags: uninsdeletekey

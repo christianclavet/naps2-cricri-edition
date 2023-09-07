@@ -2634,10 +2634,13 @@ namespace NAPS2.WinForms
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
                     recoveryManager.setFolder(di); //Set to a folder other than the last used one.
-                    //recover mode activated (will not update the gui of the image preview while loading)
+                    //recover mode activated = (will not update the gui of the image preview while loading)
                     recover = true;                                  
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());
                     projectName = di.Name;
+
+                    UserConfigManager.Config.project = projectName;
+                    UserConfigManager.Save();
                     UpdateToolbar();
                     
                 }
