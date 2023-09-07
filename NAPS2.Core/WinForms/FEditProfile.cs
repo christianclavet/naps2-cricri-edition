@@ -413,6 +413,8 @@ namespace NAPS2.WinForms
                 cmbAutoDeskew.Enabled = settingsEnabled;
                 cmbAutoRotation.Enabled = settingsEnabled;
                 cmbAutoBorderDetection.Enabled = settingsEnabled;
+
+                //Double feed caps
                 cmbDoubleFeedDet.Enabled = settingsEnabled;
                 cmbDoubleFeedAct.Enabled = settingsEnabled;
                 cmbDoubleSensitivity.Enabled = settingsEnabled;

@@ -521,6 +521,26 @@ namespace NAPS2.Scan.Twain
             {
                 ds.Capabilities.CapIndicators.SetValue(BoolType.False);
             }
+            // Double feed detection
+            if (scanProfile.DoubleFeedType == 0)
+                ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
+
+            if (scanProfile.DoubleFeedType == 2)
+                ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
+
+            if (scanProfile.DoubleFeedAction == 0)
+                ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+            if (scanProfile.DoubleFeedAction == 1)
+                ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
+            if (scanProfile.DoubleFeedAction == 2)
+                ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
+            // Double Feed Intensity setting
+            if (scanProfile.DoubleFeedSensivity == 0)
+                ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
+            if (scanProfile.DoubleFeedSensivity == 1)
+                ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
+            if (scanProfile.DoubleFeedSensivity == 2)
+                ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
 
             // Paper Source
             switch (scanProfile.PaperSource)
