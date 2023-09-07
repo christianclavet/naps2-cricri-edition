@@ -128,6 +128,12 @@ namespace NAPS2.Scan
 
         public bool AutoPageDeskew { get; set; }
 
+        public int DoubleFeedType { get; set; }
+
+        public int DoubleFeedAction { get; set; }
+
+        public int DoubleFeedSensivity { get; set; }
+
         public int PaperType { get; set; }
 
         public bool AutoBorderDetection { get; set; }

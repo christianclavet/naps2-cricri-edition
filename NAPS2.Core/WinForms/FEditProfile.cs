@@ -104,6 +104,9 @@ namespace NAPS2.WinForms
             else
                 cmbAutoBorderDetection.SelectedIndex = 1;
 
+            cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
+            cmbDoubleFeedAct.SelectedIndex = ScanProfile.DoubleFeedAction;
+            cmbDoubleSensitivity.SelectedIndex = ScanProfile.DoubleFeedSensivity;
             cmbPaperType.SelectedIndex = ScanProfile.PaperType;
 
 
@@ -124,9 +127,9 @@ namespace NAPS2.WinForms
                     .WidthToForm()
                 .Bind(pctIcon, btnChooseDevice, btnNetwork, btnOK, btnCancel)
                     .RightToForm()
-                .Bind(cmbAlign, cmbDepth, cmbPage, cmbResolution, cmbScale, cmbSource, trBrightness, trContrast, rdbConfig, rdbNative, cmbAutoRotation, cmbAutoDeskew,lab_autoDeskew)
+                .Bind(cmbAlign, cmbDepth, cmbPage, cmbResolution, cmbScale, cmbSource, trBrightness, trContrast, rdbConfig, rdbNative, cmbAutoRotation, cmbAutoDeskew, cmbDoubleFeedAct, cmbDoubleFeedDet, lab_autoDeskew, lab_DoubleFeedAct)
                     .WidthTo(() => Width / 2)
-                .Bind(rdTWAIN, rdbNative, lbl_bitdepth, cmbDepth, lbl_horizontalalign, cmbAlign, lbl_scale, cmbScale, lbl_contrast, trContrast, lab_autoDeskew, cmbAutoDeskew )
+                .Bind(rdTWAIN, rdbNative, lbl_bitdepth, cmbDepth, lbl_horizontalalign, cmbAlign, lbl_scale, cmbScale, lbl_contrast, trContrast, lab_autoDeskew, lab_DoubleFeedAct, cmbAutoDeskew, cmbDoubleFeedAct)
                     .LeftTo(() => Width / 2)
                 .Bind(txtBrightness)
                     .LeftTo(() => trBrightness.Right)
@@ -328,6 +331,11 @@ namespace NAPS2.WinForms
                 AutoPageRotation = ScanProfile.AutoPageRotation,
                 AutoBorderDetection = ScanProfile.AutoBorderDetection,
 
+                DoubleFeedAction = cmbDoubleFeedAct.SelectedIndex,
+                DoubleFeedType = cmbDoubleFeedDet.SelectedIndex,
+                DoubleFeedSensivity = cmbDoubleSensitivity.SelectedIndex,
+
+
                 EnableAutoSave = cbAutoSave.Checked,
                 AutoSaveSettings = ScanProfile.AutoSaveSettings,
                 Quality = ScanProfile.Quality,
@@ -405,12 +413,14 @@ namespace NAPS2.WinForms
                 cmbAutoDeskew.Enabled = settingsEnabled;
                 cmbAutoRotation.Enabled = settingsEnabled;
                 cmbAutoBorderDetection.Enabled = settingsEnabled;
-                cmbPaperType.Enabled = settingsEnabled;
+                cmbDoubleFeedDet.Enabled = settingsEnabled;
+                cmbDoubleFeedAct.Enabled = settingsEnabled;
+                cmbDoubleSensitivity.Enabled = settingsEnabled;
+
                 trBrightness.Enabled = settingsEnabled;
                 trContrast.Enabled = settingsEnabled;
                 txtBrightness.Enabled = settingsEnabled;
                 txtContrast.Enabled = settingsEnabled;
-
 
                 cbAutoSave.Enabled = !locked && !appConfigManager.Config.DisableAutoSave;
                 linkAutoSaveSettings.Visible = !locked && !appConfigManager.Config.DisableAutoSave;
@@ -586,6 +596,36 @@ namespace NAPS2.WinForms
                 scanProfile.AutoPageRotation = false;            
         }
 
+        private void cmbDoubleFeedDet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleFeedDet.SelectedIndex == 0) // None
+                scanProfile.DoubleFeedType = 10;
+            if (cmbDoubleFeedDet.SelectedIndex == 1) // Infrared
+                scanProfile.DoubleFeedType = 2;
+            if (cmbDoubleFeedDet.SelectedIndex == 2) // Ultrasonic
+                scanProfile.DoubleFeedType = 0;
+        }
+
+        private void cmbDoubleFeedAct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleFeedAct.SelectedIndex == 0) // Stop
+                scanProfile.DoubleFeedAction = 0;
+            if (cmbDoubleFeedAct.SelectedIndex == 1) // Stop and wait
+                scanProfile.DoubleFeedAction = 1;
+            if (cmbDoubleFeedAct.SelectedIndex == 2) // Stop and Sound Emit
+                scanProfile.DoubleFeedAction = 2;
+        }
+
+        private void cmbDoubleSensitivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDoubleSensitivity.SelectedIndex == 0) // Low
+                scanProfile.DoubleFeedSensivity = 0;
+            if (cmbDoubleSensitivity.SelectedIndex == 1) // Medium
+                scanProfile.DoubleFeedSensivity = 1;
+            if (cmbDoubleSensitivity.SelectedIndex == 2) // High
+                scanProfile.DoubleFeedSensivity = 2;
+        }
+
         private void cmbAutoBorderDetection_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbAutoBorderDetection.SelectedIndex == 0)
@@ -596,7 +636,7 @@ namespace NAPS2.WinForms
 
         private void cmbPaperType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            scanProfile.PaperType = cmbPaperType.SelectedIndex;
+
         }
     }
 }
