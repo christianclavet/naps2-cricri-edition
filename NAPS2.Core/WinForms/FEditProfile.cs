@@ -87,6 +87,7 @@ namespace NAPS2.WinForms
             cmbAlign.SelectedIndex = (int)ScanProfile.PageAlign;
 
             cbAutoSave.Checked = ScanProfile.EnableAutoSave;
+            InfoDisplayCaps.Text = ScanProfile.Capabilities;
 
             // New capabilities CC -- Defaults
             if (ScanProfile.AutoPageRotation)
@@ -353,7 +354,8 @@ namespace NAPS2.WinForms
 
                 ExcludeBlankPages = ScanProfile.ExcludeBlankPages,
                 BlankPageWhiteThreshold = ScanProfile.BlankPageWhiteThreshold,
-                BlankPageCoverageThreshold = ScanProfile.BlankPageCoverageThreshold
+                BlankPageCoverageThreshold = ScanProfile.BlankPageCoverageThreshold,
+                Capabilities = ScanProfile.Capabilities
             };
         }
 

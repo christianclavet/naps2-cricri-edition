@@ -138,6 +138,8 @@ namespace NAPS2.Scan
 
         public bool AutoBorderDetection { get; set; }
 
+        public string Capabilities { get; set; }
+
     }
 
     [Serializable]

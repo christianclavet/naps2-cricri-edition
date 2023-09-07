@@ -187,6 +187,16 @@ namespace NAPS2.Scan.Twain
                                 if (pageNumber%2 == 0) sheetSide = 2;
                             }
                             
+                            if (scanProfile.Capabilities == "")
+                            {
+                                IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
+                                foreach (var result2 in support)
+                                {
+                                    scanProfile.Capabilities += result2.ToString();
+                                }
+                               
+                                //TODO need to save back the profile for this to work.
+                            }
                             /*                            
                             IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
                             Log.Error("Capabilities\n" + support.Count().ToString());
