@@ -601,11 +601,11 @@ namespace NAPS2.WinForms
         private void cmbDoubleFeedDet_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbDoubleFeedDet.SelectedIndex == 0) // None
-                scanProfile.DoubleFeedType = 10;
-            if (cmbDoubleFeedDet.SelectedIndex == 1) // Infrared
-                scanProfile.DoubleFeedType = 2;
-            if (cmbDoubleFeedDet.SelectedIndex == 2) // Ultrasonic
                 scanProfile.DoubleFeedType = 0;
+            if (cmbDoubleFeedDet.SelectedIndex == 1) // Infrared
+                scanProfile.DoubleFeedType = 1;
+            if (cmbDoubleFeedDet.SelectedIndex == 2) // Ultrasonic
+                scanProfile.DoubleFeedType = 2;
         }
 
         private void cmbDoubleFeedAct_SelectedIndexChanged(object sender, EventArgs e)
