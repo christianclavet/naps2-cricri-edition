@@ -95,6 +95,7 @@ namespace NAPS2.WinForms
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
+        public static string tempCaps = "";
         public List<ProjectSettings> projectsConfig;
         #endregion
 

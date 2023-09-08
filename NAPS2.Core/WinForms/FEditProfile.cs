@@ -85,9 +85,13 @@ namespace NAPS2.WinForms
             SelectPageSize();
             cmbScale.SelectedIndex = (int)ScanProfile.AfterScanScale;
             cmbAlign.SelectedIndex = (int)ScanProfile.PageAlign;
-
+            
             cbAutoSave.Checked = ScanProfile.EnableAutoSave;
             InfoDisplayCaps.Text = ScanProfile.Capabilities;
+            if (FDesktop.tempCaps!=null)
+            {
+                InfoDisplayCaps.Text = FDesktop.tempCaps.ToString();
+            }
 
             // New capabilities CC -- Defaults
             if (ScanProfile.AutoPageRotation)
@@ -105,12 +109,21 @@ namespace NAPS2.WinForms
             else
                 cmbAutoBorderDetection.SelectedIndex = 1;
 
+            if (scanProfile.Capabilities.Length == 0)
+                ScanProfile.Capabilities = "";
+
             cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
             cmbDoubleFeedAct.SelectedIndex = ScanProfile.DoubleFeedAction;
             cmbDoubleSensitivity.SelectedIndex = ScanProfile.DoubleFeedSensivity;
             cmbPaperType.SelectedIndex = ScanProfile.PaperType;
 
+            if (FDesktop.tempCaps.Length > 0)
+            {
+                ScanProfile.Capabilities = (string)FDesktop.tempCaps.Clone();
+                InfoDisplayCaps.Text = "ALllo";
+            }
 
+            InfoDisplayCaps.Text = scanProfile.Capabilities;
             // The setter updates the driver selection checkboxes
             DeviceDriverName = useProxy ? ScanProfile.ProxyDriverName : ScanProfile.DriverName;
 
