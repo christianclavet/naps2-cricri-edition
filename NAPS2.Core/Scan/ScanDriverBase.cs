@@ -79,7 +79,7 @@ namespace NAPS2.Scan
             {
                 throw new DriverNotSupportedException();
             }
-            try
+            try 
             {
                 return GetDeviceListInternal();
             }

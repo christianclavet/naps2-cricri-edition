@@ -23,6 +23,7 @@ namespace NAPS2.WinForms
         private readonly IErrorOutput errorOutput;
         private readonly ProfileNameTracker profileNameTracker;
         private readonly AppConfigManager appConfigManager;
+        private readonly TwainWrapper twainWrapper;
 
         private ScanProfile scanProfile;
         private ScanDevice currentDevice;
@@ -34,12 +35,14 @@ namespace NAPS2.WinForms
 
         private bool suppressChangeEvent;
 
-        public FEditProfile(IScanDriverFactory driverFactory, IErrorOutput errorOutput, ProfileNameTracker profileNameTracker, AppConfigManager appConfigManager)
+        public FEditProfile(IScanDriverFactory driverFactory, IErrorOutput errorOutput, ProfileNameTracker profileNameTracker, AppConfigManager appConfigManager, TwainWrapper twainWrapper)
         {
             this.driverFactory = driverFactory;
             this.errorOutput = errorOutput;
             this.profileNameTracker = profileNameTracker;
             this.appConfigManager = appConfigManager;
+            this.twainWrapper = twainWrapper;
+
             InitializeComponent();
             btnNetwork.Left = btnChooseDevice.Right + 6;
             // TODO: Remove this to reenable
@@ -88,10 +91,6 @@ namespace NAPS2.WinForms
             
             cbAutoSave.Checked = ScanProfile.EnableAutoSave;
             InfoDisplayCaps.Text = ScanProfile.Capabilities;
-            if (FDesktop.tempCaps!=null)
-            {
-                InfoDisplayCaps.Text = FDesktop.tempCaps.ToString();
-            }
 
             // New capabilities CC -- Defaults
             if (ScanProfile.AutoPageRotation)
@@ -109,7 +108,7 @@ namespace NAPS2.WinForms
             else
                 cmbAutoBorderDetection.SelectedIndex = 1;
 
-            if (scanProfile.Capabilities.Length == 0)
+            if  (scanProfile.Capabilities == null)
                 ScanProfile.Capabilities = "";
 
             cmbDoubleFeedDet.SelectedIndex = ScanProfile.DoubleFeedType;
@@ -117,13 +116,6 @@ namespace NAPS2.WinForms
             cmbDoubleSensitivity.SelectedIndex = ScanProfile.DoubleFeedSensivity;
             cmbPaperType.SelectedIndex = ScanProfile.PaperType;
 
-            if (FDesktop.tempCaps.Length > 0)
-            {
-                ScanProfile.Capabilities = (string)FDesktop.tempCaps.Clone();
-                InfoDisplayCaps.Text = "ALllo";
-            }
-
-            InfoDisplayCaps.Text = scanProfile.Capabilities;
             // The setter updates the driver selection checkboxes
             DeviceDriverName = useProxy ? ScanProfile.ProxyDriverName : ScanProfile.DriverName;
 
@@ -276,6 +268,16 @@ namespace NAPS2.WinForms
                         txtName.Text = device.Name;
                     }
                     CurrentDevice = device;
+                    if (rdTWAIN.Checked) 
+                    {
+                        var twainImpl = ScanProfile?.TwainImpl ?? TwainImpl.Default;
+                        
+                        InfoDisplayCaps.Text = twainWrapper.GetCaps(twainImpl, device);
+                        if (InfoDisplayCaps.Text != null)
+                            scanProfile.Capabilities = InfoDisplayCaps.Text;
+
+                    }
+                    
                 }
             }
             catch (ScanDriverException e)
