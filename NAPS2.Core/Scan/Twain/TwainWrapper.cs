@@ -32,7 +32,6 @@ namespace NAPS2.Scan.Twain
         private readonly IFormFactory formFactory;
         private readonly IBlankDetector blankDetector;
         private readonly ScannedImageHelper scannedImageHelper;
-        private readonly FDesktop fdesktop;
 
         static TwainWrapper()
         {
@@ -52,13 +51,11 @@ namespace NAPS2.Scan.Twain
 #endif
         }
 
-        public TwainWrapper(IFormFactory formFactory, IBlankDetector blankDetector, ScannedImageHelper scannedImageHelper, IProfileManager profileManager, FDesktop fdesktop)
+        public TwainWrapper(IFormFactory formFactory, IBlankDetector blankDetector, ScannedImageHelper scannedImageHelper, IProfileManager profileManager)
         {
             this.formFactory = formFactory;
             this.blankDetector = blankDetector;
-            this.scannedImageHelper = scannedImageHelper;
-            this.fdesktop = fdesktop;
-            
+            this.scannedImageHelper = scannedImageHelper;            
         }
 
         public List<ScanDevice> GetDeviceList(TwainImpl twainImpl)
