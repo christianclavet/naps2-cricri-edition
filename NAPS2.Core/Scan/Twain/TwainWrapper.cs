@@ -98,17 +98,33 @@ namespace NAPS2.Scan.Twain
             PlatformInfo.Current.PreferNewDSM = twainImpl != TwainImpl.OldDsm;
             var session = new TwainSession(TwainAppId);
             session.Open();
-            
             DataSource ds = session.FirstOrDefault(x => x.Name == scanDevice.ID);
-            ds.Open();
+                        
             try
             {
-                string caps = null;
-                IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
-                foreach (var result2 in support)
-                {
-                    caps += result2.ToString() + "\n";
+                string caps = "Nothing";
+                if (ds != null)
+                { 
+                    ds.Open();
+                    caps = "Brand: "+ds.Manufacturer.ToString() + "\nName:  " + ds.Name + "\nProduct Family:  " + ds.ProductFamily +"\n\nCURRENT CAPABILITIES:\n";
+                    IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
+                    foreach (var result2 in support)
+                    {
+                        CapabilityId re = result2.ConvertToEnum<CapabilityId>();
+                        if ((CapabilityId)re != CapabilityId.None)
+                        {
+                            string val = "";
+                            if (ds.Capabilities.GetCurrent(re)!=null)
+                            {
+                                val = ds.Capabilities.GetCurrent(re).ToString();
+                                caps += result2.ToString() + "\n" + val + "\n\n";  
+                            }
+                        
+                        }
+                    }
+                    ds.Close();
                 }
+                
                 return caps;
 
             }
@@ -116,7 +132,7 @@ namespace NAPS2.Scan.Twain
             {
                 try
                 {
-                    ds.Close();
+                    
                     session.Close();
                 }
                 catch (Exception e)
@@ -662,31 +678,34 @@ namespace NAPS2.Scan.Twain
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.True);
                     else
                         ds.Capabilities.ICapAutomaticRotate.SetValue(BoolType.False);
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedType == 0)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
+                    //Do not set caps for double feed if not desired.
+                    if (scanProfile.DoubleFeedType != 0)
+                    {
+                        // Double Feed Cap
+                        if (scanProfile.DoubleFeedType == 2)
+                            ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Ultrasonic);
 
-                    if (scanProfile.DoubleFeedType == 2)
-                        ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
+                        if (scanProfile.DoubleFeedType == 1)
+                            ds.Capabilities.CapDoubleFeedDetection.SetValue(DoubleFeedDetection.Infrared);
 
-                    // Double Feed Cap
-                    if (scanProfile.DoubleFeedAction == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
-                    if (scanProfile.DoubleFeedAction == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
-                    if (scanProfile.DoubleFeedAction == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
+                        // Double Feed Cap
+                        if (scanProfile.DoubleFeedAction == 0)
+                            ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Stop);
+                        if (scanProfile.DoubleFeedAction == 1)
+                            ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.StopAndWait);
+                        if (scanProfile.DoubleFeedAction == 2)
+                            ds.Capabilities.CapDoubleFeedDetectionResponse.SetValue(DoubleFeedDetectionResponse.Sound | DoubleFeedDetectionResponse.Stop);
 
-                    // Double Feed Intensity setting
-                    if (scanProfile.DoubleFeedSensivity == 0)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
-                    
-                    if (scanProfile.DoubleFeedSensivity == 1)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
+                        // Double Feed Intensity setting
+                        if (scanProfile.DoubleFeedSensivity == 0)
+                            ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Low);
 
-                    if (scanProfile.DoubleFeedSensivity == 2)
-                        ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
+                        if (scanProfile.DoubleFeedSensivity == 1)
+                            ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.Medium);
 
+                        if (scanProfile.DoubleFeedSensivity == 2)
+                            ds.Capabilities.CapDoubleFeedDetectionSensitivity.SetValue(DoubleFeedDetectionSensitivity.High);
+                    }
                     if (scanProfile.PaperType == 0)
                         ds.Capabilities.CapPaperHandling.SetValue(PaperHandling.Normal);
                     if (scanProfile.PaperType == 1)
