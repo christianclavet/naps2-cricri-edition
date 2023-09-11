@@ -98,7 +98,8 @@ namespace NAPS2.Scan.Twain
             PlatformInfo.Current.PreferNewDSM = twainImpl != TwainImpl.OldDsm;
             var session = new TwainSession(TwainAppId);
             session.Open();
-            DataSource ds = session.FirstOrDefault(x => x.Name == scanDevice.ID);
+            //DataSource ds = session.FirstOrDefault(x => x.Name == scanDevice.ID);
+            DataSource ds = session.CurrentSource;
                         
             try
             {
