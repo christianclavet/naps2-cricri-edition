@@ -93,6 +93,10 @@ namespace NAPS2.WinForms
         public static bool darkMode = false;
         public static FDesktop instance = null;
 
+        //For document management
+        private int documentCount;
+        private List<Document> docs;
+
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
         public List<ProjectSettings> projectsConfig;
@@ -125,6 +129,10 @@ namespace NAPS2.WinForms
             this.imageSettingsContainer = imageSettingsContainer;
 
             InitializeComponent();
+
+            //get the initial document count.
+            docs = new List<Document> { };
+            documentCount = docs.Count();
 
             // Creating a static pointer to this, so we can refer (test)
             instance = this;
@@ -2903,6 +2911,15 @@ namespace NAPS2.WinForms
             changeProjectName();
         }
         #endregion
+
+    }
+
+    //Data object to keep the live document data
+    public class Document
+    {
+        public int firstpage;
+        public int lastpage;
+        public string description;
 
     }
 
