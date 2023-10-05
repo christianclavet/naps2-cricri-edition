@@ -95,7 +95,7 @@ namespace NAPS2.WinForms
 
         //For document management
         private int documentCount;
-        private List<Document> docs;
+        public List<Document> docs;
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);

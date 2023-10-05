@@ -293,6 +293,8 @@ namespace NAPS2.WinForms
         {
             this.Groups.Add(new ListViewGroup(text, HorizontalAlignment.Left));
         }
+
+        //This will rebuild the groups and the document list for the export later.
         public void GroupRefresh(List<ScannedImage> images)
         {
             lock (this)
@@ -301,14 +303,27 @@ namespace NAPS2.WinForms
                 BeginUpdate();
           
                 Groups.Clear();
+                FDesktop.getInstance().docs.Clear();
+
                 documentCount = 1;
                 addGroup("Document " + documentCount.ToString());
+                Document document = new Document { };
+                document.firstpage = 1;
+                document.description = "Document 1";
+                document.lastpage = images.Count;
             
                 for (int i = 0; i < images.Count; i++)
                 {
                     // Group define from separator
                     if (images[i].Separator == true)
                     {
+                        if (i > 1)
+                            document.lastpage = i;
+
+                        FDesktop.getInstance().docs.Add(document);
+                        document.firstpage = i;
+                        document.description = "Document " + i.ToString();
+                        
                         documentCount = Groups.Count + 1;
                         addGroup("Document " + documentCount.ToString());
                     }
@@ -316,6 +331,8 @@ namespace NAPS2.WinForms
                     SetGroupState(ListViewGroupState.Collapsible);
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
                 }
+                document.lastpage = images.Count;
+                FDesktop.getInstance().docs.Add(document);
                 EndUpdate();
             }
 
