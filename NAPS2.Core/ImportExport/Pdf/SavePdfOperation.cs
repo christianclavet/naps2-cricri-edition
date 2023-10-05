@@ -79,7 +79,11 @@ namespace NAPS2.ImportExport.Pdf
                         }
 
                         var progress = singleFile ? OnProgress : (ProgressHandler)((j, k) => { });
+                        
+                        // Should check for multi document in here a create a loop here.
                         result = await pdfExporter.Export(subFileName, snapshotArray, pdfSettings, ocrParams, progress, CancelToken);
+
+
                         if (!result || CancelToken.IsCancellationRequested)
                         {
                             break;
