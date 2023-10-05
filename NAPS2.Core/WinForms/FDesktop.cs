@@ -1172,7 +1172,9 @@ namespace NAPS2.WinForms
 
         private async void SavePDF(List<ScannedImage> images)
         {
-            if (await exportHelper.SavePDF(images, notify))
+            //Save the range of page from the first document
+            //Need to be able to do better range that this. This is risky.
+            if (await exportHelper.SavePDF(images.GetRange(docs[0].firstpage-1, (docs[0].lastpage+1) - docs[0].firstpage), notify))
             {
                 changeTracker.Made();
                 if (appConfigManager.Config.DeleteAfterSaving)

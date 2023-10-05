@@ -321,6 +321,8 @@ namespace NAPS2.WinForms
                             document.lastpage = i;
 
                         FDesktop.getInstance().docs.Add(document);
+                        
+                        document = new Document { };
                         document.firstpage = i;
                         document.description = "Document " + i.ToString();
                         
