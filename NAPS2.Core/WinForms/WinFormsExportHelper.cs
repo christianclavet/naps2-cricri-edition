@@ -32,6 +32,8 @@ namespace NAPS2.WinForms
         private readonly IOperationProgress operationProgress;
         private readonly IUserConfigManager userConfigManager;
 
+        private string oldPath;
+
         public WinFormsExportHelper(PdfSettingsContainer pdfSettingsContainer, ImageSettingsContainer imageSettingsContainer, EmailSettingsContainer emailSettingsContainer, DialogHelper dialogHelper, FileNamePlaceholders fileNamePlaceholders, ChangeTracker changeTracker, IOperationFactory operationFactory, IFormFactory formFactory, OcrManager ocrManager, IEmailProviderFactory emailProviderFactory, IOperationProgress operationProgress, IUserConfigManager userConfigManager)
         {
             this.pdfSettingsContainer = pdfSettingsContainer;
@@ -46,36 +48,46 @@ namespace NAPS2.WinForms
             this.emailProviderFactory = emailProviderFactory;
             this.operationProgress = operationProgress;
             this.userConfigManager = userConfigManager;
+            oldPath = "";
         }
 
         public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify, int doc = 0)
         {
             if (images.Any())
             {
-                string savePath;
-                
+                string savePath = oldPath;                
 
                 var pdfSettings = pdfSettingsContainer.PdfSettings;
 
-                if (doc > 0) { pdfSettings.SkipSavePrompt = true; }
+                if (doc == 0)
+                {
 
-                if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
-                {
-                    userConfigManager.Load();
-                    savePath = userConfigManager.Config.project; //pdfSettings.DefaultFileName;
-                }
-                else
-                {
-                    if (!dialogHelper.PromptToSavePdf(userConfigManager.Config.project, out savePath))
+                    if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
                     {
-                        return false;
+                        userConfigManager.Load();
+                        savePath = userConfigManager.Config.project; //pdfSettings.DefaultFileName;
+                        if (doc > 0)
+                        {
+                            savePath = savePath.Replace(".pdf", "_doc_" + doc.ToString() + ".Pdf");
+                        }
+                    }
+                    else
+                    {
+
+                        if (!dialogHelper.PromptToSavePdf(userConfigManager.Config.project, out savePath))
+                        {
+                            return false;
+                        }
+                        else
+                            oldPath = savePath;
                     }
                 }
 
-                //Append _doc_x to the file
-                if (doc > 0) 
+
+                if (doc > 0)
                 {
-                    savePath = savePath.Replace(".pdf","_doc_"+doc.ToString()+".Pdf");
+                    //savePath = userConfigManager.Config.project;
+                    savePath = savePath.Replace(".pdf", "_doc_" + doc.ToString() + ".Pdf");
                 }
 
                 var changeToken = changeTracker.State;
