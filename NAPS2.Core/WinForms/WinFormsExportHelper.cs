@@ -48,13 +48,17 @@ namespace NAPS2.WinForms
             this.userConfigManager = userConfigManager;
         }
 
-        public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify)
+        public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify, int doc = 0)
         {
             if (images.Any())
             {
                 string savePath;
+                
 
                 var pdfSettings = pdfSettingsContainer.PdfSettings;
+
+                if (doc > 0) { pdfSettings.SkipSavePrompt = true; }
+
                 if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
                 {
                     userConfigManager.Load();
@@ -66,6 +70,12 @@ namespace NAPS2.WinForms
                     {
                         return false;
                     }
+                }
+
+                //Append _doc_x to the file
+                if (doc > 0) 
+                {
+                    savePath = savePath.Replace(".pdf","_doc_"+doc.ToString()+".Pdf");
                 }
 
                 var changeToken = changeTracker.State;

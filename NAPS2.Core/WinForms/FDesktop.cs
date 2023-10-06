@@ -1174,16 +1174,19 @@ namespace NAPS2.WinForms
         {
             //Save the range of page from the first document
             //Need to be able to do better range that this. This is risky.
-            if (await exportHelper.SavePDF(images.GetRange(docs[0].firstpage-1, (docs[0].lastpage+1) - docs[0].firstpage), notify))
-            {
-                changeTracker.Made();
-                if (appConfigManager.Config.DeleteAfterSaving)
+            for (int a = 0; a < docs.Count; a++) 
+            { 
+                if (await exportHelper.SavePDF(images.GetRange(docs[a].firstpage, (docs[a].lastpage) - docs[a].firstpage), notify,a))
                 {
-                    SafeInvoke(() =>
+                    changeTracker.Made();
+                    if (appConfigManager.Config.DeleteAfterSaving)
                     {
-                        imageList.Delete(imageList.Images.IndiciesOf(images));
-                        DeleteThumbnails();
-                    });
+                        SafeInvoke(() =>
+                        {
+                            imageList.Delete(imageList.Images.IndiciesOf(images));
+                            DeleteThumbnails();
+                        });
+                    }
                 }
             }
         }

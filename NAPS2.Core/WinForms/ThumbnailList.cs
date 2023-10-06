@@ -308,7 +308,7 @@ namespace NAPS2.WinForms
                 documentCount = 1;
                 addGroup("Document " + documentCount.ToString());
                 Document document = new Document { };
-                document.firstpage = 1;
+                document.firstpage = 0;
                 document.description = "Document 1";
                 document.lastpage = images.Count;
             
