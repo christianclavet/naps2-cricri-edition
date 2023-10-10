@@ -68,7 +68,7 @@
             resources.ApplyResources(this.btn_Expression, "btn_Expression");
             this.btn_Expression.Name = "btn_Expression";
             this.btn_Expression.UseVisualStyleBackColor = false;
-            this.btn_Expression.Click += new System.EventHandler(this.btn_Expression_Click);
+            this.btn_Expression.Click += new System.EventHandler(this.Btn_Expression_Click);
             // 
             // groupBox1
             // 

@@ -32,7 +32,7 @@ namespace NAPS2.Recovery
             this.imageSettingsContainer = imageSettingsContainer;
 
         }
-        public void setFolder(DirectoryInfo info)
+        public void SetFolder(DirectoryInfo info)
         {
             folderToRecoverFrom = info;
         }
@@ -49,8 +49,8 @@ namespace NAPS2.Recovery
         {
 
             var op = new RecoveryOperation(formFactory, thumbnailRenderer);
-            op.setFolder(folderToRecoverFrom);
-            op.setContainer(imageSettingsContainer);
+            op.SetFolder(folderToRecoverFrom);
+            op.SetContainer(imageSettingsContainer);
 
             if (op.Start(imageCallback))
             {
@@ -72,7 +72,7 @@ namespace NAPS2.Recovery
             private DateTime scannedDateTime;
             private bool cleanup;
 
-            public void setFolder(DirectoryInfo info)
+            public void SetFolder(DirectoryInfo info)
             { 
                 folderToRecoverFrom = info;
             }
@@ -90,7 +90,7 @@ namespace NAPS2.Recovery
                 folderToRecoverFrom = null;
             }
 
-            public void setContainer(ImageSettingsContainer imageSettingsContainer)
+            public void SetContainer(ImageSettingsContainer imageSettingsContainer)
             {
                 this.imageSettingsContainer = imageSettingsContainer;
             }
@@ -176,7 +176,7 @@ namespace NAPS2.Recovery
                     {
                         return true;
                     }
-                    FDesktop.getInstance().setRecover(true); //Set the application FLAG that it is in recovery
+                    FDesktop.GetInstance().SetRecover(true); //Set the application FLAG that it is in recovery
 
                     string imagePath = Path.Combine(folderToRecoverFrom.FullName, indexImage.FileName);
                     ScannedImage scannedImage;
@@ -233,8 +233,8 @@ namespace NAPS2.Recovery
                 }
 
                 // Tell the Desktop class that recovery is completed and ask to redraw the numbers of the items
-                FDesktop.getInstance().setRecover(false);
-                FDesktop.getInstance().RegenIconsList();
+                FDesktop.GetInstance().SetRecover(false);
+                FDesktop.GetInstance().RegenIconsList();
                 return true;
             }
 

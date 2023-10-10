@@ -59,7 +59,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
-            addGroup("Document "+documentCount.ToString());
+            AddGroup("Document "+documentCount.ToString());
             OwnerDraw = true;
             InsertionMark.Index = -1;
         }
@@ -105,7 +105,7 @@ namespace NAPS2.WinForms
             {
                 if (Groups.Count < 1)
                 {
-                    addGroup("Document 1");
+                    AddGroup("Document 1");
                     GroupRefresh(allImages);
                 }
 
@@ -127,7 +127,7 @@ namespace NAPS2.WinForms
                     var sep = allImages[i].Separator;
                     if (sep)
                     {
-                        addGroup("Document " + (Groups.Count+1).ToString());
+                        AddGroup("Document " + (Groups.Count+1).ToString());
                         Items[i].Text = (i + 1).ToString() + " Separator";
                     } else 
                     {
@@ -289,7 +289,7 @@ namespace NAPS2.WinForms
             
         }
 
-        public void addGroup(string text)
+        public void AddGroup(string text)
         {
             this.Groups.Add(new ListViewGroup(text, HorizontalAlignment.Left));
         }
@@ -303,10 +303,10 @@ namespace NAPS2.WinForms
                 BeginUpdate();
           
                 Groups.Clear();
-                FDesktop.getInstance().docs.Clear();
+                FDesktop.GetInstance().docs.Clear();
 
                 documentCount = 1;
-                addGroup("Document " + documentCount.ToString());
+                AddGroup("Document " + documentCount.ToString());
                 Document document = new Document { };
                 document.firstpage = 0;
                 document.description = "Document 1";
@@ -320,21 +320,21 @@ namespace NAPS2.WinForms
                         if (i > 1)
                             document.lastpage = i;
 
-                        FDesktop.getInstance().docs.Add(document);
+                        FDesktop.GetInstance().docs.Add(document);
                         
                         document = new Document { };
                         document.firstpage = i;
                         document.description = "Document " + i.ToString();
                         
                         documentCount = Groups.Count + 1;
-                        addGroup("Document " + documentCount.ToString());
+                        AddGroup("Document " + documentCount.ToString());
                     }
                     Groups[documentCount - 1].Items.Add(Items[i]);
                     SetGroupState(ListViewGroupState.Collapsible);
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
                 }
                 document.lastpage = images.Count;
-                FDesktop.getInstance().docs.Add(document);
+                FDesktop.GetInstance().docs.Add(document);
                 EndUpdate();
             }
 

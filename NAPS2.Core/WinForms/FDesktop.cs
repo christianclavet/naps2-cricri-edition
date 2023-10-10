@@ -150,7 +150,7 @@ namespace NAPS2.WinForms
 
         }
 
-        public static FDesktop getInstance()
+        public static FDesktop GetInstance()
         {
             //this will get the instance to this class and be able to call functions like a manager class
             //MSVC will Reference where it was required
@@ -172,7 +172,7 @@ namespace NAPS2.WinForms
             PostInitializeComponent();
         }
 
-        public void setRecover(bool recovery)
+        public void SetRecover(bool recovery)
         {
             //This is used the tell this class that it's in recovery mode.
             //Once the recovery is completed, it will be put to false
@@ -244,7 +244,7 @@ namespace NAPS2.WinForms
                        .BottomTo(() => thumbnailList1.Height)
                    .Activate();
            
-            thumbnailList1.MouseWheel += thumbnailList1_MouseWheel;
+            thumbnailList1.MouseWheel += ThumbnailList1_MouseWheel;
             thumbnailList1.SizeChanged += (sender, args) => layoutManager.UpdateLayout();
 
             
@@ -691,7 +691,7 @@ namespace NAPS2.WinForms
                 {
                     thumbnailList1.SelectedIndices.Add(i);
                 }
-                thumbnailList1_SelectedIndexChanged(thumbnailList1, new EventArgs());
+                ThumbnailList1_SelectedIndexChanged(thumbnailList1, new EventArgs());
             }
         }
 
@@ -1285,8 +1285,8 @@ namespace NAPS2.WinForms
             ksm.Assign("Ctrl+C", ctxCopy);
             ksm.Assign("Ctrl+V", ctxPaste);
             ksm.Assign("Space", tsView);
-            ksm.Assign("pgdn", pageDown);
-            ksm.Assign("pgup", pageUp);
+            ksm.Assign("pgdn", PageDown);
+            ksm.Assign("pgup", PageUp);
             ksm.Assign("Ctrl+Numpad1", tsRotateLeft);
             ksm.Assign("Ctrl+NumPad2", tsFlip);
             ksm.Assign("Ctrl+Numpad3", tsRotateRight);
@@ -1395,7 +1395,7 @@ namespace NAPS2.WinForms
             return null;
         }
 
-        private void pageDown()
+        private void PageDown()
         {
             int count = SelectedIndices.First() + 1;
             if (SelectedIndices.Count() > 0 && count < thumbnailList1.Items.Count)
@@ -1405,7 +1405,7 @@ namespace NAPS2.WinForms
                 thumbnailList1.EnsureVisible(thumbnailList1.Items[count].Index);
             }
         }
-        private void pageUp()
+        private void PageUp()
         {
             int count = SelectedIndices.First() - 1;
             if (SelectedIndices.Count() > 0)
@@ -1418,12 +1418,12 @@ namespace NAPS2.WinForms
                 }
             }
         }
-        private void thumbnailList1_KeyDown(object sender, KeyEventArgs e)
+        private void ThumbnailList1_KeyDown(object sender, KeyEventArgs e)
         {
             ksm.Perform(e);
         }
 
-        private void thumbnailList1_MouseWheel(object sender, MouseEventArgs e)
+        private void ThumbnailList1_MouseWheel(object sender, MouseEventArgs e)
         {
             if (ModifierKeys.HasFlag(Keys.Control))
             {
@@ -1436,7 +1436,7 @@ namespace NAPS2.WinForms
         #region Event Handlers - Misc
 
         // New feature. Will update the position of splitter bar relatively by a ratio when the application window size is changed.
-        private void app_SizeChanged(object sender, System.EventArgs e)
+        private void App_SizeChanged(object sender, System.EventArgs e)
         {
             Control control = (Control)sender;
             if (Oldsize!=Size.Empty && WindowState != FormWindowState.Minimized)
@@ -1448,7 +1448,7 @@ namespace NAPS2.WinForms
             }
         }
 
-        private void thumbnailList1_ItemActivate(object sender, EventArgs e)
+        private void ThumbnailList1_ItemActivate(object sender, EventArgs e)
         {
             PreviewImage();
         }
@@ -1501,7 +1501,7 @@ namespace NAPS2.WinForms
 
         }
         // CC - Should display the status of the selected thumbnail (CODEBAR PRESENT, SIZE, ETC, in the status bar)
-        private void thumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ThumbnailList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplaySelectedItem_info();
         }
@@ -2646,7 +2646,7 @@ namespace NAPS2.WinForms
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
-                    recoveryManager.setFolder(di); //Set to a folder other than the last used one.
+                    recoveryManager.SetFolder(di); //Set to a folder other than the last used one.
                     //recover mode activated = (will not update the gui of the image preview while loading)
                     recover = true;                                  
                     recoveryManager.RecoverScannedImages(ReceiveScannedImage());

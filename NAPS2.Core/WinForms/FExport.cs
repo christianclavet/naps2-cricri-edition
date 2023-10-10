@@ -120,7 +120,7 @@ namespace NAPS2.WinForms
 
         }
 
-        private void btn_Expression_Click(object sender, EventArgs e)
+        private void Btn_Expression_Click(object sender, EventArgs e)
         {
             var form = FormFactory.Create<FPlaceholders>();
             form.FileName = TB_filename.Text;
