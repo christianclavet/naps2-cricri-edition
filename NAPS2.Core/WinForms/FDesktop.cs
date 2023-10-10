@@ -94,7 +94,6 @@ namespace NAPS2.WinForms
         public static FDesktop instance = null;
 
         //For document management
-        private int documentCount;
         public List<Document> docs;
 
         // Variables as static
@@ -132,7 +131,6 @@ namespace NAPS2.WinForms
 
             //get the initial document count.
             docs = new List<Document> { };
-            documentCount = docs.Count();
 
             // Creating a static pointer to this, so we can refer (test)
             instance = this;
