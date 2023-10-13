@@ -2639,10 +2639,12 @@ namespace NAPS2.WinForms
                     if (imageList.Images.Count > 0 && skipSave) 
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
+                        docs.Clear();
                     }
                     else
                     {
                         Clear(true);
+                        docs.Clear();
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
@@ -2702,6 +2704,7 @@ namespace NAPS2.WinForms
             {
                 imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                 DeleteThumbnails();
+                docs.Clear();
             }
             if (changeTracker!=null)
                 changeTracker.Clear();
@@ -2865,6 +2868,7 @@ namespace NAPS2.WinForms
                 if (result1 == DialogResult.No)
                 {
                     Clear(true);
+                    docs.Clear();
                 }
                 if (result1 == DialogResult.Yes)
                 {
