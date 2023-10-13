@@ -1168,7 +1168,7 @@ namespace NAPS2.WinForms
 
         #region Actions - Save/Email/Import
 
-        private async void SavePDF(List<ScannedImage> images)
+        private async void SavePDF(List<ScannedImage> images, bool all = true)
         {
 
             //Refresh the list and group to be sure the document count is ok
@@ -1176,9 +1176,28 @@ namespace NAPS2.WinForms
 
             //Save the range of page from the first document
             //Need to be able to do better range that this. This is risky.
-            for (int a = 0; a < docs.Count; a++) 
+            if (all)
             {
-                bool result = await exportHelper.SavePDF(images.GetRange(docs[a].firstpage, (docs[a].lastpage) - docs[a].firstpage), notify, a);
+                for (int a = 0; a < docs.Count; a++) 
+                {
+                    bool result = await exportHelper.SavePDF(images.GetRange(docs[a].firstpage, (docs[a].lastpage) - docs[a].firstpage), notify, a);
+                    if (result)
+                    {
+                        changeTracker.Made();
+                        if (appConfigManager.Config.DeleteAfterSaving)
+                        {
+                            SafeInvoke(() =>
+                            {
+                                imageList.Delete(imageList.Images.IndiciesOf(images));
+                                DeleteThumbnails();
+                            });
+                        }
+                    }
+                    else break;
+                }
+            } else
+            {
+                bool result = await exportHelper.SavePDF(images, notify, 0);
                 if (result)
                 {
                     changeTracker.Made();
@@ -1191,8 +1210,9 @@ namespace NAPS2.WinForms
                         });
                     }
                 }
-                else break;
+
             }
+
         }
 
         private async void SaveImages(List<ScannedImage> images, bool bypassprompt = false)
@@ -1674,7 +1694,7 @@ namespace NAPS2.WinForms
             }
             else if (action == SaveButtonDefaultAction.SaveSelected && SelectedIndices.Any())
             {
-                SavePDF(SelectedImages.ToList());
+                SavePDF(SelectedImages.ToList(),false);
             }
             else
             {
@@ -1789,7 +1809,7 @@ namespace NAPS2.WinForms
                 return;
             }
 
-            SavePDF(SelectedImages.ToList());
+            SavePDF(SelectedImages.ToList(),false);
         }
 
         private void tsPDFSettings_Click_1(object sender, EventArgs e)
