@@ -1507,6 +1507,9 @@ namespace NAPS2.WinForms
 
                 var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
                 GetPreviewImage(img, true);
+
+                //Put the barcode data in the toolbar
+                TS_BarcodeInfo.TextBox.Text = text3;
                 UpdateToolbar();
 
             }
@@ -2761,6 +2764,8 @@ namespace NAPS2.WinForms
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24); ;
                 //tStrip.BackColor = Color.FromArgb(24, 24, 24);
                 tStrip.BackColor = Color.FromArgb(46, 46, 46);
+                TS_Index.BackColor = Color.FromArgb(46, 46, 46);
+                BottomToolStripPanel.BackColor = Color.FromArgb(46, 46, 46);
 
                 // Status strip
                 statusStrip1.BackColor = SystemColors.ControlDarkDark;
@@ -2806,6 +2811,8 @@ namespace NAPS2.WinForms
                 //toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.White;
                 tStrip.BackColor = Color.White;
+                BottomToolStripPanel.BackColor = Color.White;
+                TS_Index.BackColor = Color.White;
                 //status strip
                 statusStrip1.BackColor = Color.White;
                 // File menu
@@ -2945,6 +2952,17 @@ namespace NAPS2.WinForms
         }
         #endregion
 
+        private void TS_BarcodeInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TSB_Update_Click(object sender, EventArgs e)
+        {
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
+            DisplaySelectedItem_info();
+
+        }
     }
 
     //Data object to keep the live document data
