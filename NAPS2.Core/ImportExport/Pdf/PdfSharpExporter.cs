@@ -23,6 +23,7 @@ using System.Drawing.Imaging;
 using NAPS2.ImportExport.Images;
 using static NAPS2.Scan.Images.ScannedImage;
 using System.Runtime.InteropServices.ComTypes;
+using PdfSharp.Pdf.Annotations;
 
 namespace NAPS2.ImportExport.Pdf
 {
@@ -161,6 +162,13 @@ namespace NAPS2.ImportExport.Pdf
                             }
 
                             PdfPage page = document.AddPage();
+
+                            //Try to add barcode data to the annotation of the page
+                            PdfAnnotation annot = new PdfTextAnnotation();
+                            annot.Subject = "Barcode Information";
+                            annot.Contents = snapshot.Source.BarCodeData;
+
+                            page.Annotations.Add(annot);
                             DrawImageOnPage(page, img, stream, compat);
                         }
                     }
@@ -208,6 +216,11 @@ namespace NAPS2.ImportExport.Pdf
                 using (Stream stream = scannedImageRenderer.RenderToStream(snapshot).Result)
                 using (var img = XImage.FromStream(stream))
                 {
+                    //Try to add barcode data to the annotation of the page
+                    PdfAnnotation annot = new PdfTextAnnotation();
+                    annot.Subject = "Barcode Information";
+                    annot.Contents = snapshot.Source.BarCodeData;
+
                     if (cancelToken.IsCancellationRequested)
                     {
                         break;
@@ -215,6 +228,7 @@ namespace NAPS2.ImportExport.Pdf
 
                     if (!importedPdfPassThrough)
                     {
+                        page.Annotations.Add(annot);
                         DrawImageOnPage(page, img, stream, compat);
                     }
 
@@ -263,6 +277,7 @@ namespace NAPS2.ImportExport.Pdf
                     continue;
                 }
                 DrawOcrTextOnPage(page, ocrTask.Result);
+
             }
             
             return !cancelToken.IsCancellationRequested;
