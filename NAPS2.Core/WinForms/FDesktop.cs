@@ -2761,11 +2761,14 @@ namespace NAPS2.WinForms
                
                 
                 // Toolstrip
-                toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24); ;
+                toolStripContainer1.TopToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);
+                toolStripContainer1.BottomToolStripPanel.BackColor = Color.FromArgb(24, 24, 24);
                 //tStrip.BackColor = Color.FromArgb(24, 24, 24);
                 tStrip.BackColor = Color.FromArgb(46, 46, 46);
                 TS_Index.BackColor = Color.FromArgb(46, 46, 46);
-                BottomToolStripPanel.BackColor = Color.FromArgb(46, 46, 46);
+                TS_BarcodeInfo.BackColor = Color.FromArgb(24, 24, 24);
+                TS_BarcodeInfo.ForeColor = Color.White;
+
 
                 // Status strip
                 statusStrip1.BackColor = SystemColors.ControlDarkDark;
@@ -2810,6 +2813,7 @@ namespace NAPS2.WinForms
 
                 //toolstrip
                 toolStripContainer1.TopToolStripPanel.BackColor = Color.White;
+                toolStripContainer1.BottomToolStripPanel.BackColor = Color.White;
                 tStrip.BackColor = Color.White;
                 BottomToolStripPanel.BackColor = Color.White;
                 TS_Index.BackColor = Color.White;
@@ -2961,6 +2965,11 @@ namespace NAPS2.WinForms
         {
             imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
             DisplaySelectedItem_info();
+
+        }
+
+        private void toolStripContainer1_BottomToolStripPanel_Click(object sender, EventArgs e)
+        {
 
         }
     }

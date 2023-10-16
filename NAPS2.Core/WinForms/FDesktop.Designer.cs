@@ -170,6 +170,7 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.TS_Index);
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
             resources.ApplyResources(this.toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
+            this.toolStripContainer1.BottomToolStripPanel.Click += new System.EventHandler(this.toolStripContainer1_BottomToolStripPanel_Click);
             // 
             // toolStripContainer1.ContentPanel
             // 
@@ -186,7 +187,6 @@ namespace NAPS2.WinForms
             // TS_Index
             // 
             resources.ApplyResources(this.TS_Index, "TS_Index");
-            this.TS_Index.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.TS_Index.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TS_BarcodeInfo,
             this.TSB_Update});
@@ -299,7 +299,9 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups18"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups19"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups20"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups21")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups21"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups22"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups23")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
