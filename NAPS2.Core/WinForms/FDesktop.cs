@@ -148,6 +148,10 @@ namespace NAPS2.WinForms
             if (ImageSettingsContainer.ProjectSettings.Name == "")
                 ImageSettingsContainer.ProjectSettings.Name = ImageSettingsContainer.ProjectSettings.BatchName;
 
+            //Add an event handler to the barcodeInfo
+            TS_BarcodeInfo.TextBox.KeyPress +=new System.Windows.Forms.KeyPressEventHandler(BarCodeInfo_KeyPress);
+            
+
         }
 
         public static FDesktop GetInstance()
@@ -196,6 +200,8 @@ namespace NAPS2.WinForms
             splitContainer1.Panel2Collapsed = UserConfigManager.Config.Quickview;
 
             splitContainer1.SplitterDistance = UserConfigManager.Config.Splitter1_distance;
+
+            TS_Index.Visible = UserConfigManager.Config.IndexWindow;
 
             thumbnailList1.ThumbnailSize = new Size(thumbnailSize, thumbnailSize);
             SetThumbnailSpacing(thumbnailSize);
@@ -377,7 +383,6 @@ namespace NAPS2.WinForms
         private async void FDesktop_Shown(object sender, EventArgs e)
         {
             UpdateToolbar();
-            TS_Index.Visible = false; //Hide the index panel as default
 
             // Receive messages from other processes
             Pipes.StartServer(msg =>
@@ -2593,8 +2598,7 @@ namespace NAPS2.WinForms
     
     #endregion
 
-
-    #region QuickView
+        #region QuickView
     // Quickview use the panel 2, Thumbnails use panel 1
     private void tsShowHideView_Click(object sender, EventArgs e)
         {
@@ -2972,15 +2976,20 @@ namespace NAPS2.WinForms
 
         }
 
-        private void toolStripContainer1_BottomToolStripPanel_Click(object sender, EventArgs e)
+        private void BarCodeInfo_KeyPress(object sender, EventArgs e)
         {
-
-
+           
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
+            DisplaySelectedItem_info();
+         
         }
 
         private void SMI_BarCodeInfo_Click(object sender, EventArgs e)
         {
             TS_Index.Visible = !TS_Index.Visible;
+            UserConfigManager.Config.IndexWindow = TS_Index.Visible;
+            UserConfigManager.Save();
+
         }
     }
 

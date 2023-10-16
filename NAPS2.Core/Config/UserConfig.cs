@@ -54,6 +54,8 @@ namespace NAPS2.Config
 
         public bool Quickview { get; set; } = true; //true will hide the Quickview per default
 
+        public bool IndexWindow { get; set; } = true; //This will display or hide the index text window editor
+
         public int Splitter1_distance { get; set; } = 590; // Default value for the view splitter
 
         public bool DarkMode { get; set; }
