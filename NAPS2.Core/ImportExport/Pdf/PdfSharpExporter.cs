@@ -165,9 +165,10 @@ namespace NAPS2.ImportExport.Pdf
 
                             //Try to add barcode data to the annotation of the page
                             PdfAnnotation annot = new PdfTextAnnotation();
+                            annot.Title = "Barcode Information";
                             annot.Subject = "Barcode Information";
                             annot.Contents = snapshot.Source.BarCodeData;
-
+                            
                             page.Annotations.Add(annot);
                             DrawImageOnPage(page, img, stream, compat);
                         }
@@ -218,6 +219,7 @@ namespace NAPS2.ImportExport.Pdf
                 {
                     //Try to add barcode data to the annotation of the page
                     PdfAnnotation annot = new PdfTextAnnotation();
+                    annot.Title = "Barcode Information";
                     annot.Subject = "Barcode Information";
                     annot.Contents = snapshot.Source.BarCodeData;
 
