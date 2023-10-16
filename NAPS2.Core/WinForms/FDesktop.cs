@@ -377,6 +377,7 @@ namespace NAPS2.WinForms
         private async void FDesktop_Shown(object sender, EventArgs e)
         {
             UpdateToolbar();
+            TS_Index.Visible = false; //Hide the index panel as default
 
             // Receive messages from other processes
             Pipes.StartServer(msg =>
@@ -2817,6 +2818,9 @@ namespace NAPS2.WinForms
                 tStrip.BackColor = Color.White;
                 BottomToolStripPanel.BackColor = Color.White;
                 TS_Index.BackColor = Color.White;
+                TS_BarcodeInfo.BackColor = Color.White;
+                TS_BarcodeInfo.ForeColor = Color.Black;
+
                 //status strip
                 statusStrip1.BackColor = Color.White;
                 // File menu
@@ -2972,6 +2976,11 @@ namespace NAPS2.WinForms
         {
 
 
+        }
+
+        private void SMI_BarCodeInfo_Click(object sender, EventArgs e)
+        {
+            TS_Index.Visible = !TS_Index.Visible;
         }
     }
 

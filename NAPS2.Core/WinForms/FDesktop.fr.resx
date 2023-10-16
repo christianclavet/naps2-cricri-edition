@@ -429,4 +429,7 @@
   <data name="TS_BarcodeInfo.ToolTipText" xml:space="preserve">
     <value>Informations du code à barres</value>
   </data>
+  <data name="SMI_BarCodeInfo.Text" xml:space="preserve">
+    <value>Montre|Cache les informations de codes à barre</value>
+  </data>
 </root>

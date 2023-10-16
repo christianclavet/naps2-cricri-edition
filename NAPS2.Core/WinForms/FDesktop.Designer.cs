@@ -35,11 +35,11 @@ namespace NAPS2.WinForms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDesktop));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.TS_Index = new System.Windows.Forms.ToolStrip();
             this.TS_BarcodeInfo = new System.Windows.Forms.ToolStripTextBox();
             this.TSB_Update = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
@@ -93,6 +93,8 @@ namespace NAPS2.WinForms
             this.tsAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_View = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsShowHideView2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SMI_BarCodeInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.TSI_ToggleDarkMode1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.tsCombo_Profiles = new System.Windows.Forms.ToolStripDropDownButton();
@@ -151,8 +153,8 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.TS_Index.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -183,19 +185,6 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tStrip);
             // 
-            // statusStrip1
-            // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusText});
-            this.statusStrip1.Name = "statusStrip1";
-            // 
-            // StatusText
-            // 
-            this.StatusText.Name = "StatusText";
-            resources.ApplyResources(this.StatusText, "StatusText");
-            // 
             // TS_Index
             // 
             resources.ApplyResources(this.TS_Index, "TS_Index");
@@ -223,6 +212,19 @@ namespace NAPS2.WinForms
             this.TSB_Update.Image = global::NAPS2.Icons.update;
             this.TSB_Update.Name = "TSB_Update";
             this.TSB_Update.Click += new System.EventHandler(this.TSB_Update_Click);
+            // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusText});
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // StatusText
+            // 
+            this.StatusText.Name = "StatusText";
+            resources.ApplyResources(this.StatusText, "StatusText");
             // 
             // splitContainer1
             // 
@@ -306,7 +308,9 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups24"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups25"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups26"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups27")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups27"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups28"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups29")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -672,6 +676,8 @@ namespace NAPS2.WinForms
             // 
             this.TS_View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsShowHideView2,
+            this.SMI_BarCodeInfo,
+            this.toolStripSeparator21,
             this.TSI_ToggleDarkMode1});
             resources.ApplyResources(this.TS_View, "TS_View");
             this.TS_View.Image = global::NAPS2.Icons.pictures;
@@ -683,6 +689,18 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsShowHideView2, "tsShowHideView2");
             this.tsShowHideView2.Name = "tsShowHideView2";
             this.tsShowHideView2.Click += new System.EventHandler(this.tsShowHideView_Click);
+            // 
+            // SMI_BarCodeInfo
+            // 
+            this.SMI_BarCodeInfo.Image = global::NAPS2.Icons.barcodePetit;
+            this.SMI_BarCodeInfo.Name = "SMI_BarCodeInfo";
+            resources.ApplyResources(this.SMI_BarCodeInfo, "SMI_BarCodeInfo");
+            this.SMI_BarCodeInfo.Click += new System.EventHandler(this.SMI_BarCodeInfo_Click);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            resources.ApplyResources(this.toolStripSeparator21, "toolStripSeparator21");
             // 
             // TSI_ToggleDarkMode1
             // 
@@ -1081,10 +1099,10 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.TS_Index.ResumeLayout(false);
             this.TS_Index.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -1211,6 +1229,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStrip TS_Index;
         private System.Windows.Forms.ToolStripTextBox TS_BarcodeInfo;
         private System.Windows.Forms.ToolStripButton TSB_Update;
+        private System.Windows.Forms.ToolStripMenuItem SMI_BarCodeInfo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
     }
 }
 
