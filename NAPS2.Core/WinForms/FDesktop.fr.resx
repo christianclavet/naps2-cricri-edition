@@ -423,4 +423,10 @@
   <data name="TS_View.ToolTipText" xml:space="preserve">
     <value>Ajustements de l'affichage</value>
   </data>
+  <data name="TSB_Update.Text" xml:space="preserve">
+    <value>Mettre à jour l'information</value>
+  </data>
+  <data name="TS_BarcodeInfo.ToolTipText" xml:space="preserve">
+    <value>Informations du code à barres</value>
+  </data>
 </root>

@@ -35,11 +35,11 @@ namespace NAPS2.WinForms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDesktop));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.TS_Index = new System.Windows.Forms.ToolStrip();
             this.TS_BarcodeInfo = new System.Windows.Forms.ToolStripTextBox();
             this.TSB_Update = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
@@ -151,8 +151,8 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.TS_Index.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.TS_Index.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -169,7 +169,6 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.BottomToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.TS_Index);
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
-            resources.ApplyResources(this.toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
             this.toolStripContainer1.BottomToolStripPanel.Click += new System.EventHandler(this.toolStripContainer1_BottomToolStripPanel_Click);
             // 
             // toolStripContainer1.ContentPanel
@@ -183,6 +182,19 @@ namespace NAPS2.WinForms
             // 
             this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tStrip);
+            // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusText});
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // StatusText
+            // 
+            this.StatusText.Name = "StatusText";
+            resources.ApplyResources(this.StatusText, "StatusText");
             // 
             // TS_Index
             // 
@@ -200,7 +212,9 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.TS_BarcodeInfo, "TS_BarcodeInfo");
             this.TS_BarcodeInfo.AutoToolTip = true;
             this.TS_BarcodeInfo.HideSelection = false;
+            this.TS_BarcodeInfo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.TS_BarcodeInfo.Name = "TS_BarcodeInfo";
+            this.TS_BarcodeInfo.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TS_BarcodeInfo.Click += new System.EventHandler(this.TS_BarcodeInfo_Click);
             // 
             // TSB_Update
@@ -209,19 +223,6 @@ namespace NAPS2.WinForms
             this.TSB_Update.Image = global::NAPS2.Icons.update;
             this.TSB_Update.Name = "TSB_Update";
             this.TSB_Update.Click += new System.EventHandler(this.TSB_Update_Click);
-            // 
-            // statusStrip1
-            // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusText});
-            this.statusStrip1.Name = "statusStrip1";
-            // 
-            // StatusText
-            // 
-            this.StatusText.Name = "StatusText";
-            resources.ApplyResources(this.StatusText, "StatusText");
             // 
             // splitContainer1
             // 
@@ -301,7 +302,11 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups20"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups21"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups22"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups23")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups23"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups24"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups25"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups26"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups27")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -1076,10 +1081,10 @@ namespace NAPS2.WinForms
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.TS_Index.ResumeLayout(false);
-            this.TS_Index.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.TS_Index.ResumeLayout(false);
+            this.TS_Index.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
