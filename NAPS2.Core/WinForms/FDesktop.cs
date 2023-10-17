@@ -1484,7 +1484,7 @@ namespace NAPS2.WinForms
         }
 
 
-        private void DisplaySelectedItem_info()
+        private void DisplaySelectedItem_info(bool minimum = false)
         {
             if (SelectedIndices == null)
                 return;
@@ -1509,15 +1509,16 @@ namespace NAPS2.WinForms
                 else
                     side = "- side: front only";
 
-                statusStrip1.Items[0].Text = "Document(s): " + thumbnailList1.GetGroups().Count.ToString() + " | Image(s): " + text + "/" + imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;
-
-                var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
-                GetPreviewImage(img, true);
-
+                statusStrip1.Items[0].Text = "Document(s): " + thumbnailList1.GetGroups().Count.ToString() + " | Image(s): " + text + "/" + imageList.Images.Count() + " : Size: " + text2 + " - " + text4 + " - " + format + side;              
+                
+                if (!minimum)
+                {
+                    var img = imageList.Images[thumbnailList1.SelectedItems[0].Index];
+                    GetPreviewImage(img, true);
+                    UpdateToolbar();
+                }
                 //Put the barcode data in the toolbar
                 TS_BarcodeInfo.TextBox.Text = text3;
-                UpdateToolbar();
-
             }
             else
             {
@@ -2971,16 +2972,17 @@ namespace NAPS2.WinForms
 
         private void TSB_Update_Click(object sender, EventArgs e)
         {
+            //Manual update of the data (Might be removed)
             imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
-            DisplaySelectedItem_info();
+            DisplaySelectedItem_info(true);
 
         }
 
         private void BarCodeInfo_KeyPress(object sender, EventArgs e)
         {
-           
+           // There are keyboard event registered so update the data immediately. (Live editing)
             imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
-            DisplaySelectedItem_info();
+            DisplaySelectedItem_info(true);
          
         }
 
