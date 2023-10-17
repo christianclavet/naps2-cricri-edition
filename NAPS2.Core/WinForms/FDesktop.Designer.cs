@@ -203,7 +203,7 @@ namespace NAPS2.WinForms
             this.TS_BarcodeInfo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.TS_BarcodeInfo.Name = "TS_BarcodeInfo";
             this.TS_BarcodeInfo.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.TS_BarcodeInfo.Click += new System.EventHandler(this.TS_BarcodeInfo_Click);
+            
             // 
             // TSB_Update
             // 

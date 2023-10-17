@@ -2922,7 +2922,7 @@ namespace NAPS2.WinForms
             // Close the current workspace (save if the previous was not)
            
             // Ask for the project name: 
-            changeProjectName();
+            ChangeProjectName();
             
         }
 
@@ -2940,9 +2940,7 @@ namespace NAPS2.WinForms
 
         }
 
-         
-
-        public void changeProjectName()
+        public void ChangeProjectName()
         {
             var form = FormFactory.Create<FProjectName>();
             BackgroundForm.UseImmersiveDarkMode(form.Handle, darkMode);
@@ -2961,14 +2959,9 @@ namespace NAPS2.WinForms
 
         private void TS_SavePrj_Click(object sender, EventArgs e)
         {
-            changeProjectName();
+            ChangeProjectName();
         }
         #endregion
-
-        private void TS_BarcodeInfo_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void TSB_Update_Click(object sender, EventArgs e)
         {

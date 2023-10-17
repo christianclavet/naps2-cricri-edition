@@ -427,9 +427,21 @@
     <value>Mettre à jour l'information</value>
   </data>
   <data name="TS_BarcodeInfo.ToolTipText" xml:space="preserve">
-    <value>Informations du code à barres</value>
+    <value>Informations</value>
   </data>
   <data name="SMI_BarCodeInfo.Text" xml:space="preserve">
     <value>Montre|Cache les informations de codes à barre</value>
+  </data>
+  <data name="tsiDocumentAdd.Text" xml:space="preserve">
+    <value>Ajouter un séparateur</value>
+  </data>
+  <data name="tsiDocumentRemove.Text" xml:space="preserve">
+    <value>Enlever un séparateur</value>
+  </data>
+  <data name="TSMI_contractall.Text" xml:space="preserve">
+    <value>Tout compresser</value>
+  </data>
+  <data name="TSMI_expandAll.Text" xml:space="preserve">
+    <value>Tout étendre</value>
   </data>
 </root>
