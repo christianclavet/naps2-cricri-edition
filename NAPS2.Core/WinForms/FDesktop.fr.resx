@@ -444,4 +444,7 @@
   <data name="TSMI_expandAll.Text" xml:space="preserve">
     <value>Tout étendre</value>
   </data>
+  <data name="TSMI_RemoveAll.Text" xml:space="preserve">
+    <value>Enlever tous les séparateurs</value>
+  </data>
 </root>

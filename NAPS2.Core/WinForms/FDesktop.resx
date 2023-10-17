@@ -776,6 +776,36 @@
         dmFsdWVfXwAIAgAAAAAAAAAKCw==
 </value>
   </data>
+  <data name="thumbnailList1.Groups35" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwAwAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwEEAihTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAGAwAAAApE
+        b2N1bWVudCAxBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
+        dmFsdWVfXwAIAgAAAAAAAAAKCw==
+</value>
+  </data>
+  <data name="thumbnailList1.Groups36" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwAwAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwEEAihTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAGAwAAAApE
+        b2N1bWVudCAxBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
+        dmFsdWVfXwAIAgAAAAAAAAAKCw==
+</value>
+  </data>
+  <data name="thumbnailList1.Groups37" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwAwAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwEEAihTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAGAwAAAApE
+        b2N1bWVudCAxBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
+        dmFsdWVfXwAIAgAAAAAAAAAKCw==
+</value>
+  </data>
   <data name="thumbnailList1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -792,7 +822,7 @@
     <value>thumbnailList1</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.14788, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.ThumbnailList, NAPS2.Core, Version=6.2.3.15531, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;thumbnailList1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -834,7 +864,7 @@
     <value>tiffViewerCtl1</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.14788, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.TiffViewerCtl, NAPS2.Core, Version=6.2.3.15531, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tiffViewerCtl1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -1372,25 +1402,34 @@
     <value>6, 58</value>
   </data>
   <data name="tsiDocumentAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>205, 38</value>
   </data>
   <data name="tsiDocumentAdd.Text" xml:space="preserve">
     <value>Add separator</value>
   </data>
   <data name="tsiDocumentRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>205, 38</value>
   </data>
   <data name="tsiDocumentRemove.Text" xml:space="preserve">
     <value>Remove separator</value>
   </data>
+  <data name="TSMI_RemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 38</value>
+  </data>
+  <data name="TSMI_RemoveAll.Text" xml:space="preserve">
+    <value>Remove all separators</value>
+  </data>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 6</value>
+  </data>
   <data name="TSMI_expandAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>205, 38</value>
   </data>
   <data name="TSMI_expandAll.Text" xml:space="preserve">
     <value>Expand all</value>
   </data>
   <data name="TSMI_contractall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>205, 38</value>
   </data>
   <data name="TSMI_contractall.Text" xml:space="preserve">
     <value>Contract all</value>
@@ -2211,6 +2250,18 @@
   <data name="&gt;&gt;tsiDocumentRemove.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;TSMI_RemoveAll.Name" xml:space="preserve">
+    <value>TSMI_RemoveAll</value>
+  </data>
+  <data name="&gt;&gt;TSMI_RemoveAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Name" xml:space="preserve">
+    <value>toolStripSeparator22</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;TSMI_expandAll.Name" xml:space="preserve">
     <value>TSMI_expandAll</value>
   </data>
@@ -2425,6 +2476,6 @@
     <value>FDesktop</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.14788, Culture=neutral, PublicKeyToken=null</value>
+    <value>NAPS2.WinForms.FormBase, NAPS2.Core, Version=6.2.3.15531, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

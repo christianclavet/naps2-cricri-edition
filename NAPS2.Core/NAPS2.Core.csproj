@@ -6269,6 +6269,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\wireless16.png" />
+    <None Include="Resources\folder_vertical_document.png" />
+    <None Include="Resources\folder_vertical_open.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\folder-directory-files-icon_remove.png" />
     <None Include="Resources\folder-directory-files-icon_add.png" />

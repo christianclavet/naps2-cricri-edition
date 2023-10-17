@@ -127,6 +127,9 @@
   <data name="picture_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\picture_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="view_fullscreen_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\view_fullscreen_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="folder_picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\folder_picture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,20 +169,20 @@
   <data name="contrast1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\contrast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\arrow_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="scanner_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\scanner-48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="weather_sun" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Icons\weather_sun.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="transform_crop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\transform_crop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="image_edit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\image_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,6 +205,9 @@
   <data name="color_gradient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\color_gradient.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="diskette" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\diskette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cross_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\cross-small.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -213,9 +219,6 @@
   </data>
   <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\information.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pictures" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Icons\pictures.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_switch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\arrow_switch.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,8 +235,8 @@
   <data name="folder-directory-files-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\folder-directory-files-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="transform_crop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\transform_crop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="color_management1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\color_management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,8 +262,8 @@
   <data name="scanner_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\scanner-64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="transform_crop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Icons\transform_crop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="weather_sun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\weather_sun.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hourglass_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\hourglass_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,8 +295,8 @@
   <data name="pencil_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\pencil-small.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="diskette" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\diskette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pictures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\pictures.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="info_rhombus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\info_rhombus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,8 +310,8 @@
   <data name="file_extension_pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\file_extension_pdf.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="view_fullscreen_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\view_fullscreen_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="transform_crop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\transform_crop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\cross.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -373,6 +376,9 @@
   <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="folder_vertical_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\folder_vertical_open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrow_rotate_anticlockwise_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\arrow_rotate_anticlockwise-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -418,7 +424,7 @@
   <data name="file_extension_pdf_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\file_extension_pdf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder_vertical_document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\folder_vertical_document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

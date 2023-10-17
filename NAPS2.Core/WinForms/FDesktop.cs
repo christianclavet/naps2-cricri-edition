@@ -2596,12 +2596,20 @@ namespace NAPS2.WinForms
         {
             thumbnailList1.SetGroupState(ListViewGroupState.Collapsed | ListViewGroupState.Collapsible);
         }
-    
-    #endregion
+
+        private void TSMI_RemoveAll_Click(object sender, EventArgs e)
+        {
+            docs.Clear();
+            thumbnailList1.DestroyGroups(imageList.Images);
+            thumbnailList1.GroupRefresh(imageList.Images);
+            thumbnailList1.UpdateDescriptions(imageList.Images, Color.Black);
+        }
+
+        #endregion
 
         #region QuickView
-    // Quickview use the panel 2, Thumbnails use panel 1
-    private void tsShowHideView_Click(object sender, EventArgs e)
+        // Quickview use the panel 2, Thumbnails use panel 1
+        private void tsShowHideView_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
 
@@ -2967,6 +2975,8 @@ namespace NAPS2.WinForms
         {
             //Manual update of the data (Might be removed)
             imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].RecoveryIndexImage.BarCode = TS_BarcodeInfo.TextBox.Text;
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].Save();
             DisplaySelectedItem_info(true);
 
         }
@@ -2975,6 +2985,8 @@ namespace NAPS2.WinForms
         {
            // There are keyboard event registered so update the data immediately. (Live editing)
             imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].RecoveryIndexImage.BarCode = TS_BarcodeInfo.TextBox.Text;
+            imageList.Images[thumbnailList1.SelectedItems[0].Index].Save();
             DisplaySelectedItem_info(true);
          
         }
@@ -2986,6 +2998,7 @@ namespace NAPS2.WinForms
             UserConfigManager.Save();
 
         }
+
     }
 
     //Data object to keep the live document data

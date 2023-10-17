@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using NAPS2.Platform;
+using NAPS2.Recovery;
 using NAPS2.Scan.Images;
 using NTwain.Data;
 using ZXing;
@@ -43,7 +44,7 @@ namespace NAPS2.WinForms
             {
                 // No joy, just be happy enough with 256
                 ThumbnailRenderer.MAX_SIZE = 256;
-               
+
             }
         }
 
@@ -59,7 +60,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             LargeImageList = ilThumbnailList;
-            AddGroup("Document "+documentCount.ToString());
+            AddGroup("Document " + documentCount.ToString());
             OwnerDraw = true;
             InsertionMark.Index = -1;
         }
@@ -96,11 +97,11 @@ namespace NAPS2.WinForms
 
         private List<ScannedImage> CurrentImages => Items.Cast<ListViewItem>().Select(x => (ScannedImage)x.Tag).ToList();
 
-        
+
 
         public void AddedImages(List<ScannedImage> allImages, Color color)
         {
-      
+
             lock (this)
             {
                 if (Groups.Count < 1)
@@ -127,14 +128,14 @@ namespace NAPS2.WinForms
                     var sep = allImages[i].Separator;
                     if (sep)
                     {
-                        AddGroup("Document " + (Groups.Count+1).ToString());
+                        AddGroup("Document " + (Groups.Count + 1).ToString());
                         Items[i].Text = (i + 1).ToString() + " Separator";
-                    } else 
+                    } else
                     {
                         Items[i].Text = (i + 1).ToString();
                     }
                     Items[i].ForeColor = color;
-                    Groups[Groups.Count-1].Items.Add(Items[i]);
+                    Groups[Groups.Count - 1].Items.Add(Items[i]);
                     GroupRefresh(allImages);
                 }
 
@@ -182,7 +183,7 @@ namespace NAPS2.WinForms
             {
                 BeginUpdate();
                 int min = selection == null || !selection.Any() ? 0 : selection.Min();
-                int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;         
+                int max = selection == null || !selection.Any() ? images.Count : selection.Max() + 1;
 
                 for (int i = min; i < max; i++)
                 {
@@ -198,7 +199,7 @@ namespace NAPS2.WinForms
                     {
                         Items[i].Text = (i + 1).ToString() + "/" + Items.Count.ToString() + " ";
                     }
-                    
+
                     Items[i].ForeColor = color;
                 }
                 EndUpdate();
@@ -230,7 +231,7 @@ namespace NAPS2.WinForms
                 }
                 EndUpdate();
             }
-         
+
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
@@ -238,24 +239,24 @@ namespace NAPS2.WinForms
             e.DrawDefault = true;
             //Using microsoft example to start my own owner draw list. Trying to create my own insertion mark with the groups enabled.
             //ListViewInsertionMark test;
-            
+
             if (InsertionMark.Index > -1)
             {
-                
+
                 Pen pen = new Pen(ForeColor, 1);
-                
+
                 var pos = InsertionMark.Index;
-               
+
 
                 var mpos = this.PointToClient(MousePosition);
                 Rectangle rec = Items[pos].Bounds;
-                
+
                 if (pos == 0)
                     pos = 1;
 
                 Rectangle rec2 = Items[pos - 1].Bounds;
 
-                
+
                 rec.X = rec.Left - 2;
 
                 if (Math.Abs(mpos.X - rec.Left) > Math.Abs(mpos.X - rec.Right))
@@ -269,7 +270,7 @@ namespace NAPS2.WinForms
                         rec.X = rec2.Right - 2;
                         rec.Y = rec2.Y;
                     }
-  
+
                 }
 
                 if (InsertionMark.AppearsAfterItem)
@@ -280,18 +281,32 @@ namespace NAPS2.WinForms
 
                 rec.Width = 4;
                 Brush br = new SolidBrush(ForeColor);
-                e.Graphics.FillRectangle(br , rec);
-                
+                e.Graphics.FillRectangle(br, rec);
+
                 //For debug uses
                 //e.Graphics.DrawRectangle(pen,Items[InsertionMark.Index].Bounds);
             }
-            
-            
+
+
         }
 
         public void AddGroup(string text)
         {
             this.Groups.Add(new ListViewGroup(text, HorizontalAlignment.Left));
+        }
+
+        public void DestroyGroups(List<ScannedImage> images)
+        {
+            for (int i = 0; i < images.Count; i++)
+            {
+                // Group define from separator
+                if (images[i].Separator == true)
+                {
+                    images[i].Separator = false;
+                    images[i].RecoveryIndexImage.isSeparator = false;
+                    images[i].Save();
+                }
+            }
         }
 
         //This will rebuild the groups and the document list for the export later.

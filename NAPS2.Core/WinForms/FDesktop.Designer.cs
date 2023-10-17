@@ -108,6 +108,8 @@ namespace NAPS2.WinForms
             this.tsdDocument = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsiDocumentAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiDocumentRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_RemoveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_expandAll = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_contractall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsdImage = new System.Windows.Forms.ToolStripDropDownButton();
@@ -203,7 +205,6 @@ namespace NAPS2.WinForms
             this.TS_BarcodeInfo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.TS_BarcodeInfo.Name = "TS_BarcodeInfo";
             this.TS_BarcodeInfo.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            
             // 
             // TSB_Update
             // 
@@ -315,7 +316,10 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups31"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups32"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups33"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups34")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups34"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups35"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups36"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups37")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -783,6 +787,8 @@ namespace NAPS2.WinForms
             this.tsdDocument.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsiDocumentAdd,
             this.tsiDocumentRemove,
+            this.TSMI_RemoveAll,
+            this.toolStripSeparator22,
             this.TSMI_expandAll,
             this.TSMI_contractall});
             this.tsdDocument.Image = global::NAPS2.Icons.folder_directory_files_icon;
@@ -803,14 +809,28 @@ namespace NAPS2.WinForms
             resources.ApplyResources(this.tsiDocumentRemove, "tsiDocumentRemove");
             this.tsiDocumentRemove.Click += new System.EventHandler(this.tsiDocumentRemove_Click);
             // 
+            // TSMI_RemoveAll
+            // 
+            this.TSMI_RemoveAll.Image = global::NAPS2.Icons.cross;
+            this.TSMI_RemoveAll.Name = "TSMI_RemoveAll";
+            resources.ApplyResources(this.TSMI_RemoveAll, "TSMI_RemoveAll");
+            this.TSMI_RemoveAll.Click += new System.EventHandler(this.TSMI_RemoveAll_Click);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
+            // 
             // TSMI_expandAll
             // 
+            this.TSMI_expandAll.Image = global::NAPS2.Icons.folder_vertical_document;
             this.TSMI_expandAll.Name = "TSMI_expandAll";
             resources.ApplyResources(this.TSMI_expandAll, "TSMI_expandAll");
             this.TSMI_expandAll.Click += new System.EventHandler(this.TSMI_expandAll_Click);
             // 
             // TSMI_contractall
             // 
+            this.TSMI_contractall.Image = global::NAPS2.Icons.folder_vertical_open;
             this.TSMI_contractall.Name = "TSMI_contractall";
             resources.ApplyResources(this.TSMI_contractall, "TSMI_contractall");
             this.TSMI_contractall.Click += new System.EventHandler(this.TSMI_contractall_Click);
@@ -1228,6 +1248,8 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripButton TSB_Update;
         private System.Windows.Forms.ToolStripMenuItem SMI_BarCodeInfo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_RemoveAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
     }
 }
 

@@ -623,6 +623,26 @@ namespace NAPS2 {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_vertical_document {
+            get {
+                object obj = ResourceManager.GetObject("folder_vertical_document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_vertical_open {
+            get {
+                object obj = ResourceManager.GetObject("folder_vertical_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gmail {
             get {
                 object obj = ResourceManager.GetObject("gmail", resourceCulture);
