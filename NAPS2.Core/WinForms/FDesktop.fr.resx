@@ -450,4 +450,7 @@
   <data name="TS_Index.Text" xml:space="preserve">
     <value>Indexation</value>
   </data>
+  <data name="label_index.Text" xml:space="preserve">
+    <value />
+  </data>
 </root>

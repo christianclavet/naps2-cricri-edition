@@ -323,7 +323,8 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups37"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups38"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups39"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups40")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups40"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups41")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
