@@ -940,7 +940,7 @@ namespace NAPS2.WinForms
             tsSavePDFSelected.Enabled = tsSaveImagesSelected.Enabled = tsEmailPDFSelected.Enabled = tsReverseSelected.Enabled = 
                 tsBlackWhite.Enabled = tsBrightnessContrast.Enabled = tsCrop.Enabled = tsHueSaturation.Enabled = 
                 printToolStripMenuItem.Enabled = tsReset.Enabled = tsSharpen.Enabled = tsView.Enabled = tsInsert.Enabled =
-                tsiDocumentAdd.Enabled = tsiDocumentRemove.Enabled = TSB_Update.Enabled = TS_BarcodeInfo.Enabled =
+                tsiDocumentAdd.Enabled = tsiDocumentRemove.Enabled = TS_BarcodeInfo.Enabled =
                 SelectedIndices.Any();
 
             if (!imageList.Images.Any() && !SelectedIndices.Any())

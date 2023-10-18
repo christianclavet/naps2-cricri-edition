@@ -36,8 +36,8 @@ namespace NAPS2.WinForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDesktop));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.TS_Index = new System.Windows.Forms.ToolStrip();
+            this.label_index = new System.Windows.Forms.ToolStripLabel();
             this.TS_BarcodeInfo = new System.Windows.Forms.ToolStripTextBox();
-            this.TSB_Update = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -188,12 +188,20 @@ namespace NAPS2.WinForms
             // TS_Index
             // 
             resources.ApplyResources(this.TS_Index, "TS_Index");
+            this.TS_Index.GripMargin = new System.Windows.Forms.Padding(1, 2, 2, 2);
             this.TS_Index.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.TS_Index.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TS_BarcodeInfo,
-            this.TSB_Update});
+            this.label_index,
+            this.TS_BarcodeInfo});
             this.TS_Index.Name = "TS_Index";
             this.TS_Index.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            // 
+            // label_index
+            // 
+            this.label_index.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.label_index, "label_index");
+            this.label_index.Name = "label_index";
+            this.label_index.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             // 
             // TS_BarcodeInfo
             // 
@@ -205,13 +213,6 @@ namespace NAPS2.WinForms
             this.TS_BarcodeInfo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.TS_BarcodeInfo.Name = "TS_BarcodeInfo";
             this.TS_BarcodeInfo.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            // 
-            // TSB_Update
-            // 
-            resources.ApplyResources(this.TSB_Update, "TSB_Update");
-            this.TSB_Update.Image = global::NAPS2.Icons.update;
-            this.TSB_Update.Name = "TSB_Update";
-            this.TSB_Update.Click += new System.EventHandler(this.TSB_Update_Click);
             // 
             // statusStrip1
             // 
@@ -319,7 +320,10 @@ namespace NAPS2.WinForms
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups34"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups35"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups36"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups37")))});
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups37"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups38"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups39"))),
+            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("thumbnailList1.Groups40")))});
             this.thumbnailList1.HideSelection = false;
             this.thumbnailList1.Name = "thumbnailList1";
             this.thumbnailList1.OwnerDraw = true;
@@ -1245,11 +1249,11 @@ namespace NAPS2.WinForms
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private System.Windows.Forms.ToolStrip TS_Index;
         private System.Windows.Forms.ToolStripTextBox TS_BarcodeInfo;
-        private System.Windows.Forms.ToolStripButton TSB_Update;
         private System.Windows.Forms.ToolStripMenuItem SMI_BarCodeInfo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem TSMI_RemoveAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripLabel label_index;
     }
 }
 

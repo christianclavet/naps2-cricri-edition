@@ -447,4 +447,7 @@
   <data name="TSMI_RemoveAll.Text" xml:space="preserve">
     <value>Enlever tous les séparateurs</value>
   </data>
+  <data name="TS_Index.Text" xml:space="preserve">
+    <value>Indexation</value>
+  </data>
 </root>
