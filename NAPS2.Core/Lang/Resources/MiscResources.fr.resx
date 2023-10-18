@@ -525,4 +525,13 @@
   <data name="UnsavedChangesAction" xml:space="preserve">
     <value>Voulez-vous garder les changements du lot actuel?</value>
   </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document </value>
+  </data>
+  <data name="PagesDoc" xml:space="preserve">
+    <value> pages(s) dans ce document</value>
+  </data>
+  <data name="Separator" xml:space="preserve">
+    <value> séparateur</value>
+  </data>
 </root>

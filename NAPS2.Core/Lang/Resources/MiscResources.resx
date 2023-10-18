@@ -528,4 +528,13 @@
   <data name="UnsavedChangesAction" xml:space="preserve">
     <value>Do you want to back-up the current batch?</value>
   </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document </value>
+  </data>
+  <data name="PagesDoc" xml:space="preserve">
+    <value> pages(s) in this document</value>
+  </data>
+  <data name="Separator" xml:space="preserve">
+    <value> Separator</value>
+  </data>
 </root>

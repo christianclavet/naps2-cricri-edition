@@ -439,6 +439,15 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Document .
+        /// </summary>
+        internal static string Document {
+            get {
+                return ResourceManager.GetString("Document", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Donate.
         /// </summary>
         internal static string Donate {
@@ -943,6 +952,15 @@ namespace NAPS2.Lang.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à  pages(s) in this document.
+        /// </summary>
+        internal static string PagesDoc {
+            get {
+                return ResourceManager.GetString("PagesDoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An additional component is needed to import this PDF file. Would you like to download it now?.
         /// </summary>
         internal static string PdfImportComponentNeeded {
@@ -1182,6 +1200,15 @@ namespace NAPS2.Lang.Resources {
         internal static string SelectProfileBeforeScan {
             get {
                 return ResourceManager.GetString("SelectProfileBeforeScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Separator.
+        /// </summary>
+        internal static string Separator {
+            get {
+                return ResourceManager.GetString("Separator", resourceCulture);
             }
         }
         

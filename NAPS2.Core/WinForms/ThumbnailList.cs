@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using NAPS2.Lang.Resources;
 using NAPS2.Platform;
 using NAPS2.Recovery;
 using NAPS2.Scan.Images;
@@ -321,10 +322,10 @@ namespace NAPS2.WinForms
                 FDesktop.GetInstance().docs.Clear();
 
                 documentCount = 1;
-                AddGroup("Document " + documentCount.ToString());
+                AddGroup(MiscResources.Document + documentCount.ToString());
                 Document document = new Document { };
                 document.firstpage = 0;
-                document.description = "Document 1";
+                document.description = MiscResources.Document + " 1";
                 document.lastpage = images.Count;
             
                 for (int i = 0; i < images.Count; i++)
@@ -339,14 +340,14 @@ namespace NAPS2.WinForms
                         
                         document = new Document { };
                         document.firstpage = i;
-                        document.description = "Document " + i.ToString();
+                        document.description = MiscResources.Document + i.ToString();
                         
                         documentCount = Groups.Count + 1;
-                        AddGroup("Document " + documentCount.ToString());
+                        AddGroup(MiscResources.Document + documentCount.ToString());
                     }
                     Groups[documentCount - 1].Items.Add(Items[i]);
                     SetGroupState(ListViewGroupState.Collapsible);
-                    SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + " Pages(s) in this document");
+                    SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + MiscResources.PagesDoc);
                 }
                 document.lastpage = images.Count;
                 FDesktop.GetInstance().docs.Add(document);
@@ -398,7 +399,7 @@ namespace NAPS2.WinForms
                 {
                     if (images[item.Index].Separator == true)
                     {
-                        item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString() + " Separator";
+                        item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString() + MiscResources.Separator;
                     } else
                     {
                         item.Text = (item.Index + 1).ToString() + "/" + Items.Count.ToString();
