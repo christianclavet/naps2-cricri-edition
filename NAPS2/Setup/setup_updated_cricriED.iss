@@ -91,6 +91,19 @@ Source: "..\..\NAPS2.Server\bin\InstallerEXE\NAPS2.Server.exe.config"; DestDir: 
 Source: "..\..\NAPS2.Worker\bin\InstallerEXE\NAPS2.Worker.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\NAPS2.Worker\bin\InstallerEXE\NAPS2.Worker.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 
+
+; NEW Preinstall components. 
+Source: "..\components\gs-9.21\gsdll32.dll"; DestDir: "{app}\components\gs-9.21"; Flags: ignoreversion
+Source: "..\components\gs-9.21\gsdll64.dll"; DestDir: "{app}\components\gs-9.21"; Flags: ignoreversion
+
+Source: "..\components\tesseract-4.0.0b4\w64\tesseract.exe"; DestDir: "{app}\components\tesseract-4.0.0b4\w64"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\w64\vcomp140.dll"; DestDir: "{app}\components\tesseract-4.0.0b4\w64"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\best\eng.traineddata"; DestDir: "{app}\components\tesseract-4.0.0b4\best"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\best\fra.traineddata"; DestDir: "{app}\components\tesseract-4.0.0b4\best"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\best\configs\hocr"; DestDir: "{app}\components\tesseract-4.0.0b4\best\config"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\fast\eng.traineddata"; DestDir: "{app}\components\tesseract-4.0.0b4\fast"; Flags: ignoreversion
+Source: "..\components\tesseract-4.0.0b4\fast\fra.traineddata"; DestDir: "{app}\components\tesseract-4.0.0b4\fast"; Flags: ignoreversion
+
 Source: "lib\64\twaindsm.dll"; DestDir: "{app}\lib\64"; Flags: ignoreversion
 Source: "lib\twaindsm.dll"; DestDir: "{sys}"; Flags: sharedfile
 Source: "lib\64\NAPS2.WIA.dll"; DestDir: "{app}\lib\64"; Flags: ignoreversion
