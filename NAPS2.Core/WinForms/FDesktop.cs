@@ -1178,7 +1178,8 @@ namespace NAPS2.WinForms
         {
 
             //Refresh the list and group to be sure the document count is ok
-            thumbnailList1.GroupRefresh(imageList.Images);
+            if (all)
+                thumbnailList1.GroupRefresh(imageList.Images);
 
             //Save the range of page from the first document
             //Need to be able to do better range that this. This is risky.
