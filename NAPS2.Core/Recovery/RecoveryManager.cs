@@ -188,6 +188,7 @@ namespace NAPS2.Recovery
                     {
                         //Retrieve the information to store inside the image data of Naps.
                         using (var bitmap = new Bitmap(imagePath))
+                        //using (var bitmap = new Bitmap(20,20))
                         {
                             scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
                             scannedImage.RecoveryIndexImage.BarCode = scannedImage.BarCodeData = indexImage.BarCode;
