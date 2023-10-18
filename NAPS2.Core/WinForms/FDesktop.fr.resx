@@ -427,10 +427,10 @@
     <value>Mettre à jour l'information</value>
   </data>
   <data name="TS_BarcodeInfo.ToolTipText" xml:space="preserve">
-    <value>Informations</value>
+    <value>Indexation</value>
   </data>
   <data name="SMI_BarCodeInfo.Text" xml:space="preserve">
-    <value>Montre|Cache les informations de codes à barre</value>
+    <value>Montre|Cache l'outil d'indexation</value>
   </data>
   <data name="tsiDocumentAdd.Text" xml:space="preserve">
     <value>Ajouter un séparateur</value>
@@ -451,6 +451,6 @@
     <value>Indexation</value>
   </data>
   <data name="label_index.Text" xml:space="preserve">
-    <value />
+    <value>Indexation</value>
   </data>
 </root>
