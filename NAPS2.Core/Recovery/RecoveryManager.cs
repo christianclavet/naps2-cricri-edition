@@ -174,6 +174,7 @@ namespace NAPS2.Recovery
                 {
                     if (CancelToken.IsCancellationRequested)
                     {
+                        FDesktop.GetInstance().SetRecover(false);
                         return true;
                     }
                     FDesktop.GetInstance().SetRecover(true); //Set the application FLAG that it is in recovery
