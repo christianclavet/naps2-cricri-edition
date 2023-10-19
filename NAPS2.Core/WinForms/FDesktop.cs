@@ -779,7 +779,7 @@ namespace NAPS2.WinForms
                         AddThumbnails();
 
                         scannedImage.ThumbnailChanged += ImageThumbnailChanged;
-                        scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
+                        //scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
                         last = scannedImage;
 
                     }
