@@ -170,6 +170,7 @@ namespace NAPS2.Recovery
 
                 imageSettingsContainer.Project_Settings = ImageSettingsContainer.ProjectSettings;
 
+                FDesktop.GetInstance().SetRecover(true); //Set the application FLAG that it is in recovery
                 foreach (RecoveryIndexImage indexImage in recoveryIndexManager.Index.Images)
                 {
                     if (CancelToken.IsCancellationRequested)
@@ -177,10 +178,10 @@ namespace NAPS2.Recovery
                         FDesktop.GetInstance().SetRecover(false);
                         return true;
                     }
-                    FDesktop.GetInstance().SetRecover(true); //Set the application FLAG that it is in recovery
 
                     string imagePath = Path.Combine(folderToRecoverFrom.FullName, indexImage.FileName);
                     ScannedImage scannedImage;
+
                     if (".pdf".Equals(Path.GetExtension(imagePath), StringComparison.InvariantCultureIgnoreCase))
                     {
                         scannedImage = ScannedImage.FromSinglePagePdf(imagePath, true);
@@ -213,7 +214,8 @@ namespace NAPS2.Recovery
                             }
                         }
                     }
-                    
+
+                    //Put back the informations
                     scannedImage.RecoveryIndexImage.BarCode = scannedImage.BarCodeData = indexImage.BarCode;
                     scannedImage.RecoveryIndexImage.SheetSide = scannedImage.SheetSide = indexImage.SheetSide;
                     scannedImage.RecoveryIndexImage.isSeparator = scannedImage.Separator = indexImage.isSeparator;

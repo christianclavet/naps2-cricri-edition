@@ -750,6 +750,50 @@ namespace NAPS2.WinForms
             }
 
         }
+
+        public Action<ScannedImage> ReceiveRecovery()
+        {
+            ScannedImage last = null;
+            return scannedImage =>
+            {
+                SafeInvoke(() =>
+                {
+                    int lastIndex = 0;
+
+                    lock (imageList)
+                    {
+                        // Default to the end of the list
+                        int index = imageList.Images.Count;
+
+                        // Use the index after the last image from the same source (if it exists)
+                        if (last != null)
+                        {
+                            lastIndex = imageList.Images.IndexOf(last);
+                            if (lastIndex != -1)
+                            {
+                                index = lastIndex + 1;
+                            }
+                        }
+
+                        imageList.Images.Add(scannedImage);
+                        AddThumbnails();
+
+                        scannedImage.ThumbnailChanged += ImageThumbnailChanged;
+                        scannedImage.ThumbnailInvalidated += ImageThumbnailInvalidated;
+                        last = scannedImage;
+
+                    }
+                    UpdateToolbar();
+                    changeTracker.Made();
+                });
+
+                // Trigger thumbnail rendering just in case the received image is out of date
+                renderThumbnailsWaitHandle.Set();
+
+            };
+
+        }
+
         /// <summary>
         /// Constructs a receiver for scanned images.
         /// This keeps images from the same source together, even if multiple sources are providing images at the same time.
@@ -827,10 +871,6 @@ namespace NAPS2.WinForms
         private void AddThumbnails()
         {
             Color fore = Color.Black;
-            if (darkMode) 
-            {
-                fore = Color.Black;
-            }
             thumbnailList1.AddedImages(imageList.Images, fore);
             if (!recover)
                 GetPreviewImage(imageList.Images[imageList.Images.Count-1], true);
@@ -843,12 +883,11 @@ namespace NAPS2.WinForms
 
         private void DeleteThumbnails()
         {
+            Color color = Color.Black;
             thumbnailList1.DeletedImages(imageList.Images);
             thumbnailList1.Invoke(new MethodInvoker(delegate
             {
-                var color = Color.Black;
-                if (darkMode)
-                    color = Color.Black;
+               
                 thumbnailList1.RegenerateThumbnailList(imageList.Images, color, true);
             }));
             
@@ -856,13 +895,7 @@ namespace NAPS2.WinForms
 
         private void UpdateThumbnails(IEnumerable<int> selection, bool scrollToSelection, bool optimizeForSelection)
         {
-
             Color fore = Color.Black;
-            if (darkMode)
-            {
-                fore = Color.Black;
-            }
-
             thumbnailList1.UpdatedImages(imageList.Images, optimizeForSelection ? SelectedIndices.Concat(selection).ToList() : null, fore);
             SelectedIndices = selection;
 
@@ -2693,7 +2726,7 @@ namespace NAPS2.WinForms
                     recoveryManager.SetFolder(di); //Set to a folder other than the last used one.
                     //recover mode activated = (will not update the gui of the image preview while loading)
                     recover = true;                                  
-                    recoveryManager.RecoverScannedImages(ReceiveScannedImage());
+                    recoveryManager.RecoverScannedImages(ReceiveRecovery());
                     projectName = di.Name;
 
                     UserConfigManager.Config.project = projectName;

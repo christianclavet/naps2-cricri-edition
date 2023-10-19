@@ -177,7 +177,7 @@ namespace NAPS2.WinForms
             }
             Invalidate();
         }
-
+        
         public void UpdatedImages(List<ScannedImage> images, List<int> selection, Color color)
         {
             lock (this)
