@@ -190,11 +190,7 @@ namespace NAPS2.Recovery
                         using (var bitmap = new Bitmap(imagePath))
                         //using (var bitmap = new Bitmap(20,20))
                         {
-                            scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);
-                            scannedImage.RecoveryIndexImage.BarCode = scannedImage.BarCodeData = indexImage.BarCode;
-                            scannedImage.RecoveryIndexImage.SheetSide = scannedImage.SheetSide = indexImage.SheetSide;
-                            scannedImage.RecoveryIndexImage.isSeparator = scannedImage.Separator = indexImage.isSeparator;
-                            
+                            scannedImage = new ScannedImage(bitmap, indexImage.BitDepth, indexImage.HighQuality, -1);                            
                             if (bitmap != null)
                             {
                                 Size size = bitmap.Size;
@@ -216,6 +212,11 @@ namespace NAPS2.Recovery
                             }
                         }
                     }
+                    
+                    scannedImage.RecoveryIndexImage.BarCode = scannedImage.BarCodeData = indexImage.BarCode;
+                    scannedImage.RecoveryIndexImage.SheetSide = scannedImage.SheetSide = indexImage.SheetSide;
+                    scannedImage.RecoveryIndexImage.isSeparator = scannedImage.Separator = indexImage.isSeparator;
+
                     foreach (var transform in indexImage.TransformList)
                     {
                         scannedImage.AddTransform(transform);
