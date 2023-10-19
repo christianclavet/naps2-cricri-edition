@@ -2972,15 +2972,7 @@ namespace NAPS2.WinForms
         }
         #endregion
 
-        private void TSB_Update_Click(object sender, EventArgs e)
-        {
-            //Manual update of the data (Might be removed)
-            imageList.Images[thumbnailList1.SelectedItems[0].Index].BarCodeData = TS_BarcodeInfo.TextBox.Text;
-            imageList.Images[thumbnailList1.SelectedItems[0].Index].RecoveryIndexImage.BarCode = TS_BarcodeInfo.TextBox.Text;
-            imageList.Images[thumbnailList1.SelectedItems[0].Index].Save();
-            DisplaySelectedItem_info(true);
-
-        }
+        
 
         private void BarCodeInfo_KeyPress(object sender, EventArgs e)
         {
