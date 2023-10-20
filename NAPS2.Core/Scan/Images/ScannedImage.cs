@@ -148,7 +148,6 @@ namespace NAPS2.Scan.Images
                 // Also updates the recovery index since they reference the same list
                 if (!Transform.AddOrSimplify(transformList, transform))
                 {
-                    ThumbnailInvalidated?.Invoke(this, new EventArgs());
                     return;
                 }
                 transformState++;
