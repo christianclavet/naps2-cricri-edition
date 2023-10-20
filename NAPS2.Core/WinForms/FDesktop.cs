@@ -2693,7 +2693,6 @@ namespace NAPS2.WinForms
                 }
             }
 
-
             var openFileDialog = new OpenFileDialog();
             openFileDialog.CheckFileExists = false;
             openFileDialog.AutoUpgradeEnabled = true;
