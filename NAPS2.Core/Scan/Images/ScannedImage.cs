@@ -58,10 +58,15 @@ namespace NAPS2.Scan.Images
         public ScannedImage(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
             this.highQuality = highQuality;
-            string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
 
+            //string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
+            Task<string> task = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality);
+            var tempFilePath = task.Result.ToString();
+            var imageFormat = ScannedImageHelper.imageFormat;
+            
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
+            recoveryImage = RecoveryImage.CreateNew(imageFormat, bitDepth, highQuality, transformList);
+           
             File.Move(tempFilePath, recoveryImage.FilePath);
 
             recoveryImage.Save();

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using NAPS2.Config;
 using NAPS2.Ocr;
 using NAPS2.Operation;
@@ -14,14 +15,19 @@ namespace NAPS2.Scan.Images
 {
     public class ScannedImageHelper
     {
-        public static string SaveSmallestBitmap(Bitmap sourceImage, ScanBitDepth bitDepth, bool highQuality, int quality, out ImageFormat imageFormat)
+
+         public static ImageFormat imageFormat;
+        //public static async Task<string> SaveSmallestBitmap(Bitmap sourceImage, ScanBitDepth bitDepth, bool highQuality, int quality, out ImageFormat imageFormat)
+        
+        
+        public static async Task<string> SaveSmallestBitmap(Bitmap sourceImage, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
             // Store the image in as little space as possible
             if (sourceImage.PixelFormat == PixelFormat.Format1bppIndexed)
             {
                 // Already encoded as 1-bit
                 imageFormat = ImageFormat.Png;
-                return EncodePng(sourceImage);
+                return await EncodePng(sourceImage);
             }
             else if (bitDepth == ScanBitDepth.BlackWhite)
             {
@@ -30,7 +36,7 @@ namespace NAPS2.Scan.Images
                 using (var bitmap = BitmapHelper.CopyToBpp(sourceImage, 1))
                 {
                     imageFormat = ImageFormat.Png;
-                    return EncodePng(bitmap);
+                    return await EncodePng(bitmap);
                 }
                 // Note that if a black and white image comes from native WIA, bitDepth is unknown,
                 // so the image will be png-encoded below instead of using a 1-bit bitmap
@@ -40,20 +46,20 @@ namespace NAPS2.Scan.Images
                 // Store as PNG
                 // Lossless, but some images (color/grayscale) take up lots of storage
                 imageFormat = ImageFormat.Png;
-                return EncodePng(sourceImage);
+                return await EncodePng(sourceImage);
             }
             else if (Equals(sourceImage.RawFormat, ImageFormat.Jpeg))
             {
                 // Store as JPEG
                 // Since the image was originally in JPEG format, PNG is unlikely to have size benefits
                 imageFormat = ImageFormat.Jpeg;
-                return EncodeJpeg(sourceImage, quality);
+                return await EncodeJpeg(sourceImage, quality);
             }
             else
             {
                 // Store as PNG/JPEG depending on which is smaller
-                var pngEncoded = EncodePng(sourceImage);
-                var jpegEncoded = EncodeJpeg(sourceImage, quality);
+                var pngEncoded = await EncodePng(sourceImage);
+                var jpegEncoded = await EncodeJpeg(sourceImage, quality);
                 if (new FileInfo(pngEncoded).Length <= new FileInfo(jpegEncoded).Length)
                 {
                     // Probably a black and white image (from native WIA, so bitDepth is unknown), which PNG compresses well vs. JPEG
@@ -76,19 +82,45 @@ namespace NAPS2.Scan.Images
             return Path.Combine(Paths.Temp, Path.GetRandomFileName());
         }
 
-        private static string EncodePng(Bitmap bitmap)
+        private static async Task<string> EncodePng(Bitmap bitmap)
         {
             var tempFilePath = GetTempFilePath();
-            bitmap.Save(tempFilePath, ImageFormat.Png);
+            //bitmap.Save(tempFilePath, ImageFormat.Png);
+            await SavePNG(bitmap, tempFilePath);
             return tempFilePath;
         }
 
-        private static string EncodeJpeg(Bitmap bitmap, int quality)
+        private static async Task SavePNG(Bitmap bitmap, string tempFilePath)
+        {
+            await Task.Run(() =>
+            {
+                bitmap.Save(tempFilePath, ImageFormat.Png);
+            });            
+        }
+
+        private static async Task SaveJPG(Bitmap bitmap, string tempFilePath)
+        {
+            await Task.Run(() =>
+            {
+                bitmap.Save(tempFilePath, ImageFormat.Jpeg);
+            });
+        }
+
+        private static async Task SaveJPG(Bitmap bitmap, string tempFilePath, ImageCodecInfo encoder, EncoderParameters encoderParams )
+        {
+            await Task.Run(() =>
+            {
+                bitmap.Save(tempFilePath, encoder, encoderParams);
+            });
+        }
+
+        private static async Task<string> EncodeJpeg(Bitmap bitmap, int quality)
         {
             var tempFilePath = GetTempFilePath();
             if (quality == -1)
             {
-                bitmap.Save(tempFilePath, ImageFormat.Jpeg);
+                await SaveJPG(bitmap, tempFilePath);
+                //bitmap.Save(tempFilePath, ImageFormat.Jpeg);
             }
             else
             {
@@ -96,7 +128,8 @@ namespace NAPS2.Scan.Images
                 var encoder = ImageCodecInfo.GetImageEncoders().First(x => x.FormatID == ImageFormat.Jpeg.Guid);
                 var encoderParams = new EncoderParameters(1);
                 encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, quality);
-                bitmap.Save(tempFilePath, encoder, encoderParams);
+                await SaveJPG(bitmap, tempFilePath, encoder, encoderParams);
+                //bitmap.Save(tempFilePath, encoder, encoderParams);
             }
             return tempFilePath;
         }
