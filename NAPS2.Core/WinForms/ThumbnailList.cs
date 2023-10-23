@@ -25,10 +25,12 @@ namespace NAPS2.WinForms
         private static readonly FieldInfo imageSizeField;
         private static readonly MethodInfo performRecreateHandleMethod;
         private static int documentCount;
+        private static List<Document> documents;
 
         static ThumbnailList()
         {
             documentCount = 1;
+            documents = new List<Document>();
             // Try to enable larger thumbnails via a reflection hack
             if (PlatformCompat.Runtime.SetImageListSizeOnImageCollection)
             {
@@ -311,7 +313,7 @@ namespace NAPS2.WinForms
         }
 
         //This will rebuild the groups and the document list for the export later.
-        public void GroupRefresh(List<ScannedImage> images)
+        public List<Document> GroupRefresh(List<ScannedImage> images)
         {
             lock (this)
             {
@@ -319,7 +321,7 @@ namespace NAPS2.WinForms
                 BeginUpdate();
           
                 Groups.Clear();
-                FDesktop.GetInstance().docs.Clear();
+                documents.Clear();
 
                 documentCount = 1;
                 AddGroup(MiscResources.Document + documentCount.ToString());
@@ -336,7 +338,7 @@ namespace NAPS2.WinForms
                         if (i > 1)
                             document.lastpage = i;
 
-                        FDesktop.GetInstance().docs.Add(document);
+                        documents.Add(document);
                         
                         document = new Document { };
                         document.firstpage = i;
@@ -350,8 +352,9 @@ namespace NAPS2.WinForms
                     SetGroupFooter(Groups[documentCount - 1], (Groups[documentCount - 1].Items.Count).ToString() + MiscResources.PagesDoc);
                 }
                 document.lastpage = images.Count;
-                FDesktop.GetInstance().docs.Add(document);
+                documents.Add(document);
                 EndUpdate();
+                return documents;
             }
 
 

@@ -94,7 +94,7 @@ namespace NAPS2.WinForms
         public static FDesktop instance = null;
 
         //For document management
-        public List<Document> docs;
+        public List<Document> documents;
 
         // Variables as static
         public static string projectName = string.Format(MiscResources.ProjectName);
@@ -130,7 +130,7 @@ namespace NAPS2.WinForms
             InitializeComponent();
 
             //get the initial document count.
-            docs = new List<Document> { };
+            documents = new List<Document> { };
 
             // Creating a static pointer to this, so we can refer (test)
             instance = this;
@@ -1209,18 +1209,18 @@ namespace NAPS2.WinForms
 
         private async void SavePDF(List<ScannedImage> images, bool all = true)
         {
-
-            //Refresh the list and group to be sure the document count is ok
-            if (all)
-                thumbnailList1.GroupRefresh(imageList.Images);
-
             //Save the range of page from the first document
             //Need to be able to do better range that this. This is risky.
             if (all)
             {
-                for (int a = 0; a < docs.Count; a++) 
+                //Refresh the list and group to be sure the document count is ok
+                documents = thumbnailList1.GroupRefresh(imageList.Images);
+                //if (documents.Count==0)
+                //    await exportHelper.SavePDF(images, notify, 0);
+
+                for (int a = 0; a < documents.Count; a++) 
                 {
-                    bool result = await exportHelper.SavePDF(images.GetRange(docs[a].firstpage, (docs[a].lastpage) - docs[a].firstpage), notify, a);
+                    bool result = await exportHelper.SavePDF(images.GetRange(documents[a].firstpage, (documents[a].lastpage) - documents[a].firstpage), notify, a);
                     if (result)
                     {
                         changeTracker.Made();
@@ -2633,7 +2633,7 @@ namespace NAPS2.WinForms
 
         private void TSMI_RemoveAll_Click(object sender, EventArgs e)
         {
-            docs.Clear();
+            documents.Clear();
             thumbnailList1.DestroyGroups(imageList.Images);
             thumbnailList1.GroupRefresh(imageList.Images);
             thumbnailList1.UpdateDescriptions(imageList.Images, Color.Black);
@@ -2713,12 +2713,10 @@ namespace NAPS2.WinForms
                     if (imageList.Images.Count > 0 && skipSave) 
                     {
                         closeWorkspace(); // Backup the current project before getting a new one.
-                        docs.Clear();
                     }
                     else
                     {
                         Clear(true);
-                        docs.Clear();
                     }
                     userConfigManager.Config.project = projectName; //userConfigManager.Config.PdfSettings.DefaultFileName = projectName;
                     userConfigManager.Save();
@@ -2778,7 +2776,7 @@ namespace NAPS2.WinForms
             {
                 imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                 DeleteThumbnails();
-                docs.Clear();
+                documents.Clear();
             }
             if (changeTracker!=null)
                 changeTracker.Clear();
@@ -2953,7 +2951,6 @@ namespace NAPS2.WinForms
                 if (result1 == DialogResult.No)
                 {
                     Clear(true);
-                    docs.Clear();
                 }
                 if (result1 == DialogResult.Yes)
                 {
