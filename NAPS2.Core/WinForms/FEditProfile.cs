@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 using NAPS2.ClientServer;
 using NAPS2.Config;
@@ -272,10 +273,10 @@ namespace NAPS2.WinForms
                     {
                         var twainImpl = ScanProfile?.TwainImpl ?? TwainImpl.Default;
                         
-                        InfoDisplayCaps.Text = twainWrapper.GetCaps(twainImpl, device);
+                        InfoDisplayCaps.Text = TwainWrapper.GetCaps(twainImpl, device);
                         if (InfoDisplayCaps.Text != null)
                             scanProfile.Capabilities = InfoDisplayCaps.Text;
-
+                        
                     }
                     
                 }
