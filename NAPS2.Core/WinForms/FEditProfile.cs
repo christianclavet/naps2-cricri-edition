@@ -276,7 +276,7 @@ namespace NAPS2.WinForms
                         InfoDisplayCaps.Text = TwainWrapper.GetCaps(twainImpl, device);
                         if (InfoDisplayCaps.Text != null)
                             scanProfile.Capabilities = InfoDisplayCaps.Text;
-                        
+                       
                     }
                     
                 }
