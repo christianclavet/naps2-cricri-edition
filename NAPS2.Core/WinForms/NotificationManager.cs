@@ -86,7 +86,7 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-
+            
             int slot = FillNextSlot(n);
             n.Location = GetPosition(n, slot);
             n.Resize += parentForm_Resize;

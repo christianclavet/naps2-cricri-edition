@@ -61,16 +61,15 @@ namespace NAPS2.WinForms
             {
                 var form = formFactory.Create<FProgress>();
                 form.Operation = op;
-                // DArkmode interface change. TODO: Find a way to get the info about
                 {
                     BackgroundForm.UseImmersiveDarkMode(form.Handle, true);
                     
-                    form.BackColor = Color.FromArgb(24, 24, 24);
-                    form.ForeColor = Color.White;
+                    form.BackColor = FDesktop.getCurrentModeBack();
+                    form.ForeColor = FDesktop.getCurrentModeFore();
                     var button1 = form.GetButton1();
-                    button1.BackColor = Color.FromArgb(46, 46, 46);
+                    button1.BackColor = FDesktop.getCurrentModeBack();
                     var button2 = form.GetButton2();
-                    button2.BackColor = Color.FromArgb(46, 46, 46);   
+                    button2.BackColor = FDesktop.getCurrentModeBack();
                 }
                 form.ShowDialog();             
             }

@@ -16,9 +16,14 @@ namespace NAPS2.WinForms
             this.linkTarget = linkTarget;
             this.folderTarget = folderTarget;
             InitializeComponent();
-
+            this.BackColor = FDesktop.getCurrentModeBack();
+            this.ForeColor = FDesktop.getCurrentModeFore();
+            lblTitle.ForeColor = FDesktop.getCurrentModeFore();
+            lblTitle.BackColor = FDesktop.getCurrentModeBack();
             lblTitle.Text = title;
             linkLabel1.Text = linkLabel;
+            linkLabel1.ForeColor = FDesktop.getCurrentModeFore();
+            linkLabel1.BackColor = FDesktop.getCurrentModeBack();
 
             if (lblTitle.Width > Width - 35)
             {

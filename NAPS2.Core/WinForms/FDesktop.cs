@@ -2794,6 +2794,25 @@ namespace NAPS2.WinForms
             closeWorkspace();                               
         }
 
+        public static Color getCurrentModeFore()
+        {
+            if (darkMode)
+            {
+                return Color.White;
+            }
+            else
+                return Color.Black;
+        }
+
+        public static Color getCurrentModeBack()
+        {
+            if (darkMode)
+            {
+                return Color.FromArgb(46, 46, 46); ;
+            }
+            else
+                return Color.White;
+        }
         // Ajust the interface to be themed in "dark mode" like windows.
         private bool SetDarkMode(bool input)
         {

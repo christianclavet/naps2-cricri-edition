@@ -21,6 +21,9 @@ namespace NAPS2.WinForms
             cancelToolStripMenuItem.Visible = op.AllowCancel;
             op.StatusChanged += Op_StatusChanged;
             op.Finished += Op_Finished;
+
+            this.ForeColor = FDesktop.getCurrentModeFore();
+            this.BackColor = FDesktop.getCurrentModeBack();
         }
 
         public override void ShowNotify() => DisplayProgress();
