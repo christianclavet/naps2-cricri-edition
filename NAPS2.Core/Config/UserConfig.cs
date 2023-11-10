@@ -71,5 +71,8 @@ namespace NAPS2.Config
         public List<ScanProxyConfig> SavedProxies { get; set; } = new List<ScanProxyConfig>();
 
         public string project { get; set; }
+
+        public string LastPath {  get; set; }
+
     }
 }
