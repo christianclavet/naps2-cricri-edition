@@ -55,45 +55,37 @@ namespace NAPS2.WinForms
         {
             if (images.Any())
             {
-                string savePath = oldPath;                
+                string savePath = oldPath;
+                if (savePath == "")
+                    savePath = FDesktop.projectName;
+                savePath = Path.Combine(userConfigManager.Config.LastPath, savePath);
 
                 var pdfSettings = pdfSettingsContainer.PdfSettings;
                 userConfigManager.Load();
-                WinFormsExportHelper.SetPath(userConfigManager.Config.LastPath);
-                if (FDesktop.projectName == "")
-                    savePath = string.Format(MiscResources.ProjectName);
-
+               
                 if (doc == 0)
                 {
-
-                    if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
-                    {
-                        savePath = FDesktop.projectName.Replace(".pdf", "_doc_" + doc.ToString() + ".Pdf");//pdfSettings.DefaultFileName;
-                    }
-                    else
-                    {
-                        savePath = FDesktop.projectName.Replace(".pdf", "_doc_" + doc.ToString() + ".Pdf");
+                   //if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
+                   //pdfSettings.DefaultFileName
+                   string input = savePath;
                         
-                        
-                        if (!dialogHelper.PromptToSavePdf(savePath, out savePath))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            oldPath = savePath;
-                            userConfigManager.Config.LastPath = Path.GetDirectoryName(savePath);
-                            userConfigManager.Save();
-                        }
-                    }
+                   if (!dialogHelper.PromptToSavePdf(input, out savePath))
+                   {
+                       return false;
+                   }
+                   else
+                   {
+                       userConfigManager.Config.LastPath = Path.GetDirectoryName(savePath);
+                       userConfigManager.Save();
+                   }
+                    
                 }
 
-
+                //append the document number to the file since they are the following documents...
                 if (doc > 0)
-                {
-                    savePath = FDesktop.projectName.Replace(".pdf", "_doc_" + doc.ToString() + ".Pdf");
-                }
-                
+                    //savePath = savePath.Replace(".pdf", "_doc")+(doc+1).ToString("d4") + ".pdf";
+                    savePath = savePath + "_" + ((doc+1).ToString("d4")) + ".pdf";
+
 
                 var changeToken = changeTracker.State;
                 string firstFileSaved = await ExportPDF(savePath, images, false, null);
@@ -223,23 +215,5 @@ namespace NAPS2.WinForms
             return false;
         }
 
-        public static string SetPath(string newpath)
-        {
-            if (newpath==null)
-                newpath = Path.GetDirectoryName(Application.ExecutablePath);
-
-            try
-            {
-                //Set the current directory.
-                Directory.SetCurrentDirectory(newpath);
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                Console.WriteLine("The specified directory does not exist. {0}", e);
-            }
-
-            return newpath;
-
-        }
     }
 }
