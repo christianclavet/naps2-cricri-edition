@@ -81,11 +81,6 @@ namespace NAPS2.Worker
             return twainWrapper.GetDeviceList(twainImpl);
         }
 
-        public string TwainGetCapabilities(TwainImpl twainImpl, ScanDevice scanDevice) 
-        {
-            return TwainWrapper.GetCaps(twainImpl, scanDevice);
-        }
-
         public async Task TwainScan(ScanDevice scanDevice, ScanProfile scanProfile, ScanParams scanParams, IntPtr hwnd)
         {
             try
