@@ -32,8 +32,6 @@ namespace NAPS2.WinForms
         private readonly IOperationProgress operationProgress;
         private readonly IUserConfigManager userConfigManager;
 
-        private string oldPath;
-
         public WinFormsExportHelper(PdfSettingsContainer pdfSettingsContainer, ImageSettingsContainer imageSettingsContainer, EmailSettingsContainer emailSettingsContainer, DialogHelper dialogHelper, FileNamePlaceholders fileNamePlaceholders, ChangeTracker changeTracker, IOperationFactory operationFactory, IFormFactory formFactory, OcrManager ocrManager, IEmailProviderFactory emailProviderFactory, IOperationProgress operationProgress, IUserConfigManager userConfigManager)
         {
             this.pdfSettingsContainer = pdfSettingsContainer;
@@ -48,26 +46,21 @@ namespace NAPS2.WinForms
             this.emailProviderFactory = emailProviderFactory;
             this.operationProgress = operationProgress;
             this.userConfigManager = userConfigManager;
-            oldPath = "";
         }
 
         public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify, int doc = 0)
         {
             if (images.Any())
             {
-                string savePath = oldPath;
-                if (savePath == "")
-                    savePath = FDesktop.projectName;
-                savePath = Path.Combine(userConfigManager.Config.LastPath, savePath);
-
-                var pdfSettings = pdfSettingsContainer.PdfSettings;
                 userConfigManager.Load();
-               
+                string savePath = Path.Combine(userConfigManager.Config.LastPath, FDesktop.projectName);
+
                 if (doc == 0)
                 {
-                   //if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
-                   //pdfSettings.DefaultFileName
-                   string input = savePath;
+                    //if (pdfSettings.SkipSavePrompt && Path.IsPathRooted(pdfSettings.DefaultFileName))
+                    //pdfSettings.DefaultFileName
+                    
+                    string input = savePath;
                         
                    if (!dialogHelper.PromptToSavePdf(input, out savePath))
                    {
@@ -83,7 +76,6 @@ namespace NAPS2.WinForms
 
                 //append the document number to the file since they are the following documents...
                 if (doc > 0)
-                    //savePath = savePath.Replace(".pdf", "_doc")+(doc+1).ToString("d4") + ".pdf";
                     savePath = savePath + "_" + ((doc+1).ToString("d4")) + ".pdf";
 
 
