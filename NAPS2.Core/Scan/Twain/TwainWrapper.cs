@@ -22,7 +22,6 @@ using NAPS2.ClientServer;
 using System.Xml.Linq;
 using PdfSharp;
 using NAPS2.Config;
-using System.Drawing.Printing;
 
 namespace NAPS2.Scan.Twain
 {
@@ -33,7 +32,6 @@ namespace NAPS2.Scan.Twain
         private readonly IFormFactory formFactory;
         private readonly IBlankDetector blankDetector;
         private readonly ScannedImageHelper scannedImageHelper;
-        private readonly IProfileManager profileManager;
 
         static TwainWrapper()
         {
@@ -57,8 +55,7 @@ namespace NAPS2.Scan.Twain
         {
             this.formFactory = formFactory;
             this.blankDetector = blankDetector;
-            this.scannedImageHelper = scannedImageHelper;
-            this.profileManager = profileManager;
+            this.scannedImageHelper = scannedImageHelper;            
         }
 
         public List<ScanDevice> GetDeviceList(TwainImpl twainImpl)
@@ -96,14 +93,24 @@ namespace NAPS2.Scan.Twain
         }
 
         // Trying to get the capabilities with a button
-        public string GetCaps(DataSource ds)
+        public static string GetCaps(TwainImpl twainImpl, ScanDevice scanDevice)
         {
-                                    
+            PlatformInfo.Current.PreferNewDSM = twainImpl != TwainImpl.OldDsm;
+            var session = new TwainSession(TwainAppId);
+            
+
+            var windowHandle = (Invoker.Current as Form)?.Handle;
+            ReturnCode rc = windowHandle != null ? session.Open(new WindowsFormsMessageLoopHook(windowHandle.Value)) : session.Open();
+
+            DataSource ds = session.FirstOrDefault(x => x.Name == scanDevice.ID);
+            //DataSource ds = session.CurrentSource;
+                        
             try
             {
                 string caps = "Nothing";
                 if (ds != null)
                 { 
+                    ds.Open();
                     caps = "Brand: "+ds.Manufacturer.ToString() + "\nName:  " + ds.Name + "\nProduct Family:  " + ds.ProductFamily +"\n\nCURRENT CAPABILITIES:\n";
                     IEnumerable<CapabilityId> support = ds.Capabilities.CapSupportedCaps.GetValues();
                     foreach (var result2 in support)
@@ -120,12 +127,10 @@ namespace NAPS2.Scan.Twain
                         
                         }
                     }
-
-
-                   
+                    ds.Close();
                 }
                 
-                 return caps;
+                return caps;
 
             }
             finally
@@ -133,11 +138,11 @@ namespace NAPS2.Scan.Twain
                 try
                 {
                     
-                   
+                    session.Close();
                 }
                 catch (Exception e)
                 {
-                    Log.ErrorException("Error Getting caps", e);
+                    Log.ErrorException("Error closing TWAIN session", e);
                 }
             }
             
@@ -243,13 +248,6 @@ namespace NAPS2.Scan.Twain
                                 //Log.Error("Current side of camera: Back");
                                 if (pageNumber%2 == 0) sheetSide = 2;
                             }
-
-                           // if (scanProfile.Capabilities.Length < 10)
-                            //{
-                                scanProfile.Capabilities = GetCaps(ds);
-                                SaveProfile(scanProfile);
-                            //}
-                                
 
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
@@ -788,68 +786,7 @@ namespace NAPS2.Scan.Twain
             {
                 ds.Capabilities.ICapPatchCodeDetectionEnabled.SetValue(BoolType.True);
             }
-        }
 
-        public void SaveProfile(ScanProfile scanProfile)
-        {
-            
-            var scanProfile2 = new ScanProfile
-            {
-                Version = ScanProfile.CURRENT_VERSION,
-
-                Device = scanProfile.Device,
-                IsDefault = scanProfile.IsDefault,
-                DriverName = scanProfile.DriverName,
-                ProxyConfig = scanProfile.ProxyConfig,
-                ProxyDriverName = scanProfile.ProxyDriverName,
-                DisplayName = scanProfile.DisplayName,
-                IconID = scanProfile.IconID,
-                MaxQuality = scanProfile.MaxQuality,
-                UseNativeUI = scanProfile.UseNativeUI,
-
-                PaperSource = scanProfile.PaperSource,
-                AfterScanScale = scanProfile.AfterScanScale,
-                BitDepth = scanProfile.BitDepth,
-                Brightness = scanProfile.Brightness,
-                Contrast = scanProfile.Contrast,
-                PageAlign = scanProfile.PageAlign,
-                PageSize = scanProfile.PageSize,
-                CustomPageSizeName = scanProfile.CustomPageSizeName,
-                CustomPageSize = scanProfile.CustomPageSize,
-                Resolution = scanProfile.Resolution,
-
-                PaperType = scanProfile.PaperType,
-
-                AutoPageDeskew = scanProfile.AutoDeskew,
-                AutoPageRotation = scanProfile.AutoPageRotation,
-                AutoBorderDetection = scanProfile.AutoBorderDetection,
-
-                DoubleFeedAction = scanProfile.DoubleFeedAction,
-                DoubleFeedType = scanProfile.DoubleFeedType,
-                DoubleFeedSensivity = scanProfile.DoubleFeedSensivity,
-
-
-                EnableAutoSave = scanProfile.EnableAutoSave,
-                AutoSaveSettings = scanProfile.AutoSaveSettings,
-                Quality = scanProfile.Quality,
-                BrightnessContrastAfterScan = scanProfile.BrightnessContrastAfterScan,
-                AutoDeskew = scanProfile.AutoDeskew,
-                WiaOffsetWidth = scanProfile.WiaOffsetWidth,
-                WiaRetryOnFailure = scanProfile.WiaRetryOnFailure,
-                WiaDelayBetweenScans = scanProfile.WiaDelayBetweenScans,
-                WiaDelayBetweenScansSeconds = scanProfile.WiaDelayBetweenScansSeconds,
-                WiaVersion = scanProfile.WiaVersion,
-                ForcePageSize = scanProfile.ForcePageSize,
-                ForcePageSizeCrop = scanProfile.ForcePageSizeCrop,
-                FlipDuplexedPages = scanProfile.FlipDuplexedPages,
-                TwainImpl = scanProfile.TwainImpl,
-
-                ExcludeBlankPages = scanProfile.ExcludeBlankPages,
-                BlankPageWhiteThreshold = scanProfile.BlankPageWhiteThreshold,
-                BlankPageCoverageThreshold = scanProfile.BlankPageCoverageThreshold,
-                Capabilities = scanProfile.Capabilities
-            };
-            profileManager.Save();
         }
     }
 }

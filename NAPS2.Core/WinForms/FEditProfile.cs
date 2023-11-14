@@ -273,7 +273,10 @@ namespace NAPS2.WinForms
                     {
                         var twainImpl = ScanProfile?.TwainImpl ?? TwainImpl.Default;
                         
-                        InfoDisplayCaps.Text = scanProfile.Capabilities;                       
+                        InfoDisplayCaps.Text = TwainWrapper.GetCaps(twainImpl, device);
+                        if (InfoDisplayCaps.Text != null)
+                            scanProfile.Capabilities = InfoDisplayCaps.Text;
+                       
                     }
                     
                 }
