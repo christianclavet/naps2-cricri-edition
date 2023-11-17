@@ -93,7 +93,7 @@ namespace NAPS2.Scan.Twain
         }
 
         // Trying to get the capabilities with a button
-        public static string GetCaps(TwainImpl twainImpl, ScanDevice scanDevice)
+        public string GetCaps(TwainImpl twainImpl, ScanDevice scanDevice)
         {
             PlatformInfo.Current.PreferNewDSM = twainImpl != TwainImpl.OldDsm;
             var session = new TwainSession(TwainAppId);
