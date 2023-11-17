@@ -28,6 +28,20 @@ namespace NAPS2.Scan.Twain
 
         public override string DriverName => DRIVER_NAME;
 
+        public override string ReturnCaps()
+        {
+            var twainImpl = ScanProfile?.TwainImpl ?? TwainImpl.Default;
+            if (UseWorker)
+            {
+                using (var worker = workerServiceFactory.Create())
+                {
+                    return worker.Service.TwainGetCapabilities(twainImpl, ScanDevice);
+                }
+            }
+            return "Not supported directly";
+
+        }
+
         public override bool IsSupported => PlatformCompat.System.IsTwainDriverSupported;
         
         private bool UseWorker => !(ScanProfile.TwainImpl == TwainImpl.X64 && Environment.Is64BitProcess) && PlatformCompat.Runtime.UseWorker;
@@ -50,6 +64,8 @@ namespace NAPS2.Scan.Twain
             }
             return twainWrapper.GetDeviceList(twainImpl);
         }
+
+        
 
         protected override async Task ScanInternal(ScannedImageSource.Concrete source)
         {

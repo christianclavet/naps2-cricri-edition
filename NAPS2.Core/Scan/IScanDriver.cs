@@ -51,6 +51,8 @@ namespace NAPS2.Scan
         /// </summary>
         string DriverName { get; }
 
+        string ReturnCaps();
+
         /// <summary>
         /// Prompts the user (via a dialog) to select a scanning device.
         /// </summary>

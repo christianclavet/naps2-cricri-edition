@@ -272,8 +272,8 @@ namespace NAPS2.WinForms
                     if (rdTWAIN.Checked) 
                     {
                         var twainImpl = ScanProfile?.TwainImpl ?? TwainImpl.Default;
-                        
-                        InfoDisplayCaps.Text = TwainWrapper.GetCaps(twainImpl, device);
+
+                        InfoDisplayCaps.Text = driver.ReturnCaps();
                         if (InfoDisplayCaps.Text != null)
                             scanProfile.Capabilities = InfoDisplayCaps.Text;
                        

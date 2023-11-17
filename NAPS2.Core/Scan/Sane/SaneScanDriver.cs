@@ -39,6 +39,11 @@ namespace NAPS2.Scan.Sane
 
         public override string DriverName => DRIVER_NAME;
 
+        public override string ReturnCaps()
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool IsSupported => PlatformCompat.System.IsSaneDriverSupported;
 
         protected override List<ScanDevice> GetDeviceListInternal()

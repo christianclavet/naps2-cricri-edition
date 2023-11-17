@@ -24,7 +24,11 @@ namespace NAPS2.Scan
             this.formFactory = formFactory;
         }
 
+        public abstract string ReturnCaps();
+
         public abstract string DriverName { get; }
+
+        //public override string ReturnCaps();
 
         public abstract bool IsSupported { get; }
 

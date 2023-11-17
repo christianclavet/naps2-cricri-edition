@@ -18,6 +18,7 @@ namespace NAPS2.Scan.Stub
             DriverName = driverName;
         }
 
+
         public ScanProfile ScanProfile { get; set; }
 
         public ScanParams ScanParams { get; set; }
@@ -80,6 +81,11 @@ namespace NAPS2.Scan.Stub
         }
 
         public string DriverName { get; }
+
+        public string ReturnCaps()
+        {
+            return "Nothing";
+        }
 
         public bool IsSupported => true;
     }

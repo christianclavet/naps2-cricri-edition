@@ -32,6 +32,11 @@ namespace NAPS2.ClientServer
 
         public override string DriverName => DRIVER_NAME;
 
+        public override string ReturnCaps()
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool IsSupported => true;
 
         protected override List<ScanDevice> GetDeviceListInternal()
