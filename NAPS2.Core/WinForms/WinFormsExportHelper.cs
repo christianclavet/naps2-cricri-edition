@@ -109,35 +109,62 @@ namespace NAPS2.WinForms
         {
             if (images.Any())
             {
-                string savePath;
+                //string savePath;
+
+                userConfigManager.Load();
+                string savePath = Path.Combine(userConfigManager.Config.LastPath, FDesktop.projectName);
 
                 var imageSettings = imageSettingsContainer.ImageSettings;
-                if (imageSettings.SkipSavePrompt && Path.IsPathRooted(imageSettings.DefaultFileName) && ImageSettingsContainer.ProjectSettings.UseCSVExport == false)
+                if (imageSettings.SkipSavePrompt && Path.IsPathRooted(imageSettings.DefaultFileName))
                 {
-                    savePath = imageSettings.DefaultFileName;
+                    if (!(imageSettings.DefaultFileName == ""))
+                        savePath = imageSettings.DefaultFileName;
+                    else
+                        savePath = FDesktop.projectName;
                 }
-                else if (bypassprompt == false)
+                else if (!dialogHelper.PromptToSaveImage(savePath, out savePath))
                 {
-                    if (!dialogHelper.PromptToSaveImage(imageSettings.DefaultFileName, out savePath))
-                    {
-                        return false;
-                    }
+                   return false;
                 }
-
-                if (bypassprompt && Path.IsPathRooted(ImageSettingsContainer.ProjectSettings.DefaultFileName))
-                {
-                    savePath = ImageSettingsContainer.ProjectSettings.DefaultFileName;
-                }
-                else
-                {
-                    if (!dialogHelper.PromptToSaveImage(ImageSettingsContainer.ProjectSettings.DefaultFileName, out savePath))
-                    {
-                        return false;
-                    }
-                }
-
-
+              
                 var op = operationFactory.Create<SaveImagesOperation>();
+                var changeToken = changeTracker.State;
+                
+                if (op.Start(savePath, DateTime.Now, images))
+                {
+                    operationProgress.ShowProgress(op);
+                }
+                if (await op.Success)
+                {
+                    //Don't change the tracker since the project is not saved (backed up)
+                    //changeTracker.Saved(changeToken);
+                    notify?.ImagesSaved(images.Count, op.FirstFileSaved);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public async Task<bool> SaveProjectImages(List<ScannedImage> images, ISaveNotify notify, bool bypassprompt = false)
+        {
+            if (images.Any())
+            {
+                //string savePath;
+
+                userConfigManager.Load();
+                string savePath = Path.Combine(userConfigManager.Config.LastPath, FDesktop.projectName);
+
+                var imageSettings = imageSettingsContainer.ImageSettings;
+                //ImageSettingsContainer.ProjectSettings.UseCSVExport == false
+                if (Path.IsPathRooted(ImageSettingsContainer.ProjectSettings.DefaultFileName))
+                {
+                     savePath = ImageSettingsContainer.ProjectSettings.DefaultFileName;
+                }
+                else if (!dialogHelper.PromptToSaveImage(ImageSettingsContainer.ProjectSettings.DefaultFileName, out savePath))
+                {
+                    return false;
+                }
+                
+                var op = operationFactory.Create<SaveImagesOperationProject>();
                 var changeToken = changeTracker.State;
                 op.imageSettings = imageSettings;
                 if (op.Start(savePath, DateTime.Now, images))
@@ -154,7 +181,6 @@ namespace NAPS2.WinForms
             }
             return false;
         }
-
         public async Task<bool> EmailPDF(List<ScannedImage> images)
         {
             if (!images.Any())

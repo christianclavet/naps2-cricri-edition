@@ -1254,7 +1254,21 @@ namespace NAPS2.WinForms
             }
 
         }
+        // For exporting. Only with projects
+        private async void SaveProjectImages(List<ScannedImage> images, bool bypassprompt = false)
+        {
+            ImageSettingsContainer.ProjectSettings.BatchName = projectName;
+            if (await exportHelper.SaveProjectImages(images, notify, bypassprompt))
+            {
 
+                changeTracker.Made();
+                if (appConfigManager.Config.DeleteAfterSaving)
+                {
+                    imageList.Delete(imageList.Images.IndiciesOf(images));
+                    DeleteThumbnails();
+                }
+            }
+        }
         private async void SaveImages(List<ScannedImage> images, bool bypassprompt = false)
         {
             ImageSettingsContainer.ProjectSettings.BatchName = projectName;
@@ -2957,7 +2971,7 @@ namespace NAPS2.WinForms
         //New export panel
         private void tsExport_Click(object sender, EventArgs e)
         {
-            SaveImages(imageList.Images, true);
+            SaveProjectImages(imageList.Images, true);
         }
 
         //Create a new project.
