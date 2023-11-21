@@ -53,7 +53,12 @@ namespace NAPS2.WinForms
             if (images.Any())
             {
                 userConfigManager.Load();
-                string savePath = Path.Combine(userConfigManager.Config.LastPath, FDesktop.projectName);
+                var lastPath = (userConfigManager.Config.LastPath);
+                // In case there is nothing yet in the last path, use the C:\drive
+                if (lastPath==null)
+                    lastPath = "C:\\";
+
+                string savePath = Path.Combine(lastPath, FDesktop.projectName);
 
                 if (doc == 0)
                 {
