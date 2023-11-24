@@ -22,9 +22,17 @@ namespace NAPS2
         private static readonly string TempPath = Path.Combine(AppDataPath, "temp");
 
         //private static readonly string RecoveryPath = Path.Combine(AppDataPath, "recovery");
-        private static readonly string RecoveryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "Naps2 Projects"); 
+        private static readonly string RecoveryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "Naps2 CE"); 
 
-        private static readonly string ComponentsPath = Path.Combine(AppDataPath, "components");
+        private static readonly string ComponentsPath = Path.Combine(ExecutablePath, "components");
+
+        private static readonly string ProfilesPath = Path.Combine(RecoveryPath, "profiles");
+
+        private static readonly string ProjectPath = Path.Combine(RecoveryPath, "projects");
+
+        public static string Projects => EnsureFolderExists(ProjectPath);
+
+        public static string Profiles => EnsureFolderExists(ProfilesPath);
 
         public static string AppData => EnsureFolderExists(AppDataPath);
 

@@ -14,7 +14,7 @@ namespace NAPS2.Config
         private readonly AppConfigManager appConfigManager;
 
         public ProfileManager(AppConfigManager appConfigManager)
-            : base("profiles.xml", Paths.AppData, Paths.Executable, () => new List<ScanProfile>())
+            : base("profiles.xml", Paths.Profiles, Paths.AppData, () => new List<ScanProfile>())
         {
             this.appConfigManager = appConfigManager;
         }

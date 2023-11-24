@@ -18,7 +18,7 @@ namespace NAPS2.Recovery
     {
         public const string LOCK_FILE_NAME = ".lock";
         public static string batch_name = "Work_folder_"+Path.GetRandomFileName();
-        private static readonly string RecoveryFolderPath = Path.Combine(Paths.Recovery, batch_name );
+        private static readonly string RecoveryFolderPath = Path.Combine(Paths.Projects, batch_name );
 
         public static DirectoryInfo _recoveryFolder;
         public static FileInfo _recoveryLockFile;

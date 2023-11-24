@@ -415,7 +415,7 @@ namespace NAPS2.WinForms
 
 
             // Allow scanned images to be recovered in case of an unexpected close
-            //DirectoryInfo di = new DirectoryInfo(Paths.Recovery);
+            //DirectoryInfo di = new DirectoryInfo(Paths.Projects);
             recoveryManager.RecoverScannedImages(ReceiveScannedImage());
 
             new Thread(RenderThumbnails).Start();
@@ -2710,7 +2710,7 @@ namespace NAPS2.WinForms
             var openFileDialog = new OpenFileDialog();
             openFileDialog.CheckFileExists = false;
             openFileDialog.AutoUpgradeEnabled = true;
-            openFileDialog.InitialDirectory = Paths.Recovery;
+            openFileDialog.InitialDirectory = Paths.Projects;
             openFileDialog.ValidateNames = false;
             
             openFileDialog.Filter = "NAPS2 Index|index.xml|" + MiscResources.FileTypeAllFiles + "(*.*)|*.*";
@@ -2778,9 +2778,9 @@ namespace NAPS2.WinForms
             {
                 // If the projectname was not named, will put the "untitled" and the date so it will be easier to find out later, else keep the defined name for the folder
                 if (projectName.Contains(string.Format(MiscResources.ProjectName)))
-                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName + "_" + strToday, false);
+                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Projects + "//" + projectName + "_" + strToday, false);
                 else
-                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Recovery + "//" + projectName, false);
+                    PathHelper.CopyDirectory(RecoveryImage.RecoveryFolder.FullName, Paths.Projects + "//" + projectName, false);
             }  
             bitmap = null;
             // Clear the images in the work folder and start as new

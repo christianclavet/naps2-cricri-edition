@@ -261,7 +261,7 @@ namespace NAPS2.Recovery
             private DirectoryInfo FindAndLockFolderToRecoverFrom()
             {
                 // Find the most recent recovery folder that can be locked (i.e. isn't in use already)
-                return new DirectoryInfo(Paths.Recovery)
+                return new DirectoryInfo(Paths.Projects)
                     .EnumerateDirectories()
                     .OrderByDescending(x => x.LastWriteTime)
                     .FirstOrDefault(TryLockRecoveryFolder);
