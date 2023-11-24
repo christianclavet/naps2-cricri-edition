@@ -52,6 +52,7 @@ namespace NAPS2.Recovery
             op.SetFolder(folderToRecoverFrom);
             op.SetContainer(imageSettingsContainer);
 
+            //Need to investigate. Generate sometimes an EXCEPTION (NULL)
             if (op.Start(imageCallback))
             {
                 operationProgress.ShowProgress(op);
