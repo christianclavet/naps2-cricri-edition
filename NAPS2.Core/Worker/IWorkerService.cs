@@ -28,7 +28,7 @@ namespace NAPS2.Worker
         List<ScanDevice> TwainGetDeviceList(TwainImpl twainImpl);
 
         [OperationContract]
-        string TwainGetCapabilities(TwainImpl twainImpl, ScanDevice scanDevice);
+        string TwainGetCapabilities(TwainImpl twainImpl, ScanDevice device);
 
         [FaultContract(typeof(ScanDriverExceptionDetail))]
         [OperationContract]

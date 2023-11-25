@@ -77,6 +77,7 @@ namespace NAPS2.Scan.Twain
             session.Open();
             try
             {
+                
                 return session.GetSources().Select(ds => new ScanDevice(ds.Name, ds.Name)).ToList();
             }
             finally
@@ -93,7 +94,7 @@ namespace NAPS2.Scan.Twain
         }
 
         // Trying to get the capabilities with a button
-        public string GetCaps(TwainImpl twainImpl, ScanDevice scanDevice)
+        public string GetCaps(TwainImpl twainImpl, ScanDevice device)
         {
             PlatformInfo.Current.PreferNewDSM = twainImpl != TwainImpl.OldDsm;
             var session = new TwainSession(TwainAppId);
@@ -102,8 +103,8 @@ namespace NAPS2.Scan.Twain
             var windowHandle = (Invoker.Current as Form)?.Handle;
             ReturnCode rc = windowHandle != null ? session.Open(new WindowsFormsMessageLoopHook(windowHandle.Value)) : session.Open();
 
-            DataSource ds = session.FirstOrDefault(x => x.Name == scanDevice.ID);
-            //DataSource ds = session.CurrentSource;
+            DataSource ds = session.FirstOrDefault(x => x.Name == device.ID);
+            //DataSource ds = session.FirstOrDefault();
                         
             try
             {
