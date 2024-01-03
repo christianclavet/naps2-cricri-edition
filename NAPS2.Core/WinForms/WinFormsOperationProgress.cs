@@ -89,7 +89,8 @@ namespace NAPS2.WinForms
 
             if (!op.IsFinished)
             {
-                notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
+                //notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
+                notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
             }
         }
 
