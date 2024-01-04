@@ -1,6 +1,7 @@
 # NAPS 2 CRICRI EDITION
 ## NOTES (About this fork): 
-Here is the current release (6.2 Un-official)
+Here is the current release [(6.2.3 Un-official)](https://github.com/christianclavet/naps2-cricri-edition/releases/tag/v6.2.3_CriCri_Edition)
+
 
 ## Darkmode activated
 <img src="https://github.com/christianclavet/naps2-cricri-edition/assets/13395943/1fab8b6f-e11d-42e5-ade6-ac5c14701c54" width="729" height="364">
@@ -40,7 +41,8 @@ The application build is in 64bit and support all the memory you have.
 
 I plan to give back some patches to official NAPS 7.0+ (Already done the first one with the help of  @cyanfish) but the author will decide if he incorporate it or not. I don't have the hardware for building for Linux and Mac (nor the will to). I will still developing for windows only as it's my main platform of use here and at work. 
 
-- [Get current release installer (6.2 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/tag/v6.2.0_CriCri_Edition)
+- [Get current release installer (6.2.3 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/tag/v6.2.3_CriCri_Edition)
+- [Get current release installer (6.2.0 unofficial) HERE](https://github.com/christianclavet/naps2-cricri-edition/releases/tag/v6.2.0_CriCri_Edition)
 
 ### Others informations about NAPS: (From official REPO)
 ## NAPS2 (Not Another PDF Scanner 2) (CriCri Edition - Fork of NAPS2)
