@@ -19,10 +19,21 @@ namespace NAPS2.WinForms
 
         private readonly List<NotifyWidgetBase> slots = new List<NotifyWidgetBase>();
         private FormBase parentForm;
+        private FormBase desktopForm;
 
         public NotificationManager(AppConfigManager appConfigManager)
         {
             this.appConfigManager = appConfigManager;
+        }
+
+        public FormBase DesktopForm
+        {
+            get => desktopForm;
+            set
+            {
+                desktopForm = value;
+                //desktopForm.Resize += desktopForm_Resize;
+            }
         }
 
         public FormBase ParentForm
