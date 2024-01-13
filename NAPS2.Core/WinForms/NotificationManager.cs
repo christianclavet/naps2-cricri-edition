@@ -93,10 +93,11 @@ namespace NAPS2.WinForms
 
         private void Show(NotifyWidgetBase n)
         {
-            if (appConfigManager.Config.DisableSaveNotifications && n is NotifyWidget)
+            //This code might prevent the appearance of the widget. Temporary down for testing.
+            /*if (appConfigManager.Config.DisableSaveNotifications && n is NotifyWidget)
             {
                 return;
-            }
+            }*/
             
             int slot = FillNextSlot(n);
             n.Location = GetPosition(n, slot);

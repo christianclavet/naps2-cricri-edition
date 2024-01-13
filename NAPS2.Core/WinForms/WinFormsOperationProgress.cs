@@ -41,8 +41,15 @@ namespace NAPS2.WinForms
         {
             if (userConfigManager.Config.BackgroundOperations.Contains(op.GetType().Name))
             {
-               // ShowModalProgress(op); 
-               ShowBackgroundProgress(op);
+                if (notificationManager!=null)
+                {
+                    ShowBackgroundProgress(op);
+                }
+                else
+                {
+                    ShowModalProgress(op);
+
+                }
             }
             else
             {
@@ -91,7 +98,7 @@ namespace NAPS2.WinForms
             {
                 notificationManager.ParentForm = FDesktop.GetInstance(); // try to force to get the desktop form
                 //notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
-                notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
+                notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
             }
         }
 

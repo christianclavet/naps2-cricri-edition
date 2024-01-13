@@ -436,7 +436,7 @@ namespace NAPS2.WinForms
             {
                 userConfigManager.Config.LastDonatePromptDate = DateTime.Now;
                 userConfigManager.Save();
-                notify.DonatePrompt();
+                //notify.DonatePrompt();
             }
 
             if (userConfigManager.Config.CheckForUpdates &&
@@ -580,6 +580,7 @@ namespace NAPS2.WinForms
         {
             Activate();
             ScanProfile profile;
+            
             if (profileManager.DefaultProfile?.Device?.ID == deviceID)
             {
                 // Try to use the default profile if it has the right device
@@ -2852,31 +2853,7 @@ namespace NAPS2.WinForms
                 statusStrip1.BackColor = SystemColors.ControlDarkDark;
                 thumbnailList1.BackColor = Color.FromArgb(220, 220, 220);  //Color.FromArgb(36, 36, 36);
                 tiffViewerCtl1.BackColor = Color.FromArgb(36, 36, 36);
-                //tiffViewerCtl1.tiffviewer1.BackColor = SystemColors.ControlDarkDark;
-                //tiffViewerCtl1.tStrip.BackColor = Color.FromArgb(60, 60, 60);
-
-
-                // Don't like for the moment until it's all as true dark mode
-                /*
-                // File menu
-                FileDm.BackColor = Color.FromArgb(24, 24, 24);
-                FileDm.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                FileDm.DropDown.ForeColor = Color.White;
-                // Scan menu
-                tsScan.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsScan.DropDown.ForeColor = Color.White;
-                // Profiles menu
-                tsCombo_Profiles.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsCombo_Profiles.DropDown.ForeColor = Color.White;
-                // Images menu
-                tsdImage.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsdImage.DropDown.ForeColor = Color.White;
-                // Rotate menu
-                tsdRotate.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsdRotate.DropDown.ForeColor = Color.White;
-                // Reorder menu
-                tsdReorder.DropDown.BackColor = Color.FromArgb(24, 24, 24);
-                tsdReorder.DropDown.ForeColor = Color.White;*/
+                
                 RegenIconsList();
             }
             else
