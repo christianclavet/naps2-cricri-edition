@@ -98,7 +98,8 @@ namespace NAPS2.WinForms
             {
                 notificationManager.ParentForm = FDesktop.GetInstance(); // try to force to get the desktop form
                 //notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
-                notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
+                //notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
+                notificationManager.OperationProgress(this, op);
             }
         }
 
