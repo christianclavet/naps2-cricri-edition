@@ -55,7 +55,8 @@ namespace NAPS2.WinForms
 
         private void Op_StatusChanged(object sender, EventArgs e)
         {
-            SafeInvoke(DisplayProgress);
+            //SafeInvoke(DisplayProgress);
+            DisplayProgress();
         }
 
         private void Op_Finished(object sender, EventArgs e)

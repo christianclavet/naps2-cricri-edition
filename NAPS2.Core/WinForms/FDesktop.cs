@@ -1538,6 +1538,9 @@ namespace NAPS2.WinForms
             if (SelectedIndices == null)
                 return;
 
+            if (SelectedIndices.Count() == 0)
+                return;
+
             if (SelectedIndices.Count() == 1)
             {
                 if (thumbnailList1.SelectedItems[0].Index + 1 > thumbnailList1.Items.Count)
