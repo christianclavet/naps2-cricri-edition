@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using NAPS2.Config;
 using NAPS2.Lang.Resources;
 using NAPS2.Operation;
+using Org.BouncyCastle.Tsp;
 
 namespace NAPS2.WinForms
 {
@@ -105,8 +106,15 @@ namespace NAPS2.WinForms
 
         public static void RenderStatus(IOperation op, Label textLabel, Label numberLabel, ProgressBar progressBar)
         {
+            
             var status = op.Status ?? new OperationStatus();
-            textLabel.Text = status.StatusText;
+            if (textLabel.Visible)
+            {
+                textLabel.Invoke(new MethodInvoker(delegate
+                {
+                    textLabel.Text = status.StatusText;
+                }));
+            }
             progressBar.Style = status.MaxProgress == 1 || status.IndeterminateProgress
                 ? ProgressBarStyle.Marquee
                 : ProgressBarStyle.Continuous;
@@ -128,17 +136,26 @@ namespace NAPS2.WinForms
             }
             else
             {
-                numberLabel.Text = status.ProgressType == OperationProgressType.MB
+                numberLabel.Invoke(new MethodInvoker(delegate
+                {
+                    numberLabel.Text = status.ProgressType == OperationProgressType.MB
                     ? string.Format(MiscResources.SizeProgress, (status.CurrentProgress / 1000000.0).ToString("f1"), (status.MaxProgress / 1000000.0).ToString("f1"))
                     : string.Format(MiscResources.ProgressFormat, status.CurrentProgress, status.MaxProgress);
-                progressBar.Maximum = status.MaxProgress;
-                progressBar.Value = status.CurrentProgress;
+                }));
+                progressBar.Invoke(new MethodInvoker(delegate
+                {
+                    progressBar.Maximum = status.MaxProgress;
+                    progressBar.Value = status.CurrentProgress;
+                }));
             }
             // Force the progress bar to render immediately
             if (progressBar.Value < progressBar.Maximum)
             {
-                progressBar.Value += 1;
-                progressBar.Value -= 1;
+                progressBar.Invoke(new MethodInvoker(delegate
+                {
+                    progressBar.Value += 1;
+                    progressBar.Value -= 1;
+                }));
             }
         }
 

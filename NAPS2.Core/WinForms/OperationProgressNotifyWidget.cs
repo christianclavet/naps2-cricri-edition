@@ -39,11 +39,17 @@ namespace NAPS2.WinForms
                 // Don't display the number if the progress bar is precise
                 // Otherwise, the widget will be too cluttered
                 // The number is only shown for OcrOperation at the moment
-                lblNumber.Text = "";
+                lblNumber.Invoke(new MethodInvoker(delegate
+                {
+                    lblNumber.Text = "";
+                }));
             }
-            lblNumber.Left = lblNumberRight - lblNumber.Width;
-            Width = Math.Max(Width, lblTitle.Width + lblNumber.Width + 22);
-            Height = Math.Max(Height, lblTitle.Height + 35);
+            lblNumber.Invoke(new MethodInvoker(delegate
+            {
+                lblNumber.Left = lblNumberRight - lblNumber.Width;
+                Width = Math.Max(Width, lblTitle.Width + lblNumber.Width + 22);
+                Height = Math.Max(Height, lblTitle.Height + 35);
+            }));
         }
 
         private void DoHideNotify()

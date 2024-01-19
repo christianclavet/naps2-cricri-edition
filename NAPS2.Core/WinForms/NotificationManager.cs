@@ -140,7 +140,8 @@ namespace NAPS2.WinForms
             {
                 slots[index] = n;
             }
-            parentForm.Controls.Add(n);
+            FDesktop.GetInstance().Controls.Add(n);
+            //parentForm.Controls.Add(n);
             return index;
         }
 
