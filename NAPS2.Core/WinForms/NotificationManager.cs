@@ -32,6 +32,7 @@ namespace NAPS2.WinForms
             set
             {
                 desktopForm = value;
+               
                 //desktopForm.Resize += desktopForm_Resize;
             }
         }

@@ -32,8 +32,18 @@ namespace NAPS2.WinForms
 
         private void DisplayProgress()
         {
+            //Should create a handle for the window if not present (another tread)
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+            }
+
             var lblNumberRight = lblNumber.Right;
-            WinFormsOperationProgress.RenderStatus(op, lblTitle, lblNumber, progressBar);
+            lblTitle.Invoke(new MethodInvoker(delegate
+            {
+                WinFormsOperationProgress.RenderStatus(op, lblTitle, lblNumber, progressBar);
+            }));
+
             if (op.Status?.IndeterminateProgress != true)
             {
                 // Don't display the number if the progress bar is precise

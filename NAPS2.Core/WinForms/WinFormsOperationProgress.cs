@@ -99,8 +99,8 @@ namespace NAPS2.WinForms
             {
                 notificationManager.ParentForm = FDesktop.GetInstance(); // try to force to get the desktop form
                 //notificationManager.ParentForm.SafeInvoke(() => notificationManager.OperationProgress(this, op));
-                //notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
-                notificationManager.OperationProgress(this, op);
+                notificationManager.ParentForm.Invoke(() => notificationManager.OperationProgress(this, op));
+                //notificationManager.OperationProgress(this, op);
             }
         }
 
@@ -120,17 +120,26 @@ namespace NAPS2.WinForms
                 : ProgressBarStyle.Continuous;
             if (status.MaxProgress == 1 || status.ProgressType == OperationProgressType.None)
             {
-                numberLabel.Text = "";
+                numberLabel.Invoke(new MethodInvoker(delegate
+                {
+                    numberLabel.Text = "";
+                }));
             }
             else if (status.MaxProgress == 0)
             {
-                numberLabel.Text = "";
+                numberLabel.Invoke(new MethodInvoker(delegate
+                {
+                    numberLabel.Text = "";
+                }));
                 progressBar.Maximum = 1;
                 progressBar.Value = 0;
             }
             else if (status.ProgressType == OperationProgressType.BarOnly)
             {
-                numberLabel.Text = "";
+                numberLabel.Invoke(new MethodInvoker(delegate
+                {
+                    numberLabel.Text = "";
+                }));
                 progressBar.Maximum = status.MaxProgress;
                 progressBar.Value = status.CurrentProgress;
             }

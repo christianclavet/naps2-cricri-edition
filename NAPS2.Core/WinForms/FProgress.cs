@@ -80,7 +80,10 @@ namespace NAPS2.WinForms
 
         private void DisplayProgress()
         {
-            WinFormsOperationProgress.RenderStatus(Operation, labelStatus, labelNumber, progressBar);
+            labelStatus.Invoke(new MethodInvoker(delegate
+            {
+                WinFormsOperationProgress.RenderStatus(Operation, labelStatus, labelNumber, progressBar);
+            }));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
