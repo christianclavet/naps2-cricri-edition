@@ -181,10 +181,9 @@ namespace NAPS2.ImportExport.Pdf
             document.Pages.Add(page);
             document.Save(pdfPath);
 
-            var image = await Task.Run(() => ScannedImage.FromSinglePagePdf(pdfPath, false));
+            var image =  ScannedImage.FromSinglePagePdf(pdfPath, false);
 
-            
-            /*if (!importParams.NoThumbnails || importParams.DetectPatchCodes)
+            if (!importParams.NoThumbnails || importParams.DetectPatchCodes)
             {
                 using (var bitmap = await scannedImageRenderer.Render(image))
                 {
@@ -201,7 +200,7 @@ namespace NAPS2.ImportExport.Pdf
                     }
                 }
                 
-            }*/
+            }
             return image;
         }
 

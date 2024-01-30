@@ -650,7 +650,6 @@ namespace NAPS2.WinForms
             if (profileManager.DefaultProfile != null)
             {
                 await scanPerformer.PerformScan(profileManager.DefaultProfile, param, this, notify, ReceiveScannedImage());
-                Activate();
                 param.RescanMode = false;
             }
             
@@ -662,6 +661,8 @@ namespace NAPS2.WinForms
             {
                ShowProfilesForm();
             }
+
+            Activate();
         }
 
         private async Task ScanWithNewProfile()

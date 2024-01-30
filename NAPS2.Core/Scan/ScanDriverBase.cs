@@ -9,6 +9,7 @@ using NAPS2.Scan.Exceptions;
 using NAPS2.Scan.Images;
 using NAPS2.WinForms;
 using NAPS2.Worker;
+using Newtonsoft.Json.Linq;
 
 namespace NAPS2.Scan
 {
@@ -125,7 +126,8 @@ namespace NAPS2.Scan
                 {
                     await ScanInternal(source);
                     source.Done();
-                    FDesktop.GetInstance().RegenIconsList(); // Regen the numbers once the scan is complete.
+                    await Task.Run(() => FDesktop.GetInstance().RegenIconsList());
+                    //FDesktop.GetInstance().RegenIconsList(); // Regen the numbers once the scan is complete.
                 }
                 catch (ScanDriverException e)
                 {
