@@ -181,7 +181,7 @@ namespace NAPS2.ImportExport.Pdf
             document.Save(pdfPath);
 
             var image = ScannedImage.FromSinglePagePdf(pdfPath, false);
-            if (!importParams.NoThumbnails || importParams.DetectPatchCodes)
+            /*if (!importParams.NoThumbnails || importParams.DetectPatchCodes)
             {
                 using (var bitmap = await scannedImageRenderer.Render(image))
                 {
@@ -189,15 +189,16 @@ namespace NAPS2.ImportExport.Pdf
                     {
                         image.SetThumbnail(thumbnailRenderer.RenderThumbnail(bitmap));
                     }
-                    /*
+                    
                     if (importParams.DetectPatchCodes)
                     {
                         image.PatchCode = PatchCodeDetector.Detect(bitmap);
                         if (image.PatchCode == PatchCode.Unknown)
                             image.BarCodeData = PatchCodeDetector.DataBarcode;
-                    }*/
+                    }
                 }
-            }
+                
+            }*/
             return image;
         }
 

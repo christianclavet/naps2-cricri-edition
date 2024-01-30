@@ -64,10 +64,12 @@ namespace NAPS2.ImportExport.Images
                             toImport.SelectActiveFrame(FrameDimension.Page, frameIndex);
                            
                             var image = new ScannedImage(toImport, ScanBitDepth.C24Bit, IsLossless(toImport.RawFormat), -1);
-                            if (!importParams.NoThumbnails)
+                            
+                            //There is no need to render the tumbnails as it's being imported. It can be done once it's all done.
+                            /*if (!importParams.NoThumbnails)
                             {
                                 image.SetThumbnail(thumbnailRenderer.RenderThumbnail(toImport));
-                            }
+                            }*
                             
                           /*  
                             //if (importParams.DetectPatchCodes) 
