@@ -13,6 +13,7 @@ using NAPS2.Logging;
 using NAPS2.Scan;
 using NAPS2.Scan.Images;
 using NAPS2.Util;
+using Newtonsoft.Json.Linq;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Advanced;
 using PdfSharp.Pdf.Filters;
@@ -180,7 +181,9 @@ namespace NAPS2.ImportExport.Pdf
             document.Pages.Add(page);
             document.Save(pdfPath);
 
-            var image = ScannedImage.FromSinglePagePdf(pdfPath, false);
+            var image = await Task.Run(() => ScannedImage.FromSinglePagePdf(pdfPath, false));
+
+            
             /*if (!importParams.NoThumbnails || importParams.DetectPatchCodes)
             {
                 using (var bitmap = await scannedImageRenderer.Render(image))
