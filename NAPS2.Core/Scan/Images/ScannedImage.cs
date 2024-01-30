@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using NAPS2.ImportExport;
@@ -20,11 +21,11 @@ namespace NAPS2.Scan.Images
     {
         // Store the base image and metadata on disk using a separate class to manage lifetime
         // If NAPS2 crashes, the image data can be recovered by the next instance of NAPS2 to start
-        private readonly RecoveryImage recoveryImage;
+        private RecoveryImage recoveryImage;
 
         // Store a base image and transform pair (rather than doing the actual transform on the base image)
         // so that JPEG degradation is minimized when multiple rotations/flips are performed
-        private readonly List<Transform> transformList;
+        private List<Transform> transformList;
 
         // patch CC
         private readonly bool highQuality;
@@ -58,13 +59,25 @@ namespace NAPS2.Scan.Images
         public ScannedImage(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
             this.highQuality = highQuality;
-            string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
+            //string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
+            build(img, bitDepth, highQuality, quality);
+           
+        }
 
+        public async Task build(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
+        {
+            string result = await build2(img, bitDepth, highQuality, quality);            
+        }
+
+        public async Task<string> build2(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
+        {
+            string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
             transformList = new List<Transform>();
             recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
             File.Move(tempFilePath, recoveryImage.FilePath);
-
             recoveryImage.Save();
+            await Task.Delay(1);
+            return "";
         }
 
         //Store the informations inside the image to save to the recovery
