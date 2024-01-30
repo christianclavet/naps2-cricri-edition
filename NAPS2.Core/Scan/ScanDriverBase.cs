@@ -126,8 +126,6 @@ namespace NAPS2.Scan
                 {
                     await ScanInternal(source);
                     source.Done();
-                    await Task.Run(() => FDesktop.GetInstance().RegenIconsList());
-                    //FDesktop.GetInstance().RegenIconsList(); // Regen the numbers once the scan is complete.
                 }
                 catch (ScanDriverException e)
                 {
