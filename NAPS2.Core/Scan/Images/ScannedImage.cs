@@ -60,24 +60,19 @@ namespace NAPS2.Scan.Images
         {
             this.highQuality = highQuality;
             //string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
-            build(img, bitDepth, highQuality, quality);
+            // Send this to the functions but do not wait for them. Will run async.
+            _ = CreateRecovery(img, bitDepth, highQuality, quality);
            
         }
 
-        public async Task build(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
+        public async Task CreateRecovery(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
         {
-            string result = await build2(img, bitDepth, highQuality, quality);            
-        }
-
-        public async Task<string> build2(Bitmap img, ScanBitDepth bitDepth, bool highQuality, int quality)
-        {
+            //This method will cause lot of latency if not threaded.
             string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
             transformList = new List<Transform>();
-            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
-            File.Move(tempFilePath, recoveryImage.FilePath);
-            recoveryImage.Save();
-            await Task.Delay(1);
-            return "";
+            await Task.Run(() => recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList));
+            await Task.Run(() => File.Move(tempFilePath, recoveryImage.FilePath));
+            await Task.Run(() => recoveryImage.Save());
         }
 
         //Store the informations inside the image to save to the recovery
