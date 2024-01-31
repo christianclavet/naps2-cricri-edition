@@ -157,6 +157,9 @@
     <Reference Include="Magick.NET.Core, Version=13.5.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Magick.NET.Core.13.5.0\lib\netstandard20\Magick.NET.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Magick.NET.SystemDrawing, Version=7.2.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.SystemDrawing.7.2.1\lib\net462\Magick.NET.SystemDrawing.dll</HintPath>
+    </Reference>
     <Reference Include="MailKit, Version=2.8.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>..\packages\MailKit.2.8.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
