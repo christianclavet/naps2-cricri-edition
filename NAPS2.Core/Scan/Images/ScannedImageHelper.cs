@@ -10,6 +10,7 @@ using NAPS2.Ocr;
 using NAPS2.Operation;
 using NAPS2.Scan.Images.Transforms;
 using NAPS2.Util;
+using ImageMagick;
 
 namespace NAPS2.Scan.Images
 {
@@ -263,6 +264,16 @@ namespace NAPS2.Scan.Images
                 bitmap = transform.Perform(bitmap);
                 image.SetThumbnail(thumbnailRenderer.RenderThumbnail(bitmap));
             }
+        }
+
+        private void TestImageMagick(ScannedImage source)
+        {
+            // Read first frame of gif image
+            using var image = new MagickImage();
+            
+            image.Format = MagickFormat.Tiff;
+            // Save frame as jpg
+            image.Write("Snakeware.tiff");
         }
     }
 }
