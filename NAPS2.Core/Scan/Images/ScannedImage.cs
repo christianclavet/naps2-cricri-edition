@@ -70,7 +70,10 @@ namespace NAPS2.Scan.Images
             //This method will cause lot of latency if not threaded.
             string tempFilePath = ScannedImageHelper.SaveSmallestBitmap(img, bitDepth, highQuality, quality, out ImageFormat fileFormat);
             transformList = new List<Transform>();
-            await Task.Run(() => recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList));
+            recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList);
+            //File.Move(tempFilePath, recoveryImage.FilePath);
+            //recoveryImage.Save();
+            //await Task.Run(() => recoveryImage = RecoveryImage.CreateNew(fileFormat, bitDepth, highQuality, transformList));
             await Task.Run(() => File.Move(tempFilePath, recoveryImage.FilePath));
             await Task.Run(() => recoveryImage.Save());
         }
