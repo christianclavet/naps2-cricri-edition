@@ -267,14 +267,9 @@ namespace NAPS2.Scan.Images
         }
 
         private void TestImageMagick(ScannedImage source)
-        {
-            // Read first frame of gif image
-            using var image = new MagickImage();
-            
-            Image.FromHbitmap(source.GetThumbnail().GetHbitmap());
-
+        { 
             var m = new MagickFactory();
-            MagickImage image2 = new MagickImage(m.Image.Create(source.GetThumbnail()));
+            MagickImage image = new MagickImage(m.Image.Create(source.GetThumbnail()));
 
 
             image.Format = MagickFormat.Tiff;
