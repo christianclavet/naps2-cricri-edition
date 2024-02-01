@@ -270,11 +270,18 @@ namespace NAPS2.Scan.Images
         { 
             var m = new MagickFactory();
             MagickImage image = new MagickImage(m.Image.Create(source.GetThumbnail()));
-
-
             image.Format = MagickFormat.Tiff;
-            // Save frame as jpg
+            image.Quality = 76;
+            image.SetCompression(CompressionMethod.JPEG);
+            // Save frame as tiff with JPG compression method.
             image.Write("Snakeware.tiff");
+
+            //Try to create a 3 page tiff
+            var album = new MagickImageCollection();
+            album.Add(image);
+            album.Add(image);
+            album.Add(image);
+            album.Write("TIFFTEST.TIF");
         }
     }
 }
