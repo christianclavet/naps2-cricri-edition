@@ -1376,6 +1376,7 @@ namespace NAPS2.WinForms
             ksm.Assign("B", tsBrightnessContrast);
             ksm.Assign("H", tsHueSaturation);
             ksm.Assign("D", tsDeskew);
+            ksm.Assign("Q", Test);
             //ksm.Assign("Ctrl+Up", MoveUp);
             //ksm.Assign("Ctrl+Left", MoveUp);
             //ksm.Assign("Ctrl+Down", MoveDown);
@@ -1474,6 +1475,11 @@ namespace NAPS2.WinForms
                     return ks.ScanProfile12;
             }
             return null;
+        }
+
+        private void Test()
+        {
+            ScannedImageHelper.TestImageMagick(imageList.Images[SelectedIndices.First()]);
         }
 
         private void PageDown()

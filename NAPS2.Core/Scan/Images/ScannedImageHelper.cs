@@ -266,7 +266,7 @@ namespace NAPS2.Scan.Images
             }
         }
 
-        private void TestImageMagick(ScannedImage source)
+        public static void TestImageMagick(ScannedImage source)
         { 
             var m = new MagickFactory();
             MagickImage image = new MagickImage(m.Image.Create(source.GetThumbnail()));

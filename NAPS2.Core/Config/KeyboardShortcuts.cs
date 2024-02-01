@@ -71,6 +71,8 @@ namespace NAPS2.Config
 
         public string Delete { get; set; }
 
+        public string Test { get; set; }
+
         public string Clear { get; set; }
 
         public string About { get; set; }
