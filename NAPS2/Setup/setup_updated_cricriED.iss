@@ -79,6 +79,13 @@ Source: "..\bin\InstallerEXE\System.Memory.dll"; DestDir: "{app}\lib"; Flags: ig
 Source: "..\bin\InstallerEXE\System.Numerics.Vectors.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\bin\InstallerEXE\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+; Magick library
+Source: "..\bin\InstallerEXE\Magick.Native-Q8-x64.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Magick.Native-Q8-x86.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Magick.NET.Core.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Magick.NET.SystemDrawing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "..\bin\InstallerEXE\Magick.NET-Q8-AnyCPU.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
+;ZXing library
 Source: "..\bin\InstallerEXE\zxing.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "..\appsettings.xml"; DestDir: "{app}"; 
 Source: "..\projectConfigs.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist

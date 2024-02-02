@@ -11,6 +11,9 @@ using NAPS2.Operation;
 using NAPS2.Scan.Images.Transforms;
 using NAPS2.Util;
 using ImageMagick;
+using System.Windows.Forms;
+using ImageMagick.Formats;
+using NAPS2.ImportExport.Images;
 
 namespace NAPS2.Scan.Images
 {
@@ -270,18 +273,26 @@ namespace NAPS2.Scan.Images
         { 
             var m = new MagickFactory();
             MagickImage image = new MagickImage(m.Image.Create(source.GetThumbnail()));
-            image.Format = MagickFormat.Tiff;
+            image.Settings.Compression = CompressionMethod.JPEG;
+            image.Settings.Depth = 24;
             image.Quality = 76;
-            image.SetCompression(CompressionMethod.JPEG);
+            
+            image.Density = new Density(300, 300);
+            image.Format = MagickFormat.Tiff;
             // Save frame as tiff with JPG compression method.
-            image.Write("Snakeware.tiff");
+           
+            image.Write("TIFF_SINGLE.tiff");
+            image.Write("TIFF_SINGLE.jpg");
 
             //Try to create a 3 page tiff
             var album = new MagickImageCollection();
             album.Add(image);
-            album.Add(image);
-            album.Add(image);
-            album.Write("TIFFTEST.TIF");
+            var image2 = image.Clone();
+            image2.AutoLevel();
+            image2.Flip();
+            album.Add(image2);
+            album.Write("TIFF_MULTI.TIF");
+            MessageBox.Show("TEST COMPLETED");
         }
     }
 }
