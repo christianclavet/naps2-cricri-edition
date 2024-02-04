@@ -107,22 +107,26 @@ namespace NAPS2.Scan.Images
         }
 
         private readonly ThumbnailRenderer thumbnailRenderer;
+        private readonly ScannedImageRenderer scannedImageRenderer;
         private readonly IOperationFactory operationFactory;
         private readonly IOperationProgress operationProgress;
         private readonly AppConfigManager appConfigManager;
         private readonly IUserConfigManager userConfigManager;
         private readonly OcrRequestQueue ocrRequestQueue;
         private readonly OcrManager ocrManager;
+        private static ScannedImageRenderer scanImageRender;
 
-        public ScannedImageHelper(ThumbnailRenderer thumbnailRenderer, IOperationFactory operationFactory, IOperationProgress operationProgress, AppConfigManager appConfigManager, IUserConfigManager userConfigManager, OcrRequestQueue ocrRequestQueue, OcrManager ocrManager)
+        public ScannedImageHelper(ThumbnailRenderer thumbnailRenderer, ScannedImageRenderer scannedImageRenderer, IOperationFactory operationFactory, IOperationProgress operationProgress, AppConfigManager appConfigManager, IUserConfigManager userConfigManager, OcrRequestQueue ocrRequestQueue, OcrManager ocrManager)
         {
             this.thumbnailRenderer = thumbnailRenderer;
+            this.scannedImageRenderer = scannedImageRenderer;
             this.operationFactory = operationFactory;
             this.operationProgress = operationProgress;
             this.appConfigManager = appConfigManager;
             this.userConfigManager = userConfigManager;
             this.ocrRequestQueue = ocrRequestQueue;
             this.ocrManager = ocrManager;
+            scanImageRender = scannedImageRenderer;
         }
 
         public Bitmap PostProcessStep1(Image output, ScanProfile profile, bool supportsNativeUI = true)
@@ -270,14 +274,16 @@ namespace NAPS2.Scan.Images
         }
 
         public static void TestImageMagick(ScannedImage source)
-        { 
+        {
+            //Bitmap bitmap = scanImageRender.Render(source).Result;
             var m = new MagickFactory();
-            MagickImage image = new MagickImage(m.Image.Create(source.GetThumbnail()));
+            MagickImage image = new MagickImage(source.RecoveryFilePath);
+            
             image.Settings.Compression = CompressionMethod.JPEG;
-            image.Settings.Depth = 24;
+            //image.Settings.Depth = 24;
             image.Quality = 76;
             
-            image.Density = new Density(300, 300);
+            //image.Density = new Density(300, 300);
             image.Format = MagickFormat.Tiff;
             // Save frame as tiff with JPG compression method.
            
