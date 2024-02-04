@@ -14,6 +14,8 @@ using ImageMagick;
 using System.Windows.Forms;
 using ImageMagick.Formats;
 using NAPS2.ImportExport.Images;
+using System.Runtime.CompilerServices;
+using System.ServiceModel;
 
 namespace NAPS2.Scan.Images
 {
@@ -106,6 +108,12 @@ namespace NAPS2.Scan.Images
             return tempFilePath;
         }
 
+        public static ScannedImageHelper getInstance()
+        {
+            return instance;
+        }
+
+        private static ScannedImageHelper instance;
         private readonly ThumbnailRenderer thumbnailRenderer;
         private readonly ScannedImageRenderer scannedImageRenderer;
         private readonly IOperationFactory operationFactory;
@@ -114,7 +122,6 @@ namespace NAPS2.Scan.Images
         private readonly IUserConfigManager userConfigManager;
         private readonly OcrRequestQueue ocrRequestQueue;
         private readonly OcrManager ocrManager;
-        private static ScannedImageRenderer scanImageRender;
 
         public ScannedImageHelper(ThumbnailRenderer thumbnailRenderer, ScannedImageRenderer scannedImageRenderer, IOperationFactory operationFactory, IOperationProgress operationProgress, AppConfigManager appConfigManager, IUserConfigManager userConfigManager, OcrRequestQueue ocrRequestQueue, OcrManager ocrManager)
         {
@@ -126,7 +133,8 @@ namespace NAPS2.Scan.Images
             this.userConfigManager = userConfigManager;
             this.ocrRequestQueue = ocrRequestQueue;
             this.ocrManager = ocrManager;
-            scanImageRender = scannedImageRenderer;
+            
+            instance = this;
         }
 
         public Bitmap PostProcessStep1(Image output, ScanProfile profile, bool supportsNativeUI = true)
@@ -273,31 +281,41 @@ namespace NAPS2.Scan.Images
             }
         }
 
-        public static void TestImageMagick(ScannedImage source)
+        public static async void TestImageMagick(ScannedImage source)
         {
             //Bitmap bitmap = scanImageRender.Render(source).Result;
             var m = new MagickFactory();
-            MagickImage image = new MagickImage(source.RecoveryFilePath);
-            
-            image.Settings.Compression = CompressionMethod.JPEG;
-            //image.Settings.Depth = 24;
-            image.Quality = 76;
-            
-            //image.Density = new Density(300, 300);
-            image.Format = MagickFormat.Tiff;
-            // Save frame as tiff with JPG compression method.
-           
-            image.Write("TIFF_SINGLE.tiff");
-            image.Write("TIFF_SINGLE.jpg");
+            //Getting the scannedImageRenderer will apply all the transforms on the picture.
+            Bitmap bit = await instance.scannedImageRenderer.Render(source);
 
-            //Try to create a 3 page tiff
-            var album = new MagickImageCollection();
-            album.Add(image);
-            var image2 = image.Clone();
-            image2.AutoLevel();
-            image2.Flip();
-            album.Add(image2);
-            album.Write("TIFF_MULTI.TIF");
+            using (MagickImage image = new MagickImage(m.Image.Create(bit)))
+            {
+                image.Settings.Compression = CompressionMethod.JPEG;
+                //image.Settings.Depth = 24;
+                image.Quality = 76;
+
+                //image.Density = new Density(300, 300);
+                image.Format = MagickFormat.Tiff;
+                // Save frame as tiff with JPG compression method.
+               
+                image.Write("TIFF_SINGLE.tiff");
+                image.Write("TIFF_SINGLE.jpg");
+
+                //Try to create a 2 pages tiff
+                using (var album = new MagickImageCollection())
+                {
+
+                    album.Add(image);
+                    using (var image2 = image.Clone())
+                    {
+                        image2.AutoLevel();
+                        image2.AutoOrient();
+                        image2.AutoGamma();
+                        album.Add(image2);
+                        album.Write("TIFF_MULTI.TIF");
+                    }
+                }
+            }
             MessageBox.Show("TEST COMPLETED");
         }
     }
