@@ -1546,12 +1546,17 @@ namespace NAPS2.WinForms
             if (SelectedIndices == null)
                 return;
 
-            if (SelectedIndices.Count() == 0)
+            if (SelectedIndices.Count() < 0)
+                return;
+
+            if (SelectedIndices.Count() > imageList.Images.Count())
                 return;
 
             if (SelectedIndices.Count() == 1)
             {
                 if (thumbnailList1.SelectedItems[0].Index + 1 > thumbnailList1.Items.Count)
+                    return;
+                if (thumbnailList1.SelectedItems[0].Index + 1 < 0)
                     return;
 
                 String text = ((thumbnailList1.SelectedItems[0].Index) + 1).ToString();
