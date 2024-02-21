@@ -503,8 +503,7 @@ namespace NAPS2.WinForms
                         // User want to close and delete the current work
                         changeTracker.Clear();
                         
-                        if (bitmap != null)
-                            bitmap.Dispose();
+                        bitmap?.Dispose();
 
                         imageList.Delete(Enumerable.Range(0, imageList.Images.Count));
                         
@@ -548,8 +547,7 @@ namespace NAPS2.WinForms
                 });
             }
             
-            if (bitmap != null)
-                bitmap.Dispose();
+            bitmap?.Dispose();
 
         }
 
@@ -1566,7 +1564,7 @@ namespace NAPS2.WinForms
                 if (text3 != "" && text3 != null)
                     text4 = "Barcode: " + text3;
                 String format = imageList.Images[thumbnailList1.SelectedItems[0].Index].infoFormat;
-                string side = "";
+                string side;
                 if (imageList.Images[thumbnailList1.SelectedItems[0].Index].SheetSide == 1)
                     side = "- side: front";
                 else if (imageList.Images[thumbnailList1.SelectedItems[0].Index].SheetSide == 2)

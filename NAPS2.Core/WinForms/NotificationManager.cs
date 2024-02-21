@@ -7,24 +7,21 @@ using NAPS2.Config;
 using NAPS2.Operation;
 using NAPS2.Update;
 using NAPS2.Util;
+using Org.BouncyCastle.Asn1.X509;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NAPS2.WinForms
 {
-    public class NotificationManager : ISaveNotify
+    public class NotificationManager(AppConfigManager appConfigManager) : ISaveNotify
     {
         private const int PADDING_X = 25, PADDING_Y = 25;
         private const int SPACING_Y = 20;
 
-        private readonly AppConfigManager appConfigManager;
+        private readonly AppConfigManager appConfigManager = appConfigManager;
 
-        private readonly List<NotifyWidgetBase> slots = new List<NotifyWidgetBase>();
+        private readonly List<NotifyWidgetBase> slots = [];
         private FormBase parentForm;
         private FormBase desktopForm;
-
-        public NotificationManager(AppConfigManager appConfigManager)
-        {
-            this.appConfigManager = appConfigManager;
-        }
 
         public FormBase DesktopForm
         {
@@ -43,7 +40,7 @@ namespace NAPS2.WinForms
             set
             {
                 parentForm = value;
-                parentForm.Resize += parentForm_Resize;
+                parentForm.Resize += ParentForm_Resize;
             }
         }
 
@@ -71,7 +68,9 @@ namespace NAPS2.WinForms
 
         public void OperationProgress(IOperationProgress opModalProgress, IOperation op)
         {
+            //OperationProgressNotifyWidget Display = new OperationProgressNotifyWidget(opModalProgress, op);
             Show(new OperationProgressNotifyWidget(opModalProgress, op));
+            
         }
 
         public void UpdateAvailable(UpdateChecker updateChecker, UpdateInfo update)
@@ -102,13 +101,18 @@ namespace NAPS2.WinForms
             
             int slot = FillNextSlot(n);
             n.Location = GetPosition(n, slot);
-            n.Resize += parentForm_Resize;
+            n.Resize += ParentForm_Resize;
             n.BringToFront();
             n.HideNotify += (sender, args) => ClearSlot(n);
-            n.ShowNotify();
+
+            n.Invoke(new MethodInvoker(delegate
+            {
+                n.ShowNotify();
+            }));
+            
         }
 
-        private void parentForm_Resize(object sender, EventArgs e)
+        private void ParentForm_Resize(object sender, EventArgs e)
         {
             for (int i = 0; i < slots.Count; i++)
             {

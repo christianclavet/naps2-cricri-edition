@@ -17,36 +17,20 @@ using NAPS2.Util;
 
 namespace NAPS2.WinForms
 {
-    public class WinFormsExportHelper
+    public class WinFormsExportHelper(PdfSettingsContainer pdfSettingsContainer, ImageSettingsContainer imageSettingsContainer, EmailSettingsContainer emailSettingsContainer, DialogHelper dialogHelper, FileNamePlaceholders fileNamePlaceholders, ChangeTracker changeTracker, IOperationFactory operationFactory, IFormFactory formFactory, OcrManager ocrManager, IEmailProviderFactory emailProviderFactory, IOperationProgress operationProgress, IUserConfigManager userConfigManager)
     {
-        private readonly PdfSettingsContainer pdfSettingsContainer;
-        private readonly ImageSettingsContainer imageSettingsContainer;
-        private readonly EmailSettingsContainer emailSettingsContainer;
-        private readonly DialogHelper dialogHelper;
-        private readonly FileNamePlaceholders fileNamePlaceholders;
-        private readonly ChangeTracker changeTracker;
-        private readonly IOperationFactory operationFactory;
-        private readonly IFormFactory formFactory;
-        private readonly OcrManager ocrManager;
-        private readonly IEmailProviderFactory emailProviderFactory;
-        private readonly IOperationProgress operationProgress;
-        private readonly IUserConfigManager userConfigManager;
-
-        public WinFormsExportHelper(PdfSettingsContainer pdfSettingsContainer, ImageSettingsContainer imageSettingsContainer, EmailSettingsContainer emailSettingsContainer, DialogHelper dialogHelper, FileNamePlaceholders fileNamePlaceholders, ChangeTracker changeTracker, IOperationFactory operationFactory, IFormFactory formFactory, OcrManager ocrManager, IEmailProviderFactory emailProviderFactory, IOperationProgress operationProgress, IUserConfigManager userConfigManager)
-        {
-            this.pdfSettingsContainer = pdfSettingsContainer;
-            this.imageSettingsContainer = imageSettingsContainer;
-            this.emailSettingsContainer = emailSettingsContainer;
-            this.dialogHelper = dialogHelper;
-            this.fileNamePlaceholders = fileNamePlaceholders;
-            this.changeTracker = changeTracker;
-            this.operationFactory = operationFactory;
-            this.formFactory = formFactory;
-            this.ocrManager = ocrManager;
-            this.emailProviderFactory = emailProviderFactory;
-            this.operationProgress = operationProgress;
-            this.userConfigManager = userConfigManager;
-        }
+        private readonly PdfSettingsContainer pdfSettingsContainer = pdfSettingsContainer;
+        private readonly ImageSettingsContainer imageSettingsContainer = imageSettingsContainer;
+        private readonly EmailSettingsContainer emailSettingsContainer = emailSettingsContainer;
+        private readonly DialogHelper dialogHelper = dialogHelper;
+        private readonly FileNamePlaceholders fileNamePlaceholders = fileNamePlaceholders;
+        private readonly ChangeTracker changeTracker = changeTracker;
+        private readonly IOperationFactory operationFactory = operationFactory;
+        private readonly IFormFactory formFactory = formFactory;
+        private readonly OcrManager ocrManager = ocrManager;
+        private readonly IEmailProviderFactory emailProviderFactory = emailProviderFactory;
+        private readonly IOperationProgress operationProgress = operationProgress;
+        private readonly IUserConfigManager userConfigManager = userConfigManager;
 
         public async Task<bool> SavePDF(List<ScannedImage> images, ISaveNotify notify, int doc = 0)
         {
@@ -55,7 +39,7 @@ namespace NAPS2.WinForms
                 userConfigManager.Load();
                 var lastPath = (userConfigManager.Config.LastPath);
                 // In case there is nothing yet in the last path, use the C:\drive
-                if (lastPath==null)
+                if (lastPath == null)
                     lastPath = "C:\\";
 
                 string savePath = Path.Combine(lastPath, FDesktop.projectName);
