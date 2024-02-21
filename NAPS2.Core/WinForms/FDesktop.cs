@@ -2813,7 +2813,8 @@ namespace NAPS2.WinForms
             }
             if (changeTracker!=null)
                 changeTracker.Clear();
-            
+
+            notify.ParentForm = this;
             projectName = string.Format(MiscResources.ProjectName);
             SelectedIndices = Enumerable.Range(0, 0);
             //Update the toolbar
