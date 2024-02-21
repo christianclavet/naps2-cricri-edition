@@ -21,18 +21,7 @@ namespace NAPS2.WinForms
 
         private readonly List<NotifyWidgetBase> slots = [];
         private FormBase parentForm;
-        private FormBase desktopForm;
 
-        public FormBase DesktopForm
-        {
-            get => desktopForm;
-            set
-            {
-                desktopForm = value;
-               
-                //desktopForm.Resize += desktopForm_Resize;
-            }
-        }
 
         public FormBase ParentForm
         {
@@ -68,9 +57,7 @@ namespace NAPS2.WinForms
 
         public void OperationProgress(IOperationProgress opModalProgress, IOperation op)
         {
-            //OperationProgressNotifyWidget Display = new OperationProgressNotifyWidget(opModalProgress, op);
-            Show(new OperationProgressNotifyWidget(opModalProgress, op));
-            
+            Show(new OperationProgressNotifyWidget(opModalProgress, op));   
         }
 
         public void UpdateAvailable(UpdateChecker updateChecker, UpdateInfo update)
@@ -93,23 +80,18 @@ namespace NAPS2.WinForms
 
         private void Show(NotifyWidgetBase n)
         {
-            //This code might prevent the appearance of the widget. Temporary down for testing.
-            /*if (appConfigManager.Config.DisableSaveNotifications && n is NotifyWidget)
+            if (appConfigManager.Config.DisableSaveNotifications && n is NotifyWidget)
             {
                 return;
-            }*/
-            
+            }
+                      
             int slot = FillNextSlot(n);
             n.Location = GetPosition(n, slot);
             n.Resize += ParentForm_Resize;
             n.BringToFront();
-            n.HideNotify += (sender, args) => ClearSlot(n);
-
-            n.Invoke(new MethodInvoker(delegate
-            {
-                n.ShowNotify();
-            }));
-            
+            n.HideNotify += (sender, args) => ClearSlot(n);      
+            n.ShowNotify();
+                     
         }
 
         private void ParentForm_Resize(object sender, EventArgs e)
@@ -145,8 +127,8 @@ namespace NAPS2.WinForms
             {
                 slots[index] = n;
             }
-            FDesktop.GetInstance().Controls.Add(n);
-            //parentForm.Controls.Add(n);
+            //FDesktop.GetInstance().Controls.Add(n);
+            parentForm.Controls.Add(n);
             return index;
         }
 
