@@ -2764,6 +2764,10 @@ namespace NAPS2.WinForms
                 }
             }         
         }
+        public NotificationManager GetNotificationManager()
+        {
+            return this.notify;
+        }
 
         public void RegenIconsList()
         {
