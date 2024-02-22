@@ -1541,8 +1541,6 @@ namespace NAPS2.WinForms
 
         private void DisplaySelectedItem_info(bool minimum = false)
         {
-            if (SelectedIndices == null)
-                return;
 
             if (SelectedIndices.Count() < 0)
                 return;
