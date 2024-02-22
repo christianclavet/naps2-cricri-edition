@@ -4,10 +4,12 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NAPS2.Config;
+using NAPS2.Logging;
 using NAPS2.Operation;
 using NAPS2.Update;
 using NAPS2.Util;
 using Org.BouncyCastle.Asn1.X509;
+using PdfSharp.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NAPS2.WinForms
@@ -57,7 +59,7 @@ namespace NAPS2.WinForms
 
         public void OperationProgress(IOperationProgress opModalProgress, IOperation op)
         {
-            Show(new OperationProgressNotifyWidget(opModalProgress, op));   
+                Show(new OperationProgressNotifyWidget(opModalProgress, op));
         }
 
         public void UpdateAvailable(UpdateChecker updateChecker, UpdateInfo update)
@@ -84,14 +86,26 @@ namespace NAPS2.WinForms
             {
                 return;
             }
-                      
-            int slot = FillNextSlot(n);
-            n.Location = GetPosition(n, slot);
-            n.Resize += ParentForm_Resize;
-            n.BringToFront();
-            n.HideNotify += (sender, args) => ClearSlot(n);      
-            n.ShowNotify();
-                     
+                   
+            if (!n.IsHandleCreated)
+            {
+                //n.Invoke((MethodInvoker)delegate () { n.CreateControl(); });
+                n.CreateControl();
+            }
+
+            if (n.IsHandleCreated) 
+            { 
+                int slot = FillNextSlot(n);
+                n.Location = GetPosition(n, slot);
+                n.Resize += ParentForm_Resize;
+                n.BringToFront();
+                n.HideNotify += (sender, args) => ClearSlot(n);      
+                n.ShowNotify();
+            } else
+            {
+                Log.Error("Cannot create the widget!");
+            }
+
         }
 
         private void ParentForm_Resize(object sender, EventArgs e)
