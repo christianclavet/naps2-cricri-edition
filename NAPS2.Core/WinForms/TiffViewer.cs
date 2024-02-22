@@ -12,7 +12,9 @@ namespace NAPS2.WinForms
         private readonly Container components = null;
 
         private Image image;
+        private Image image2;
         private PictureBox pbox;
+        private PictureBox pbox2;
         private double xzoom;
 
         public TiffViewer()
@@ -37,6 +39,23 @@ namespace NAPS2.WinForms
             }
         }
 
+        public Image Image2
+        {
+            set
+            {
+                if (value != null)
+                {
+                    image2 = value;
+                    Zoom = 100;
+                }
+                else
+                {
+                    ClearImage();
+                    image2 = null;
+                }
+            }
+        }
+
         public int ImageWidth => image?.Width ?? 0;
 
         public int ImageHeight => image?.Height ?? 0;
@@ -56,6 +75,9 @@ namespace NAPS2.WinForms
                         displayHeight *= image.HorizontalResolution / (double)image.VerticalResolution;
                     }
                     pbox.Image = image;
+                    if (image2!=null) 
+                        pbox2.Image = image2;
+
                     pbox.BorderStyle = BorderStyle.FixedSingle;
                     pbox.Width = (int)displayWidth;
                     pbox.Height = (int)displayHeight;
@@ -149,26 +171,34 @@ namespace NAPS2.WinForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TiffViewer));
             this.pbox = new System.Windows.Forms.PictureBox();
+            this.pbox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pbox
             // 
-            resources.ApplyResources(this.pbox, "pbox");
             this.pbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.pbox, "pbox");
             this.pbox.Name = "pbox";
             this.pbox.TabStop = false;
-            this.pbox.SizeMode = PictureBoxSizeMode.Zoom;
             this.pbox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbox_MouseDown);
             this.pbox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbox_MouseMove);
+            // 
+            // pbox2
+            // 
+            this.pbox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.pbox2, "pbox2");
+            this.pbox2.Name = "pbox2";
+            this.pbox2.TabStop = false;
             // 
             // TiffViewer
             // 
             resources.ApplyResources(this, "$this");
-            //this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.pbox);
             this.Name = "TiffViewer";
             ((System.ComponentModel.ISupportInitialize)(this.pbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox2)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -13,6 +13,7 @@ namespace NAPS2.WinForms
     {
         private readonly Container components = null;
         private Image image;
+        private Image image2;
         public ToolStrip tStrip;
         public TiffViewer tiffviewer1;
         private ToolStripContainer toolStripContainer1;
@@ -49,6 +50,18 @@ namespace NAPS2.WinForms
             }
         }
 
+        public Image Image2
+        {
+            get => image2;
+            set
+            {
+                image2 = value;
+                tiffviewer1.Image2 = value;
+                tStrip.Enabled = value != null;
+                AdjustZoom();
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -71,6 +84,7 @@ namespace NAPS2.WinForms
                 double containerHeight = Math.Max(tiffviewer1.Height - 20, 0);
                 double zoomX = containerWidth / tiffviewer1.ImageWidth * 100;
                 double zoomY = containerHeight / tiffviewer1.ImageHeight * 100;
+                
                 tiffviewer1.Zoom = Math.Min(zoomX, zoomY);
             }
         }
