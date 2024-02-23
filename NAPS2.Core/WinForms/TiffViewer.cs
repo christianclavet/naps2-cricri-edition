@@ -68,7 +68,7 @@ namespace NAPS2.WinForms
                 {
                     double maxZoom = Math.Sqrt(1e8 / (image.Width * (double) image.Height)) * 100;
                     xzoom = Math.Max(Math.Min(value, maxZoom), 10);
-                    double displayWidth = (image.Width*2) * (xzoom / 100);
+                    double displayWidth = (image.Width) * (xzoom / 100);
                     double displayHeight = image.Height * (xzoom / 100);
                     if (image.HorizontalResolution > 0 && image.VerticalResolution > 0)
                     {
@@ -93,7 +93,7 @@ namespace NAPS2.WinForms
                         pbox.Cursor = HorizontalScroll.Visible || VerticalScroll.Visible ? Cursors.Hand : Cursors.Default;
                         ZoomChanged.Invoke(this, new EventArgs());
                         //pbox2.Anchor = pbox.Anchor + pbox.Width + 5;
-                        pbox2.Left = pbox.Right + 5;
+                        pbox2.Left = pbox.Right + 5; pbox2.Hide();
                         pbox2.Size = pbox.Size;
                     }
                 }
