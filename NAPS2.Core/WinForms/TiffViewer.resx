@@ -145,10 +145,13 @@
     <value>0</value>
   </data>
   <data name="pbox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>136, 10</value>
   </data>
   <data name="pbox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 50</value>
+    <value>129, 128</value>
+  </data>
+  <data name="pbox2.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
   </data>
   <data name="pbox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -158,6 +161,12 @@
   </data>
   <data name="&gt;&gt;pbox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbox2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
