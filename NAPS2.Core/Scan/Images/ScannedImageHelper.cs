@@ -16,11 +16,13 @@ using ImageMagick.Formats;
 using NAPS2.ImportExport.Images;
 using System.Runtime.CompilerServices;
 using System.ServiceModel;
+using NAPS2.WinForms;
 
 namespace NAPS2.Scan.Images
 {
     public class ScannedImageHelper
     {
+    
         public static string SaveSmallestBitmap(Bitmap sourceImage, ScanBitDepth bitDepth, bool highQuality, int quality, out ImageFormat imageFormat)
         {
             // Store the image in as little space as possible

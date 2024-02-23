@@ -30,6 +30,7 @@ namespace NAPS2.WinForms
                 {
                     image = value;
                     Zoom = 100;
+                    image2 = null;
                 }
                 else
                 {
@@ -75,14 +76,13 @@ namespace NAPS2.WinForms
                         displayHeight *= image.HorizontalResolution / (double)image.VerticalResolution;
                     }
                     pbox.Image = image;
-                    if (image2 != null)
+                    /*if (image2 != null)
                     {
                         pbox2.Image = image2;
-                        pbox2.Hide(); // Until it's ready to be used.
                         pbox2.BorderStyle = BorderStyle.FixedSingle;
                         pbox2.Width = (int)displayWidth;
                         pbox.Height = (int)displayHeight;
-                    }
+                    }*/
                         
 
                     pbox.BorderStyle = BorderStyle.FixedSingle;
@@ -93,7 +93,7 @@ namespace NAPS2.WinForms
                         pbox.Cursor = HorizontalScroll.Visible || VerticalScroll.Visible ? Cursors.Hand : Cursors.Default;
                         ZoomChanged.Invoke(this, new EventArgs());
                         //pbox2.Anchor = pbox.Anchor + pbox.Width + 5;
-                        pbox2.Left = pbox.Right + 5; pbox2.Hide();
+                        pbox2.Left = pbox.Right + 5; 
                         pbox2.Size = pbox.Size;
                     }
                 }
@@ -105,12 +105,15 @@ namespace NAPS2.WinForms
 
         private void ClearImage()
         {
-            pbox.Image = Icons.hourglass_grey;
+            pbox.Image = null;
             pbox.BorderStyle = BorderStyle.None;
             pbox.Width = 32;
             pbox.Height = 32;
 
-            pbox2.Image = Icons.hourglass_grey;
+            if (pbox2.Image != null)
+                pbox2.Image.Dispose();
+
+            pbox2.Image = null;
             pbox2.BorderStyle = BorderStyle.None;
             pbox2.Width = 32;
             pbox2.Height = 32;

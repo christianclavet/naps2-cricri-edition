@@ -22,6 +22,7 @@ using NAPS2.ClientServer;
 using System.Xml.Linq;
 using PdfSharp;
 using NAPS2.Config;
+using Org.BouncyCastle.Asn1.X509;
 
 namespace NAPS2.Scan.Twain
 {
@@ -252,7 +253,8 @@ namespace NAPS2.Scan.Twain
 
                             var bitDepth = output.PixelFormat == PixelFormat.Format1bppIndexed
                                 ? ScanBitDepth.BlackWhite
-                                : ScanBitDepth.C24Bit;
+                            : ScanBitDepth.C24Bit;
+
                             var image = new ScannedImage(result, bitDepth, scanProfile.MaxQuality, scanProfile.Quality);                            
                             
                             if (scanParams.DetectPatchCodes)

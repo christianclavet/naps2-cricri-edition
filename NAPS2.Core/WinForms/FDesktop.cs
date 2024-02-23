@@ -40,6 +40,7 @@ using ZXing;
 using NAPS2.ImportExport.Images;
 using Org.BouncyCastle.Tsp;
 using Castle.Core.Internal;
+using Org.BouncyCastle.Asn1.X509;
 
 #endregion
 
@@ -170,7 +171,7 @@ namespace NAPS2.WinForms
             
             return projectsConfig;
         }
-
+       
         protected override void OnLoad(object sender, EventArgs eventArgs)
         {
             PostInitializeComponent();
@@ -705,7 +706,22 @@ namespace NAPS2.WinForms
 
         // Check for barcode Data CC
         // Also check for getting more information about the images, not just the barcode
-        
+
+        private void setPreviewImage(Bitmap image, bool frontpage = true)
+        {
+            if (frontpage)
+            {
+
+                tiffViewerCtl1.Image = image;
+                tiffViewerCtl1.Refresh();
+            }
+            else
+            {
+                tiffViewerCtl1.Image2 = image;
+                tiffViewerCtl1.Refresh();
+            }
+        }
+
         private async void GetPreviewImage(ScannedImage img, bool updateGUI)
         {
             if (updateGUI == false)
@@ -720,8 +736,11 @@ namespace NAPS2.WinForms
             // put the image inside the preview
             if (bitmap != null & updateGUI == true)
             {
-               tiffViewerCtl1.Image = bitmap;
-               tiffViewerCtl1.Refresh();
+                bool frontpage = true;
+               // if (img.SheetSide == 2)
+               //     frontpage = false;
+
+                setPreviewImage(bitmap, frontpage);
             }
 
             if (bitmap != null)
@@ -872,8 +891,8 @@ namespace NAPS2.WinForms
         {
             Color fore = Color.Black;
             thumbnailList1.AddedImages(imageList.Images, fore);
-            if (!recover)
-                GetPreviewImage(imageList.Images[imageList.Images.Count-1], true);
+            //if (!recover)
+            //    GetPreviewImage(imageList.Images[imageList.Images.Count-1], true);
 
             //Scroll the list so that every new item that get added can be viewed. -CC
             //Should not do it if a selection is active.
